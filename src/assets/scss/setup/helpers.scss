@@ -1,0 +1,30 @@
+.flex{
+    display: flex;
+}
+.flex-jc{
+    display: flex;
+    justify-content: center;
+}
+.flex-ac{
+    display: flex;
+    align-items: center;
+}
+.flex-jc-ac{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex-sb{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.grid{
+    display:grid;
+}
+.clean{
+    list-style-type: none;
+}
+.full{
+    grid-column: 1/-1;
+}

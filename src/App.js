@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, HashRouter as Router,Routes, } from 'react-router-dom';
+import { AppHeader } from './cmps/AppHeader';
+import './assets/scss/main.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// import { AppFooter } from './components/AppFooter';
+import { Home } from './views/Home';
+// import { About } from './pages/About';
+import { SignupPage } from './views/SignupPage';
 
-export default App;
+
+export function  App () {
+
+    return (
+      
+      <Router>
+           <section className="main-layout">
+           <AppHeader  />
+   
+      <Routes>
+        <Route path="/" element={<Home/>} />
+      <Route path="/signup-page" element={<SignupPage/>} />
+
+        {/* <Route path="/about" element={<About/>} >
+                  <Route path="/about/team" element={<Team/>} />
+                  <Route path="/about/vision" element={<Vision/>} />
+        </Route> */}
+       
+
+      </Routes>
+
+          {/* <AppFooter/> */}
+    </section>
+      </Router>
+   
+    )
+  }
+
