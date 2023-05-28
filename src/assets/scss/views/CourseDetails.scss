@@ -1,0 +1,24 @@
+.coures-detail-container {
+    grid-column: 2;
+    flex-direction: column;
+
+    .btn-purchase {
+        border: none;
+        padding: 12px;
+        background-color: #0070ff;
+        font-size: 1.1rem;
+        color: #fff;
+        margin-top: 19px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .btn-purchase:hover{
+        scale: 0.9;
+        transition: scale 0.4s;
+    }
+    .userMsg{
+        width: 400px;
+        height: 200px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+}

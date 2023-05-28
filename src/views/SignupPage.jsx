@@ -3,42 +3,79 @@ import { GoogleLogin } from '@react-oauth/google';
 import { imgService } from '../services/imgService'
 import { userService } from '../services/userService'
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import {  useDispatch, useSelector } from 'react-redux'
+import {  signup } from '../store/actions/user.actions';
 import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 export function SignupPage() {
+
+    const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
     const [user, setUser] = useState(userService.getEmptyUser())
+    const [googleUser, setGoogleUser] = useState()
+    
     const [ profile, setProfile ] = useState(null);
-
+    const dispatch=useDispatch()
+    const navigate = useNavigate()
+    
     const login = useGoogleLogin({
-        onSuccess: (codeResponse) => setUser(codeResponse),
+        onSuccess: (codeResponse) => {
+            setGoogleUser(codeResponse)
+            googleLogin()
+        },
         onError: (error) => console.log('Login Failed:', error)
-    });
+    }
+    
+    );
+    useEffect(() => {
+        googleLogin()
+    }, [googleUser])
 
-    useEffect(
-        () => {
-            if (user) {
-                axios
-                    .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+     const googleLogin= async () => {
+            if (googleUser) {
+             await   axios
+                    .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${googleUser.access_token}`, {
                         headers: {
-                            Authorization: `Bearer ${user.access_token}`,
+                            Authorization: `Bearer ${googleUser.access_token}`,
                             Accept: 'application/json'
                         }
                     })
                     .then((res) => {
                         console.log('res.data',res.data)
-                        setProfile(res.data);
-                    })
+                       const {name,email,given_name,picture} =res.data
+                      const formatedUser = {
+                            fname: name,
+                            userName:given_name,
+                            email,
+                            imgUrl:picture,
+                          
+                        
+                      }
+                      dispatch(signup(formatedUser))
+                        setProfile(formatedUser);
+                        console.log('formatedUser',formatedUser);
+                    }).then(
+                        navigate('/')
+
+                    )
                     .catch((err) => console.log(err));
             }
-        },
-        [ user ]
-    );
+        }
+
     const logOut = () => {
         googleLogout();
         setProfile(null);
-    };
-    const onSignup = () => {
-        userService.signup(user)
+    }
+
+ 
+    console.log('loggdingUser',loggdingUser);
+   const onSignup =  (ev) => {
+        ev.preventDefault()
+        ev.stopPropagation()
+        dispatch(signup(user))
+        navigate('/')
+    //  const credintials= await userService.signup(user)
+     setProfile((user))
     }
 
     const handleChange = ({ target }) => {
@@ -57,60 +94,49 @@ export function SignupPage() {
         setUser((prevUser) => ({ ...prevUser, [field]: value }))
     }
     if (!user) return (<div>Loading...</div>)
-    const { fname, email, userName, passward } = user
+    const { fname, email, userName, password } = user
     const imgUrl = `https://res.cloudinary.com/dii16awkb/image/upload/v1684522130/signgupSvg_hawhuc.webp`
-    const responseMessage = (response) => {
-        console.log(response);
-    };
-    const errorMessage = (error) => {
-        console.log(error);
-    };
+    
     return (
         <section className='signup-container grid'>
             <div className='signup-img-container'>
                 <img className='signup-img' src={imgService.getImg('signupImg')} />
             </div>
-            <form className='signup-form flex'>
+            <form className='signup-form flex'  onSubmit={onSignup}>
             <h2 className="signin-title">Sign-in</h2>
 
                 <label htmlFor="fname">
                     <input value={fname} onChange={handleChange} className="sign-in-input" required type="text" name="fname" id="fname" placeholder="fullname" />
                 </label>
                 <label htmlFor="email">
-                    <input value={email} onChange={handleChange} className="sign-in-input" required type="text" name="email" id="email" placeholder="email" />
+                    <input value={email} onChange={handleChange} className="sign-in-input" required type="email" name="email" id="email" placeholder="email" />
                 </label>
                 <label htmlFor="userName">
                     <input value={userName} onChange={handleChange} className="sign-in-input" required type="text" name="userName" id="userName" placeholder="user name" />
                 </label>
-                <label htmlFor="email">
-                    <input value={passward} onChange={handleChange} className="sign-in-input" required type="text" name="password" id="password" placeholder="password" />
+                <label htmlFor="password">
+                    <input value={password} onChange={handleChange} className="sign-in-input" required type="password" name="password" id="password" placeholder="password" />
                 </label>
-                <button className="sign-in-btn" onClick={onSignup}>Sign In</button>
+                <button className="sign-in-btn">Sign In</button>
+                </form>
                 <button onClick={() => login()}>Sign in with Google 🚀 </button>
 
-                {/* <div>
-            <h2>React Google Login</h2>
-            <br />
-            <br />
-            <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
-        </div> */}
         <div>
             <h2>React Google Login</h2>
             <br />
             <br />
-            {profile ? (
+            {loggdingUser ? (
                 <div>
-                    <img src={profile.picture} alt="user image" />
+                    <img src={loggdingUser.imgUrl} alt="user image" />
                     <h3>User Logged in</h3>
-                    <p>Name: {profile.name}</p>
-                    <p>Email Address: {profile.email}</p>
+                    <p>Name: {loggdingUser.fname}</p>
+                    <p>Email Address: {loggdingUser.email}</p>
                     <br />
                     <br />
                     <button onClick={logOut}>Log out</button>
                 </div>
             ):'no user loggedin'}
         </div>
-            </form>
         </section>
     )
 }

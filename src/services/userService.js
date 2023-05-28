@@ -1,9 +1,10 @@
 import { storageService } from "./storage.service"
+import { httpService } from "./http.service"
 export const userService = {
     getUser,
     getEmptyUser,
     signup,
-
+    updateUser,
 }
 const USER_KEY = 'userDB'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
@@ -18,13 +19,14 @@ console.log('loggedinUser',loggedinUser);
 
 resolve(loggedinUser) 
         })
-
-
 }
 
-function signup(credentials) {
-    storageService.store(STORAGE_KEY_LOGGEDIN_USER, credentials)
-    return user
+async function signup(credentials) {
+    
+    const cdAfterbackend= await httpService.post('auth/signup',credentials)
+   console.log('cdAfterbackend',cdAfterbackend);
+   storageService.store(STORAGE_KEY_LOGGEDIN_USER, credentials)
+   return cdAfterbackend
 }
 function getEmptyUser() {
     return {
@@ -32,12 +34,14 @@ function getEmptyUser() {
         userName:"",
         password:"",
         email: "",
+        imgUrl:'',
         courses:[],
         moves: [],
     }
 }
-
-//Add the functions:
-// - signup(name)
-// - addMove(contact, amount)
-// Use the local storage to save/ load the user
+async function updateUser(user){
+    const updatedUser= await httpService.put(`user`,user)
+    console.log('userService updatedUser after backend ',updatedUser);
+    return updatedUser
+    
+}

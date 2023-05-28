@@ -1,12 +1,16 @@
-import { userService } from "../../services/user.service";
-import { SET_USER } from "../reducers/user.reducer";
+import { useNavigate } from "react-router-dom";
+import { userService } from "../../services/userService";
+import { SET_USER, LOGOUT_USER, UPDATE_USER} from "../reducers/user.reducer";
 
 
-export function loadloggedinUser(){
+
+export function signup(userToSignup){
     try{
 
         return async(dispatch,getState)=>{
-            const user= await userService.getUser()
+            const user= await userService.signup(userToSignup)
+            console.log('user after backend', user);
+            
             const action = {
                 type: SET_USER,
                 user
@@ -15,27 +19,52 @@ export function loadloggedinUser(){
     }
      
     }catch(err){
-        console.log('can not load User',err);
+        console.log('can not signup User',err);
     }
 }
-export function handelUserFundsTransfer(amount, contact){
+export function logout(){
     try{
-        let currMove = {
-            toId: contact._id,
-            to: contact.name,
-            at: Date.now(),
-            coins: amount
-          }
         return async(dispatch,getState)=>{
-            const user= await userService.handelFundsTransfer(currMove)
+            console.log('LOGOUT_USER');   
             const action = {
-                type: SET_USER,
-                user
+                type:LOGOUT_USER     
             }
            dispatch(action)
     }
      
     }catch(err){
-        console.log('can not load User',err);
+        console.log('can not logout',err);
+    }
+}
+export function updateUser(user){
+    try{
+        return async(dispatch,getState)=>{
+            const updatedUser = await userService.updateUser(user)
+            console.log('updatedUser after backend',updatedUser);       
+            const action = {
+                type:UPDATE_USER,
+                updatedUser    
+            }
+           dispatch(action)
+    }
+     
+    }catch(err){
+        console.log('can not signup User',err);
+    }
+}
+export function getUserById(userId){
+    try{
+        return async(dispatch,getState)=>{
+           const updatedUser = await userService.getUserById(userId)
+            console.log('LOGOUT_USER');   
+            const action = {
+                type:UPDATE_USER,
+                updatedUser    
+            }
+           dispatch(action)
+    }
+     
+    }catch(err){
+        console.log('can not signup User',err);
     }
 }

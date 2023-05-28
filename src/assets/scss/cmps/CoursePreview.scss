@@ -1,0 +1,18 @@
+.course-card {
+    flex-direction: column;
+    height: 200px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    .coures-img {
+        height: 100%;
+    }
+
+    .sub-title {
+        white-space: nowrap;
+        width: 214px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 52px;
+
+    }
+}

@@ -1,0 +1,15 @@
+.hero-img-container{
+    grid-column: 1/-1;
+    background-image: url("https://pbs.twimg.com/media/DrgpTAGXgAg9ZAg?format=jpg&name=large"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 500px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+.home-greeting{
+    font-size: 1.2rem;
+}
+}
+.title-container{
+    grid-column: 1/-1;
+}

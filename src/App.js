@@ -6,7 +6,9 @@ import './assets/scss/main.scss';
 import { Home } from './views/Home';
 // import { About } from './pages/About';
 import { SignupPage } from './views/SignupPage';
-
+import { CouresDetails } from './views/CouresDetails';
+import { PurchaseCourse } from './views/PurchaseCourse';
+import { MyCourses } from './views/MyCourses';
 
 export function  App () {
 
@@ -19,6 +21,9 @@ export function  App () {
       <Routes>
         <Route path="/" element={<Home/>} />
       <Route path="/signup-page" element={<SignupPage/>} />
+      <Route path="/courses/:id" element={<CouresDetails/>} />
+      <Route path="/purchase-course/:id" element={<PurchaseCourse/>} />
+      <Route path="/my-courses" element={<MyCourses/>} />
 
         {/* <Route path="/about" element={<About/>} >
                   <Route path="/about/team" element={<Team/>} />

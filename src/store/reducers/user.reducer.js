@@ -2,8 +2,7 @@
 export const SET_USER = 'SET_USER '
 export const ADD_USER = 'ADD_USER '
 export const UPDATE_USER = 'UPDATE_USER '
-export const REMOVE_USER = 'EMOVE_USER '
-export const SPEND_BALANCE = 'SPEND_BALANCE '
+export const LOGOUT_USER = 'LOGOUT_USER'
 
 
 const INITIAL_STATE = {
@@ -18,29 +17,18 @@ export function userReducers(state=INITIAL_STATE, action = {} ){
             loggdingUser: {...action.user}
         }
     
-    case ADD_USER:
+    case LOGOUT_USER:
         return {
             ...state,
-            user: [...state.user, action.contact]
-        }
-    case REMOVE_USER:
-        return {
-            ...state,
-            user: state.user.filter(contact => contact._id !== action.contactId)
+            loggdingUser:  null
         }
     case UPDATE_USER:
         return {
             ...state,
-            user: state.user.map(contact => contact._id === action.contact._id ? action.contact : contact )
+            loggdingUser:action.updatedUser
         }
-    case SPEND_BALANCE:
-        return {
-            ...state,
-         filterBy:{...action.filterBy}
-        }
-        
-       
-  
+ 
+
     default:
          return state
  
