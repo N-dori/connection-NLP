@@ -30,7 +30,14 @@ export function SignupPage() {
     useEffect(() => {
         googleLogin()
     }, [googleUser])
-
+    useEffect(() => {
+        googleLogin()
+        youtubeFetch()
+    }, [])
+    const youtubeFetch = async ()=>{
+    const res= await axios.get('https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCsrM82mc3TiHFbPUoBZolFg&key=AIzaSyCN0DNdHWl76zTKXzXRZAiHcAvBAUvBdQA')
+            console.log('resssssssss',res.data.items);
+    }
      const googleLogin= async () => {
             if (googleUser) {
              await   axios
