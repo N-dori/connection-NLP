@@ -7,6 +7,7 @@ import {  useDispatch, useSelector } from 'react-redux'
 import {  signup } from '../store/actions/user.actions';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { GoogleLoginBtn } from '../cmps/GoogleLoginBtn';
 
 export function SignupPage() {
 
@@ -17,58 +18,7 @@ export function SignupPage() {
     const [ profile, setProfile ] = useState(null);
     const dispatch=useDispatch()
     const navigate = useNavigate()
-    
-    const login = useGoogleLogin({
-        onSuccess: (codeResponse) => {
-            setGoogleUser(codeResponse)
-            googleLogin()
-        },
-        onError: (error) => console.log('Login Failed:', error)
-    }
-    
-    );
-    useEffect(() => {
-        googleLogin()
-    }, [googleUser])
-    useEffect(() => {
-        googleLogin()
-        youtubeFetch()
-    }, [])
-    const youtubeFetch = async ()=>{
-    const res= await axios.get('https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCsrM82mc3TiHFbPUoBZolFg&key=AIzaSyCN0DNdHWl76zTKXzXRZAiHcAvBAUvBdQA')
-            console.log('resssssssss',res.data.items);
-    }
-     const googleLogin= async () => {
-            if (googleUser) {
-             await   axios
-                    .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${googleUser.access_token}`, {
-                        headers: {
-                            Authorization: `Bearer ${googleUser.access_token}`,
-                            Accept: 'application/json'
-                        }
-                    })
-                    .then((res) => {
-                        console.log('res.data',res.data)
-                       const {name,email,given_name,picture} =res.data
-                      const formatedUser = {
-                            fname: name,
-                            userName:given_name,
-                            email,
-                            imgUrl:picture,
-                          
-                        
-                      }
-                      dispatch(signup(formatedUser))
-                        setProfile(formatedUser);
-                        console.log('formatedUser',formatedUser);
-                    }).then(
-                        navigate('/')
-
-                    )
-                    .catch((err) => console.log(err));
-            }
-        }
-
+ 
     const logOut = () => {
         googleLogout();
         setProfile(null);
@@ -122,25 +72,19 @@ export function SignupPage() {
                     <input value={password} onChange={handleChange} className="sign-in-input" required type="password" name="password" id="password" placeholder="Password" />
                 </label>
                 <button className="sign-in-btn">Sign up</button>
-                <button className="google-signup-btn" onClick={() => login()}>Sign in with Google 🚀 </button>
+                <GoogleLoginBtn 
+                googleUser={googleUser}
+                setGoogleUser={setGoogleUser}
+                axios={axios}
+                dispatch={dispatch}
+                setProfile={setProfile}
+                navigate={navigate}
+                />
+                <br/>
+                <p className='flex-jc-ac'>Already have an account?<Link to='/login'>Log in</Link></p>
+                
                 </form>
 
-        {/* <div>
-            <h2>React Google Login</h2>
-            <br />
-            <br />
-            {loggdingUser ? (
-                <div>
-                    <img src={loggdingUser.imgUrl} alt="user image" />
-                    <h3>User Logged in</h3>
-                    <p>Name: {loggdingUser.fname}</p>
-                    <p>Email Address: {loggdingUser.email}</p>
-                    <br />
-                    <br />
-                    <button onClick={logOut}>Log out</button>
-                </div>
-            ):'no user loggedin'}
-        </div> */}
         </section>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink, withRouter } from "react-router-dom";
 import { imgService } from '../services/imgService';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,22 +9,33 @@ import { ShoppingCartSvg } from '../svgs/ShoppingCartSvg';
 export function AppHeader() {
     const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
     const logoUrl= 'https://res.cloudinary.com/dii16awkb/image/upload/v1685878172/%D7%9C%D7%95%D7%92%D7%95_fpn8ig.jpg'
-    
+    const [isShown, setIsShown] = useState(false)
     const dispatch = useDispatch()
     useEffect(() => {
-        
+        setIsShown(false)
     }, [loggdingUser])
     
     const onLogout = () => {
         dispatch(logout()) 
     }
-    
+    const toggelMenu = () => {
+        setIsShown(!isShown)
+    }
     return (
 
         <>
             <header className="app-header full grid ">
                 <section className='action-btns flex'>
                 <ShoppingCartSvg />
+            {
+                loggdingUser?
+                <section className='user-space'>
+                    <img className='user-img' onClick={toggelMenu} src={loggdingUser.imgUrl} alt="user-image"/>
+                    <div className={isShown?'user-menu  block':'user-menu hidden'}>
+                        <p className='logout-link flex-jc-ac' onClick={onLogout}>Logout</p>
+                    </div>
+                </section>:
+                <> 
                 <section className="btn-signin-container flex">
                     <Link to="/login" className='under-line-none'>
                         <button className="signup-btn login-btn flex-jc-ac">
@@ -33,7 +44,6 @@ export function AppHeader() {
                     </Link>
                   
                 </section>
-
                 <section className="btn-signin-container flex">
                     <Link to="/signup" className='under-line-none'>
                         <button className="signup-btn flex-jc-ac">
@@ -42,6 +52,10 @@ export function AppHeader() {
                     </Link>
                   
                 </section>
+               
+                </>
+            }
+
                 </section>
                 <div className='header-content-container flex-ac'>
                 <div className="logo-container ">

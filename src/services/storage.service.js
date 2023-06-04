@@ -7,7 +7,7 @@ function load(key, defaultValue = null) {
     var value = localStorage[key] || defaultValue;
     return JSON.parse(value);
 }
-export const storageService = {
+export const localStorageService = {
     store,
     load
 }
