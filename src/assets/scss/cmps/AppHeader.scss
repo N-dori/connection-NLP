@@ -1,82 +1,92 @@
-
-.app-header{
-    grid-template-columns: minmax(140px, 1fr) minmax(auto, 1330px) minmax(140px, 1fr);
+.app-header {
+    grid-template-columns: minmax(140px, 1fr) minmax(auto, 1330px) minmax(350px, 1fr);
     padding: 18px;
     border-bottom: 1px solid #efe;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
     margin-bottom: 25px;
-.header-content-container{
-    grid-column: 2;
-    grid-row: 1;
-}
+
+    .header-content-container {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
     .logo-container {
-        flex-direction: column;
-        gap: 8px;
-        width: 20%;
-.logo-link{
-    flex-direction: column;
-    width: 120px;
-    height: 67px;
-    .logo{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        aspect-ratio: 1/1;
-        border-radius: 60px;
+     
+        width: 15%;
+
+        .logo-link {
+            flex-direction: column;
+            width: 120px;
+            height: 67px;
+
+            .logo {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                aspect-ratio: 1/1;
+                border-radius: 60px;
+            }
+
+        }
+
     }
-    .slogan{
-        color: #f507f1;
-        font-weight: 600;
-        font-size: 0.9rem;
-    }
-}
-        
-    }
-    .main-menu{
-        gap:10px;
-        .link-container{
-            .heaer-link{
+
+    .main-menu {
+        gap: 10px;
+
+        .link-container {
+            .heaer-link {
                 color: #222;
             }
+            .about-link{
+                color: #222;
+
+            }
+        }
+
+    }
+    .action-btns{
+        grid-column: 3;
+        align-items: center;
+        justify-content: end;
+         .cart-svg{
+            margin-inline-end: 20px;
         }
 
     }
     .btn-signin-container {
-        grid-column: 3;
         align-items: center;
         justify-content: center;
-        margin-inline-start: 30px;
+        margin-inline-end: 10px;
         .signup-btn {
             text-decoration: none;
             font-family: Circular-Med;
-            display: flex;
             cursor: pointer;
-            flex-direction: row;
-
-            align-items: center;
-            justify-content: center;
             user-select: none;
-            background-color: rgb(0, 0, 0);
-            color: rgb(255, 255, 255);
+            background-color: #222;
+            color: #fff;
             opacity: 1;
-            border: medium none;
-            padding: 10px 13px;
-            border-radius: 30px;
+            border:none;
             font-weight: 600;
-            font-size: 12px;
-
+            font-size: 17px;
             height: 34px;
             max-width: 110px;
+            padding: 24px;
+            padding-left: 20px;
+            padding-right: 20px;
+            
 
-            .sign-in-img {
-                width: 16.67px;
-                height: 16.67px;
-                background-color: rgb(255, 255, 255);
-                border-radius: 30px;
-                display: inline-flex;
-                margin: 0px 7px 0px 0px;
-            }
-
+            
+        }
+        .login-btn{
+            background-color: transparent;
+            color:#222;
+            border: 1px solid #222;
+            padding: 23px;
+            padding-left: 25px;
+            padding-right: 25px;
         }
     }
+   
+  
 }

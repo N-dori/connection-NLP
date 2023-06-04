@@ -105,30 +105,27 @@ export function SignupPage() {
     const imgUrl = `https://res.cloudinary.com/dii16awkb/image/upload/v1684522130/signgupSvg_hawhuc.webp`
     
     return (
-        <section className='signup-container grid'>
-            <div className='signup-img-container'>
+        <section className='signup-container flex-jc'>
+            {/* <div className='signup-img-container'>
                 <img className='signup-img' src={imgService.getImg('signupImg')} />
-            </div>
+            </div> */}
             <form className='signup-form flex'  onSubmit={onSignup}>
-            <h2 className="signin-title">Sign-in</h2>
+            <h3 className="signin-title">Sign-up and start learning</h3>
 
                 <label htmlFor="fname">
-                    <input value={fname} onChange={handleChange} className="sign-in-input" required type="text" name="fname" id="fname" placeholder="fullname" />
+                    <input value={fname} onChange={handleChange} className="sign-in-input" required type="text" name="fname" id="fname" placeholder="Fullname" />
                 </label>
                 <label htmlFor="email">
-                    <input value={email} onChange={handleChange} className="sign-in-input" required type="email" name="email" id="email" placeholder="email" />
-                </label>
-                <label htmlFor="userName">
-                    <input value={userName} onChange={handleChange} className="sign-in-input" required type="text" name="userName" id="userName" placeholder="user name" />
+                    <input value={email} onChange={handleChange} className="sign-in-input" required type="email" name="email" id="email" placeholder="Email" />
                 </label>
                 <label htmlFor="password">
-                    <input value={password} onChange={handleChange} className="sign-in-input" required type="password" name="password" id="password" placeholder="password" />
+                    <input value={password} onChange={handleChange} className="sign-in-input" required type="password" name="password" id="password" placeholder="Password" />
                 </label>
-                <button className="sign-in-btn">Sign In</button>
+                <button className="sign-in-btn">Sign up</button>
+                <button className="google-signup-btn" onClick={() => login()}>Sign in with Google 🚀 </button>
                 </form>
-                <button onClick={() => login()}>Sign in with Google 🚀 </button>
 
-        <div>
+        {/* <div>
             <h2>React Google Login</h2>
             <br />
             <br />
@@ -143,7 +140,7 @@ export function SignupPage() {
                     <button onClick={logOut}>Log out</button>
                 </div>
             ):'no user loggedin'}
-        </div>
+        </div> */}
         </section>
     )
 }
