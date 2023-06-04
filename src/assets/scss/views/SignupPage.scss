@@ -47,3 +47,14 @@
         }
     }
 }
+.login-container{
+    grid-column: 2;
+    padding: 350px;
+    padding-top: 20px; 
+}
+.avatar-container{
+    .avatar-svg{
+        fill:#8d939b
+    }
+    flex-direction: column;
+}

@@ -51,6 +51,7 @@
         justify-content: end;
          .cart-svg{
             margin-inline-end: 20px;
+            cursor: pointer;
         }
 
     }
@@ -88,5 +89,20 @@
         }
     }
    
-  
+  .user-space{
+    cursor: pointer;
+    position: relative;
+    .user-img{
+        border-radius: 100px;
+        width: 2.5em;
+    }
+    .user-menu{
+        position: absolute;
+        width: 140px;
+        height: 200px;
+        right: -17px;
+
+        background-color: lightgray;
+    }
+  }
 }
