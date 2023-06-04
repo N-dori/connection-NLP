@@ -3,13 +3,9 @@ import { useSelector } from 'react-redux'
 import { imgService } from '../services/imgService'
 import { CoursesIndex } from '../cmps/CoursesIndex'
 export  function Home() {
-  useEffect(() => {
-    
-  
 
-  },[])
   
-  const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
+const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
 console.log("loggdingUser",loggdingUser);
   return (
     <>
