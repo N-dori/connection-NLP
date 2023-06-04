@@ -6,7 +6,7 @@ import { logout } from '../store/actions/user.actions';
 
 export function AppHeader() {
     const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
-    const logoUrl= 'https://cdn.dribbble.com/users/31864/screenshots/3666062/free_logos_dribbble_ph.jpg?compress=1&resize=800x600&vertical=top'
+    const logoUrl= 'https://res.cloudinary.com/dii16awkb/image/upload/v1685878172/%D7%9C%D7%95%D7%92%D7%95_fpn8ig.jpg'
     
     const dispatch = useDispatch()
     useEffect(() => {
@@ -33,9 +33,9 @@ export function AppHeader() {
                     </Link>
                 </section>
                 <div className='header-content-container flex-sb'>
-                <div className="logo-container flex-jc-ac">
+                <div className="logo-container ">
                     <Link  className='logo-link flex' to="/"><img className='logo' src={logoUrl} />
-                    <span className='slogan'>Connection NLP</span></Link>
+                    </Link>
                 </div>
                 <nav className="main-menu flex clean">
                   {loggdingUser?  <li className='link-container flex-jc-ac'>

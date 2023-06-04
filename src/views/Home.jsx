@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-
 import { CoursesIndex } from '../cmps/CoursesIndex'
 import { SwiperCarousel } from '../cmps/SwiperCarousel'
 import { slides } from '../services/swiperService';
+import { AppRecommendations } from '../cmps/AppRecommendations'
 
 export  function Home() {
 
@@ -25,7 +25,9 @@ const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingU
             <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, tempora quidem! Dignissimos, unde adipisci. Obcaecati temporibus id totam, ut dignissimos eligendi a. Distinctio adipisci, eum saepe voluptatem laboriosam nulla quis.</h4>
         </section> 
        <CoursesIndex/>
-
+       
+      <h1 className='recommendations-title'>Students tell about us</h1>
+      <AppRecommendations/>
     </section>
   
     
