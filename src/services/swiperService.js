@@ -21,3 +21,26 @@ export const  slides = [
         interval:1500
     },
 ]
+export const  recommendations = [
+    {
+        id:'r100',
+        image:'https://img.freepik.com/free-icon/user_318-563642.jpg',
+        title:'Hi Jonas I want to thank you for your NodeJS course, I was totally a newbie when I began, and you explained everything I needed to get started and even more, I have a background in C++, VB, Sql Server, so I knew the concepts you were talking about, but had no experience about',
+        subTitle:'npl for biggeners',
+        interval:1500
+    },
+    {
+        id:'r101',
+        image:'https://img.freepik.com/free-icon/user_318-563642.jpg',
+        title:'I tried many courses with various instructors, but Jonas is one of the best. I want to thank you for all of your amazing courses, in which you provide all the knowledge and information required to build a strong foundation to become a front-end and back-end developer',
+        subTitle:'nlp nlp nlp course',
+        interval:1500
+    },
+    {
+        id:'r102',
+        image:'https://img.freepik.com/free-icon/user_318-563642.jpg',
+        title:'It is a very good course, however lacks updates (or support for what changed). Some of the these changes take longer than what I find acceptable to figure out.',
+        subTitle:'loram ipsom ipgys',
+        interval:1500
+    },
+]

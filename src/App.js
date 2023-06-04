@@ -118,7 +118,7 @@ export function  App () {
 
       <Route path="/course-watch/:id" element={<CourseWatchIndex/>} />
       </Routes>
-      <AppFooter/> 
+    <AppFooter/> 
 
      
     </section>

@@ -6,7 +6,7 @@ import 'swiper/css/pagination';
 import 'swiper/css';
 
 
-export  function SwiperCarousel({slides}) {
+export  function SwiperCarousel({slides ,recommendations }) {
   return (
     <Swiper
     modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -18,10 +18,11 @@ export  function SwiperCarousel({slides}) {
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      {
+      {slides?
       slides.map((slide)=>(<SwiperSlide key={slide.id} alt={slide.title}>
         <img className='carousel-img' src={slide.image} alt={slide.title}/>
       </SwiperSlide>))
+      :<div>Loading...</div>
       }
       
     </Swiper>
