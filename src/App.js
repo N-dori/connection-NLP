@@ -59,20 +59,19 @@ export function  App () {
       <Route path="/about" element={<About/>} />
       {/*   CouresDetails :
            params: courseId 
-           props: courses  
-           data: ask local function for course by Id , ask reviewService for reviews by courseId
+           data: course, reviews- ask reviewService for reviews by courseId
            actions : loadCourseById
            content : show modal with course trailer , list of course content (disabled) , description title , sub title , show reviews
            components: WhatYouWillLearn ,CourseContentIndex , CourseReviews , BuyCourseModal
       */}
       <Route path="/courses/:id" element={<CouresDetails/>} />
       {/* 
-             ShoppingCart:
+            ShoppingCart:
             data: ask local function for course by Id 
             data : shopping cart
             action : load shopping cart 
             content : course img , title, total price, remove , checkout btn- to payment 
-           components : ShoppingCartIndex 
+           components : ProductList  |  ProductPreview
        */}
       <Route path="/shopping-cart/" element={<ShoppingCart/>} />
        {/* 
@@ -83,7 +82,7 @@ export function  App () {
       <Route path="/purchase-course/:id" element={<PurchaseCourse/>} />
         {/* 
             MyCoursesIndex : 
-             props: courses , loggedinUser
+            props: courses , loggedinUser
            data: courses from props
            content : show list of purchesed courses by user
            components: MyCoursesList(courses)
