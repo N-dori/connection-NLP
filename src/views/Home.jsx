@@ -8,7 +8,7 @@ export  function Home() {
 const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
 console.log("loggdingUser",loggdingUser);
   return (
-    <>
+    <section className='home-page-container'>
         <section className='hero-img-container'>
     {loggdingUser?
      <p className='home-greeting'>hello {loggdingUser.fullname?loggdingUser.fullname:loggdingUser.fname}</p>
@@ -20,7 +20,9 @@ console.log("loggdingUser",loggdingUser);
         <h3>Choose from over 210,000 online video courses with new additions published every month</h3>
        <CoursesIndex/>
         </section> 
-    </>
+
+    </section>
+  
     
     )
 }

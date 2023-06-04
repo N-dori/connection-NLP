@@ -2,6 +2,6 @@ import React from 'react'
 
 export  function AppFooter() {
   return (
-    <div className='app-footer-container'>AppFooter</div>
+    <section  className='app-footer-container'>AppFooter</section>
   )
 }

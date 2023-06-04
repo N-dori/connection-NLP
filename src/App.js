@@ -16,8 +16,8 @@ import { SearchContent } from './cmps/SearchContent';
 import { CourseReviews } from './cmps/CourseReviews';
 import { CourseAnnouncements } from './cmps/CourseAnnouncements';
 import { DashBoard } from './views/DashBoard';
-import { AppFooter } from './AppFooter';
 import { About } from './views/About';
+import { AppFooter } from './cmps/AppFooter';
 
 export function  App () {
 // load data from store : loggedin user ,courses ,reviews
