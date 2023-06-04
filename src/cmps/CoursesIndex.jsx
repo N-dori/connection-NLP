@@ -8,6 +8,7 @@ export  function CoursesIndex() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const courses = useSelector((storeState) => storeState.couresModule.courses)
+   
     useEffect(() => {
         dispatch(loadCourses())
         console.log('courses',courses);
@@ -15,7 +16,7 @@ export  function CoursesIndex() {
     return (
         <>
         <CouresList courses={courses}/>
-    </>
+        </>
   
   )
 }

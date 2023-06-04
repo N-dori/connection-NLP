@@ -1,5 +1,5 @@
 .hero-img-container{
-    grid-column: 1/-1;
+    grid-column:2;
     background-image: url("https://pbs.twimg.com/media/DrgpTAGXgAg9ZAg?format=jpg&name=large"); /* The image used */
     background-color: #cccccc; /* Used if the image is unavailable */
     height: 500px; /* You must set a specified height */
@@ -11,5 +11,5 @@
 }
 }
 .title-container{
-    grid-column: 1/-1;
+    grid-column: 2;
 }

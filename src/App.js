@@ -99,10 +99,10 @@ export function  App () {
 
         */}
       <Route path="/my-course" element={<MyCourse/>} >
-        <Route path='/course-overiew' element={<CourseOverview/>}/>
-        <Route path='/serach-content' element={<SearchContent/>}/>
-        <Route path='/reviews' element={<CourseReviews/>}/>
-        <Route path='/announcements' element={<CourseAnnouncements/>}/>
+        <Route path='/my-course/course-overiew' element={<CourseOverview/>}/>
+        <Route path='/my-course/serach-content' element={<SearchContent/>}/>
+        <Route path='/my-course/reviews' element={<CourseReviews/>}/>
+        <Route path='/my-course/announcements' element={<CourseAnnouncements/>}/>
       </Route>
           {/* 
               Dashboard : 

@@ -1,12 +1,11 @@
 import { couresService } from "../../services/coures.service"
-import {  SET_COURSES,  } from "../reducers/coures.reducer"
-
+import { SET_COURSES } from "../reducers/course.reducer"
 
 export function loadCourses(){
     try{
 
         return async(dispatch,getState)=>{
-            const courses= await couresService.getCourse(getState().couresModule.filterBy)
+            const courses= await couresService.getCourses(getState().couresModule.filterBy)
             const action = {
                 type: SET_COURSES,
                 courses

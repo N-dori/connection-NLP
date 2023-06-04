@@ -1,8 +1,8 @@
 import { applyMiddleware, combineReducers,compose, legacy_createStore as createStore } from "redux"
-import { courseReducers } from "./reducers/coures.reducer"
 
 import thunk from "redux-thunk"
 import { userReducers } from "./reducers/user.reducer"
+import { courseReducers } from "./reducers/course.reducer"
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const rootReducer = combineReducers({
