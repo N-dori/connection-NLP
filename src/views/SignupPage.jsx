@@ -14,14 +14,12 @@ export function SignupPage() {
     const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
     const [user, setUser] = useState(userService.getEmptyUser())
     const [googleUser, setGoogleUser] = useState()
-    
-    const [ profile, setProfile ] = useState(null);
-    const dispatch=useDispatch()
+        const dispatch=useDispatch()
     const navigate = useNavigate()
  
     const logOut = () => {
         googleLogout();
-        setProfile(null);
+
     }
 
  
@@ -32,7 +30,7 @@ export function SignupPage() {
         dispatch(signup(user))
         navigate('/')
     //  const credintials= await userService.signup(user)
-     setProfile((user))
+    //  setProfile((user))
     }
 
     const handleChange = ({ target }) => {
@@ -77,8 +75,8 @@ export function SignupPage() {
                 setGoogleUser={setGoogleUser}
                 axios={axios}
                 dispatch={dispatch}
-                setProfile={setProfile}
                 navigate={navigate}
+                type={'Sign up with Google'}
                 />
                 <br/>
                 <p className='flex-jc-ac'>Already have an account?<Link to='/login'>Log in</Link></p>

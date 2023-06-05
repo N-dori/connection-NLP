@@ -3,6 +3,7 @@ import { storageService } from "./async-storage.service"
 import { httpService } from "./http.service"
 import { imgService } from "./imgService"
 import { localStorageService } from "./storage.service"
+import { utilService } from "./util.service"
 
 export const userService = {
     getUser,
@@ -10,6 +11,7 @@ export const userService = {
     signup,
     updateUser,
     getStoredLoginUser,
+    vrifyPassword,
 }
 const USER_KEY = 'userDB'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
@@ -27,9 +29,26 @@ async function _setUsers () {
         resolve(user) 
                 })
 }
+ function vrifyPassword(id,password) {
+        return new Promise((resolve,reject) => {
+            const users = localStorageService.load(USER_KEY)
+            console.log('users',users);
+            const user = users.find( user => user._id === id )
+            console.log('user',user);
+            if(user.password === password){
+                resolve(user) 
+            }else{
+                resolve(false)
+            }
+                
+              
+                    })
+    
+}
 function _createUsers(){
 const users =[
     {
+        _id:utilService.makeId(3),
         fullname:'ella',
         username:'',
         password:'123',
@@ -42,6 +61,7 @@ const users =[
         }]    
     },
     {
+        _id:utilService.makeId(3),
         fullname:'nadav',
         username:'',
         password:'111',
@@ -73,12 +93,16 @@ async function signup(credentials) {
 if(!credentials.imgUrl){
     credentials.imgUrl=imgService.getImg('user')
 }
+if(!credentials._id){
+    credentials._id=utilService.makeId(3)
+}
   await  storageService.post(USER_KEY,credentials)
-   localStorageService.store(STORAGE_KEY_LOGGEDIN_USER, credentials.fname)
+   localStorageService.store(STORAGE_KEY_LOGGEDIN_USER, {_id:credentials._id,fname:credentials.fname})
    return credentials
 }
 function getEmptyUser() {
     return {
+        _id:utilService.makeId(3),
         fname: "",
         userName:"",
         password:"",
