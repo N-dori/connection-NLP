@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { couresService } from '../services/coures.service'
+import { courseService } from '../services/course.service'
 import { useParams } from 'react-router-dom'
 import { YouTube } from '../cmps/YouTube';
 
@@ -14,7 +14,7 @@ export  function CourseWatchIndex() {
       }, [])
   
       const loadCourse = async (CouresId) => {
-        const course = await couresService.getCourseById(CouresId) 
+        const course = await courseService.getCourseById(CouresId) 
         setVideo(course.videoUrl)
         setEpisodes(course.episodes)
         setCourse(course)

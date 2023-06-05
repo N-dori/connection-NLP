@@ -1,8 +1,25 @@
-.coures-detail-container {
-    grid-column: 2;
-    flex-direction: column;
+.coures-details-headlines-container {
+    grid-column: 1/-1;
+    grid-template-columns:  minmax(100px, 1fr) minmax(auto, 930px)minmax(10px,280px);
+    background-color: #222;
+    margin-bottom: 35px;
+    .headlines-wapper{
+        grid-column: 2;
+       min-height: 345px;
 
+       .course-title{
+        text-align: end;
+        font-size: 3em;
+        color: #fff;
+    }
+        .sub-title{
+            text-align: end;
+           color: #fff;
+
+       }
+    }
     .btn-purchase {
+        grid-column: 2;
         border: none;
         padding: 12px;
         background-color: #0070ff;
@@ -12,13 +29,5 @@
         font-weight: bold;
         cursor: pointer;
     }
-    .btn-purchase:hover{
-        scale: 0.9;
-        transition: scale 0.4s;
-    }
-    .userMsg{
-        width: 400px;
-        height: 200px;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    }
+ 
 }

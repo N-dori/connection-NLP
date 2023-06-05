@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { updateUser } from '../store/actions/user.actions'
-import { couresService } from '../services/coures.service'
+import { courseService } from '../services/course.service'
 
 export  function PurchaseCourse() {
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
@@ -11,7 +11,7 @@ export  function PurchaseCourse() {
   const navigate = useNavigate()
   console.log('loggdingUser',loggdingUser);
     const handelPayment= async () =>{
-      const course = await couresService.getCourseById(param.id)
+      const course = await courseService.getCourseById(param.id)
         loggdingUser.courses.push(course)
         dispatch(updateUser(loggdingUser))
         console.log('loggdingUser',loggdingUser);

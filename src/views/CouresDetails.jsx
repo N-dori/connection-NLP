@@ -1,8 +1,11 @@
 import React, { useState,useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { couresService } from '../services/coures.service';
-import { YouTube } from '../cmps/YouTube';
+import { courseService } from '../services/course.service';
 import { useSelector } from 'react-redux';
+import { YouTube } from '../cmps/YouTube';
+import { DetailsModal } from '../cmps/DetailsModal';
+import { WhatYouWillLearn } from '../cmps/WhatYouWillLearn';
+import { ThisCourseIncludes } from '../cmps/ThisCourseIncludes';
 
 export  function CouresDetails() {
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
@@ -10,20 +13,18 @@ export  function CouresDetails() {
     const navigate = useNavigate()
     const  param = useParams()
     console.log('param',param);
-    const [coures, setCoures] = useState()
+    const [course, setCourse] = useState()
     const [isShown, setIsShown] = useState(false)
     
     useEffect(() => {
-      loadCoures(param.id)
+      loadCourse(param.id)
     }, [])
-    // useEffect(() => {
-    // }, [isShown])
-
-    const loadCoures = async (CouresId) => {
-      const coures = await couresService.getCourseById(CouresId) 
-      setCoures(coures)
-      
+ 
+    const loadCourse = async (CourseId) => {
+      const course = await courseService.getCourseById(CourseId) 
+      setCourse(course)     
     }
+
     const isLoggedin = () => {
       console.log('hoooo');
       if(loggdingUser){
@@ -37,27 +38,36 @@ export  function CouresDetails() {
   const toggleUserMsg = () => {
     setIsShown(false)
   }
-  return (
-    coures? 
-<section className='coures-detail-container flex-jc-ac'>
 
- <p>{coures.title}</p>
- <YouTube videoUrl={coures.videoUrl}/>
-<p className='sub-title'>{coures.subTitle}</p> 
-<h3>Why should I Be Doing it?</h3>
-<ul>
-  <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. </li>
-  <li>adipisci ratione quia esse ea repellendus eos totam odio</li>
-  <li>consectetur adipisicing elit. Atque</li>
-  <li>Atque asperiores nesciunt quibusdam ipsam animi iure ipsa explicabo, voluptatem totam assumenda! Obcaecati !</li>
-</ul>
+  return (
+    course?
+    <>
+     
+<section className='coures-details-headlines-container grid'>
+  {/* <DetailsModal/> */}
+<section className='headlines-wapper'>
+ <h1 className='course-title'>{course.title}</h1>
+<h2 className='sub-title'>{course.subTitle}</h2> 
+<h2 className='sub-title'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem odio, natus ipsum mollitia ea corporis accusantium omnis consequatur, eligendi ex reprehenderit </h2> 
+</section>
+</section>
+<section className='what-to-learn-container grid'>
+   <WhatYouWillLearn/>
+</section>
+<section className='This-course-includes grid'>
+    <ThisCourseIncludes/>
+</section>
+
 <section className={isShown?'userMsg block':'hidden'} >
    <h1>need to sign up first!!!!!!!!</h1>
    <button onClick={toggleUserMsg}>close</button>
    </section>
 <button className='btn-purchase' onClick={isLoggedin}>Purchase-Now!</button>
-</section>
-:<div>Loading....</div>
+
+
+    
+    </>:
+    <div>Loading...</div>
  
 
   )

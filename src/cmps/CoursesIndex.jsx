@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { CouresList } from './CouresList'
-import { loadCourses } from '../store/actions/coures.actions'
+import { loadCourses } from '../store/actions/course.actions'
 
 export  function CoursesIndex() {
     const dispatch = useDispatch()
