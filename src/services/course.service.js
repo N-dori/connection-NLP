@@ -5,7 +5,7 @@ const course_DB= 'course'
 
 _setCourses ()
 
-export const couresService = {
+export const courseService = {
     getCourses,
     getCourseById,
     
@@ -17,6 +17,7 @@ function _setCourses () {
 }
 function _creatCourses(){
     const courses = [{
+        _id:utilService.makeId(9),
         title : "NLP Practitioner",
         subTitle : "A cutting-edge NLP Master",
         createdBy : "shlomo shushan",
@@ -35,13 +36,13 @@ function _creatCourses(){
         ],
         episodes : [
                 {
-            id : "e101",
+            id : utilService.makeId(7),
             title : "",
             subTitle : "",
             totalHours:0,
         subEpisodes :[
                     {
-                        id : "s101",
+                        id : utilService.makeId(8),
                         title : "loam loram",
                         subTitle: "nlp gogog loram",
                         videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
@@ -51,6 +52,7 @@ function _creatCourses(){
         ]
 },
 {
+    _id:utilService.makeId(9),
     title : "NLP Master",
     subTitle : "NLP (Neuro Linguistic Programming)",
     createdBy : "shlomo shushan",
@@ -69,13 +71,13 @@ function _creatCourses(){
     ],
     episodes : [
             {
-        id : "e101",
+        id : utilService.makeId(7),
         title : "",
         subTitle : "",
         totalHours:0,
     subEpisodes :[
                 {
-                    id : "s101",
+                    id : utilService.makeId(7),
                     title : "loam loram",
                     subTitle: "nlp gogog loram",
                     videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
@@ -85,6 +87,7 @@ function _creatCourses(){
     ]
 },
 {
+    _id:utilService.makeId(7),
     title : "NLP Super",
     subTitle : "NLP MIND DESIGN Accredited",
     createdBy : "shlomo shushan",
@@ -103,13 +106,13 @@ function _creatCourses(){
     ],
     episodes : [
             {
-        id : "e101",
+        id : utilService.makeId(7),
         title : "nlp bababa",
         subTitle :  "nlp loram kokoko ",
         totalHours:0,
     subEpisodes :[
                 {
-        id : "s101",
+        id : utilService.makeId(7),
         title : "loam loram",
         subTitle: "nlp gogog loram",
         videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
@@ -137,9 +140,11 @@ async function getCourses() {
 }
 async function getCourseById(couresId) {
     try{
-    const coures = await httpService.get(`coures/${couresId}`)
-    console.log(' coures ',coures);
-return coures
+    // const coures = await httpService.get(`coures/${couresId}`)
+    const courses = await storageService.query(course_DB)
+    const course = courses.find(course => course._id === couresId)
+    console.log('your course by id in service ',course);
+return course
     } 
     catch(err){
         console.log('could not load coures by id ',err);

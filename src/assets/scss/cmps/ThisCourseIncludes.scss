@@ -1,0 +1,33 @@
+.This-course-includes {
+    grid-column: 1/-1;
+    grid-template-columns: minmax(100px, 1fr) minmax(auto, 930px)minmax(10px, 250px);
+    
+
+    .this-course-includes-title {
+        grid-column: 2;
+        text-align: end;
+        padding-inline-end:33px ;
+        padding-block: 10px;
+    }
+
+    .list-whats-includes {
+        grid-template-columns: 1fr 1fr;
+        grid-column: 2;
+        direction: rtl;
+
+        .group {
+            flex-direction: column;
+            row-gap: 10px;
+            padding-inline-end:18px ;
+
+        }
+
+        .tv-svg {}
+
+        .download-svg {}
+
+        .mobile-svg {}
+
+        .rocket-svg {}
+    }
+}

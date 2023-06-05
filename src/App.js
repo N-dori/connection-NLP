@@ -64,7 +64,7 @@ export function  App () {
            content : show modal with course trailer , list of course content (disabled) , description title , sub title , show reviews
            components: WhatYouWillLearn ,CourseContentIndex , CourseReviews , BuyCourseModal
       */}
-      <Route path="/courses/:id" element={<CouresDetails/>} />
+      <Route path="/course/:id" element={<CouresDetails/>} />
       {/* 
             ShoppingCart:
             data: ask local function for course by Id 
