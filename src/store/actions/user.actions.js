@@ -68,4 +68,20 @@ export function getUserById(userId){
         console.log('can not signup User',err);
     }
 }
+export function setLoggedinUser(user){
+    try{
+        return async(dispatch,getState)=>{
+            console.log('SET_USER');   
+            const action = {
+                type:SET_USER,
+                user    
+            }
+           dispatch(action)
+    }
+     
+    }catch(err){
+        console.log('can not set logged in User',err);
+    }
+}
+
 

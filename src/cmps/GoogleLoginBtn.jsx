@@ -2,7 +2,7 @@ import { useGoogleLogin } from '@react-oauth/google';
 import React, { useEffect, useState } from 'react'
 import { signup } from '../store/actions/user.actions';
 
-export  function GoogleLoginBtn({googleUser,setGoogleUser,axios,dispatch,setProfile,navigate}) {
+export  function GoogleLoginBtn({googleUser,setGoogleUser,axios,dispatch,navigate,type}) {
     
     useEffect(() => {
         googleLogin()
@@ -10,6 +10,7 @@ export  function GoogleLoginBtn({googleUser,setGoogleUser,axios,dispatch,setProf
 
     const login = useGoogleLogin({
         onSuccess: (codeResponse) => {
+            console.log('codeResponse',codeResponse);
             setGoogleUser(codeResponse)
             googleLogin()
         },
@@ -38,7 +39,6 @@ export  function GoogleLoginBtn({googleUser,setGoogleUser,axios,dispatch,setProf
                     
                   }
                   dispatch(signup(formatedUser))
-                    setProfile(formatedUser);
                     console.log('formatedUser',formatedUser);
                 }).then(
                     navigate('/')
@@ -48,6 +48,6 @@ export  function GoogleLoginBtn({googleUser,setGoogleUser,axios,dispatch,setProf
         }
     }
   return (
-<button className="google-signup-btn" onClick={() => login()}>Sign in with Google 🚀 </button>
+<button className="google-signup-btn" onClick={() => login()}>{type} 🚀 </button>
   )
 }
