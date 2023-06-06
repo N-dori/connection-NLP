@@ -7,6 +7,8 @@ import { DetailsModal } from '../cmps/DetailsModal';
 import { WhatYouWillLearn } from '../cmps/WhatYouWillLearn';
 import { ThisCourseIncludes } from '../cmps/ThisCourseIncludes';
 import { CourseContent } from '../cmps/CourseContent';
+import { CouresRequirements } from '../cmps/CouresRequirements';
+import { CourseDesc } from '../cmps/CourseDesc';
 
 export  function CouresDetails() {
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
@@ -25,20 +27,7 @@ export  function CouresDetails() {
       const course = await courseService.getCourseById(CourseId) 
       setCourse(course)     
     }
-
-    const isLoggedin = () => {
-      console.log('hoooo');
-      if(loggdingUser){
-     console.log('true in ');
-     navigate(`/purchase-course/${param.id}`)
-    }else{
-     console.log('false in ');
-     setIsShown(true)
-    }
-  }  
-  const toggleUserMsg = () => {
-    setIsShown(false)
-  }
+ 
 
   return (
     course?
@@ -60,6 +49,10 @@ export  function CouresDetails() {
 </section>
 <section className='course-content-container grid '>
     <CourseContent/>
+</section>
+<section className='requirements-desc grid '>
+    <CouresRequirements/>
+    <CourseDesc/>
 </section>
 
 
