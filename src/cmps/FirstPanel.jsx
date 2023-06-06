@@ -3,9 +3,9 @@ import { ExpandSvg } from '../svgs/ExpandSvg'
 import { TvSvg } from '../svgs/TvSvg'
 
 
-export  function Panel({title,lectures,min,isAllExpaned}) {
+export  function FirstPanel({title,lectures,min,isAllExpaned}) {
 
-const [isShown,setIsShown]=useState(true)
+const [isShown,setIsShown]=useState(false)
     useEffect(() => {
        setIsShown(!isShown)
     }, [isAllExpaned])
@@ -21,7 +21,7 @@ const [isShown,setIsShown]=useState(true)
     <span ><ExpandSvg/></span></div>
      <div className='flex-ac'>{lectures} lectures • {min} min</div>
  </div>
-     <section className={isShown?'pannel-content flex block':'hidden'}>
+     <section className={isShown||isAllExpaned?'pannel-content flex block':'hidden'}>
      <div className='content-preview flex-sb'><div className='flex-ac'> <TvSvg/> {lectures} name of lesson</div> <span>{min} min </span>  </div>
      <div className='content-preview flex-sb'><div className='flex-ac'> <TvSvg/> {lectures} name of lesson</div> <span>{min} min </span>  </div>
      <div className='content-preview flex-sb'><div className='flex-ac'> <TvSvg/> {lectures} name of lesson</div> <span>{min} min </span>  </div>
