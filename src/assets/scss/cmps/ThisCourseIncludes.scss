@@ -18,16 +18,25 @@
         .group {
             flex-direction: column;
             row-gap: 10px;
-            padding-inline-end:18px ;
+            padding-inline-end:0px ;
+            padding-right: 28px;
 
         }
 
-        .tv-svg {}
+        .tv-svg {
+            margin-inline-end: 10px;
+        }
 
-        .download-svg {}
+        .download-svg {
+            margin-inline-end: 10px;
+        }
 
-        .mobile-svg {}
+        .mobile-svg {
+            margin-inline-end: 10px;
+        }
 
-        .rocket-svg {}
+        .rocket-svg {
+            margin-inline-end: 10px;
+        }
     }
 }

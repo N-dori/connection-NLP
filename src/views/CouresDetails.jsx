@@ -6,6 +6,7 @@ import { YouTube } from '../cmps/YouTube';
 import { DetailsModal } from '../cmps/DetailsModal';
 import { WhatYouWillLearn } from '../cmps/WhatYouWillLearn';
 import { ThisCourseIncludes } from '../cmps/ThisCourseIncludes';
+import { CourseContent } from '../cmps/CourseContent';
 
 export  function CouresDetails() {
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
@@ -57,12 +58,9 @@ export  function CouresDetails() {
 <section className='This-course-includes grid'>
     <ThisCourseIncludes/>
 </section>
-
-<section className={isShown?'userMsg block':'hidden'} >
-   <h1>need to sign up first!!!!!!!!</h1>
-   <button onClick={toggleUserMsg}>close</button>
-   </section>
-<button className='btn-purchase' onClick={isLoggedin}>Purchase-Now!</button>
+<section className='course-content-container grid '>
+    <CourseContent/>
+</section>
 
 
     
