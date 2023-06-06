@@ -10,6 +10,8 @@ export  function CourseContent() {
     }
 
   return (
+    <section className='course-content-container'>
+
     <section className='contant-wapper flex'>
         <h1 className='headline'>Course content</h1>
         <section className='course-curriculum flex-sb'>
@@ -26,6 +28,7 @@ export  function CourseContent() {
        <Panel title={'belive it'} isAllExpaned={isAllExpaned} lectures={4}min={65}/>
        
      
+    </section>
     </section>
   )
 }

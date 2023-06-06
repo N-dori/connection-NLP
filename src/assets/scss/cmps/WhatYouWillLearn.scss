@@ -1,38 +1,39 @@
-.what-to-learn-container{
-    grid-column: 1/-1;
-    grid-template-columns:  minmax(100px, 1fr) minmax(auto, 930px)minmax(10px,250px);
-    margin-bottom: 35px;
-    .list-container{
-        max-width: 900px;
+
+    .list-container {
+        justify-content: end;
+        margin-bottom: 35px;
         border: 1px solid #9e9b9b;
         grid-column: 2;
         grid-template-columns: 1fr 1fr;
-        padding: 20px;
-
-        .done-svg{
-            margin-inline-end: 25px;
-            fill:#222;
-            
-        }
-        .group1{
-            direction: rtl;
-            grid-column: 1;
-           flex-direction: column;
-           row-gap:10px;
-           padding-right: 8px;
-        }
-        .group2{
-            direction: rtl;
+      
+        .headline{
             grid-column: 2;
-            flex-direction: column;
-            row-gap:10px;
-            padding-right: px;
+            text-align: end;
+            margin-inline-end: 0px
+    
         }
-    }
-    .headline{
-        grid-column: 2;
-        text-align: end;
-        margin-inline-end: 15px
-
-    }
+        .list-warpper{
+            padding: 20px;
+            .done-svg{
+                margin-inline-end: 25px;
+                fill:#222;
+                
+            }
+            .group1{
+                direction: rtl;
+                grid-column: 1;
+               flex-direction: column;
+               row-gap:10px;
+               padding-right: 8px;
+            }
+            .group2{
+                direction: rtl;
+                grid-column: 2;
+                flex-direction: column;
+                row-gap:10px;
+                padding-right: 0px;
+            }
+        
+      
+        }
 }

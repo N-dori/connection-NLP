@@ -1,42 +1,39 @@
-.This-course-includes {
-    grid-column: 1/-1;
-    grid-template-columns: minmax(100px, 1fr) minmax(auto, 930px)minmax(10px, 250px);
-    
-
-    .this-course-includes-title {
+.list-whats-includes-container {
+    grid-column: 2;
+    .headline {
         grid-column: 2;
         text-align: end;
-        padding-inline-end:33px ;
-        padding-block: 10px;
+        margin-inline-end: 0px
     }
-
-    .list-whats-includes {
-        grid-template-columns: 1fr 1fr;
-        grid-column: 2;
-        direction: rtl;
+    .list-container{
 
         .group {
             flex-direction: column;
-            row-gap: 10px;
+            gap: 20px;
             padding-inline-end:0px ;
             padding-right: 28px;
-
+    
         }
-
+    
         .tv-svg {
-            margin-inline-end: 10px;
+            margin-inline-start: 10px;
         }
-
+    
         .download-svg {
-            margin-inline-end: 10px;
+            margin-inline-start: 10px;
         }
-
+    
         .mobile-svg {
-            margin-inline-end: 10px;
+            margin-inline-start: 10px;
         }
-
+    
         .rocket-svg {
-            margin-inline-end: 10px;
+            margin-inline-start: 10px;
         }
     }
+
+
+
+
+    
 }
