@@ -1,0 +1,12 @@
+.course-instructor-wapper{
+    grid-column: 2;
+    direction: rtl;
+    .instructor-name{
+        padding: 0;
+        margin: 0;
+        text-decoration: underline;
+    }
+    .instructor-title{
+        margin-block:3px;
+    }
+}
