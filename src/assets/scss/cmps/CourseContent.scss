@@ -1,7 +1,6 @@
 .course-content-container {
 
-    grid-column: 1/-1;
-    grid-template-columns: minmax(100px, 1fr) minmax(auto, 930px)minmax(10px, 250px);
+    grid-column: 2;
 
     .contant-wapper {
         grid-column: 2;
@@ -47,6 +46,10 @@
                 margin-inline-start: 1em;
             }
         }
+    }
+    .contant-wapper:last-child{
+        border-bottom: 1px solid #d1d7dc;
+
     }
     .pannel-content{
         display: flex;

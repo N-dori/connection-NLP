@@ -1,7 +1,14 @@
 .desc-wrapper{
     direction: rtl;
     grid-column: 2;
+    .headline{
+        font-size: 1.8em;
+        font-weight: bold;
+        color: #222;
+        margin-block: 16px;
+    }
     p{
         line-height: 22px;
     }
+    margin-top: 15px;
 }

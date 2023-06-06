@@ -10,6 +10,7 @@ import { CourseContent } from '../cmps/CourseContent';
 import { CouresRequirements } from '../cmps/CouresRequirements';
 import { CourseDesc } from '../cmps/CourseDesc';
 import { CourseInstructor } from '../cmps/CourseInstructor';
+import { CourseReviews } from '../cmps/CourseReviews';
 
 export  function CouresDetails() {
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
@@ -32,34 +33,33 @@ export  function CouresDetails() {
 
   return (
     course?
-    <>
+    
      
-<section className='coures-details-headlines-container grid'>
-  {/* <DetailsModal/> */}
-<section className='headlines-wapper'>
+<section className='coures-details-page-container grid'>
+<section className='headlines-wapper grid'>
  <h1 className='course-title'>{course.title}</h1>
 <h2 className='sub-title'>{course.subTitle}</h2> 
 <h2 className='sub-title'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem odio, natus ipsum mollitia ea corporis accusantium omnis consequatur, eligendi ex reprehenderit </h2> 
-</section>
-</section>
-<section className='what-to-learn-container grid'>
+ </section>  
+  <DetailsModal/>
    <WhatYouWillLearn/>
-</section>
-<section className='This-course-includes grid'>
+
     <ThisCourseIncludes/>
-</section>
-<section className='course-content-container grid '>
+
     <CourseContent/>
-</section>
-<section className='requirements-desc grid '>
+
     <CouresRequirements/>
+
     <CourseDesc/>
+
     <CourseInstructor/>
+
+    <CourseReviews/>
 </section>
 
 
     
-    </>:
+    :
     <div>Loading...</div>
  
 

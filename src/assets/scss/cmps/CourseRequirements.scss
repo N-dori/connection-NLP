@@ -1,8 +1,8 @@
-.requirements-desc{
+.requirements-container{
     
-    grid-column: 1/-1;
+    grid-column: 2;
     grid-template-columns: minmax(100px, 1fr) minmax(auto, 930px)minmax(10px, 250px);
-    // justify-items: end;
+    margin-top: 15px;
 .course-requierments-warpper{
     grid-column: 2;
     flex-direction: column;

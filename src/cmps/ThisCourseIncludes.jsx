@@ -7,16 +7,20 @@ import { RocketSvg } from '../svgs/RocketSvg'
 export  function ThisCourseIncludes() {
   return (
     <>
-    <h1 className='this-course-includes-title'>This course includes</h1>
-    <section className='list-whats-includes grid'>
-    <ul className='group flex clean'>
-      <li className='flex-ac'><TvSvg/>9.5 hours on-demand video</li>
-      <li className='flex-ac'><DownloadSvg/> 95 downloadable resources</li>
+    <section className='list-whats-includes-container '>
+    <h1 className='headline'>This course includes</h1>
+    <section className='list-container flex'>
+
+    <ul className='group flex-col clean'>
+      <li className='flex-ac'>9.5 hours on-demand video<TvSvg/></li>
+      <li className='flex-ac'> 95 downloadable resources<DownloadSvg/></li>
     </ul>    
-    <ul className='group flex clean'>
-      <li className='flex-ac'><MobileSvg/>Access on mobile and TV</li>
-      <li className='flex-ac'><RocketSvg/>Certificate of completion</li>
+    <ul className='group flex-col clean'>
+      <li className='flex-ac'>Access on mobile and TV<MobileSvg/></li>
+      <li className='flex-ac'>Certificate of completion<RocketSvg/></li>
     </ul>    
+
+    </section>
     </section>
     </>
   )

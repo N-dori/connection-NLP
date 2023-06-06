@@ -3,7 +3,7 @@ import React from 'react'
 export  function CouresRequirements() {
   return (
    
-   
+      <section className='requirements-container'>
         <div className='course-requierments-warpper flex-ac'>
 
         <h1 className='headline'>Requirements</h1>
@@ -17,6 +17,8 @@ export  function CouresRequirements() {
           </li>
         </ul>
         </div>
+
+      </section>
         
 
   

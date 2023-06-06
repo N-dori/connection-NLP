@@ -1,6 +1,13 @@
 .course-instructor-wapper{
     grid-column: 2;
     direction: rtl;
+    margin-top: 15px;
+    .headline{
+        font-size: 1.8em;
+        font-weight: bold;
+        color: #222;
+        margin-block: 16px;
+    }
     .instructor-name{
         padding: 0;
         margin: 0;

@@ -1,33 +1,29 @@
-.coures-details-headlines-container {
+.coures-details-page-container {
     grid-column: 1/-1;
-    grid-template-columns:  minmax(100px, 1fr) minmax(auto, 930px)minmax(10px,280px);
-    background-color: #222;
+    grid-template-columns: minmax(100px, 1fr) minmax(auto, 930px)minmax(10px, 15.625em);
     margin-bottom: 35px;
-    .headlines-wapper{
-        grid-column: 2;
-       min-height: 345px;
 
-       .course-title{
-        text-align: end;
-        font-size: 3em;
-        color: #fff;
-    }
-        .sub-title{
+    .headlines-wapper {
+        grid-column: 1/-1;
+        grid-template-columns: minmax(100px, 1fr) minmax(auto, 930px)minmax(10px, 15.625em);
+        background-color: #222;
+        min-height: 345px;
+        gap: 0px;
+
+        .course-title {
+            grid-column: 2;
             text-align: end;
-           color: #fff;
+            font-size: 3em;
+            color: #fff;
+        }
 
-       }
+        .sub-title {
+            grid-column: 2;
+            text-align: end;
+            color: #fff;
+
+        }
     }
-    .btn-purchase {
-        grid-column: 2;
-        border: none;
-        padding: 12px;
-        background-color: #0070ff;
-        font-size: 1.1rem;
-        color: #fff;
-        margin-top: 19px;
-        font-weight: bold;
-        cursor: pointer;
-    }
- 
+
+
 }
