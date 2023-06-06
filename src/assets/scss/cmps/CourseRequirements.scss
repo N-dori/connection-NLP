@@ -1,0 +1,24 @@
+.requirements-desc{
+    
+    grid-column: 1/-1;
+    grid-template-columns: minmax(100px, 1fr) minmax(auto, 930px)minmax(10px, 250px);
+    // justify-items: end;
+.course-requierments-warpper{
+    grid-column: 2;
+    flex-direction: column;
+    align-items: end;
+
+}
+   .headline{
+    font-size: 1.8em;
+    font-weight: bold;
+    // text-align: end;
+    color: #222;
+   }
+   .requirements-list{
+    font-size: 1.2em;
+    direction: rtl;
+    gap:10px;
+    color: #222;
+   }
+}
