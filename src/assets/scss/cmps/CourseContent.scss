@@ -1,0 +1,59 @@
+.course-content-container {
+
+    grid-column: 1/-1;
+    grid-template-columns: minmax(100px, 1fr) minmax(auto, 930px)minmax(10px, 250px);
+
+    .contant-wapper {
+        grid-column: 2;
+        flex-direction: column;
+
+        .headline {
+            font-size: 1.8em;
+            font-weight: bold;
+            text-align: end;
+            color: #222;
+        }
+
+        .course-curriculum {
+            align-items: center;
+            margin-bottom: 10px;
+
+            .expend-all-btn {
+                border: none;
+                background-color: transparent;
+                color: #401b9c;
+                cursor: pointer;
+            }
+        }
+
+        .pannel-container {
+            padding: 1.4rem 2.2rem;
+            background-color: #f7f9fa;
+            flex-direction: row-reverse;
+            color: #222;
+            border-left: 1px solid #d1d7dc;
+            border-right: 1px solid #d1d7dc;
+            border-top: 1px solid #d1d7dc;
+            cursor: pointer;
+            .pannel-title {
+                font-size: 1.2em;
+                font-weight: bold;
+                color: #222;
+            }
+            
+            .expand-svg {
+
+                margin-inline-start: 1em;
+            }
+        }
+    }
+    .pannel-content{
+        flex-direction: column;
+        padding: 20px;
+        border-right: 1px solid #d1d7dc;
+        border-left: 1px solid #d1d7dc;
+        gap:50px
+        
+    }
+
+}
