@@ -45,6 +45,10 @@
 
                 margin-inline-start: 1em;
             }
+            .rotated{
+                transform: rotate(180deg);
+                transition: transform 0.3s ease-out;
+            }
         }
     }
     .contant-wapper:last-child{

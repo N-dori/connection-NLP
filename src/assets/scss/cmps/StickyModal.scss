@@ -2,10 +2,11 @@
 .sticky-modal-container {
     grid-column: 1;
     display: block;
-    position: sticky;
-    top: 6.8rem;
+    position: fixed;
+    top: 2rem;
     margin-right: 20px;
     margin-left: 250px;
+    z-index: 70;
 
     .modal-warpper {
         max-width: 21.5rem;
