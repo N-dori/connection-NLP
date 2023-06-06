@@ -12,6 +12,8 @@ import { CourseDesc } from '../cmps/CourseDesc';
 import { CourseInstructor } from '../cmps/CourseInstructor';
 import { CourseReviews } from '../cmps/CourseReviews';
 import { useOnScreen } from '../customHooks/useOnScreen';
+import { StickyModal } from '../cmps/StickyModal';
+
 export  function CouresDetails() {
   const [setRef,visible] = useOnScreen({ threshold:0.2 })
 
@@ -47,7 +49,7 @@ export  function CouresDetails() {
 <h2 className='sub-title'>{course.subTitle}</h2> 
 <h2 className='sub-title'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem odio, natus ipsum mollitia ea corporis accusantium omnis consequatur, eligendi ex reprehenderit </h2> 
  </section>  
-{visible?<DetailsModal />:''}  
+{visible?<DetailsModal />:<StickyModal/>}  
    <WhatYouWillLearn/>
 
     <ThisCourseIncludes/>
@@ -62,12 +64,12 @@ export  function CouresDetails() {
 
     <CourseReviews/>
 </section>
-
-
-    
-    
-    </>:
+</> :
     <div>Loading...</div>
+
+    
+    
+   
  
 
   )
