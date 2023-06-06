@@ -11,8 +11,10 @@ import { CouresRequirements } from '../cmps/CouresRequirements';
 import { CourseDesc } from '../cmps/CourseDesc';
 import { CourseInstructor } from '../cmps/CourseInstructor';
 import { CourseReviews } from '../cmps/CourseReviews';
-
+import { useOnScreen } from '../customHooks/useOnScreen';
 export  function CouresDetails() {
+  const [setRef,visible] = useOnScreen({ threshold:0.2 })
+
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
 
     const navigate = useNavigate()
@@ -33,15 +35,19 @@ export  function CouresDetails() {
 
   return (
     course?
-    
-     
+    <>
+ <header className='sticky-header'>
+  <p>{course.title}</p>
+  <p>{course.subTitle}</p>
+ 
+ </header>    
 <section className='coures-details-page-container grid'>
-<section className='headlines-wapper grid'>
+<section className='headlines-wapper grid' ref={setRef}>
  <h1 className='course-title'>{course.title}</h1>
 <h2 className='sub-title'>{course.subTitle}</h2> 
 <h2 className='sub-title'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem odio, natus ipsum mollitia ea corporis accusantium omnis consequatur, eligendi ex reprehenderit </h2> 
  </section>  
-  <DetailsModal/>
+{visible?<DetailsModal />:''}  
    <WhatYouWillLearn/>
 
     <ThisCourseIncludes/>
@@ -59,7 +65,8 @@ export  function CouresDetails() {
 
 
     
-    :
+    
+    </>:
     <div>Loading...</div>
  
 
