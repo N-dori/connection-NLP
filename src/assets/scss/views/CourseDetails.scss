@@ -1,15 +1,27 @@
+.sticky-header{
+    position: fixed;
+    top:0;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(12, 12, 12);
+    z-index: 10;
+    p{
+        color: #fff;
+    }
+}
 .coures-details-page-container {
     grid-column: 1/-1;
     grid-template-columns: minmax(100px, 1fr) minmax(auto, 930px)minmax(10px, 15.625em);
     margin-bottom: 35px;
-
+    position: relative;
     .headlines-wapper {
         grid-column: 1/-1;
         grid-template-columns: minmax(100px, 1fr) minmax(auto, 930px)minmax(10px, 15.625em);
         background-color: #222;
         min-height: 345px;
         gap: 0px;
-
+position: relative;
+justify-items: end;
         .course-title {
             grid-column: 2;
             text-align: end;
