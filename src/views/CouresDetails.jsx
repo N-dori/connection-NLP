@@ -9,6 +9,7 @@ import { ThisCourseIncludes } from '../cmps/ThisCourseIncludes';
 import { CourseContent } from '../cmps/CourseContent';
 import { CouresRequirements } from '../cmps/CouresRequirements';
 import { CourseDesc } from '../cmps/CourseDesc';
+import { CourseInstructor } from '../cmps/CourseInstructor';
 
 export  function CouresDetails() {
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
@@ -53,6 +54,7 @@ export  function CouresDetails() {
 <section className='requirements-desc grid '>
     <CouresRequirements/>
     <CourseDesc/>
+    <CourseInstructor/>
 </section>
 
 
