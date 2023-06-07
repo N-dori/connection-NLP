@@ -1,7 +1,8 @@
 .course-content-container {
 
     grid-column: 2;
-
+    min-width: 44em;
+    margin-left: auto;
     .contant-wapper {
         grid-column: 2;
         flex-direction: column;
@@ -44,6 +45,10 @@
             .expand-svg {
 
                 margin-inline-start: 1em;
+            }
+            .rotated{
+                transform: rotate(180deg);
+                transition: transform 0.3s ease-out;
             }
         }
     }

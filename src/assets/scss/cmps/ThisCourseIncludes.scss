@@ -2,8 +2,9 @@
     grid-column: 2;
     .headline {
         grid-column: 2;
-        text-align: end;
-        margin-inline-end: 0px
+        direction: rtl;
+        margin-inline-end: 0px;
+        font-size: 1.5em;
     }
     .list-container{
 

@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { imgService } from '../services/imgService'
 import { PlaySvg } from '../svgs/PlaySvg'
 
-export function DetailsModal() {
+export function DetailsModal({setIsPlayerVisible}) {
 
+  const onOpenPlayer = () => {
+    document.body.style='overflow-y: hidden;'
+    setIsPlayerVisible(true)
+  }
 
 
   return (
@@ -12,8 +16,7 @@ export function DetailsModal() {
     <section className='details-modal-container'>
 
       <section className="modal-warpper">
-        <div className='preview-course-img-wrapper' 
-      >
+        <div className='preview-course-img-wrapper' onClick={onOpenPlayer}>
           <div className='green'></div>
           <div className='sand'>
 

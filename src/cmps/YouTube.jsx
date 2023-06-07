@@ -6,8 +6,8 @@ export  function YouTube({videoUrl}) {
         <ReactPlayer 
       className="react-player"
       playing
-      width="400px"
-      height="200"
+      width="100%"
+      height="100%"
        url={videoUrl} controls/>
     </div>
   )

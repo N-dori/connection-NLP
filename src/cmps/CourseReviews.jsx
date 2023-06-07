@@ -3,7 +3,7 @@ import { imgService } from '../services/imgService'
 
 export function CourseReviews() {
   return (
-    <section className="course-reviwes-container flex-col">
+    <section className="course-reviwes-container ">
       <h1 className='headline'>Course reviews</h1>
       <section className='reviews-wrapper flex'>
 

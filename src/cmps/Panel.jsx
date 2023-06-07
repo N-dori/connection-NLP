@@ -8,6 +8,7 @@ export  function Panel({title,lectures,min,isAllExpaned}) {
 const [isShown,setIsShown]=useState(true)
     useEffect(() => {
        setIsShown(!isShown)
+       console.log('isShownisShown',isShown);
     }, [isAllExpaned])
     
     const expand = () => {
@@ -18,7 +19,7 @@ const [isShown,setIsShown]=useState(true)
     <>
     <div onClick={expand}className='pannel-container flex-sb'>
     <div className='flex-ac'><span className='pannel-title'>{title}</span>
-    <span ><ExpandSvg/></span></div>
+    <span ><ExpandSvg isShown={isShown}/></span></div>
      <div className='flex-ac'>{lectures} lectures • {min} min</div>
  </div>
      <section className={isShown?'pannel-content flex block':'hidden'}>
