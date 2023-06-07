@@ -2,7 +2,6 @@ import React, { useState,useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { courseService } from '../services/course.service';
 import { useSelector } from 'react-redux';
-import { YouTube } from '../cmps/YouTube';
 import { DetailsModal } from '../cmps/DetailsModal';
 import { WhatYouWillLearn } from '../cmps/WhatYouWillLearn';
 import { ThisCourseIncludes } from '../cmps/ThisCourseIncludes';
@@ -51,7 +50,7 @@ export  function CouresDetails() {
 <h2 className='sub-title'>{course.subTitle}</h2> 
 <h2 className='sub-title info '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem odio, natus ipsum mollitia ea corporis accusantium omnis consequatur, eligendi ex reprehenderit </h2> 
  </section>  
-{visible?<DetailsModal setIsPlayerVisible={setIsPlayerVisible} />:<StickyModal/>}  
+{visible?<DetailsModal setIsPlayerVisible={setIsPlayerVisible} />:<StickyModal  setIsPlayerVisible={setIsPlayerVisible}/>}  
    <WhatYouWillLearn/>
 
     <ThisCourseIncludes/>
@@ -66,13 +65,15 @@ export  function CouresDetails() {
 
     <CourseReviews/>
   { isPlayerVisible? 
+
    <CoursePlayer
    freeSamples={course.freeSamples}
    title={course.title}
    trailerVideoUrl={course.trailerVideoUrl}
    setIsPlayerVisible={setIsPlayerVisible}
     />:''}
-    <div className={isPlayerVisible?'screen-filter':'screen-filter-0'} ></div>
+
+    <div className={isPlayerVisible?'screen-filter':'hidden'} ></div>
 </section>
 </> :
     <div>Loading...</div>
