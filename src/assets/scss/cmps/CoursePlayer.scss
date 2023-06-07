@@ -70,17 +70,12 @@
         
         .video-container{
             cursor: pointer;
-            .clicked-video{
-                padding: 20px;
-    background-color: #971919;
-    
-}
+            background-color: #111111;
             .wrapper-video-link{
                 padding: 20px;
-                background-color: #111111;
                 .time-summary{
-                 margin-left: auto;
-             }
+                    margin-left: auto;
+                }
                 .video-img-wrapper{
                     width: 80px;
                     height: 50px;
@@ -102,4 +97,10 @@
         }
     }
 }
+}
+
+.clicked-video{
+    // padding: 20px;
+background-color: #971919;
+
 }

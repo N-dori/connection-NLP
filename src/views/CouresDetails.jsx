@@ -36,11 +36,10 @@ export  function CouresDetails() {
       const course = await courseService.getCourseById(CourseId) 
       setCourse(course)     
     }
- 
 
-  return (
-    course?
-    <>
+    return (
+      course?
+      <>
  <header className='sticky-header'>
   <p>{course.title}</p>
   <p>{course.subTitle}</p>
@@ -68,18 +67,15 @@ export  function CouresDetails() {
     <CourseReviews/>
   { isPlayerVisible? 
    <CoursePlayer
-   course={course}
+   freeSamples={course.freeSamples}
+   title={course.title}
+   trailerVideoUrl={course.trailerVideoUrl}
    setIsPlayerVisible={setIsPlayerVisible}
     />:''}
     <div className={isPlayerVisible?'screen-filter':'screen-filter-0'} ></div>
 </section>
 </> :
     <div>Loading...</div>
-
-    
-    
-   
- 
 
   )
 }
