@@ -22,7 +22,7 @@ function _creatCourses(){
         subTitle : "A cutting-edge NLP Master",
         createdBy : "shlomo shushan",
         courseCoverImg : "https://top10a.ru/wp-content/uploads/2018/11/2-ispolzujte-nejrolingvisticheskoe-programmirovanie.jpg",
-        TrailerVideoUrl : "https://www.youtube.com/watch?v=-fgnz2vetPU",
+        trailerVideoUrl : "https://www.youtube.com/watch?v=-fgnz2vetPU",
         totalHours : 255,
         totalVideos : 47,
         level : 'Practitioner',
@@ -43,12 +43,45 @@ function _creatCourses(){
         subEpisodes :[
                     {
                         id : utilService.makeId(8),
-                        title : "loam loram",
-                        subTitle: "nlp gogog loram",
+                        title : "the basis of NLP",
+                        videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    },
+                    {
+                        id : utilService.makeId(8),
+                        title : "the benefits of NLP",
+                        videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=f2VLQF-GP5A"
+                    },
+                    {
+                        id : utilService.makeId(8),
+                        title : "easy start with NLP",
+                        videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
                         videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
-                    }
+                    },
                     ],
                 }
+        ],
+        freeSamples:[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=f2VLQF-GP5A"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "easy start with NLP",
+                videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
+            },
+
         ]
 },
 {
@@ -57,7 +90,7 @@ function _creatCourses(){
     subTitle : "NLP (Neuro Linguistic Programming)",
     createdBy : "shlomo shushan",
     courseCoverImg : "https://avatars.mds.yandex.net/i?id=9e64dca9169ac79f7e861e117e656d86efc44ff2-4568991-images-thumbs&n=13",
-    TrailerVideoUrl : "https://www.youtube.com/watch?v=MQiMFs2SIFk",
+    trailerVideoUrl : "https://www.youtube.com/watch?v=MQiMFs2SIFk",
     totalHours : 255,
     totalVideos : 47,
     level : 'master',
@@ -79,12 +112,52 @@ function _creatCourses(){
                 {
                     id : utilService.makeId(7),
                     title : "loam loram",
-                    subTitle: "nlp gogog loram",
+                    videoImg: "nlp gogog loram",
                     videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
-                }
+                },
+                {
+                    id : utilService.makeId(8),
+                    title : "the basis of NLP",
+                    videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                    videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                },
+                {
+                    id : utilService.makeId(8),
+                    title : "the benefits of NLP",
+                    videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                    videoUrl : "https://www.youtube.com/watch?v=f2VLQF-GP5A"
+                },
+                {
+                    id : utilService.makeId(8),
+                    title : "easy start with NLP",
+                    videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                    videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
+                },
                 ],
             }
-    ]
+    ],
+    freeSamples:[
+        {
+            id : utilService.makeId(8),
+            title : "the basis of NLP",
+            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+            videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+        },
+        {
+            id : utilService.makeId(8),
+            title : "the benefits of NLP",
+            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+            videoUrl : "https://www.youtube.com/watch?v=f2VLQF-GP5A"
+        },
+        {
+            id : utilService.makeId(8),
+            title : "easy start with NLP",
+            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+            videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
+        },
+
+    ],
+    
 },
 {
     _id:utilService.makeId(7),
@@ -92,7 +165,7 @@ function _creatCourses(){
     subTitle : "NLP MIND DESIGN Accredited",
     createdBy : "shlomo shushan",
     courseCoverImg : "https://stoletnik.ru/upload/medialibrary/dfb/dfbf873df0c55598ba080ca12d525ce3.jpg",
-    TrailerVideoUrl : "https://www.youtube.com/watch?v=MIl3WGKVBn4",
+    trailerVideoUrl : "https://www.youtube.com/watch?v=MIl3WGKVBn4",
     totalHours : 255,
     totalVideos : 47,
     level : 'Super',
@@ -116,9 +189,48 @@ function _creatCourses(){
         title : "loam loram",
         subTitle: "nlp gogog loram",
         videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
-                }
+                },
+                 {
+                    id : utilService.makeId(8),
+                    title : "the basis of NLP",
+                    videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                    videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                },
+                {
+                    id : utilService.makeId(8),
+                    title : "the benefits of NLP",
+                    videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                    videoUrl : "https://www.youtube.com/watch?v=f2VLQF-GP5A"
+                },
+                {
+                    id : utilService.makeId(8),
+                    title : "easy start with NLP",
+                    videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                    videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
+                },
                 ],
             }
+    ],
+     freeSamples:[
+        {
+            id : utilService.makeId(8),
+            title : "the basis of NLP",
+            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+            videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+        },
+        {
+            id : utilService.makeId(8),
+            title : "the benefits of NLP",
+            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+            videoUrl : "https://www.youtube.com/watch?v=f2VLQF-GP5A"
+        },
+        {
+            id : utilService.makeId(8),
+            title : "easy start with NLP",
+            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+            videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
+        },
+
     ]
 }
 

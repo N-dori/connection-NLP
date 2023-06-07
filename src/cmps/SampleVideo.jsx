@@ -1,34 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import { PlaySvg } from '../svgs/PlaySvg'
 import { imgService } from '../services/imgService'
-export  function SampleVideo({course,isDark}) {
-    const [isClicked, setIsClicked] = useState(false)
+
+export  function SampleVideo({freeSamples,changeVideoUrl}) {
+    const [isClicked, setIsClicked] = useState(null)
     
-    useEffect(() => {
-        return ()=>{
-          setIsClicked(false)
-        }
-    }, [isDark])
-    
-    const onVideoClick = () =>{
- 
-        setIsClicked(true)
+    const onVideoClick = (i) =>{
+      console.log('i',i);
+        setIsClicked(i)
+        
         console.log('isClicked',isClicked); 
     }
-    const unClicked = () => {
-        setIsClicked(false)
-    }
+ 
 
   return (
+    <>
+    {freeSamples.map((video,i)=>
+      <li key={video.id} onClick={()=>onVideoClick(i)} 
+         className='video-container '
+         style={{backgroundColor:isClicked===i?'#555555':'#111111'}}
+        >
+     <div onClick={()=>changeVideoUrl(video.videoUrl)}  className='wrapper-video-link  flex-ac'>
+      <div className='video-img-wrapper'><img className='video-img' src={video.videoImg}/></div>
+      <div className='video-desc flex-ac'><PlaySvg/><span>{video.title}</span></div>
+      <span className='time-summary'>08:23</span> 
   
-    <li onClick={onVideoClick} 
-       className='video-container'>
-   <div style={{backgroundColor:isClicked?'#333333':'#111111'}} className='wrapper-video-link clicked-video flex-ac'>
-    <div className='video-img-wrapper'><img className='video-img' src={imgService.getImg('giveTalk')}/></div>
-    <div className='video-desc flex-ac'><PlaySvg/><span>{course.title}</span></div>
-    <span className='time-summary'>08:23</span> 
-
-   </div>
-    </li>
+     </div>
+      </li>
+      
+      )}
+    
+    </>
   )
 }
