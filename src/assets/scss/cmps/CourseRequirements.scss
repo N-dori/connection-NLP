@@ -3,6 +3,8 @@
     grid-column: 2;
     grid-template-columns: minmax(100px, 1fr) minmax(auto, 930px)minmax(10px, 250px);
     margin-top: 15px;
+    max-width: 44em;
+    margin-left: auto;
 .course-requierments-warpper{
     grid-column: 2;
     flex-direction: column;

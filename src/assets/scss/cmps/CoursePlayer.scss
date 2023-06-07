@@ -1,0 +1,105 @@
+.course-player-container {
+    position: fixed;
+    width: 755px;
+    background-color: #111111;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .08);
+    top: 5em;
+    left: 50%;
+    translate: -50%;
+    z-index: 100;
+    color: #fff;
+
+    .course-header {
+        padding: 20px;
+        align-items: start;
+        direction: rtl;
+
+        .title-container {
+            p {
+                margin: 5px;
+                font-weight: bold;
+            }
+
+            .title {
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+        }
+
+        .close-btn {
+            cursor: pointer;
+            z-index: 200;
+
+            .x-svg {
+                fill: #fff
+            }
+        }
+    }
+
+    .video-player-warpper {
+        position: relative;
+        bottom: 420px;
+
+        .player-wrapper {
+            width: auto; // Reset width
+            height: auto; // Reset height
+        }
+
+        .react-player {
+            padding-top: 56.25%; // Percentage ratio for 16:9
+            position: relative; // Set to relative
+        }
+
+        .react-player>div {
+            position: absolute; // Scaling will occur since parent is relative now
+        }
+
+    }
+    .free-sample-video-container{
+        max-height: 263px;
+        overflow: scroll;
+        padding-left: 0;
+     .headline{
+        font-size: 1.2em;
+        font-weight: bold;
+       padding-inline:  38px;
+     }
+     .sample-videos-list{
+
+        padding-left: 0px;
+        
+        .video-container{
+            cursor: pointer;
+            .clicked-video{
+                padding: 20px;
+    background-color: #971919;
+    
+}
+            .wrapper-video-link{
+                padding: 20px;
+                background-color: #111111;
+                .time-summary{
+                 margin-left: auto;
+             }
+                .video-img-wrapper{
+                    width: 80px;
+                    height: 50px;
+                    .video-img{
+                        width: 100%;
+                        aspect-ratio: 16/9;
+                    }
+                }
+                .video-desc{
+                    .play-svg{
+                        fill:#fefeff;
+                        height: 25px;
+                        margin-bottom: 2px;
+                        
+                    }
+                }
+             
+            }
+        }
+    }
+}
+}

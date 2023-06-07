@@ -1,6 +1,8 @@
 .desc-wrapper{
     direction: rtl;
     grid-column: 2;
+    max-width: 44em;
+    margin-inline-end: auto;
     .headline{
         font-size: 1.8em;
         font-weight: bold;

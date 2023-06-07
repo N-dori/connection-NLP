@@ -1,7 +1,8 @@
 .course-reviwes-container{
     grid-column: 2;
     margin-top: 15px;
-    justify-content: end;
+    max-width: 44em;
+    margin-inline-start: auto;
     .headline{
 text-align: end;
         font-size: 1.8em;
