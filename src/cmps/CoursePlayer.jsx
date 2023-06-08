@@ -5,25 +5,30 @@ import { imgService } from '../services/imgService'
 import { PlaySvg } from '../svgs/PlaySvg'
 import { SampleVideo } from './SampleVideo'
 
-export  function CoursePlayer({setIsPlayerVisible,freeSamples,title,trailerVideoUrl }) {
-
-    const [videoUrl, setVideoUrl] = useState(false)
+export  function CoursePlayer({setIsPlayerVisible,freeSamples,title,trailerVideoUrl,changeVideoUrl,videoUrl}) {
+const [count, setCount] =useState()
     console.log('freeSamplesfreeSamples',freeSamples);
- 
+
 useEffect(() => {
-  changeVideoUrl(trailerVideoUrl)
+  setCount(count+1)
+  if(videoUrl){
+    changeVideoUrl(videoUrl)
+
+  }else{
+    changeVideoUrl(trailerVideoUrl)
+  }
 
 }, [])
+useEffect(() => {
+
+}, [videoUrl])
 
     const onClose = () =>{
       document.body.style='overflow-y: auto;'
         setIsPlayerVisible(false)
       }
  
-    const changeVideoUrl = (url) => {
-      console.log('changeVideoUrl',url);
-      setVideoUrl(url)
-      }
+
 
   return (
       <section className='course-player-container'>

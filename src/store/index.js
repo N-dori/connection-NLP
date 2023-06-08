@@ -3,11 +3,14 @@ import { applyMiddleware, combineReducers,compose, legacy_createStore as createS
 import thunk from "redux-thunk"
 import { userReducers } from "./reducers/user.reducer"
 import { courseReducers } from "./reducers/course.reducer"
+import { cartReducers } from "./reducers/cartReducer"
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const rootReducer = combineReducers({
     couresModule:  courseReducers,
-    userModule: userReducers
+    userModule: userReducers,
+ cartModule: cartReducers,
 })
 export const store = createStore(rootReducer ,composeEnhancers(applyMiddleware(thunk)))
 

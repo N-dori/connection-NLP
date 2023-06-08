@@ -3,7 +3,7 @@ import { ExpandSvg } from '../svgs/ExpandSvg'
 import { TvSvg } from '../svgs/TvSvg'
 
 
-export function IntroPanel({ intros, title, lectures, min, isAllExpaned }) {
+export function IntroPanel({ intros, title, min, isAllExpaned,changeVideoUrl,setIsPlayerVisible }) {
 
   const [isShown, setIsShown] = useState(true)
   const [count, setCount] = useState(0)
@@ -24,6 +24,11 @@ export function IntroPanel({ intros, title, lectures, min, isAllExpaned }) {
   const expand = () => {
     setIsShown(!isShown)
   }
+  const handelVideo = (videoUrl) => {
+    document.body.style='overflow-y: hidden;'
+    setIsPlayerVisible(true)
+    changeVideoUrl(videoUrl)
+  }
 
   return (
     <>
@@ -34,7 +39,7 @@ export function IntroPanel({ intros, title, lectures, min, isAllExpaned }) {
       </div>
       <section className={isShown ? 'pannel-content flex' : 'hidden'}>
         {intros.map(intro => 
-        <div className='content-preview flex-sb'><div className='flex-ac'>
+        <div key={intro.id} onClick={()=>{handelVideo(intro.videoUrl)}}  className='content-preview intro flex-sb'><div className='flex-ac'>
        <TvSvg /> {intro.title} </div> <span>{min} min </span>  </div>
           
        )}

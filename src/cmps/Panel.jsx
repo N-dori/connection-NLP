@@ -30,7 +30,7 @@ const [isShown,setIsShown]=useState(false)
      <section className={(isShown )?'pannel-content flex ':'hidden'}>
       {subEpisodes.map(subEpisode=> {
      const {id,title} = subEpisode
-    return  <article className='content-preview flex-sb'>
+    return  <article key={subEpisode.id} className='content-preview flex-sb'>
       <div className='flex-ac'> <TvSvg/> {title} </div> <span>{min} min </span> 
      </article>})
   
