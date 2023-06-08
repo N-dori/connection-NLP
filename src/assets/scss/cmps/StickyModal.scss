@@ -2,14 +2,34 @@
 .sticky-modal-container {
     grid-column: 1;
     display: block;
-    position: fixed;
+    position: sticky;
     top: 2rem;
-    margin-right: 20px;
-    margin-left: 390px;
+    left:16%;
     z-index: 70;
     max-width: 21.1em;
     grid-column: 1;
     
+        animation: fade-in;
+        animation-duration:  0.5s ;
+       
+        animation-delay: 0.2s;
+    
+      
+      
+      @keyframes fade-in {
+        // default non-selected style of nav item
+        0% {
+        //   font-style: normal;
+          opacity: 0;
+        }
+        20%{
+            opacity: 0;
+        }
+        // highlighted style of nav item
+        100% {
+          opacity: 1;
+        }
+      }
 
     .modal-warpper {
         max-width: 21.5rem;

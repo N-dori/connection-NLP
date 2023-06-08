@@ -24,17 +24,23 @@ export  function CouresDetails() {
     console.log('param',param);
     const [course, setCourse] = useState()
     const [isPlayerVisible, setIsPlayerVisible] = useState(false)
+    const [videoUrl, setVideoUrl] = useState(false)
+    const [isSidebar, setIsSidebar] = useState(false)
     
     useEffect(() => {
       window.scrollTo(0,0)
       loadCourse(param.id)
     }, [])
+
  
     const loadCourse = async (CourseId) => {
       const course = await courseService.getCourseById(CourseId) 
       setCourse(course)     
     }
-
+    const changeVideoUrl = (url) => {
+      console.log('changeVideoUrl',url);
+      setVideoUrl(url)
+      }
     return (
       course?
       <>
@@ -44,17 +50,23 @@ export  function CouresDetails() {
  </header>    
 
 <section className='coures-details-page-container grid'>
-<section className='headlines-wapper grid' ref={setRef}>
- <h1 className='course-title'>{course.title}</h1>
+<section className='headlines-wapper grid' >
+ <h1 className='course-title flex-clo'ref={setRef}>{course.title}
 <h2 className='sub-title'>{course.subTitle}</h2> 
 <h2 className='sub-title info '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem odio, natus ipsum mollitia ea corporis accusantium omnis consequatur, eligendi ex reprehenderit </h2> 
+</h1>
+{visible?<DetailsModal setIsPlayerVisible={setIsPlayerVisible} />:""}  
  </section>  
-{visible?<DetailsModal setIsPlayerVisible={setIsPlayerVisible} />:<StickyModal  setIsPlayerVisible={setIsPlayerVisible}/>}  
-   <WhatYouWillLearn/>
+{visible?'':<StickyModal  setIsPlayerVisible={setIsPlayerVisible}/>}  
+   <WhatYouWillLearn />
 
     <ThisCourseIncludes/>
 
-    <CourseContent intros={course.intros} episodes={course.episodes}/>
+    <CourseContent 
+    changeVideoUrl={changeVideoUrl} 
+    intros={course.intros} 
+    episodes={course.episodes}
+    setIsPlayerVisible={setIsPlayerVisible}/>
 
     <CouresRequirements/>
 
@@ -68,6 +80,8 @@ export  function CouresDetails() {
    <CoursePlayer
    freeSamples={course.freeSamples}
    title={course.title}
+   changeVideoUrl={changeVideoUrl}
+   videoUrl={videoUrl}
    trailerVideoUrl={course.trailerVideoUrl}
    setIsPlayerVisible={setIsPlayerVisible}
     />:''}

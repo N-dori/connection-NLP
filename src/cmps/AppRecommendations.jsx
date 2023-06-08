@@ -7,7 +7,7 @@ export  function AppRecommendations() {
       <div className='qoution-mark'>"</div>
         {
             recommendations.map((recommendation)=>(
-                <article>
+                <article key={recommendation.id}>
             <div className='video-container'>
                 <img className='recommendation-img' src={recommendation.image}/>
                 <p className='student-review'>{recommendation.title}</p>

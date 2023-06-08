@@ -58,7 +58,8 @@ const users =[
         courseId:"",
         courseImgUrl:"",
         courseTitle:'',
-        }]    
+        }] ,
+        cart:[]   
     },
     {
         _id:utilService.makeId(3),
@@ -109,7 +110,7 @@ function getEmptyUser() {
         email: "",
         imgUrl:'',
         courses:[],
-        moves: [],
+        cart: [],
     }
 }
 async function updateUser(user){
