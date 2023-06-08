@@ -23,7 +23,6 @@ export  function CouresDetails() {
     const  param = useParams()
     console.log('param',param);
     const [course, setCourse] = useState()
-    const [isShown, setIsShown] = useState(false)
     const [isPlayerVisible, setIsPlayerVisible] = useState(false)
     
     useEffect(() => {
@@ -42,8 +41,8 @@ export  function CouresDetails() {
  <header className='sticky-header'>
   <p>{course.title}</p>
   <p>{course.subTitle}</p>
- 
  </header>    
+
 <section className='coures-details-page-container grid'>
 <section className='headlines-wapper grid' ref={setRef}>
  <h1 className='course-title'>{course.title}</h1>
@@ -55,7 +54,7 @@ export  function CouresDetails() {
 
     <ThisCourseIncludes/>
 
-    <CourseContent/>
+    <CourseContent intros={course.intros} episodes={course.episodes}/>
 
     <CouresRequirements/>
 
