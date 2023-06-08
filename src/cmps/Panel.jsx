@@ -3,12 +3,17 @@ import { ExpandSvg } from '../svgs/ExpandSvg'
 import { TvSvg } from '../svgs/TvSvg'
 
 
-export  function Panel({title,lectures,min,isAllExpaned}) {
+export  function Panel({title,subEpisodes,lectures,min,isAllExpaned ,i}) {
 
-const [isShown,setIsShown]=useState(true)
+const [isShown,setIsShown]=useState(false)
     useEffect(() => {
-       setIsShown(!isShown)
-       console.log('isShownisShown',isShown);
+      if(isAllExpaned){
+        setIsShown(true)
+      }
+      else if(!isAllExpaned){
+        setIsShown(false)
+
+      }
     }, [isAllExpaned])
     
     const expand = () => {
@@ -22,10 +27,17 @@ const [isShown,setIsShown]=useState(true)
     <span ><ExpandSvg isShown={isShown}/></span></div>
      <div className='flex-ac'>{lectures} lectures • {min} min</div>
  </div>
-     <section className={isShown?'pannel-content flex block':'hidden'}>
-     <div className='content-preview flex-sb'><div className='flex-ac'> <TvSvg/> {lectures} name of lesson</div> <span>{min} min </span>  </div>
-     <div className='content-preview flex-sb'><div className='flex-ac'> <TvSvg/> {lectures} name of lesson</div> <span>{min} min </span>  </div>
-     <div className='content-preview flex-sb'><div className='flex-ac'> <TvSvg/> {lectures} name of lesson</div> <span>{min} min </span>  </div>
+     <section className={(isShown )?'pannel-content flex ':'hidden'}>
+      {subEpisodes.map(subEpisode=> {
+     const {id,title} = subEpisode
+    return  <article className='content-preview flex-sb'>
+      <div className='flex-ac'> <TvSvg/> {title} </div> <span>{min} min </span> 
+     </article>})
+  
+
+
+      }
+   
      </section>
     
     </>

@@ -18,7 +18,7 @@ export  function SampleVideo({freeSamples,changeVideoUrl}) {
     {freeSamples.map((video,i)=>
       <li key={video.id} onClick={()=>onVideoClick(i)} 
          className='video-container '
-         style={{backgroundColor:isClicked===i?'#555555':'#111111'}}
+         style={{backgroundColor:isClicked===i?'#222222':'#111111'}}
         >
      <div onClick={()=>changeVideoUrl(video.videoUrl)}  className='wrapper-video-link  flex-ac'>
       <div className='video-img-wrapper'><img className='video-img' src={video.videoImg}/></div>

@@ -16,7 +16,8 @@ function _setCourses () {
 
 }
 function _creatCourses(){
-    const courses = [{
+    const courses = [
+        {
         _id:utilService.makeId(9),
         title : "NLP Practitioner",
         subTitle : "A cutting-edge NLP Master",
@@ -34,12 +35,32 @@ function _creatCourses(){
             username:'mama mia'
         } 
         ],
+        intros:[
+         {
+            id : utilService.makeId(8),
+            title : "Getting started with NLP",
+            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+            videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+         },
+         {
+            id : utilService.makeId(8),
+            title : "the basis of NLP",
+            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+            videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+        },
+        {
+            id : utilService.makeId(8),
+            title : "the benefits of NLP",
+            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+            videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+        },
+        ],
         episodes : [
                 {
             id : utilService.makeId(7),
-            title : "",
+            title : "fundamentals",
             subTitle : "",
-            totalHours:0,
+            totalHours:20,
         subEpisodes :[
                     {
                         id : utilService.makeId(8),
@@ -51,13 +72,253 @@ function _creatCourses(){
                         id : utilService.makeId(8),
                         title : "the benefits of NLP",
                         videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                        videoUrl : "https://www.youtube.com/watch?v=f2VLQF-GP5A"
+                        videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                    },
+                    ],
+                },
+                {
+            id : utilService.makeId(7),
+            title : "The Art of listining",
+            subTitle : "",
+            totalHours:45,
+        subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "The Art of listining",
+                videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=_YEKacO3M-M&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=7"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "NLP throgth games",
+                videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=cayBOMFrR9A&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=10"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "easy start with NLP",
+                videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=h9wiLS1o1Rw&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=9"
+            },
+                    ],
+                },
+                {
+            id : utilService.makeId(7),
+            title : "NLP if life",
+            subTitle : "",
+            totalHours:55,
+        subEpisodes :[
+                    {
+                        id : utilService.makeId(8),
+                        title : "the basis of NLP",
+                        videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
                     },
                     {
                         id : utilService.makeId(8),
-                        title : "easy start with NLP",
-                        videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
-                        videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
+                        title : "the benefits of NLP",
+                        videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                    },
+                    ],
+                },
+                {
+            id : utilService.makeId(7),
+            title : "iHow to start with NLP",
+            subTitle : "",
+            totalHours:70,
+        subEpisodes :[
+                    {
+                        id : utilService.makeId(8),
+                        title : "the basis of NLP",
+                        videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    },
+                    {
+                        id : utilService.makeId(8),
+                        title : "the benefits of NLP",
+                        videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                    },
+                    ],
+                },
+                {
+            id : utilService.makeId(7),
+            title : "NLP Be present",
+            subTitle : "",
+            totalHours:28,
+        subEpisodes :[
+                    {
+                        id : utilService.makeId(8),
+                        title : "the basis of NLP",
+                        videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    },
+                    {
+                        id : utilService.makeId(8),
+                        title : "the benefits of NLP",
+                        videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                    },
+                    ]
+                },
+                {
+            id : utilService.makeId(7),
+            title : "easy start with NLP",
+            subTitle : "",
+            totalHours:20,
+        subEpisodes :[
+                    {
+                        id : utilService.makeId(8),
+                        title : "the basis of NLP",
+                        videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    },
+                    {
+                        id : utilService.makeId(8),
+                        title : "the benefits of NLP",
+                        videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                    },
+                    ],
+                },
+                {
+            id : utilService.makeId(7),
+            title : "NLP Be present",
+            subTitle : "",
+            totalHours:20,
+        subEpisodes :[
+                    {
+                        id : utilService.makeId(8),
+                        title : "the basis of NLP",
+                        videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    },
+                    {
+                        id : utilService.makeId(8),
+                        title : "the benefits of NLP",
+                        videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                    },
+                    ],
+                },
+                {
+            id : utilService.makeId(7),
+            title : "NLP throgth games",
+            subTitle : "",
+            totalHours:20,
+        subEpisodes :[
+                    {
+                        id : utilService.makeId(8),
+                        title : "the basis of NLP",
+                        videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    },
+                    {
+                        id : utilService.makeId(8),
+                        title : "the benefits of NLP",
+                        videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                    },
+                    ],
+                },
+                {
+            id : utilService.makeId(7),
+            title : "Course summery NLP-master",
+            subTitle : "",
+            totalHours:20,
+        subEpisodes :[
+                    {
+                        id : utilService.makeId(8),
+                        title : "the basis of NLP",
+                        videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    },
+                    {
+                        id : utilService.makeId(8),
+                        title : "the benefits of NLP",
+                        videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                    },
+                    ],
+                },
+                {
+            id : utilService.makeId(7),
+            title : " NLP and Ajax",
+            subTitle : "",
+            totalHours:20,
+        subEpisodes :[
+                    {
+                        id : utilService.makeId(8),
+                        title : "the basis of NLP",
+                        videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    },
+                    {
+                        id : utilService.makeId(8),
+                        title : "the benefits of NLP",
+                        videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                    },
+                    ],
+                },
+                {
+            id : utilService.makeId(7),
+            title : "The Art of listining",
+            subTitle : "",
+            totalHours:20,
+        subEpisodes :[
+                    {
+                        id : utilService.makeId(8),
+                        title : "the basis of NLP",
+                        videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    },
+                    {
+                        id : utilService.makeId(8),
+                        title : "the benefits of NLP",
+                        videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                    },
+                    ],
+                },
+                {
+            id : utilService.makeId(7),
+            title : "Course summery NLP-master",
+            subTitle : "",
+            totalHours:20,
+        subEpisodes :[
+                    {
+                        id : utilService.makeId(8),
+                        title : "the basis of NLP",
+                        videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    },
+                    {
+                        id : utilService.makeId(8),
+                        title : "the benefits of NLP",
+                        videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                    },
+                    ],
+                },
+                {
+            id : utilService.makeId(7),
+            title : "How to start with NLP",
+            subTitle : "",
+            totalHours:20,
+        subEpisodes :[
+                    {
+                        id : utilService.makeId(8),
+                        title : "the basis of NLP",
+                        videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    },
+                    {
+                        id : utilService.makeId(8),
+                        title : "the benefits of NLP",
+                        videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                        videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
                     },
                     ],
                 }
@@ -102,40 +363,294 @@ function _creatCourses(){
         username:'baba buba'
     } 
     ],
+    intros:[
+        {
+           id : utilService.makeId(8),
+           title : "Getting started with NLP",
+           videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+           videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+        },
+        {
+           id : utilService.makeId(8),
+           title : "the basis of NLP",
+           videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+           videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+       },
+       {
+           id : utilService.makeId(8),
+           title : "the benefits of NLP",
+           videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+           videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+       },
+       ],
     episodes : [
+        {
+    id : utilService.makeId(7),
+    title : "fundamentals",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
             {
-        id : utilService.makeId(7),
-        title : "",
-        subTitle : "",
-        totalHours:0,
-    subEpisodes :[
-                {
-                    id : utilService.makeId(7),
-                    title : "loam loram",
-                    videoImg: "nlp gogog loram",
-                    videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
-                },
-                {
-                    id : utilService.makeId(8),
-                    title : "the basis of NLP",
-                    videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                    videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                },
-                {
-                    id : utilService.makeId(8),
-                    title : "the benefits of NLP",
-                    videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                    videoUrl : "https://www.youtube.com/watch?v=f2VLQF-GP5A"
-                },
-                {
-                    id : utilService.makeId(8),
-                    title : "easy start with NLP",
-                    videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
-                    videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
-                },
-                ],
-            }
-    ],
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "The Art of listining",
+    subTitle : "",
+    totalHours:45,
+subEpisodes :[
+    {
+        id : utilService.makeId(8),
+        title : "The Art of listining",
+        videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+        videoUrl : "https://www.youtube.com/watch?v=_YEKacO3M-M&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=7"
+    },
+    {
+        id : utilService.makeId(8),
+        title : "NLP throgth games",
+        videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+        videoUrl : "https://www.youtube.com/watch?v=cayBOMFrR9A&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=10"
+    },
+    {
+        id : utilService.makeId(8),
+        title : "easy start with NLP",
+        videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+        videoUrl : "https://www.youtube.com/watch?v=h9wiLS1o1Rw&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=9"
+    },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "NLP if life",
+    subTitle : "",
+    totalHours:55,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "iHow to start with NLP",
+    subTitle : "",
+    totalHours:70,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "NLP Be present",
+    subTitle : "",
+    totalHours:28,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ]
+        },
+        {
+    id : utilService.makeId(7),
+    title : "easy start with NLP",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "NLP Be present",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "NLP throgth games",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "Course summery NLP-master",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : " NLP and Ajax",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "The Art of listining",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "Course summery NLP-master",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "How to start with NLP",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        }
+],
     freeSamples:[
         {
             id : utilService.makeId(8),
@@ -177,40 +692,294 @@ function _creatCourses(){
         username:'baba buba'
     } 
     ],
+    intross:[
+        {
+           id : utilService.makeId(8),
+           title : "Getting started with NLP",
+           videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+           videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+        },
+        {
+           id : utilService.makeId(8),
+           title : "the basis of NLP",
+           videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+           videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+       },
+       {
+           id : utilService.makeId(8),
+           title : "the benefits of NLP",
+           videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+           videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+       },
+       ],
     episodes : [
+        {
+    id : utilService.makeId(7),
+    title : "fundamentals",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
             {
-        id : utilService.makeId(7),
-        title : "nlp bababa",
-        subTitle :  "nlp loram kokoko ",
-        totalHours:0,
-    subEpisodes :[
-                {
-        id : utilService.makeId(7),
-        title : "loam loram",
-        subTitle: "nlp gogog loram",
-        videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
-                },
-                 {
-                    id : utilService.makeId(8),
-                    title : "the basis of NLP",
-                    videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                    videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                },
-                {
-                    id : utilService.makeId(8),
-                    title : "the benefits of NLP",
-                    videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                    videoUrl : "https://www.youtube.com/watch?v=f2VLQF-GP5A"
-                },
-                {
-                    id : utilService.makeId(8),
-                    title : "easy start with NLP",
-                    videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
-                    videoUrl : "https://www.youtube.com/watch?v=j6ciMNAgq7A"
-                },
-                ],
-            }
-    ],
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "The Art of listining",
+    subTitle : "",
+    totalHours:45,
+subEpisodes :[
+    {
+        id : utilService.makeId(8),
+        title : "The Art of listining",
+        videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+        videoUrl : "https://www.youtube.com/watch?v=_YEKacO3M-M&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=7"
+    },
+    {
+        id : utilService.makeId(8),
+        title : "NLP throgth games",
+        videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+        videoUrl : "https://www.youtube.com/watch?v=cayBOMFrR9A&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=10"
+    },
+    {
+        id : utilService.makeId(8),
+        title : "easy start with NLP",
+        videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+        videoUrl : "https://www.youtube.com/watch?v=h9wiLS1o1Rw&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=9"
+    },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "NLP if life",
+    subTitle : "",
+    totalHours:55,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "iHow to start with NLP",
+    subTitle : "",
+    totalHours:70,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "NLP Be present",
+    subTitle : "",
+    totalHours:28,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ]
+        },
+        {
+    id : utilService.makeId(7),
+    title : "easy start with NLP",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "NLP Be present",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "NLP throgth games",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "Course summery NLP-master",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : " NLP and Ajax",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "The Art of listining",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "Course summery NLP-master",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        },
+        {
+    id : utilService.makeId(7),
+    title : "How to start with NLP",
+    subTitle : "",
+    totalHours:20,
+subEpisodes :[
+            {
+                id : utilService.makeId(8),
+                title : "the basis of NLP",
+                videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+            },
+            {
+                id : utilService.makeId(8),
+                title : "the benefits of NLP",
+                videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
+                videoUrl : "https://www.youtube.com/watch?v=twIWSU-xf_o"
+            },
+            ],
+        }
+],
      freeSamples:[
         {
             id : utilService.makeId(8),
