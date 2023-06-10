@@ -21,7 +21,7 @@ export  function LoginPage() {
   }, [])
   
   const loadLocalStorageUser = async () => {
-    const loggdingUser = await userService.getStoredLoginUser()
+    const loggdingUser = await userService.getLoggedinUser()
     console.log('loginCmp',loggdingUser);
     setUser(loggdingUser)
 
