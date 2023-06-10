@@ -6,12 +6,13 @@ import { localStorageService } from "./storage.service"
 import { utilService } from "./util.service"
 
 export const userService = {
-    getUser,
     getEmptyUser,
     signup,
     updateUser,
-    getStoredLoginUser,
     vrifyPassword,
+    getLoggedinUser,
+    getUserById,
+
 }
 const USER_KEY = 'userDB'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
@@ -21,14 +22,7 @@ const user = null
 async function _setUsers () {
     localStorageService.store(USER_KEY,_createUsers())
 }
- function getStoredLoginUser() {
-    return new Promise((resolve) => {
-        const user = localStorageService.load(STORAGE_KEY_LOGGEDIN_USER)  
-        console.log('user',user);
-          
-        resolve(user) 
-                })
-}
+
  function vrifyPassword(id,password) {
         return new Promise((resolve,reject) => {
             const users = localStorageService.load(USER_KEY)
@@ -43,6 +37,65 @@ async function _setUsers () {
                 
               
                     })
+    
+}
+async function getUserById(userId) {
+    try{
+    // const user = await httpService.get(`user/${userId}`)
+    const users = await storageService.query(USER_KEY)
+    const user = users.find(user => user._id === userId)
+    console.log('your user by id in service ',user);
+return user
+    } 
+    catch(err){
+        console.log('could not load user by id ',err);
+        
+    }
+}
+
+async function  getLoggedinUser() {
+const loggedinUser = await storageService.query(STORAGE_KEY_LOGGEDIN_USER)
+console.log('loggedinUser',loggedinUser);
+return loggedinUser
+     
+}
+
+async function signup(credentials) {
+    
+//     const cdAfterbackend= await httpService.post('auth/signup',credentials)
+//    console.log('cdAfterbackend',cdAfterbackend);
+if(!credentials.imgUrl){
+    credentials.imgUrl=imgService.getImg('user')
+}
+if(!credentials._id){
+    credentials._id=utilService.makeId(3)
+}
+if(!credentials.cart){
+    credentials.cart=[]
+}
+  await  storageService.post(USER_KEY,credentials)
+   localStorageService.store(STORAGE_KEY_LOGGEDIN_USER, {_id:credentials._id,fname:credentials.fname, cart:[]})
+   return credentials
+}
+function getEmptyUser() {
+    return {
+        _id:utilService.makeId(3),
+        fname: "",
+        userName:"",
+        password:"",
+        email: "",
+        imgUrl:'',
+        courses:[],
+        cart: [],
+    }
+}
+async function updateUser(type,userToUpdate){
+    // const updatedUser= await httpService.put(`user`,user)
+   const users = await storageService.query(USER_KEY)
+   const updatedUsers = users.map(currUser => currUser._id === userToUpdate._id ? userToUpdate : currUser )
+   localStorageService.store((type==='user')?USER_KEY:STORAGE_KEY_LOGGEDIN_USER,updatedUsers)
+return userToUpdate
+
     
 }
 function _createUsers(){
@@ -76,46 +129,4 @@ const users =[
     },
 ]
 return users
-}
-
-function getUser() {
-    return new Promise((resolve) => {
-const loggedinUser =storageService.post(STORAGE_KEY_LOGGEDIN_USER)
-console.log('loggedinUser',loggedinUser);
-
-resolve(loggedinUser) 
-        })
-}
-
-async function signup(credentials) {
-    
-//     const cdAfterbackend= await httpService.post('auth/signup',credentials)
-//    console.log('cdAfterbackend',cdAfterbackend);
-if(!credentials.imgUrl){
-    credentials.imgUrl=imgService.getImg('user')
-}
-if(!credentials._id){
-    credentials._id=utilService.makeId(3)
-}
-  await  storageService.post(USER_KEY,credentials)
-   localStorageService.store(STORAGE_KEY_LOGGEDIN_USER, {_id:credentials._id,fname:credentials.fname})
-   return credentials
-}
-function getEmptyUser() {
-    return {
-        _id:utilService.makeId(3),
-        fname: "",
-        userName:"",
-        password:"",
-        email: "",
-        imgUrl:'',
-        courses:[],
-        cart: [],
-    }
-}
-async function updateUser(user){
-    const updatedUser= await httpService.put(`user`,user)
-    console.log('userService updatedUser after backend ',updatedUser);
-    return updatedUser
-    
 }

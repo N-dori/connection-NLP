@@ -27,7 +27,7 @@ function _creatCourses(){
         totalHours : 255,
         totalVideos : 47,
         level : 'Practitioner',
-        price : 490.90,
+        price : '490.90',
         createdAt : "",
         Students:[
                 {
@@ -355,12 +355,12 @@ function _creatCourses(){
     totalHours : 255,
     totalVideos : 47,
     level : 'master',
-    price : 790.90,
+    price : '790.90',
     createdAt : "",
     Students:[
             {
         userImgUrl:'https://img.freepik.com/free-icon/user_318-563642.jpg',
-        username:'baba buba'
+        username:'???'
     } 
     ],
     intros:[
@@ -684,7 +684,7 @@ subEpisodes :[
     totalHours : 255,
     totalVideos : 47,
     level : 'Super',
-    price : 290.90,
+    price : '290.90',
     createdAt : "",
     Students:[
             {
@@ -692,7 +692,7 @@ subEpisodes :[
         username:'baba buba'
     } 
     ],
-    intross:[
+    intros:[
         {
            id : utilService.makeId(8),
            title : "Getting started with NLP",
