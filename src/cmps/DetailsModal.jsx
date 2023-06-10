@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { imgService } from '../services/imgService'
 import { PlaySvg } from '../svgs/PlaySvg'
+import { useDispatch } from 'react-redux'
 
-export function DetailsModal({setIsPlayerVisible}) {
+export function DetailsModal({userMsg,price, addToCart,setIsPlayerVisible,goToShoppingCart}) {
+
+  // const dispatch = useDispatch()
+useEffect(()=>{
+
+},[userMsg])
 
   const onOpenPlayer = () => {
     document.body.style='overflow-y: hidden;'
     setIsPlayerVisible(true)
   }
-
+const handelActionBtn = () => {
+  addToCart()
+}
 
   return (
 
@@ -19,7 +27,6 @@ export function DetailsModal({setIsPlayerVisible}) {
         <div className='preview-course-img-wrapper' onClick={onOpenPlayer}>
           <div className='green'></div>
           <div className='sand'>
-
           </div>
           <div className='black flex-jc'>
             <p>preview this course</p>
@@ -32,11 +39,12 @@ export function DetailsModal({setIsPlayerVisible}) {
         <section className='actions-section'>
         <p className='headline'> Make sure to sign up first</p>
         <p>Get this life changing course, and get up to 10% discount </p>
-        <div className='price'>$444.90</div>
+        <div className='price'>{price}</div>
           <div className='action-btn-container flex-jc'>
-        <button className='action-btn flex-jc-ac'><span>Buy this course</span></button>
+        <button className='action-btn flex-jc-ac' onClick={handelActionBtn} ><span>Buy this course</span></button>
 
           </div>
+          {userMsg?<span className='user-msg'>you need to sign up first</span> :''}
         <p className='full-life-time'>Full Lifetime Access</p>
 
         </section>

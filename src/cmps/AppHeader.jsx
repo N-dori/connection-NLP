@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Link, NavLink, withRouter } from "react-router-dom";
+import { Link, NavLink, useNavigate, withRouter } from "react-router-dom";
 import { imgService } from '../services/imgService';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/actions/user.actions';
 import { svgService } from '../services/svg.service';
 import { ShoppingCartSvg } from '../svgs/ShoppingCartSvg';
-
 export function AppHeader() {
     const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
     const logoUrl= 'https://res.cloudinary.com/dii16awkb/image/upload/v1685878172/%D7%9C%D7%95%D7%92%D7%95_fpn8ig.jpg'
     const [isShown, setIsShown] = useState(false)
     const dispatch = useDispatch()
+    const naviget = useNavigate()
     useEffect(() => {
         setIsShown(false)
     }, [loggdingUser])
@@ -26,7 +26,7 @@ export function AppHeader() {
         <>
             <header className="app-header full grid ">
                 <section className='action-btns flex'>
-                <ShoppingCartSvg />
+                <ShoppingCartSvg  onClick={()=>naviget('/shopping-cart')}/>
             {
                 loggdingUser?
                 <section className='user-space'>

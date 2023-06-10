@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { imgService } from '../services/imgService'
 import { PlaySvg } from '../svgs/PlaySvg'
 
-export function StickyModal({setIsPlayerVisible}) {
+export function SideBarModal({addToCart,setIsPlayerVisible, goToShoppingCart}) {
 
   const onOpenPlayer = () => {
     document.body.style='overflow-y: hidden;'
@@ -34,7 +34,7 @@ export function StickyModal({setIsPlayerVisible}) {
         <p>Get this life changing course, and get up to 10% discount </p>
         <div className='price'>$444.90</div>
           <div className='action-btn-container flex-jc'>
-        <button className='action-btn flex-jc-ac'><span>Buy this course</span></button>
+        <button className='action-btn flex-jc-ac' onClick={addToCart}><span>Buy this course</span></button>
 
           </div>
         <p className='full-life-time'>Full Lifetime Access</p>

@@ -7,27 +7,27 @@
     left:16%;
     z-index: 70;
     max-width: 21.1em;
-    grid-column: 1;
+
     
-        animation: fade-in;
-        animation-duration:  2s ;
+        // animation: fade-in;
+        // animation-duration:  0.2s ;
        
-        animation-delay: 0s;
+        // animation-delay: 0s;
     
       
       
-      @keyframes fade-in {
-        // default non-selected style of nav item
-        0% {
-        //   font-style: normal;
-          opacity: 0;
-        }
+    //   @keyframes fade-in {
+    //     // default non-selected style of nav item
+    //     0% {
+    //     //   font-style: normal;
+    //       opacity: 0;
+    //     }
      
-        // highlighted style of nav item
-        100% {
-          opacity: 1;
-        }
-      }
+    //     // highlighted style of nav item
+    //     100% {
+    //       opacity: 1;
+    //     }
+    //   }
 
     .modal-warpper {
         max-width: 21.5rem;

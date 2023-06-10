@@ -67,7 +67,7 @@ export function  App () {
       <Route path="/course/:id" element={<CouresDetails/>} />
       {/* 
             ShoppingCart:
-            ask local function for course by Id 
+            ask local function for course according to IdCourses in user cart  
             data : shopping cart
             action : load shopping cart 
             content : course img , title, total price, remove , checkout btn- to payment 
