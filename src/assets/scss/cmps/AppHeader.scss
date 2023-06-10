@@ -50,9 +50,21 @@
         grid-column: 3;
         align-items: center;
         justify-content: end;
-         .cart-svg{
-            margin-inline-end: 20px;
-            cursor: pointer;
+        .shopping-cart-container{
+            position: relative;
+          .ligth-bulb{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: aquamarine;
+            top: -15px;
+            right: 12px;
+            border-radius: 50px;
+          }  
+          .cart-svg{
+             margin-inline-end: 20px;
+             cursor: pointer;
+         }
         }
 
     }

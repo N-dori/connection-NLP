@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { imgService } from '../services/imgService'
-import { courseService } from '../services/course.service'
-import { addCart, loadCart } from '../store/actions/cart.actions'
+import {  loadCart } from '../store/actions/cart.actions'
 import { ProductList } from '../cmps/ProductList'
 
 export  function ShoppingCart() {
   const dispatch = useDispatch()
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
-  const [courses, setCourses] = useState([])
+  const [count, setCount] = useState(0)
 
   // const courses= loggdingUser
   const param = useParams()
+  useEffect(() => {
+    if(count <1){
+      setCount(count+1)
+      loadCourses()
+      printShoppingCart()
+    }
+  }, [shoppingCart])
   
-  useEffect(() => {
-    loadCourses()
-    printShoppingCart()
-  }, [])
-  useEffect(() => {
-    loadCourses()
-
-    }, [shoppingCart])
     const loadCourses = () => {
       dispatch(loadCart())
            

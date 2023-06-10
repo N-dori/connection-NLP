@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/actions/user.actions';
 import { svgService } from '../services/svg.service';
 import { ShoppingCartSvg } from '../svgs/ShoppingCartSvg';
-export function AppHeader() {
+export function AppHeader({len}) {
     const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
+    const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
     const logoUrl= 'https://res.cloudinary.com/dii16awkb/image/upload/v1685878172/%D7%9C%D7%95%D7%92%D7%95_fpn8ig.jpg'
     const [isShown, setIsShown] = useState(false)
     const dispatch = useDispatch()
@@ -14,6 +15,8 @@ export function AppHeader() {
     useEffect(() => {
         setIsShown(false)
     }, [loggdingUser])
+ 
+
     
     const onLogout = () => {
         dispatch(logout()) 
@@ -21,12 +24,13 @@ export function AppHeader() {
     const toggelMenu = () => {
         setIsShown(!isShown)
     }
+  
     return (
 
         <>
             <header className="app-header full grid ">
                 <section className='action-btns flex'>
-                <ShoppingCartSvg  onClick={()=>naviget('/shopping-cart')}/>
+                <ShoppingCartSvg len={len} loggdingUser={loggdingUser} onClick={()=>naviget('/shopping-cart')}/>
             {
                 loggdingUser?
                 <section className='user-space'>
