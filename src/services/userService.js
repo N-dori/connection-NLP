@@ -2,7 +2,7 @@
 import { storageService } from "./async-storage.service"
 import { httpService } from "./http.service"
 import { imgService } from "./imgService"
-import { localStorageService } from "./storage.service"
+import { localStorageService } from "./localStorage.service"
 import { utilService } from "./util.service"
 
 export const userService = {
@@ -12,6 +12,7 @@ export const userService = {
     vrifyPassword,
     getLoggedinUser,
     getUserById,
+    clearUserCart,
 
 }
 const USER_KEY = 'userDB'
@@ -53,8 +54,8 @@ return user
     }
 }
 
-async function  getLoggedinUser() {
-const loggedinUser = await storageService.query(STORAGE_KEY_LOGGEDIN_USER)
+ function  getLoggedinUser() {
+const loggedinUser =  localStorageService.load(STORAGE_KEY_LOGGEDIN_USER)
 console.log('loggedinUser',loggedinUser);
 return loggedinUser
      
@@ -73,6 +74,9 @@ if(!credentials._id){
 if(!credentials.cart){
     credentials.cart=[]
 }
+if(!credentials.courses){
+    credentials.courses=[]
+}
   await  storageService.post(USER_KEY,credentials)
    localStorageService.store(STORAGE_KEY_LOGGEDIN_USER, {_id:credentials._id,fname:credentials.fname, cart:[]})
    return credentials
@@ -89,14 +93,32 @@ function getEmptyUser() {
         cart: [],
     }
 }
-async function updateUser(type,userToUpdate){
+async function updateUser(userToUpdate){
+    try{
+        const users = await storageService.query(USER_KEY)
+        const updatedUsers = users.map(currUser => currUser._id === userToUpdate._id ? userToUpdate : currUser )
+        localStorageService.store(USER_KEY,updatedUsers)
+    }catch(err) {
+        console.log('could not update user', err );
+    }
     // const updatedUser= await httpService.put(`user`,user)
-   const users = await storageService.query(USER_KEY)
-   const updatedUsers = users.map(currUser => currUser._id === userToUpdate._id ? userToUpdate : currUser )
-   localStorageService.store((type==='user')?USER_KEY:STORAGE_KEY_LOGGEDIN_USER,updatedUsers)
 return userToUpdate
+  
+}
+async function clearUserCart(userId){
+    try{
+        const user = await userService.getUserById(userId)
+        console.log('clearUserCart servise  ', user );
+        user.cart = [] 
+      const updatedUser =   await updateUser(user)
+        console.log('clearUserCart servise  ', updatedUser );
 
-    
+    }catch(err) {
+        console.log('could not clear User cart ', err );
+    }
+    // const updatedUser= await httpService.put(`user`,user)
+
+  
 }
 function _createUsers(){
 const users =[

@@ -1,50 +1,63 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import {  loadCart } from '../store/actions/cart.actions'
+import { loadCart, removeProduct } from '../store/actions/cart.actions'
 import { ProductList } from '../cmps/ProductList'
+import { ProductCheckout } from '../cmps/ProductCheckout'
 
-export  function ShoppingCart() {
+export function ShoppingCart() {
   const dispatch = useDispatch()
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
-  const [count, setCount] = useState(0)
-
+  const [sum, setSum] = useState(0)
+  
   // const courses= loggdingUser
   const param = useParams()
+
   useEffect(() => {
-    if(count <1){
-      setCount(count+1)
       loadCourses()
-      printShoppingCart()
-    }
-  }, [shoppingCart])
-  
+      culcTotalPrice()
+  }, [JSON.stringify(shoppingCart)])
+     
     const loadCourses = () => {
-      dispatch(loadCart())
-           
+      dispatch(loadCart())  
+    }
+
+  const onRemove = (productId) => {
+    dispatch(removeProduct(productId))    
   }
- const printShoppingCart = () => {
-  setTimeout(() => {
-    console.log('shoppingCart',shoppingCart);
-    
-  }, 2000);
- }
-   
+  
+  const culcTotalPrice = () => {
+    let total= 0
+    if(shoppingCart){
+      shoppingCart.forEach(product => {
+        if(!product.course){return }
+        total= total+ (+product.course.price)
+        console.log('total',total);
+      });
+    } 
+    else{
+      return 
+    }
+  setSum(total.toFixed(2))
+}
 
   return (
-   
-     <section  className='my-courses-list-container'>
-      <h1>Shopping-Cart</h1>
-      
 
-{shoppingCart?
+    <section className='product-list-container grid'>
+      <header className='headline-wrapper flex-col'>
+      <h1 className='headline'>Shopping Cart</h1>
+      <p className='total-courses'>{shoppingCart?shoppingCart.length+' Courses in cart':''} </p>
+      </header>
+      <section className='product-list-wrapper'>
+      {shoppingCart ?
+        <ProductList onRemove={onRemove} shoppingCart={shoppingCart} />
+        : 'shopping cart is empty'
+      }
+      </section>
+        <ProductCheckout loggdingUser={loggdingUser} sum={sum}/>
 
-<ProductList shoppingCart={shoppingCart}/>
-:'shopping cart is empty' 
-}      
-  
 
- </section>
+    </section>
   )
 }

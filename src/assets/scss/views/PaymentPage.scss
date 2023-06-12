@@ -1,0 +1,16 @@
+.payment-page{
+    grid-column: 2;
+    flex-direction: column;
+    .action-btn{
+        width: 15em;
+        font-size: 1.2em;
+    
+    }
+    .img-warpper{
+        .payment-img{
+            width: 100%;
+        }
+    
+    }
+
+}

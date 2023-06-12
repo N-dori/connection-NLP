@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ProductPreview } from './ProductPreview'
+export function ProductList({ onRemove,shoppingCart }) {
 
-export function ProductList({ shoppingCart }) {
+  useEffect(() => {
+    
+  }, [JSON.stringify(shoppingCart)])
+  
 
   return (
-    <section className='course-preview grid'>
+      shoppingCart?
+    <section className='product-preview grid'>
       {
         shoppingCart.map((product,i) =>
-          <ProductPreview key={i} product={product.course} />
-        )}
+          <ProductPreview key={i} onRemove={onRemove} product={product.course} />
+      
+      )}
 
-    </section>
+    </section>:''
 
 
   )

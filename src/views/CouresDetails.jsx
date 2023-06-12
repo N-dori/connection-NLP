@@ -51,7 +51,7 @@ export  function CouresDetails() {
       setTimeout(() => {
          navigate('/shopping-cart')
         
-      }, 1000);
+      }, 1500);
  }
     const loadCourse = async (CourseId) => {
       const course = await courseService.getCourseById(CourseId) 
@@ -72,8 +72,8 @@ export  function CouresDetails() {
 <section className='coures-details-page-container grid'>
 <section className='headlines-wapper grid'ref={setRef} >
  <h1 className='course-title flex-clo'>{course.title}
-<h2 className='sub-title'>{course.subTitle}</h2> 
-<h2 className='sub-title info '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem odio, natus ipsum mollitia ea corporis accusantium omnis consequatur, eligendi ex reprehenderit </h2> 
+<span className='sub-title block'>{course.subTitle}</span> 
+<span className='sub-title info block '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem odio, natus ipsum mollitia ea corporis accusantium omnis consequatur, eligendi ex reprehenderit </span> 
 </h1>
 {visible?<DetailsModal userMsg={userMsg} price={course.price}  addToCart={addToCart} setIsPlayerVisible={setIsPlayerVisible}  />:""}  
  </section>  
