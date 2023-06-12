@@ -1,38 +1,42 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
+import { AlarmSvg } from '../svgs/AlarmSvg'
+import { CoursesIndex } from '../cmps/CoursesIndex'
+import { userService } from '../services/userService'
+import { MyCoursesList } from '../cmps/MyCoursesList'
 
-export  function MyCoursesIndex() {
+export function MyCoursesIndex() {
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
-  const courses= loggdingUser.courses
+  const [courses, setCourses] = useState(null)
   const param = useParams()
-   
-
+  useEffect(() => {
+    loadUserCourses()
+    
+  }, [])
+  const loadUserCourses = async  () => {
+    const user = await userService.getUserById(loggdingUser._id)
+    console.log('my user course index', user);
+    setCourses(user.courses)
+  } 
+  
   return (
-    loggdingUser?
-    <section  className='my-courses-list-container'>
-      <h1>MyCourses</h1>
-      {courses.length>0? <ul className='courses-list-container  clean'>
-{courses.map( course => 
-<section  className='course-preview grid'>
-  <span className='grid-item1'> course</span>
-  <span className='grid-item2'>name</span>
-  <span className='grid-item3'>price</span>
-  <span className='grid-item4'>total videos</span>
-  <span className='grid-item5'>watch videos</span>
+    courses?
+<>
+    <section className='my-courses-header-container grid'>
+        <header className='my-courses-header-wrapper'>
+          <h1 className='headline'>My Courses</h1>
+        </header>
+      </section> 
+        <section className='my-courses-list grid'>
+          <main className="schedule-learning-time-warpper grid">
+        <AlarmSvg/>
+        <h3 className='headline'>Schedule learning time</h3>
+        <p className='sub-headline'>Learning a little each day adds up. Research shows that students who make learning a habit are more likely to reach their goals. Set time aside to learn and get reminders using your learning scheduler.</p>
+          </main>
+          <MyCoursesList courses={courses}/>
+        </section>
 
-  <span className='course-name grid-item2' key={course._id}>{course.title}</span>
-  <div style={{width:100+"px"}} className='img-container grid-item1'>
-<img src={course.imgCoures} alt="image-coures" className="coures-img" />
-  </div>
-  <span className='grid-item3'>{course.price}</span>
-  <span className='grid-item4'>{course.totalVideos}</span>
-  <Link className='grid-item5' to={`/course-watch/${course._id}`}>watch</Link>
-</section>
-
- )}            
-</ul>:<div>no courses purchased yet..</div>}
-    </section>:<div>Loaing.....</div>
- 
+</>:<div>Loading...</div>
   )
 }

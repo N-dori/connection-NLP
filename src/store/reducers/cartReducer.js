@@ -26,7 +26,7 @@ export function cartReducers(state=INITIAL_STATE, action = {} ){
         case REMOVE_FORM_CART:
             return {
                 ...state,
-                shoppingCart: state.shoppingCart.filter(course => course._id !== action.courseId)
+                shoppingCart: state.shoppingCart.filter(course => course._id !== action.productId)
             }
 
  

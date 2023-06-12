@@ -10,6 +10,7 @@ const cart_DB= 'cart'
 export const cartService = {
     loadShoppingCart,
     addToUserCart,
+    removeFromUserCart,
     
 }
 
@@ -25,15 +26,19 @@ async function loadShoppingCart () {
 async function  _getCartCourses() {
   try{  
     // const carts = await httpService.get('coures')
-    const loggedinUser  = await userService.getLoggedinUser()
-    const user = await userService.getUserById(loggedinUser._id)
-    const { cart } = user 
-    const courses = cart.map(async couresId => {
-        return {
-            course: await courseService.getCourseById(couresId)
-        }
-    });
-    return Promise.all(courses);
+    const loggedinUser  =  userService.getLoggedinUser()
+    if(loggedinUser){
+        const user = await userService.getUserById(loggedinUser._id)
+        const { cart } = user 
+        const courses = cart.map(async couresId => {
+            return {
+                course: await courseService.getCourseById(couresId)
+            }
+        });
+        return Promise.all(courses);
+    }else{
+        return 
+    }
 
 }
     catch(err){
@@ -46,10 +51,29 @@ async function addToUserCart(couresId) {
     // const coures = await httpService.get(`coures/${couresId}`)
 
     console.log('couresId',couresId)
-    const loggedinUser  = await userService.getLoggedinUser()
+    const loggedinUser  = userService.getLoggedinUser()
     const user = await userService.getUserById(loggedinUser._id)
     user.cart.push(couresId) 
-    const updatedUser =  await userService.updateUser('user',user)
+    const updatedUser =  await userService.updateUser(user)
+   
+        return  updatedUser.cart
+    } 
+    catch(err){
+        console.log('could not add To User Cart',err);
+        
+    }
+}
+async function removeFromUserCart(courseId) {
+    try{
+    // const coures = await httpService.get(`coures/${couresId}`)
+    console.log('couresId',courseId)
+    const loggedinUser  = userService.getLoggedinUser()
+    const user = await userService.getUserById(loggedinUser._id)
+    console.log('user removeFromUserCart',user);
+    
+    const idx= user.cart.findIndex(course => course._id === courseId)
+    user.cart.splice(idx,1)
+    const updatedUser =  await userService.updateUser(user)
    
         return  updatedUser.cart
     } 

@@ -9,7 +9,6 @@ export  function Home() {
 
   
 const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
-console.log("loggdingUser in HOme",loggdingUser);
 
   return (
     <section className='home-page-container grid'>

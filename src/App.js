@@ -5,7 +5,7 @@ import './assets/scss/main.scss';
 import { Home } from './views/Home';
 import { SignupPage } from './views/SignupPage';
 import { CouresDetails } from './views/CouresDetails';
-import { PurchaseCourse } from './views/PurchaseCourse';
+import { PaymentPage } from './views/PaymentPage';
 import { MyCoursesIndex } from './views/MyCoursesIndex';
 import { CourseWatchIndex } from './views/CourseWatchIndex';
 import { ShoppingCart } from './views/ShoppingCart';
@@ -39,13 +39,12 @@ export function App() {
   const getCartLen = () => {
     if (shoppingCart) {
       const len = shoppingCart.length
-      console.log('leni len ', len);
       setLen(len)
     }
   }
   return (
 
-    <Router>
+    <Router >
       <section className="main-layout">
         {/* Appheader : 
             porps : loggedin user ,
@@ -86,7 +85,7 @@ export function App() {
            content : show modal with course trailer , list of course content (disabled) , description title , sub title , show reviews
            components: WhatYouWillLearn ,CourseContentIndex , CourseReviews , BuyCourseModal
       */}
-          <Route path="/course/:id" element={<CouresDetails />} />
+          <Route path="/course/:id"  element={<CouresDetails />} />
           {/* 
             ShoppingCart:
             ask local function for course according to IdCourses in user cart  
@@ -101,7 +100,7 @@ export function App() {
         extrenal code from payment company
        
        */}
-          <Route path="/purchase-course/:id" element={<PurchaseCourse />} />
+          <Route path="/payment/:id" element={<PaymentPage />} />
           {/* 
             MyCoursesIndex : 
             props: courses , loggedinUser
