@@ -1,5 +1,6 @@
 import { storageService } from "./async-storage.service"
 import { httpService } from "./http.service"
+import { localStorageService } from "./localStorage.service"
 import { utilService } from "./util.service"
 const course_DB= 'course'
 
@@ -8,7 +9,7 @@ _setCourses ()
 export const courseService = {
     getCourses,
     getCourseById,
-    
+    updateCoursesStudents,
 }
 
 function _setCourses () {
@@ -29,7 +30,7 @@ function _creatCourses(){
         level : 'Practitioner',
         price : '490.90',
         createdAt : "",
-        Students:[
+        students:[
                 {
             userImgUrl:'https://img.freepik.com/free-icon/user_318-563642.jpg',
             username:'mama mia'
@@ -357,7 +358,7 @@ function _creatCourses(){
     level : 'master',
     price : '790.90',
     createdAt : "",
-    Students:[
+    students:[
             {
         userImgUrl:'https://img.freepik.com/free-icon/user_318-563642.jpg',
         username:'???'
@@ -686,7 +687,7 @@ subEpisodes :[
     level : 'Super',
     price : '290.90',
     createdAt : "",
-    Students:[
+    students:[
             {
         userImgUrl:'https://img.freepik.com/free-icon/user_318-563642.jpg',
         username:'baba buba'
@@ -1029,6 +1030,56 @@ return course
     } 
     catch(err){
         console.log('could not load coures by id ',err);
+        
+    }
+}
+async function _updateCourse(loggdingUser,courseToUpdate) {
+    try{
+      courseToUpdate.students.push({
+        id:loggdingUser._id,
+        fname:loggdingUser.fname,
+        ImgUrl:loggdingUser.imgUrl
+    })
+  return courseToUpdate
+
+    } 
+    catch(err){
+        console.log('could not load coures by id ',err);
+        
+    }
+}
+async function updateCoursesStudents(loggdingUser,shoppingCart) {
+    try{
+    // const coures = await httpService.get(`coures/${couresId}`)
+
+    //first getting all relevent courses that needs to be updeted
+    // from data base into array coursesToUpdate
+    const courses = await storageService.query(course_DB)
+    console.log('coursesToUpdate in course service', courses);
+    let coursesToUpdate=[];
+    shoppingCart.forEach(product => {
+        let  courseToUpdate = courses.find(course => course._id === product.course._id)
+        coursesToUpdate.push(courseToUpdate)
+    });
+
+    // each get send to local func to be updated with their students
+    // and get pushed to local array = updatdtedCourses
+    let updatdtedCourse
+    let updatdtedCourses = []
+   coursesToUpdate.forEach(course => {
+       updatdtedCourse = _updateCourse(loggdingUser,course) 
+       updatdtedCourses.push(updatdtedCourse)
+   },
+   // at this point updating the origenal array with the updated courses and saving to storage 
+   updatdtedCourses.forEach(updatdtedCourse =>{
+       courses.map(currCourse => currCourse._id === updatdtedCourse._id ? updatdtedCourse : currCourse )
+   }))    
+    localStorageService.store(course_DB,courses)
+    console.log('coursesToUpdate in course service', courses);
+    return courses
+    } 
+    catch(err){
+        console.log('could not Update coures by id ',err);
         
     }
 }

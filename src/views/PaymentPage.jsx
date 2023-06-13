@@ -5,6 +5,7 @@ import { updateUser } from '../store/actions/user.actions'
 import { courseService } from '../services/course.service'
 import { userService } from '../services/userService'
 import { clearCart } from '../store/actions/cart.actions'
+import { updateCourse } from '../store/actions/course.actions'
 
 export  function PaymentPage() {
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
@@ -21,12 +22,13 @@ export  function PaymentPage() {
         
       });
       console.log('user after payment in payment',loggdingUser);
-        dispatch(updateUser(loggdingUser))
-        setTimeout(() => {
-          dispatch(clearCart(loggdingUser._id))
-          
-        }, 1000);
-        navigate('/')
+      dispatch(updateUser(loggdingUser))
+      setTimeout(() => {
+        dispatch(clearCart(loggdingUser._id))
+        
+      }, 1000);
+      navigate('/')
+      dispatch(updateCourse(loggdingUser,shoppingCart))
     }
 
   return (

@@ -17,4 +17,23 @@ export function loadCourses(){
         console.log('can not load courses',err);
     }
 }
+export function updateCourse(loggdingUser,shoppingCart){
+    try{
+
+        return async(dispatch,getState)=>{
+            //getting from service updated courses
+            const courses= await courseService.updateCoursesStudents(loggdingUser,shoppingCart)
+            console.log('courses in actions after backend',courses);
+            
+            const action = {
+                type: SET_COURSES,
+                courses
+            }
+           dispatch(action)
+    }
+     
+    }catch(err){
+        console.log('can not load courses',err);
+    }
+}
 
