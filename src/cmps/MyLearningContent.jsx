@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { XSvg } from '../svgs/XSvg'
 import { Leasson } from './Leasson'
 
-export  function MyLearningContent({getLecturesSum,episodes,title}) {
+export  function MyLearningContent({getLecturesSum,episodes,setVideoUrl}) {
   const [isShown,setIsShown]=useState(false)
   const [count, setCount] = useState(1)
 
@@ -24,6 +24,7 @@ export  function MyLearningContent({getLecturesSum,episodes,title}) {
         setCount={setCount}
         count={count}
         getLecturesSum={getLecturesSum}
+        setVideoUrl={setVideoUrl}
         />
       })}
 </>
