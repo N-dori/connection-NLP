@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { YouTube } from '../cmps/YouTube'
 import { MyLearningContent } from '../cmps/MyLearningContent'
-import { useParams } from 'react-router-dom'
+import { Link, Outlet, useParams } from 'react-router-dom'
 import { courseService } from '../services/course.service'
 import ReactPlayer from 'react-player'
+import { OutletMenu } from '../cmps/OutletMenu'
 
 
 export  function MyLearning() {
   const  param = useParams()
   const [course, setCourse] = useState()
-  const [total, setTotal] = useState([])
   const [videoUrl, setVideoUrl] = useState(false)
   
   useEffect(()=>{
@@ -37,6 +37,7 @@ export  function MyLearning() {
     setCourse(course)    
     console.log('my learning course',course); 
   }
+ 
 
   return (
     course?
@@ -48,21 +49,24 @@ export  function MyLearning() {
       playing
       width="100%"
       height="100%"
-       url={'https://www.youtube.com/watch?v=O2YfmQFcA-k'} controls/>
+       url={videoUrl?videoUrl:course.episodes[0].subEpisodes[0].videoUrl} controls/>
   </section>
   <section className='my-learning-content-container'>
   <MyLearningContent 
   episodes={course.episodes}
   subEpisodes={course.subEpisodes}
   getLecturesSum={getLecturesSum}
+  setVideoUrl={setVideoUrl}
  
   />
 
 
       </section>
-  <section className='outlets-contianer'>
-  <section className='outlets-warpper'>
+  <section className='course-menu-contianer'>
+  <OutletMenu/>
 
+  <section className='outlets-warpper'>
+<Outlet></Outlet>
   </section>
   </section>
   </section>

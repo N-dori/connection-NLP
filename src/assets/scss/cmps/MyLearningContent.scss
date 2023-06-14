@@ -25,6 +25,7 @@
 
             }
             .pannel-container {
+                direction: rtl;
                 background-color: #f7f9fa;
                 border-block:1px solid #d1d7dc;
                 padding: 0.8em;
@@ -64,6 +65,7 @@
     
                 .content-preview {
                     color: #222222;
+                    cursor: pointer;
                     padding: 0.3em;
                     padding-left: 0.8em;
                     gap: 0.3em;

@@ -21,6 +21,7 @@ import { AppFooter } from './cmps/AppFooter';
 import { useEffect, useState } from 'react';
 import { loadCart } from './store/actions/cart.actions';
 import { useDispatch, useSelector } from 'react-redux';
+import { CourseQ } from './cmps/CourseQ';
 
 export function App() {
   // load data from store : loggedin user ,courses ,reviews
@@ -120,10 +121,11 @@ export function App() {
 
         */}
           <Route path="/my-learning/:id" element={<MyLearning />} >
-            {/* <Route path='/my-learning/course-overiew' element={<CourseOverview />} />
-            <Route path='/my-learning/serach-content' element={<SearchContent />} />
-            <Route path='/my-learning/reviews' element={<CourseReviews />} />
-            <Route path='/my-learning/announcements' element={<CourseAnnouncements />} /> */}
+            <Route path='/my-learning/:id/course-overiew' element={<CourseOverview />} />
+            <Route path='/my-learning/:id/serach-content' element={<SearchContent />} />
+            <Route path='/my-learning/:id/reviews' element={<CourseReviews />} />
+            <Route path='/my-learning/:id/announcements' element={<CourseAnnouncements />} />
+            <Route path='/my-learning/:id/Q&A' element={<CourseQ />} />
           </Route>
           {/* 
               Dashboard : 
