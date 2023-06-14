@@ -10,7 +10,7 @@ import { MyCoursesIndex } from './views/MyCoursesIndex';
 import { CourseWatchIndex } from './views/CourseWatchIndex';
 import { ShoppingCart } from './views/ShoppingCart';
 import { LoginPage } from './views/LoginPage';
-import { MyCourse } from './views/MyCourse';
+import { MyCourse, MyLearning } from './views/MyLearning';
 import { CourseOverview } from './cmps/CourseOverview';
 import { SearchContent } from './cmps/SearchContent';
 import { CourseReviews } from './cmps/CourseReviews';
@@ -119,11 +119,11 @@ export function App() {
            components: CourseContentIndex , CourseOverview, SearchContent, CourseReviews ,CourseAnnouncements
 
         */}
-          <Route path="/my-course" element={<MyCourse />} >
-            <Route path='/my-course/course-overiew' element={<CourseOverview />} />
-            <Route path='/my-course/serach-content' element={<SearchContent />} />
-            <Route path='/my-course/reviews' element={<CourseReviews />} />
-            <Route path='/my-course/announcements' element={<CourseAnnouncements />} />
+          <Route path="/my-learning/:id" element={<MyLearning />} >
+            {/* <Route path='/my-learning/course-overiew' element={<CourseOverview />} />
+            <Route path='/my-learning/serach-content' element={<SearchContent />} />
+            <Route path='/my-learning/reviews' element={<CourseReviews />} />
+            <Route path='/my-learning/announcements' element={<CourseAnnouncements />} /> */}
           </Route>
           {/* 
               Dashboard : 
@@ -136,8 +136,6 @@ export function App() {
           <Route path="/dash-board" element={<DashBoard />} />
 
 
-
-          <Route path="/course-watch/:id" element={<CourseWatchIndex />} />
         </Routes>
         <AppFooter />
 

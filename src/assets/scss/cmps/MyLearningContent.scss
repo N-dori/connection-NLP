@@ -1,0 +1,97 @@
+
+
+        .my-learning-content-container {
+      position: relative;
+      grid-column: 2;
+      grid-row: 1/-1;
+    // overflow: hidden;
+    max-height: 100%;
+    overflow-y:scroll ;
+    top: 0em;
+    .my-learning-header-wapper {
+          position: sticky;
+          right: 0;
+          // width: 100%;
+
+                // top: 0;
+                .headline {
+                    margin: 1rem;
+                
+                    font-size: 1.1em;
+                    font-weight: bold;
+                    text-align: end;
+                    color: #222;
+                }
+
+            }
+            .pannel-container {
+                background-color: #f7f9fa;
+                border-block:1px solid #d1d7dc;
+                padding: 0.8em;
+                .pannel-wrapper {
+                    .video-svg{
+                        margin-inline-end: .6em;
+                     }
+                    .pannel-title{
+                        font-size: 1.1em;
+                        font-weight: 600;
+                    }
+                    .expand-svg {
+                        transition: transform 0.3s ease-out;
+                        margin-inline-start: 1em;
+                    }
+                    .rotated{
+                        transform: rotate(180deg);
+                        transition: transform 0.3s ease-out;
+                    }
+                    .parts{
+                    font-size: .8em;
+                    }
+                }
+    
+            }
+            .pannel-content-wrapper {
+                
+                padding: 1px;
+                border: 1px solid #d1d7dc;
+                // gap: 5px;
+    
+                .tv-svg {
+                    margin-top: 5px;
+                    height:14px;
+                    width:20px;
+                }
+    
+                .content-preview {
+                    color: #222222;
+                    padding: 0.3em;
+                    padding-left: 0.8em;
+                    gap: 0.3em;
+                    .content-title{
+                        font-weight: 600;
+                        font-size: 0.9em;
+                        margin-inline-start: 3px;
+                    }
+                    .video-min{
+                        font-size: 0.8em;
+                        gap:0.1em;
+                        .num{
+                            font-size: 0.9em;
+                            margin-top: 2px;
+                        }
+                    }
+    
+                }
+              
+    
+                .intro {
+                    cursor: pointer;
+                    color: #401b9c;
+                    text-decoration: underline;
+    
+                }
+    
+            }
+        }
+
+
