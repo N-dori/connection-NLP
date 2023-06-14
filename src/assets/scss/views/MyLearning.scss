@@ -1,0 +1,48 @@
+.my-leanring-container{
+    grid-column: 1/-1;
+    // max-height:63.6em;
+    
+    .my-learning-warpper{
+    position: relative;
+    grid-template-columns: minmax(20%, 75%) minmax(8em, 25%);
+    grid-template-rows: minmax(10%, 70vh) minmax(10%, 50vh);;
+    .video-player-container{
+        grid-column: 1;   
+        grid-row: 1;
+        max-height: 100%;
+        width: 100%;
+        
+    .video-player-warpper {
+        position: relative;
+        bottom: 420px;
+
+        .player-wrapper {
+            width: auto; // Reset width
+            height: auto; // Reset height
+        }
+
+        .react-player {
+            padding-top: 56.25%; // Percentage ratio for 16:9
+            position: relative; // Set to relative
+        }
+
+        .react-player>div {
+            position: absolute; // Scaling will occur since parent is relative now
+        }
+
+    }
+    }
+  
+}
+
+.outlets-contianer{
+    position: static;
+    // margin-top:49.2%;
+    grid-column: 1;   
+    grid-row: 2;
+    // width: 100%;
+    height:27.5em;
+    background-color: orange;
+
+    }
+}

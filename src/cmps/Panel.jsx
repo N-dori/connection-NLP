@@ -3,7 +3,7 @@ import { ExpandSvg } from '../svgs/ExpandSvg'
 import { TvSvg } from '../svgs/TvSvg'
 
 
-export  function Panel({title,subEpisodes,lectures,min,isAllExpaned ,i}) {
+export  function Panel({title,subEpisodes,lectures,min,isAllExpaned }) {
 
 const [isShown,setIsShown]=useState(false)
     useEffect(() => {
@@ -33,9 +33,6 @@ const [isShown,setIsShown]=useState(false)
     return  <article key={subEpisode.id} className='content-preview flex-sb'>
       <div className='flex-ac'> <TvSvg/> {title} </div> <span>{min} min </span> 
      </article>})
-  
-
-
       }
    
      </section>

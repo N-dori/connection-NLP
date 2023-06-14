@@ -12,7 +12,7 @@ export function MyCoursesIndex() {
   const param = useParams()
   useEffect(() => {
     loadUserCourses()
-    
+    console.log(param);
   }, [])
   const loadUserCourses = async  () => {
     const user = await userService.getUserById(loggdingUser._id)
