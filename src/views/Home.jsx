@@ -6,6 +6,9 @@ import { slides } from '../services/swiperService';
 import { AppRecommendations } from '../cmps/AppRecommendations'
 
 export  function Home() {
+useEffect(() => {
+window.scrollTo(0,0)
+}, [])
 
   
 const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)

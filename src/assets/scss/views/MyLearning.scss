@@ -5,7 +5,7 @@
     .my-learning-warpper{
     position: relative;
     grid-template-columns: minmax(20%, 75%) minmax(8em, 25%);
-    grid-template-rows: minmax(10%, 70vh) minmax(10%, 50vh);;
+    grid-template-rows: minmax(10%, 70vh) minmax(10%, auto);;
     .video-player-container{
         grid-column: 1;   
         grid-row: 1;
@@ -40,16 +40,21 @@
     grid-column: 1;   
     grid-row: 2;
 
-    min-height:27.5em;
-    background-color: orange;
+    // min-height:27.5em;
+    // background-color: orange;
     .course-menu{
         direction: rtl;
         font-weight: 600;
-        padding-inline-start: 1em;
+        padding-inline-start: 2em;
         gap:3em;
         background-color: #fbfbfb;
-        border-top:1px solid #3333;
+        border-top:2px solid #444444;
         border-bottom:1px solid #9c9c9c ;
+        .search-svg{
+            width:20px;
+            height: 20px;
+            margin-top: 0.5em;
+        }
     }
     .menu-link-wrapper{
 
@@ -61,7 +66,7 @@
     }
 }}
 .link-active{
-    border-bottom: 1px solid #222222;
+    border-bottom: 2px solid #222222;
     .link{
         color: #222222;
         

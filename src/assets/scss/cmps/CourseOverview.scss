@@ -1,0 +1,30 @@
+.course-overview-container{
+    padding-inline: 5em;
+    overflow-x: scroll;
+    .schedule-learning-time-warpper{
+        grid-template-columns:1fr 15fr;
+   
+        margin-top: 3em;
+        padding: 1em;
+        border: 1px solid #9e9b9b;
+        width: 100%;
+        // height: 12em;
+        .alarm-svg{
+    grid-column: 1;
+    
+}
+.headline{
+    margin-top: .5em;
+    margin-bottom: .5em;
+        grid-column: 2;
+        
+    }
+    .sub-headline{
+        grid-column: 2;
+
+    }
+    }
+    .about-this-course{
+        font-size: 1.5em;
+    }
+}
