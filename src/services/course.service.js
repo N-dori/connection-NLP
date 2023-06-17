@@ -10,6 +10,7 @@ export const courseService = {
     getCourses,
     getCourseById,
     updateCoursesStudents,
+    getCoureContent,
 }
 
 function _setCourses () {
@@ -1009,7 +1010,7 @@ subEpisodes :[
 return courses
 }
 
-async function getCourses() {
+async function getCourses(filterBy) {
   try{  
     // const courses = await httpService.get('coures')
     const courses = await storageService.query(course_DB)
@@ -1017,6 +1018,44 @@ async function getCourses() {
 }
     catch(err){
         console.log('could not load courses',err);
+        
+    }
+}
+async function getCoureContent(currCourseId,filterBy) {
+  try{  
+    // const courses = await httpService.get('coures')
+    console.log('currCourseId in service',currCourseId);
+    console.log('currCourseId in service',filterBy);
+    if(!filterBy){
+        return 
+    }
+    const course = await getCourseById(currCourseId)
+    const  {episodes} = course
+    const  {title} = filterBy
+    let matches =[]
+    if(title){
+        episodes.forEach(episode=>{
+            if(episode.title.includes(title)){
+                matches.push(episode)
+            }
+           episode.subEpisodes.map(subEpisod =>
+                {
+                    if(subEpisod.title.includes(title)){
+                        matches.push(episode)
+                    }
+                    console.log('filterBy in service',matches);
+                    })
+               
+                
+            })
+                return matches
+                
+            }
+
+    // return courses
+}
+    catch(err){
+        console.log('could not search content',err);
         
     }
 }
