@@ -7,13 +7,14 @@ import ReactPlayer from 'react-player'
 import { OutletMenu } from '../cmps/OutletMenu'
 
 
-export  function MyLearning() {
+export  function MyLearning({videoUrl,setVideoUrl,setCurrCourseId}) {
   const  param = useParams()
   const [course, setCourse] = useState()
-  const [videoUrl, setVideoUrl] = useState(false)
+ 
   
   useEffect(()=>{
     loadCourse(param.id)
+    setCurrCourseId(param.id)
     getLecturesSum()
   },[])
 

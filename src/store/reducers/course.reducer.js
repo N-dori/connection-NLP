@@ -10,7 +10,7 @@ const INITIAL_STATE = {
      courses:null,
         SelectedCourseId:null,
            filterBy:{
-           title:""
+           title:"Ajax"
 }
 }
 export function courseReducers(state=INITIAL_STATE, action = {} ){

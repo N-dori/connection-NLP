@@ -1,5 +1,5 @@
 import { courseService } from "../../services/course.service"
-import { SET_COURSES } from "../reducers/course.reducer"
+import { SET_COURSES, SET_FILTER_BY } from "../reducers/course.reducer"
 
 export function loadCourses(){
     try{
@@ -35,5 +35,14 @@ export function updateCourse(loggdingUser,shoppingCart){
     }catch(err){
         console.log('can not load courses',err);
     }
+
+}
+export function setFilterBy(filterBy){
+
+    return (dispatch) => {
+            const action = {type: SET_FILTER_BY, filterBy}
+            dispatch(action)
+ 
+}
 }
 
