@@ -7,6 +7,7 @@ export function AnnouncementsList({loggedinUser,courseAnnouncements }) {
     return (
 
         <section className='profile-announcement-container'>
+            {/* <h1 className='headline'>Announcements:</h1> */}
             {courseAnnouncements.map(announcement => {
            return <AnnouncementsPreview loggedinUser={loggedinUser} announcement={announcement}/>
 

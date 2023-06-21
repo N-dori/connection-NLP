@@ -48,3 +48,6 @@ transition: opacity .8s ease;
 .no-scroll{
     overflow-y: hidden;
 }
+textarea:focus, input:focus{
+    outline: none;
+}
