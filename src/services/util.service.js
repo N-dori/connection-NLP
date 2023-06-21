@@ -7,7 +7,8 @@ export const utilService = {
     debounce,
     randomPastTime,
     saveToStorage,
-    loadFromStorage
+    loadFromStorage,
+    isFuond
 }
 
 function makeId(length = 6) {
@@ -63,4 +64,15 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
+}
+function isFuond(arr,str){
+    let res 
+    arr.forEach(item => {
+        if(item.id === str){
+            res = true
+        }else {
+            res = false
+        }
+    });
+    return res
 }

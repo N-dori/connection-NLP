@@ -25,6 +25,7 @@ export  function MyLearningContent({getLecturesSum,episodes,setVideoUrl}) {
         count={count}
         getLecturesSum={getLecturesSum}
         setVideoUrl={setVideoUrl}
+        shown={false}
         />
       })}
 </>

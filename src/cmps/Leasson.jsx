@@ -4,17 +4,15 @@ import { TvSvg } from '../svgs/TvSvg'
 import { VideoSvg } from '../svgs/VideoSvg'
 import { SubLeasson } from './SubLeasson'
 
-export function Leasson({  subEpisodes, title, min,i,setVideoUrl }) {
+export function Leasson({  subEpisodes, title, min,i,setVideoUrl,shown }) {
 
-    const [isShown, setIsShown] = useState(false)
+    const [isShown, setIsShown] = useState(shown)
     const [isClicked, setIsClicked] = useState(false)
-
+ 
     const onVideoClick = (idx,videoUrl) =>{
         console.log('i',idx);
           setIsClicked(idx)
           setVideoUrl(videoUrl)
-          console.log('isClicked',isClicked); 
-          console.log('videoUrl',videoUrl); 
       }
     const expand = () => {
         setIsShown(!isShown)

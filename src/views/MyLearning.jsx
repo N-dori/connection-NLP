@@ -10,13 +10,15 @@ import { OutletMenu } from '../cmps/OutletMenu'
 export  function MyLearning({videoUrl,setVideoUrl,setCurrCourseId}) {
   const  param = useParams()
   const [course, setCourse] = useState()
- 
+  
   
   useEffect(()=>{
     loadCourse(param.id)
     setCurrCourseId(param.id)
     getLecturesSum()
+   
   },[])
+
 
   const getLecturesSum = () =>{
     let total = []
@@ -29,19 +31,21 @@ export  function MyLearning({videoUrl,setVideoUrl,setCurrCourseId}) {
         total.push(i)
        
       }
-      console.log('sum sum sum',total);
+      console.log('sum sum sum',course._id);
         return total
     }
    }
   const loadCourse = async (CourseId) => {
     const course = await courseService.getCourseById(CourseId) 
-    setCourse(course)    
+    setCourse(course)  
+
     console.log('my learning course',course); 
   }
  
 
   return (
     course?
+    
     <section className='my-leanring-container '>
       <section className='my-learning-warpper grid '>
   <section className='video-player-container'>
@@ -64,8 +68,7 @@ export  function MyLearning({videoUrl,setVideoUrl,setCurrCourseId}) {
 
       </section>
   <section className='course-menu-contianer'>
-  <OutletMenu/>
-
+ <OutletMenu />
   <section className='outlets-warpper'>
 <Outlet></Outlet>
   </section>

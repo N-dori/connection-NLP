@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { SearchSvg } from '../svgs/SearchSvg'
 
 export  function OutletMenu() {
-    const [isClicked, setIsClick] = useState()
+  const navigate= useNavigate()
+  const  param = useParams()
+    const [isClicked, setIsClick] = useState('Overview')
+
+    useEffect(() => {
+      navigate(`/my-learning/${param.id}/course-overiew`)
+    }, [])
+    
     const setUnderline = (type) => {
         switch (type) {
           case 'Search':
