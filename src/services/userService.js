@@ -62,11 +62,14 @@ return loggedinUser
 }
 
 async function signup(credentials) {
+    //     const cdAfterbackend= await httpService.post('auth/signup',credentials)
+    //    console.log('cdAfterbackend',cdAfterbackend);
     
-//     const cdAfterbackend= await httpService.post('auth/signup',credentials)
-//    console.log('cdAfterbackend',cdAfterbackend);
-if(!credentials.imgUrl){
-    credentials.imgUrl=imgService.getImg('user')
+    if(credentials.fname==='Nadav Dori'){
+        credentials.isAdmin=true 
+    }
+    if(!credentials.imgUrl){
+        credentials.imgUrl=imgService.getImg('user')
 }
 if(!credentials._id){
     credentials._id=utilService.makeId(3)
@@ -77,8 +80,13 @@ if(!credentials.cart){
 if(!credentials.courses){
     credentials.courses=[]
 }
-  await  storageService.post(USER_KEY,credentials)
-   localStorageService.store(STORAGE_KEY_LOGGEDIN_USER, {_id:credentials._id,fname:credentials.fname, cart:[]})
+console.log('credentials',credentials);
+await  storageService.post(USER_KEY,credentials)
+localStorageService.store(STORAGE_KEY_LOGGEDIN_USER, {_id:credentials._id,
+    fname:credentials.fname,
+                                                         isAdmin:credentials.isAdmin,
+                                                         imgUrl:credentials.imgUrl,
+                                                         cart:[]})
    return credentials
 }
 function getEmptyUser() {
@@ -89,6 +97,7 @@ function getEmptyUser() {
         password:"",
         email: "",
         imgUrl:'',
+        isAdmin:false,
         courses:[],
         cart: [],
     }

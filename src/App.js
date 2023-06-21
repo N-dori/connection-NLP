@@ -7,7 +7,6 @@ import { SignupPage } from './views/SignupPage';
 import { CouresDetails } from './views/CouresDetails';
 import { PaymentPage } from './views/PaymentPage';
 import { MyCoursesIndex } from './views/MyCoursesIndex';
-import { CourseWatchIndex } from './views/CourseWatchIndex';
 import { ShoppingCart } from './views/ShoppingCart';
 import { LoginPage } from './views/LoginPage';
 import { MyCourse, MyLearning } from './views/MyLearning';
@@ -24,6 +23,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CourseQ } from './cmps/CourseQ';
 import { setFilterBy } from './store/actions/course.actions';
 import { courseService } from './services/course.service';
+import { loadAnnouncements } from './store/actions/announcement.actions';
 
 export function App() {
   // load data from store : loggedin user ,courses ,reviews
@@ -38,6 +38,7 @@ export function App() {
 
   useEffect(() => {
     dispatch(loadCart())
+    dispatch(loadAnnouncements())
   }, [])
 
   //gtting length of shopping cart
@@ -53,11 +54,11 @@ export function App() {
 
   const onChangeFilter = (filterBy) => {
     dispatch(setFilterBy(filterBy))
-    getContent(filterBy)
+     getContent(filterBy) 
   
 }
  const getContent = async (filterBy) => {
-  const content = await courseService.getCoureContent(currCourseId,filterBy)
+  const content = await courseService.getCourseContent(currCourseId,filterBy)
   console.log('content',content);
   setContent(content)
   }
@@ -143,7 +144,7 @@ export function App() {
             <Route path='/my-learning/:id/course-overiew' element={<CourseOverview />} />
             <Route path='/my-learning/:id/serach-content' element={<SearchContent setVideoUrl={setVideoUrl} content={content}  onChangeFilter={onChangeFilter} filterBy={filterBy} />} />
             <Route path='/my-learning/:id/reviews' element={<CourseReviews />} />
-            <Route path='/my-learning/:id/announcements' element={<CourseAnnouncements />} />
+            <Route path='/my-learning/:id/announcements' element={<CourseAnnouncements currCourseId={currCourseId}/>} />
             <Route path='/my-learning/:id/Q&A' element={<CourseQ />} />
           </Route>
           {/* 

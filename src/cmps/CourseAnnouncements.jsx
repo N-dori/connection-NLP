@@ -1,35 +1,91 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { imgService } from '../services/imgService'
+import { announcementService } from '../services/announcement.service'
+import { userService } from '../services/userService'
+import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { addAnnouncements } from '../store/actions/announcement.actions'
+import { AnnouncementsList } from './AnnouncementsList'
 
-export  function CourseAnnouncements() {
+export function CourseAnnouncements() {
+  
+  const  param = useParams()
+  const dispatch =useDispatch()
+  const announcements = useSelector((storeState) => storeState.announcementModule.announcements)
+
+  const [announcement, setAnnouncement] = useState(announcementService.getEmptyAnnouncement())
+  const [courseAnnouncements, setCourseAnnouncements] = useState(null)
+  const [loggedinUser, setLoggedinUser] = useState()
+
+  useEffect(()=>{
+    loadLoggedinUser()
+    loadCourseAnnouncements()
+  },[announcements])
+
+ const loadCourseAnnouncements = () => {
+  if(announcements){
+    console.log('courseAnnouncements',announcements, param.id);
+   const courseAnnouncements= announcements.filter(announcement=>announcement.courseId === param.id)
+   console.log('courseAnnouncements',courseAnnouncements);
+   setCourseAnnouncements(courseAnnouncements)
+  }
+ }
+
+  const loadLoggedinUser = ()=> {
+    setLoggedinUser(userService.getLoggedinUser())
+  }
+
+  const handleChange = ({ target }) => {
+    const field = target.name
+    let value = target.value
+  setAnnouncement((preCAnnoun) => ({ ...preCAnnoun, [field]: value }))
+}
+
+const handelSubmit = (ev) => {
+  ev.preventDefault()
+  announcement.courseId= param.id
+  announcement.givenBy= loggedinUser
+  announcement.givenAt= Date.now()
+  console.log('announcement',announcement);
+   dispatch(addAnnouncements(announcement))
+  }
+
   return (
+    loggedinUser?
     <section className='announcements-container'>
-      <article className='announcement-wrapper'>
-      <header className='profile-container flex'>
-        <div className='img-container'>
-          <img className='profile-img' src={imgService.getImg('user')}/>
-        </div>
-        <div className='profile-name-container flex-col'>
-          <span className='profile-name'>Admin Adminuv</span> 
-          <span className='profile-title'>Master NLP</span> 
+      <section className='announcement-wrapper'>
+        {
+        loggedinUser.isAdmin ?
+        
+        <section className='announcement-input-container flex-col'>
+        <header className='profile-container flex'>
+          <div className='img-container'>
+            <img className='profile-img' src={loggedinUser.imgUrl} />
           </div>
-      </header>
-      <section className='profile-announcement-container'>
-        <h1 className='announcement-title'>help me to improve </h1>
-        <p className='profile-announcement'>"Hey there,
-PRE-S: If you already got this from my newsletter (which you should totally subscribe to ;) just ignore this message.
-First of all, thank you for being a wonderful student of this course!
-Now as 2021 comes to a close, I'm starting to think about the next big course I'm gonna build in 2022. But I need your feedback to make it even better than my current courses.
-So if you want to give your (very valuable!) feedback for my next course, please fill out this quick form, it will take you 5 minutes max, I promise.Thanks a ton! Your help really makes a difference :DHappy coding!Jonas</p>
-      "</section>
-      <section className='comment-container flex'>
-      <section className='comment-user-img-container '>
-        <img className='user-img' src={imgService.getImg('user')}/>
+          <div className='profile-name-container flex-col'>
+            <span className='profile-name'>{loggedinUser.fname}</span>
+            <span className='profile-title'>Master NLP</span>
+          </div>
+        </header>
+          <section className='announcement-user-img-container '>
+            <img className='user-img' src={loggedinUser.imgUrl} />
+            <p><label htmlFor="content">Your announcement:</label></p>
+          </section>
+          <form onSubmit={handelSubmit}>
+            <input onChange={handleChange} value={announcement.title} className='announcement-title' placeholder='Enter title' name='title' id='title' type='text' />
+            <textarea onChange={handleChange} value={announcement.content} id="content" name="content" rows="10" cols="50" placeholder='Enter announcement'></textarea>
+            <br />
+            <button type="submit" value="send">send</button>
+          </form>
+        </section> : ''
+        }
+{courseAnnouncements?
+<AnnouncementsList loggedinUser={loggedinUser} courseAnnouncements={courseAnnouncements}/>
+:"No Announcements was given to this course"
+}
+        
       </section>
-      <input className='comment-input' placeholder='Enter your comment' name='comment' id='comment' type='text'/>
-      </section>
-      </article>
 
-    </section>
+    </section>:<div>Loading...</div>
   )
 }

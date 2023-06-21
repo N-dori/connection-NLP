@@ -15,7 +15,14 @@
 
     }
 }
-.profile-name-container{}
+.announcement-input-container{
+    .announcement-user-img-container{
+        width: 4em;
+      .user-img{
+        width: 100%;
+      }  
+    }
+}
     }
     .profile-announcement-container{
         .profile-announcement{}
