@@ -3,7 +3,7 @@ import { CommentPreview } from './CommentPreview'
 
 export  function CommentsList({comments}) {
   return (
-    <section className='comments-container' >
+    <section className='comments-container flex-col' >
         {
             comments.map(comment =>{
                 return <CommentPreview comment={comment}/>

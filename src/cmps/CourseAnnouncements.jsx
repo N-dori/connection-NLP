@@ -48,6 +48,7 @@ const handelSubmit = (ev) => {
   announcement.givenAt= Date.now()
   console.log('announcement',announcement);
    dispatch(addAnnouncements(announcement))
+   setAnnouncement(announcementService.getEmptyAnnouncement())
   }
 
   return (
@@ -67,19 +68,18 @@ const handelSubmit = (ev) => {
             <span className='profile-title'>Master NLP</span>
           </div>
         </header>
-          <section className='announcement-user-img-container '>
-            <img className='user-img' src={loggedinUser.imgUrl} />
+     
+          <form className='form-container flex-col' onSubmit={handelSubmit}>
             <p><label htmlFor="content">Your announcement:</label></p>
-          </section>
-          <form onSubmit={handelSubmit}>
-            <input onChange={handleChange} value={announcement.title} className='announcement-title' placeholder='Enter title' name='title' id='title' type='text' />
-            <textarea onChange={handleChange} value={announcement.content} id="content" name="content" rows="10" cols="50" placeholder='Enter announcement'></textarea>
+            <input className='announcement-title'  onChange={handleChange} value={announcement.title}  placeholder='Enter title' name='title' id='title' type='text' />
+            <textarea   className="text-area-input" onChange={handleChange} value={announcement.content} id="content" name="content" placeholder='Enter announcement'></textarea>
             <br />
-            <button type="submit" value="send">send</button>
+            <button className="announcement-submit-btn" type="submit" value="send">send</button>
           </form>
         </section> : ''
         }
 {courseAnnouncements?
+
 <AnnouncementsList loggedinUser={loggedinUser} courseAnnouncements={courseAnnouncements}/>
 :"No Announcements was given to this course"
 }
