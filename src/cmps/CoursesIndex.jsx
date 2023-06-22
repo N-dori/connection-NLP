@@ -14,9 +14,9 @@ export  function CoursesIndex() {
         console.log('courses',courses);
     }, [])
     return (
-        <>
+  
         <CouresList courses={courses}/>
-        </>
+    
   
   )
 }

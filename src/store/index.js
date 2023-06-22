@@ -5,6 +5,7 @@ import { userReducers } from "./reducers/user.reducer"
 import { courseReducers } from "./reducers/course.reducer"
 import { cartReducers } from "./reducers/cartReducer"
 import { announcementReducers } from "./reducers/announcement.reducer"
+import { reviewReducers } from "./reducers/review.reducer "
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     couresModule:  courseReducers,
     userModule: userReducers,
  cartModule: cartReducers,
+ reviewModule: reviewReducers,
 announcementModule: announcementReducers,
 })
 export const store = createStore(rootReducer ,composeEnhancers(applyMiddleware(thunk)))

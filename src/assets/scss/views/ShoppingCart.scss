@@ -2,6 +2,7 @@
     grid-column: 1/-1;
     grid-template-columns: minmax(10px, 17.5%) minmax(auto, 55em) minmax(10px, 1fr);
     gap: 0em;
+    min-height: 82vh;
     // direction: rtl;
 
     .headline-wrapper {

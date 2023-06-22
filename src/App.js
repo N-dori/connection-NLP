@@ -24,6 +24,7 @@ import { CourseQ } from './cmps/CourseQ';
 import { setFilterBy } from './store/actions/course.actions';
 import { courseService } from './services/course.service';
 import { loadAnnouncements } from './store/actions/announcement.actions';
+import { loadReviews } from './store/actions/review.actions';
 
 export function App() {
   // load data from store : loggedin user ,courses ,reviews
@@ -39,6 +40,7 @@ export function App() {
   useEffect(() => {
     dispatch(loadCart())
     dispatch(loadAnnouncements())
+    dispatch(loadReviews())
   }, [])
 
   //gtting length of shopping cart

@@ -1,5 +1,6 @@
-import { reviewService } from "../../services/review.service"
-import {  REMOVE_REVIEW ,SET_REVIEWS ,UPDATE_REVIEW ,ADD_REVIEW } from "../reducers/reviews.reducer"
+
+import { reviewService } from "../../services/reviews.service"
+import { SET_REVIEWS,ADD_REVIEW,UPDATE_REVIEW } from "../reducers/review.reducer "
 
 
 export function loadReviews(){
@@ -18,17 +19,7 @@ export function loadReviews(){
         console.log('can not load reviews',err);
     }
 }
-export function removeReview(reviewId){
-    
-    return async(dispatch,getState) => {
-    try{
-            await reviewService.deleteReview(reviewId)
-            const action = {type: REMOVE_REVIEW, reviewId}
-            dispatch(action)
-    }catch(err){
-        console.log('can not remove review',err);
-    }
-}}
+
 export function saveReview(newReview){
     return async(dispatch,getState) => {
     try{

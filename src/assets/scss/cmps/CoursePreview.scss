@@ -1,11 +1,15 @@
-.course-card {
+.courses-list-container{
+    direction: rtl;
+    .course-card-wrapper {
     flex-direction: column;
-    height: 230px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
-    .coures-img {
-        height: 100%;
-    }
+        margin-bottom: 0.5em;
+        .course-image-container{
+             width: 20em;
+            .coures-img {
+                width: 100%;
+            }
+        }
 
     .sub-title {
         white-space: nowrap;
@@ -15,4 +19,13 @@
         height: 52px;
 
     }
+}
+.rate-this-course-btn{
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    color: #222222;
+    cursor: pointer;
+    
+}
 }
