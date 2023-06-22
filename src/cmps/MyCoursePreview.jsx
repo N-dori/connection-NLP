@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-export  function MyCoursePreview({course}) {
+export function MyCoursePreview({ setCurrCourse, isShown, setIsSown, course }) {
+
+
+  const openModal = () => {
+    setCurrCourse(course._id)
+    setIsSown(!isShown)
+  }
   return (
-    <Link to={`/my-learning/${course._id}`} className='course-card flex-jc-ac'>
-    <p>{course.title}</p>
-<img src={course.courseCoverImg} alt="course-image" className="coures-img" />
-   <p className='sub-title'>{course.subTitle}</p> 
-</Link>
+    <section className='course-card-wrapper '>
+      <Link to={`/my-learning/${course._id}`} className='course-card flex-col'>
+        <p>{course.title}</p>
+        <div className='course-image-container'>
+          <img src={course.courseCoverImg} alt="course-image" className="coures-img" />
+
+        </div>
+        <p className='sub-title'>{course.subTitle}</p>
+      </Link>
+      <button className='rate-this-course-btn' onClick={() => openModal()}>Leave rating</button>
+    </section>
+
+
   )
 }

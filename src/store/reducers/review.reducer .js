@@ -8,10 +8,7 @@ export const SET_FILTER_BY = 'SET_FILTER_BY '
 
 const INITIAL_STATE = {
      reviews:null,
-        SelectedReviewId:null,
-           filterBy:{
-           title:""
-}
+
 }
 export function reviewReducers(state=INITIAL_STATE, action = {} ){
   switch (action.type) {

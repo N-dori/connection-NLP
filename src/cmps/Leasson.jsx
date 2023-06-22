@@ -36,6 +36,7 @@ export function Leasson({  subEpisodes, title, min,i,setVideoUrl,shown }) {
                     const { id, title,videoUrl } = subEpisode
      return <SubLeasson 
             id={id}
+            key={id}
             title={title}
             i={i}
             videoUrl={videoUrl} 
