@@ -107,6 +107,13 @@ async function updateUser(userToUpdate){
         const users = await storageService.query(USER_KEY)
         const updatedUsers = users.map(currUser => currUser._id === userToUpdate._id ? userToUpdate : currUser )
         localStorageService.store(USER_KEY,updatedUsers)
+      const loggedinUser =  localStorageService.load(STORAGE_KEY_LOGGEDIN_USER)
+       userToUpdate.courses.forEach(course => {
+        loggedinUser.courses =[]
+        loggedinUser.courses.push(course._id)
+       });
+      localStorageService.store(STORAGE_KEY_LOGGEDIN_USER,loggedinUser)
+      console.log(' update loggedinUser', loggedinUser );
     }catch(err) {
         console.log('could not update user', err );
     }

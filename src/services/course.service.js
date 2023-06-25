@@ -21,15 +21,15 @@ function _creatCourses() {
     const courses = [
         {
             _id: utilService.makeId(9),
-            title: "NLP Practitioner",
-            subTitle: "A cutting-edge NLP Master",
-            createdBy: "shlomo shushan",
+            title: "NLP Practitioner/Master",
+            subTitle: " קורס למתחילים המשלב מאסטר ופראקטישנר  ",
+            createdBy: " בהנחיית שלומי חלאווי מנחה ומרצה מוביל, ושלמה שושן ז'ל מייסד נלפי חיבורים",
             courseCoverImg: "https://top10a.ru/wp-content/uploads/2018/11/2-ispolzujte-nejrolingvisticheskoe-programmirovanie.jpg",
             trailerVideoUrl: "https://www.youtube.com/watch?v=-fgnz2vetPU",
             totalHours: 255,
             totalVideos: 47,
             level: 'Practitioner',
-            price: '490.90',
+            price: '950.90',
             createdAt: "",
             students: [
                 {
@@ -349,15 +349,15 @@ function _creatCourses() {
         },
         {
             _id: utilService.makeId(9),
-            title: "NLP Master",
-            subTitle: "NLP (Neuro Linguistic Programming)",
-            createdBy: "shlomo shushan",
+            title: "  קורס אדוונס למתקדמים ומטפלים",
+            subTitle: "טיפול עומק בחמישה שלבים",
+            createdBy: "בהנחיית שלמה שושן ז'ל",
             courseCoverImg: "https://avatars.mds.yandex.net/i?id=9e64dca9169ac79f7e861e117e656d86efc44ff2-4568991-images-thumbs&n=13",
             trailerVideoUrl: "https://www.youtube.com/watch?v=MQiMFs2SIFk",
             totalHours: 255,
             totalVideos: 47,
             level: 'master',
-            price: '790.90',
+            price: '2950.90',
             createdAt: "",
             students: [
                 {
@@ -678,8 +678,8 @@ function _creatCourses() {
         },
         {
             _id: utilService.makeId(7),
-            title: "NLP Super",
-            subTitle: "NLP MIND DESIGN Accredited",
+            title: "סקריפטים למטפלים לעבודה בקליניקה לרכישה והורדה ",
+            subTitle: "כלים ושיטות עבודה לקליניקה כגון גולדן בוקס עבודה עם ציר הזמן ועוד",
             createdBy: "shlomo shushan",
             courseCoverImg: "https://stoletnik.ru/upload/medialibrary/dfb/dfbf873df0c55598ba080ca12d525ce3.jpg",
             trailerVideoUrl: "https://www.youtube.com/watch?v=MIl3WGKVBn4",

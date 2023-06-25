@@ -8,7 +8,8 @@ export  function CoursePreview({course}) {
     <div className='course-image-container'>
 <img src={course.courseCoverImg} alt="course-image" className="coures-img" />
     </div>
-   <p className='sub-title'>{course.subTitle}</p> 
+   <p className='sub-title'>{course.subTitle}</p>
+   <p>{course.creactedBy}</p> 
 </Link>
 
   )

@@ -1,9 +1,9 @@
 .app-header {
-    grid-template-columns: minmax(140px, 1fr) minmax(auto, 1330px) minmax(350px, 1fr);
+    grid-template-columns: minmax(5em,1fr) minmax(auto, 1000px) minmax(5em, 1fr);
     padding: 18px;
     border-bottom: 1px solid #efe;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-    background-color: #fff;
+    background-color: #f4f4f4;
   z-index: 60;
 
     .header-content-container {
@@ -47,7 +47,8 @@
 
     }
     .action-btns{
-        grid-column: 3;
+        grid-column: 2;
+        grid-row: 1;
         align-items: center;
         justify-content: end;
         .shopping-cart-container{
@@ -72,8 +73,13 @@
         align-items: center;
         justify-content: center;
         margin-inline-end: 10px;
-        .signup-btn {
+        z-index: 999;
+      
+        .txt{
+             min-width: 107px;
             text-decoration: none;
+        }
+        .signup-btn {
             font-family: Circular-Med;
             cursor: pointer;
             user-select: none;
@@ -105,17 +111,33 @@
   .user-space{
     cursor: pointer;
     position: relative;
-    .user-img{
-        border-radius: 100px;
+
+    .user-img-container{
         width: 2.5em;
+        height: 2.5em;
+        background-color:var(--clr1);
+        border-radius: 100px;
+        .user-img{
+            color: #fff;
+            font-size: 1.1em;
+
+        }
     }
     .user-menu{
         position: absolute;
-        width: 140px;
-        height: 200px;
-        right: -17px;
+        min-width: 8em;
 
-        background-color: lightgray;
+        right: 0px;
+        background-color: #ececec;
+        border-radius: 13px;
+        padding: 0.5em 1em;
+
+        .logout-link {
+            margin: 0;
+            padding-block-end: 0.5em;
+            border-bottom: 1px solid rgb(135, 134, 134);
+
+        }
     }
   }
 }

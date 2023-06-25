@@ -8,27 +8,30 @@ import { clearCart } from '../store/actions/cart.actions'
 import { updateCourse } from '../store/actions/course.actions'
 
 export  function PaymentPage() {
+  const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
+
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
+  const loggedinUser = useSelector((storeState) => storeState.cartModule.shoppingCart)
   const param = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   
     const handelPayment= async () =>{
-      const loggdingUser = await userService.getUserById(param.id)
-    
+      const user = await userService.getUserById(param.id)
       shoppingCart.forEach(product => {
-        loggdingUser.courses.push(product.course)
+        user.courses.push(product.course)
+        loggdingUser.courses.push(product.course._id)
         
       });
-      console.log('user after payment in payment',loggdingUser);
-      dispatch(updateUser(loggdingUser))
+      console.log('user after payment in payment',user);
+      dispatch(updateUser(user))
       setTimeout(() => {
-        dispatch(clearCart(loggdingUser._id))
+        dispatch(clearCart(user._id))
         
       }, 1000);
       navigate('/')
-      dispatch(updateCourse(loggdingUser,shoppingCart))
+      dispatch(updateCourse(user,shoppingCart))
     }
 
   return (

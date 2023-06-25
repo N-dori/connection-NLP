@@ -1,22 +1,52 @@
+import { utilService } from "./util.service"
+
 export const  slides = [
     {
-        id:'i100',
-        image:'https://cdn.educba.com/academy/wp-content/uploads/2019/04/What-is-NLP-1.jpg',
-        title:'NLP-practice',
+        id:utilService.makeId(8),
+        image:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447667/FB_IMG_1622066578479_bfr7bt.jpg',
+        title:'המפה היא לא השטח, היא יצוג פנימי של השטח.',
         subTitle:'npl for biggeners',
         interval:1500
     },
     {
-        id:'i101',
-        image:'https://www.xoriant.com/cdn/ff/yH8KFP9UpFRhaXz2jeKsn19NXIVb2Gmui0VBSTlPRHA/1622011601/public/2021-05/Xoriant-Natural-Language-Processing.png',
-        title:'Nlp-master',
+        id:utilService.makeId(8),
+        image:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447422/IMG_2204_ll3ymv.jpg',
+        title:'כל התוצאות הן השיגים. אין כישלון,יש משוב שהוא מידע.',
         subTitle:'nlp nlp nlp course',
         interval:1500
     },
     {
-        id:'i102',
-        image:'https://uploads-ssl.webflow.com/5f8adf96ff635f2728f2e3e4/622f5ab1c267053a030b6e67_NLP%20Tools_Main.png',
-        title:'NLP- intermideat',
+        id:utilService.makeId(8),
+        image:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447583/IMG_2153_bvldml.jpg',
+        title:'בני אדם לא מקולקלים הם מתפקדים מצוין.',
+        subTitle:'loram ipsom ipgys',
+        interval:1500
+    },
+    {
+        id:utilService.makeId(8),
+        image:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447687/FB_IMG_1622066589307_rgv95q.jpg',
+        title:'הגורם הגמיש במערכת יהיה בעל השליטה וההשפעה הרבה ביותר.',
+        subTitle:'loram ipsom ipgys',
+        interval:1500
+    },
+    {
+        id:utilService.makeId(8),
+        image:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447667/FB_IMG_1622066578479_bfr7bt.jpg',
+        title:'זיכרון ודימיון משתמשים באותם מעגלים עצביים בהם משתמשים במודעות חושית ולכן הם בעלי השפעה רבה על תהליכי ההתפתחות האישית',
+        subTitle:'loram ipsom ipgys',
+        interval:1500
+    },
+    {
+        id:utilService.makeId(8),
+        image:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447906/FB_IMG_1628962130360_sxmod9.jpg',
+        title:"לבני אדם יש את כל המשאבים להצלחה!",
+        subTitle:'loram ipsom ipgys',
+        interval:1500
+    },
+    {
+        id:utilService.makeId(8),
+        image:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447643/FB_IMG_1618815189269_ist1fi.jpg',
+        title:"משמעות התקשורת נמדדת על פי התגובה החוזרת.",
         subTitle:'loram ipsom ipgys',
         interval:1500
     },
