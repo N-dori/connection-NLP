@@ -1,15 +1,17 @@
 
 .details-modal-container {
+    direction: rtl;
     grid-column: 1;
     grid-row: 1/2;
-    display: block;
-    // position: absolute;
-    // top: 3.8rem;
-    // left: 15%;
-    margin-inline-start: auto;
+
+    margin-inline-end: auto;
     margin-inline-end: 2em;
-    margin-block-start: 2em;
-    max-width: 21.1em;
+    margin-block-start: 2.3em;
+    max-width: 62%;
+    @include for-normal-layout {
+   display: none;
+     }
+    
     .modal-warpper {
         max-width: 21.5rem;
         min-height: 500px;
@@ -18,7 +20,34 @@
         box-sizing: border-box;
         box-shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .08);
         background-color: #fff;
-
+         .preview-img-wrapper{
+            cursor: pointer;
+            width: 100%;
+            .preview-course-img{
+                width: 100%;
+                object-fit: cover;
+                position: relative;
+            }
+            .play-svg{
+                position: absolute;
+                fill:#fff;
+                width:20em
+            }
+           
+        }
+        .black {
+            text-align: center;
+            height: 90px;
+            width: 100%;
+            background-color: #141516;
+            position: relative;
+            p{
+          
+                font-size: 1.5em;
+                color: #fff;
+               
+            }
+        }
         .preview-course-img-wrapper {
             width: 100%;
             position: relative;
@@ -37,12 +66,12 @@
                   };
 
             .black {
+                text-align: center;
                 height: 90px;
                 width: 100%;
                 background-color: #141516;
                 position: relative;
                 p{
-                    position: absolute;
                     z-index: 5;
                     font-size: 22px;
                     color: #fff;
@@ -104,6 +133,9 @@
         font-size: 1.5em;
         padding-inline-start: 0px;
 
+    }
+    .before-discount-price{
+        text-decoration: line-through;
     }
 }
     

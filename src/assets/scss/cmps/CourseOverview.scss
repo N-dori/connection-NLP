@@ -1,6 +1,10 @@
 .course-overview-container{
     padding-inline: 5em;
     overflow-x: scroll;
+    @include for-narrow-layout {
+        padding-inline: 0em;
+
+}
     .schedule-learning-time-warpper{
         grid-template-columns:1fr 15fr;
    

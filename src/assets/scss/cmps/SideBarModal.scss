@@ -1,33 +1,20 @@
 
 .sticky-modal-container {
+    direction: rtl;
     grid-column: 1;
+    grid-row: 1/-1;
     display: block;
     position: fixed;
     top: 2rem;
-    left:12%;
+    right:  62.5%;
+    margin-inline-end: auto;
+    margin-inline-start: 1em;
+    // left: culc(100%-20%);
     z-index: 70;
     max-width: 21.1em;
-
-    
-        // animation: fade-in;
-        // animation-duration:  0.2s ;
-       
-        // animation-delay: 0s;
-    
-      
-      
-    //   @keyframes fade-in {
-    //     // default non-selected style of nav item
-    //     0% {
-    //     //   font-style: normal;
-    //       opacity: 0;
-    //     }
-     
-    //     // highlighted style of nav item
-    //     100% {
-    //       opacity: 1;
-    //     }
-    //   }
+    @include for-normal-layout {
+        display: none;
+          }
 
     .modal-warpper {
         max-width: 21.5rem;
@@ -37,63 +24,35 @@
         box-sizing: border-box;
         box-shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .08);
         background-color: #fff;
-
-        .preview-course-img-wrapper {
-            width: 100%;
-            position: relative;
+        .preview-img-wrapper{
             cursor: pointer;
-            .green {
-                height: 25px;
+            width: 100%;
+            .preview-course-img{
                 width: 100%;
-                background-color: #2556a3;
-            }
-
-            .sand {
-                height: 125px;
-                width: 100%;
-                background-color: #fefefe;
-               
-                  };
-
-            .black {
-                height: 90px;
-                width: 100%;
-                background-color: #141516;
+                object-fit: cover;
                 position: relative;
-                p{
-                    position: absolute;
-                    z-index: 5;
-                    font-size: 22px;
-                    color: #fff;
-                    font-weight: bold;
-                    top: -25px;
-                    left:81px;
-                    padding: 0;
-                }
             }
-
-            .laptop-img-container{
+            .play-svg{
                 position: absolute;
-                top: -6px;
-                width: 128px;
-                left: 33%;
-                  .play-svg {
-                    position: absolute;
-                    z-index: 3;
-                    top: 36px;
-                    left: 25px;
-                    fill: #222;
-                  }
-
-                  .laptop-img {
-                      position: absolute;
-                      top: 2em;
-                      width:100%;
-                      z-index: 0;
-
-                  }
-              }
+                fill:#fff;
+                width:20em
+            }
+           
         }
+        .black {
+            text-align: center;
+            height: 90px;
+            width: 100%;
+            background-color: #141516;
+            position: relative;
+            p{
+          
+                font-size: 1.5em;
+                color: #fff;
+               
+            }
+        }
+       
     }
 .actions-section{
     padding: 30px;

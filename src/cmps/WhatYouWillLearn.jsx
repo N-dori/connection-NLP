@@ -3,7 +3,7 @@ import { DoneSvg } from '../svgs/DoneSvg';
 export  function WhatYouWillLearn() {
   return (
     <section className='list-container flex-col'>
-    <h3 className='headline'>What you'll learn</h3>
+    <h3 className='headline'>מה תלמד בקורס?</h3>
       <section className="list-warpper flex">
 <ul className='group1 flex clean'>
  <li className='flex-ac'><DoneSvg/> Lorem ipsum dolor sit, amet baba sss adipisicing elit. </li>

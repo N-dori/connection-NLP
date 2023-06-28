@@ -10,6 +10,7 @@ import { OutletMenu } from '../cmps/OutletMenu'
 export  function MyLearning({videoUrl,setVideoUrl,setCurrCourseId}) {
   const  param = useParams()
   const [course, setCourse] = useState()
+  const [isContentShown, setIsContentShown] = useState(true)
   
   
   useEffect(()=>{
@@ -35,6 +36,7 @@ export  function MyLearning({videoUrl,setVideoUrl,setCurrCourseId}) {
         return total
     }
    }
+
   const loadCourse = async (CourseId) => {
     const course = await courseService.getCourseById(CourseId) 
     setCourse(course)  
@@ -42,32 +44,38 @@ export  function MyLearning({videoUrl,setVideoUrl,setCurrCourseId}) {
     console.log('my learning course',course); 
   }
  
+  const tuggleContent = () => {
+    setIsContentShown(!isContentShown)
+  }
 
   return (
     course?
     
     <section className='my-leanring-container '>
       <section className='my-learning-warpper grid '>
-  <section className='video-player-container'>
+        <div className={isContentShown?'':'open-content flex-jc-ac'} onClick={tuggleContent}>
+          <span className={isContentShown?'hidden':'display-content'}>הצג תוכן </span>
+        </div>
+  <section style={isContentShown?{}:{gridColumn:"1/-1"}} className='video-player-container'>
   <ReactPlayer 
       className="react-player"
       playing
-      width="100%"
-      height="100%"
+      // width="100%"
+      // height="100%"
        url={videoUrl?videoUrl:course.episodes[0].subEpisodes[0].videoUrl} controls/>
   </section>
-  <section className='my-learning-content-container'>
+  <section className={isContentShown?'my-learning-content-container':'hidden'}>
   <MyLearningContent 
   episodes={course.episodes}
   subEpisodes={course.subEpisodes}
   getLecturesSum={getLecturesSum}
   setVideoUrl={setVideoUrl}
- 
+  tuggleContent={tuggleContent}
   />
 
 
       </section>
-  <section className='course-menu-contianer'>
+  <section style={isContentShown?{ }:{gridColumn:"1/-1"}} className='course-menu-contianer'>
  <OutletMenu />
   <section className='outlets-warpper'>
 <Outlet></Outlet>

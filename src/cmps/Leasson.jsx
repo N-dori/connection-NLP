@@ -24,10 +24,10 @@ export function Leasson({  subEpisodes, title, min,i,setVideoUrl,shown }) {
             <section onClick={expand} className='pannel-container'>
                 <section className='pannel-wrapper '>
                     <div className='title-container flex-sb'> 
-                <span className='pannel-title flex'>{i?<span>שיעור:</span>:''} {title} {i?i+1:''} </span>
+                <span className='pannel-title flex'> {title}  </span>
                 <span ><ExpandSvg isShown={isShown} /></span>
                     </div>
-                    <span className='parts flex-ac'><VideoSvg/> lessons {subEpisodes?subEpisodes.length:''}</span>
+                    <span className='parts flex-ac'><VideoSvg/> {subEpisodes?subEpisodes.length:''} הרצאות </span>
                 </section>
             </section>
 

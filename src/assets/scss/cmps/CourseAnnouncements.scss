@@ -2,11 +2,19 @@
     padding-inline-start: 18%;
     direction: rtl;
     margin-block-start: 3em;
+    @include for-narrow-layout {
+        padding-inline-start:0%
+
+}
 
     .announcement-wrapper {
         border-bottom: 1px solid #ededed;
         max-width: 70%;
-
+        @include for-narrow-layout {
+            max-width: 100%;
+            padding: 2em;
+    
+    }
         .profile-container {
             gap: 1em;
 
@@ -124,7 +132,10 @@
 
         .comment-container {
             gap: 1em;
-
+            @include for-mobile-layout {
+               flex-direction: column;
+             
+             }
             .comment-user-img-container {
                 width: 3.1em;
 
@@ -144,6 +155,23 @@
                 text-indent: 1em;
                 font-size: 1.05em;
                 border: 1px solid #222222;
+                @include for-mobile-layout {
+                    text-indent: 0.2em;
+                    font-size: 0.9em;
+                    height: 4em;
+            
+            }
+            }
+            .announcement-content-btn{
+                display: none;
+                @include for-mobile-layout {
+               display: block;
+               width: 100%;
+               height: 2em;
+               font-size: 1.05em;
+               border: 1px solid #222222;
+               background-color: transparent;
+            }
             }
         }
 

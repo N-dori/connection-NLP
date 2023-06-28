@@ -1,26 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import { Link, NavLink, useNavigate, withRouter } from "react-router-dom";
-import { imgService } from '../services/imgService';
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/actions/user.actions';
-import { svgService } from '../services/svg.service';
 import { ShoppingCartSvg } from '../svgs/ShoppingCartSvg';
 import { userService } from '../services/userService';
 
 export function AppHeader({ len }) {
+    const loaction = useLocation()
     const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
     const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
     const logoUrl = 'https://res.cloudinary.com/dii16awkb/image/upload/v1685878172/%D7%9C%D7%95%D7%92%D7%95_fpn8ig.jpg'
     const [isShown, setIsShown] = useState(false)
+    const [routeUrl,setRouteUrl] = useState('')
     const [user, setUser] = useState(null)
     const dispatch = useDispatch()
     const naviget = useNavigate()
+
     useEffect(() => {
-        console.log('is shown', isShown);
+        getParamLoction()
         setIsShown(false)
         loadUser()
-    }, [loggdingUser, user])
-
+    }, [loggdingUser, user,loaction])
+    
+    const getParamLoction = () =>{
+        console.log('loactionnnnnn',loaction.pathname.slice(1,7))
+        setRouteUrl(loaction.pathname.slice(1,7))
+    }
     const loadUser = async () => {
         if (!loggdingUser) {
             return
@@ -41,11 +46,13 @@ export function AppHeader({ len }) {
     const toggelMenu = () => {
         setIsShown(!isShown)
     }
-
+    const DetailsStyles = {
+        display:'grid',
+        gridTemplateColumns:"minmax(5em,1fr) minmax(auto, 72%) minmax(5em, 1fr)"}
     return (
 
         <>
-            <header className="app-header full grid ">
+            <header style={routeUrl==='course'?DetailsStyles:{}} className="app-header full grid ">
                 <section className='action-btns flex'>
                     <ShoppingCartSvg len={len} loggdingUser={loggdingUser} onClick={() => naviget('/shopping-cart')} />
                     {

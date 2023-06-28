@@ -7,6 +7,17 @@
         grid-column: 2;
         grid-template-columns: 1fr 1fr;
       max-width: 44em;
+      @include for-tablet-breakpoint {
+        // max-width: 48em;
+          margin-inline-start: 14%;
+      }
+      @include for-940px {
+
+        max-width: 100%;
+        margin-inline:20px ;
+      }
+     
+ 
         
         .headline{
             grid-column: 2;
@@ -17,10 +28,14 @@
         }
         .list-warpper{
             padding: 20px;
+            @include for-530px  {
+
+                flex-direction: column;
+              }
             .done-svg{
                 margin-inline-end: 22px;
                 fill:#222;
-                
+                min-width: 2em;
             }
             .group1{
                 direction: rtl;
@@ -29,6 +44,10 @@
                row-gap:10px;
                padding-right: 8px;
                font-size: 0.9rem;
+               @include for-530px  {
+
+                padding-right: 0px;
+              }
             }
             .group2{
                 direction: rtl;

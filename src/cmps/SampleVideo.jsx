@@ -22,8 +22,8 @@ export  function SampleVideo({freeSamples,changeVideoUrl}) {
         >
      <div onClick={()=>changeVideoUrl(video.videoUrl)}  className='wrapper-video-link  flex-ac'>
       <div className='video-img-wrapper'><img className='video-img' src={video.videoImg}/></div>
-      <div className='video-desc flex-ac'><PlaySvg/><span>{video.title}</span></div>
-      <span className='time-summary'>08:23</span> 
+      <div className='video-desc flex-sb'><PlaySvg/><span className='video-title'>{video.title}</span></div>
+      {/* <span className='time-summary'>08:23</span>  */}
   
      </div>
       </li>

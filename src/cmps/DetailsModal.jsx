@@ -3,11 +3,11 @@ import { imgService } from '../services/imgService'
 import { PlaySvg } from '../svgs/PlaySvg'
 import { useDispatch } from 'react-redux'
 
-export function DetailsModal({userMsg,price, addToCart,setIsPlayerVisible,goToShoppingCart}) {
+export function DetailsModal({userMsg,price, addToCart,setIsPlayerVisible}) {
 
   // const dispatch = useDispatch()
 useEffect(()=>{
-
+  getFormatedPrice()
 },[userMsg])
 
   const onOpenPlayer = () => {
@@ -17,35 +17,41 @@ useEffect(()=>{
 const handelActionBtn = () => {
   addToCart()
 }
+const getFormatedPrice =(type) => {
+  let formatedPrice = new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS' })
+  if(type ==='before-dicount'){
+    let priceBeforeDiscount = (+price+(+price*0.1)).toFixed(0)
+    return formatedPrice.format(priceBeforeDiscount)
+  }else {
+    return formatedPrice.format(price)
+  }
 
+
+}
   return (
 
 
     <section className='details-modal-container'>
 
       <section className="modal-warpper">
-        <div className='preview-course-img-wrapper' onClick={onOpenPlayer}>
-          <div className='green'></div>
-          <div className='sand'>
-          </div>
-          <div className='black flex-jc'>
-            <p>preview this course</p>
-          </div>
-          <div className='laptop-img-container'>
-            <img className='laptop-img' src={imgService.getImg('laptop')} />
-            <PlaySvg />
-          </div>
-        </div>
+        <div  className='preview-img-wrapper flex-jc-ac ' onClick={onOpenPlayer}>
+   <img className='preview-course-img' src="https://res.cloudinary.com/dii16awkb/image/upload/v1687866273/imgCoverAdvanceCourse_s6sxkv.png" alt="" />
+   <PlaySvg />
+
+  </div>
+   <div className='black flex-jc-ac'>
+            <p>לצפייה בתצוגה מקדימה</p>
+            </div>
         <section className='actions-section'>
-        <p className='headline'> Make sure to sign up first</p>
-        <p>Get this life changing course, and get up to 10% discount </p>
-        <div className='price'>{price}</div>
+        <p>קבל 10% הנחה ברכישה של קורס משנה חיים  </p>
+        <div className='before-discount-price'>{getFormatedPrice('before-dicount')}</div>
+        <div className='price'>{getFormatedPrice()}</div>
           <div className='action-btn-container flex-jc'>
-        <button className='action-btn flex-jc-ac' onClick={handelActionBtn} ><span>Buy this course</span></button>
+        <button className='action-btn flex-jc-ac' onClick={handelActionBtn} ><span>לרכישת הקורס</span></button>
 
           </div>
-          {userMsg?<span className='user-msg'>you need to sign up first</span> :''}
-        <p className='full-life-time'>Full Lifetime Access</p>
+          {userMsg?<span className='user-msg'>יש צורך בהרשמה לאתר תודה</span> :''}
+        <p className='full-life-time'>גישה חופשית ללא הגבלת זמן</p>
 
         </section>
 

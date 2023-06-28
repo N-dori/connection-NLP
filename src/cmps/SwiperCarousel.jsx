@@ -31,6 +31,7 @@ export  function SwiperCarousel({slides ,recommendations }) {
         </div>
 
         <img className='carousel-img' src={slide.image} alt={slide.title}/>
+        
       </SwiperSlide>))
       :<div>Loading...</div>
       }

@@ -34,7 +34,7 @@ useEffect(() => {
       <section className='course-player-container'>
         <header className='course-header flex-sb '>
         <div className='title-container flex-col'>
-            <p>Course Preview</p>
+            <p>תצוגה מקדימה</p>
             <p className='title'>{title}</p>
         </div>
         <div className="close-btn " onClick={onClose} ><XSvg/></div>
@@ -43,8 +43,8 @@ useEffect(() => {
         <YouTube videoUrl={videoUrl}/>
         </section>
         <section className='free-sample-video-container'>
-            <p className='headline'>Free Sample Videos</p>
-            <ul className='sample-videos-list' >
+            <p className='headline'>שיעורי ניסיון חינם</p>
+            <ul className='sample-videos-list clean' >
              
                <SampleVideo 
                changeVideoUrl={changeVideoUrl}
