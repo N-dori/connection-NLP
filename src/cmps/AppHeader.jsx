@@ -48,11 +48,13 @@ export function AppHeader({ len }) {
     }
     const DetailsStyles = {
         display:'grid',
-        gridTemplateColumns:"minmax(5em,1fr) minmax(auto, 72%) minmax(5em, 1fr)"}
+        gridTemplateColumns:"minmax(5em,1fr) minmax(auto,5.5fr) minmax(5em, 1fr)",
+        paddingInlineStart:3+"%"
+    }
     return (
 
         <>
-            <header style={routeUrl==='course'?DetailsStyles:{}} className="app-header full grid ">
+            <header /* style={routeUrl==='course'?DetailsStyles:{}} */ className="app-header full grid ">
                 <section className='action-btns flex'>
                     <ShoppingCartSvg len={len} loggdingUser={loggdingUser} onClick={() => naviget('/shopping-cart')} />
                     {
@@ -99,14 +101,9 @@ export function AppHeader({ len }) {
                                     <li className='link-container flex-jc-ac'>
                                         <NavLink className="heaer-link" to="/my-courses">הקורסים שלי</NavLink>
                                     </li> : ''
-                                : ""
-                      
+                                : ""   
                         }
-                        <li className='link-container flex-jc-ac'>
-                            <NavLink className='about-link under-line-none' to="/about">
-                                <span >קצת עליינו</span>
-                            </NavLink>
-                        </li>
+                   
                     </nav>
 
                 </div>

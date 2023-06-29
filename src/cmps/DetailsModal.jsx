@@ -3,12 +3,12 @@ import { imgService } from '../services/imgService'
 import { PlaySvg } from '../svgs/PlaySvg'
 import { useDispatch } from 'react-redux'
 
-export function DetailsModal({userMsg,price, addToCart,setIsPlayerVisible}) {
+export function DetailsModal({formatedPrice,priceBeforeDiscount,userMsg,price, addToCart,setIsPlayerVisible}) {
 
   // const dispatch = useDispatch()
 useEffect(()=>{
-  getFormatedPrice()
-},[userMsg])
+
+},[userMsg,formatedPrice])
 
   const onOpenPlayer = () => {
     document.body.style='overflow-y: hidden;'
@@ -17,17 +17,7 @@ useEffect(()=>{
 const handelActionBtn = () => {
   addToCart()
 }
-const getFormatedPrice =(type) => {
-  let formatedPrice = new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS' })
-  if(type ==='before-dicount'){
-    let priceBeforeDiscount = (+price+(+price*0.1)).toFixed(0)
-    return formatedPrice.format(priceBeforeDiscount)
-  }else {
-    return formatedPrice.format(price)
-  }
 
-
-}
   return (
 
 
@@ -44,8 +34,8 @@ const getFormatedPrice =(type) => {
             </div>
         <section className='actions-section'>
         <p>קבל 10% הנחה ברכישה של קורס משנה חיים  </p>
-        <div className='before-discount-price'>{getFormatedPrice('before-dicount')}</div>
-        <div className='price'>{getFormatedPrice()}</div>
+        <div className='before-discount-price'>{priceBeforeDiscount}</div>
+        <div className='price'>{formatedPrice}</div>
           <div className='action-btn-container flex-jc'>
         <button className='action-btn flex-jc-ac' onClick={handelActionBtn} ><span>לרכישת הקורס</span></button>
 

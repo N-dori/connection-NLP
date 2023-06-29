@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { imgService } from '../services/imgService'
 import { PlaySvg } from '../svgs/PlaySvg'
 
-export function SideBarModal({userMsg,price,addToCart,setIsPlayerVisible}) {
+export function SideBarModal({formatedPrice,priceBeforeDiscount,userMsg,addToCart,setIsPlayerVisible}) {
   useEffect(()=>{
-    getFormatedPrice()
   },[userMsg])
   
     const onOpenPlayer = () => {
@@ -13,17 +12,6 @@ export function SideBarModal({userMsg,price,addToCart,setIsPlayerVisible}) {
     }
   const handelActionBtn = () => {
     addToCart()
-  }
-  const getFormatedPrice =(type) => {
-    let formatedPrice = new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS' })
-    if(type ==='before-dicount'){
-      let priceBeforeDiscount = (+price+(+price*0.1)).toFixed(0)
-      return formatedPrice.format(priceBeforeDiscount)
-    }else {
-      return formatedPrice.format(price)
-    }
-  
-  
   }
 
 
@@ -43,8 +31,8 @@ export function SideBarModal({userMsg,price,addToCart,setIsPlayerVisible}) {
             </div>
             <section className='actions-section'>
         <p>קבל 10% הנחה ברכישה של קורס משנה חיים  </p>
-        <div className='before-discount-price'>{getFormatedPrice('before-dicount')}</div>
-        <div className='price'>{getFormatedPrice()}</div>
+        <p className='before-discount-price'>{priceBeforeDiscount}</p>
+        <div className='price'>{formatedPrice}</div>
           <div className='action-btn-container flex-jc'>
         <button className='action-btn flex-jc-ac' onClick={handelActionBtn} ><span>לרכישת הקורס</span></button>
 

@@ -2,7 +2,8 @@ import React from 'react'
 
 export  function WhoAreWe() {
   return (
-    <section className='introduction-container flex-col'>
+    <section className='introduction-container flex-jc-ac'>
+      <main className='introduction-wrapper flex-col'>
     <h2 className='headline'>אז מי אנחנו? ואיך לנו הצליחה הגישה?</h2>
     <p className='sub-title'>אתם בטח שואלים את עצמיכם מי אנחנו ? ומה בעצם אנחנו עושים ?
       תחילה נסביר מה זה בכלל <span className='tc-b'>NLP</span>, איך זה יכול להשפיע ולשדרג לך את החיים? מהסיבה שזה אינו טרנד חולף אלא דרך חיים ממש!
@@ -16,10 +17,11 @@ export  function WhoAreWe() {
             {/* <h2 className='headline'>אז מי אנחנו?</h2> */}
             <img className='sharon-img' src='https://res.cloudinary.com/dii16awkb/image/upload/v1687447741/FB_IMG_1628962041057_utc48y.jpg' />
           </div>
-          <p className='who-i-am'>שלום נעים מאוד אני שרון שושן , בת 42 מנכלית ומייסדת <span className='tc-b'>NLP</span> חיבורים . ביחד עם בעלי שלמה שושן עליו השלום הקמנו את העסק
-            .יותר מ10 שנים אני אמא לשלושה בנים מתוקים ועוסקת ביום יום בעיקר בתפקיד חיי שזה אומר להיות אמא. בנוסף בחקר קידום ופיתוח עולם תת המודע והנפש
-            שלמה שושן זכרונו לברכה מנכל ומייסד של נלפי חיבורים נפטר ב2019 מהמחלה הנוראה היה אדם חכם להפליא עם יראת שמיים גדולה  הותיר אחריו שלושה ילדים וידע עצום ואדיר שהוא מעיין מקור חוכמה </p>
+          <p className='who-i-am'>שלום נעים מאוד אני שרון שושן , בת 42 מנכלית ומייסדת <span className='tc-b'>NLP</span>  חיבורים . ביחד עם בעלי שלמה שושן עליו השלום הקמנו את העסק
+          כבר יותר מ10 שנים. אני אמא לשלושה בנים מתוקים ועוסקת ביום יום בעיקר בתפקיד חיי שזה אומר להיות אמא. בנוסף בחקר קידום ופיתוח עולם תת המודע והנפש.           שלמה שושן זכרונו לברכה מנכ'ל ומייסד של <span className='tc-b'>NLP</span> חיבורים נפטר ב2019 מהמחלה הנוראה היה אדם חכם להפליא עם יראת שמיים גדולה  הותיר אחריו שלושה ילדים וידע עצום ואדיר שהוא מעיין מקור חוכמה </p>
         </section>
+
+      </main>
   </section>
   )
 }

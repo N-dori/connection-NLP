@@ -16,6 +16,7 @@ import { CoursePlayer } from '../cmps/CoursePlayer';
 import { addToUserCart } from '../store/actions/cart.actions'
 import { PlaySvg } from '../svgs/PlaySvg';
 import { imgService } from '../services/imgService';
+import MobileDetailsFooter from '../cmps/MobileDetailsFooter';
 
 export function CouresDetails() {
   const [setRef, visible] = useOnScreen({ threshold: 0.2 })
@@ -29,15 +30,22 @@ export function CouresDetails() {
   const [isPlayerVisible, setIsPlayerVisible] = useState(false)
   const [videoUrl, setVideoUrl] = useState(false)
   const [userMsg, setUserMsg] = useState(null)
+  const [formatedPrice, setFormatedPrice] = useState(null)
+  const [priceBeforeDiscount, setPriceBeforeDiscount] = useState(null)
 
   useEffect(() => {
     window.scrollTo(0, 0)
     loadCourse(param.id)
+
   }, [])
 
   const addToCart = () => {
     if (loggdingUser) {
       dispatch(addToUserCart(course._id))
+          setTimeout(() => {
+      navigate('/shopping-cart')
+
+    }, 1500);
       goToShoppingCart()
 
     } else {
@@ -58,6 +66,9 @@ export function CouresDetails() {
   const loadCourse = async (CourseId) => {
     const course = await courseService.getCourseById(CourseId)
     setCourse(course)
+    if(course){
+      getFormatedPrice(course.price)
+    }
   }
   const changeVideoUrl = (url) => {
     console.log('changeVideoUrl', url);
@@ -67,6 +78,19 @@ export function CouresDetails() {
     document.body.style = 'overflow-y: hidden;'
     setIsPlayerVisible(true)
   }
+  const  getFormatedPrice = async(price) => {
+    let formatPrice = new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS' })
+
+       let priceBeforeDiscount = (+price+(+price*0.1)).toFixed(0)
+       setPriceBeforeDiscount(formatPrice.format(priceBeforeDiscount)) 
+       setFormatedPrice(formatPrice.format(price))
+
+     
+  }
+  
+  
+  
+
   return (
     course ?
       <>
@@ -91,11 +115,11 @@ export function CouresDetails() {
                 <span className='sub-title block'>{course.subTitle}</span>
                 <span className='sub-title info block '>{course.createdBy} </span>
               </h1>
-                <button className='mobile-add-to-cart-btn flex-ac'>הוסף לעגלה</button>
+                <button className='mobile-add-to-cart-btn flex-ac' onClick={addToCart}>הוסף לעגלה</button>
             </section>
-            {visible ? <DetailsModal userMsg={userMsg} price={course.price} addToCart={addToCart} setIsPlayerVisible={setIsPlayerVisible} /> : ""}
+            {visible ? <DetailsModal priceBeforeDiscount={priceBeforeDiscount} formatedPrice={formatedPrice} userMsg={userMsg} price={course.price} addToCart={addToCart} setIsPlayerVisible={setIsPlayerVisible} /> : ""}
           </section>
-          {visible ? '' : <SideBarModal userMsg={userMsg} price={course.price} addToCart={addToCart} setIsPlayerVisible={setIsPlayerVisible} />}
+          {visible ? '' : <SideBarModal userMsg={userMsg} priceBeforeDiscount={priceBeforeDiscount} formatedPrice={formatedPrice} addToCart={addToCart} setIsPlayerVisible={setIsPlayerVisible} />}
           <WhatYouWillLearn />
 
           <ThisCourseIncludes />
@@ -126,6 +150,11 @@ export function CouresDetails() {
 
           <div className={isPlayerVisible ? 'screen-filter' : 'hidden'} ></div>
         </section>
+          <MobileDetailsFooter 
+          subTitle={course.subTitle}
+          title={course.title} 
+          priceBeforeDiscount={priceBeforeDiscount}
+           formatedPrice={formatedPrice}/>
       </> :
       <div>Loading...</div>
 

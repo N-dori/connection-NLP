@@ -2,16 +2,23 @@
     direction: rtl;
     grid-column: 2;
     gap: 35px;
-
+    padding-inline-start: 0;
+    @include for-633px {
+        flex-direction: column;
+               }
     // margin-bottom: 75px;
     .course-card-wrapper {
         display: grid;
         grid-template-rows: 5em auto 3fr;
+        position: relative;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         margin-bottom: 0.5em;
         padding: 5px;
         background-color: #111111;
         width: 25%;
+        @include for-633px {
+           width: 85%;
+                   }
         
         .course-image-container {
             grid-row: 2;
@@ -31,15 +38,28 @@
             font-size: 1.2em;
             margin-top: 0;
             margin: 0;
+            justify-self: center;
+            color: #ffff;
+            @include for-narrow-layout {
+            font-size: 1em;
+                   }
+            // @include for-633px {
+            // font-size: 0.9em;
+            //        }
         }
 
         .sub-title {
             grid-row: 3;
-            // white-space: nowrap;
-            // width: 214px;
-            // overflow: hidden;
-            // text-overflow: ellipsis;
-            min-height: 52px;
+            min-height: 54px;
+            @include for-narrow-layout {
+                // font-size: 1em;
+                white-space: nowrap;
+                min-height: none!important;
+        
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin: 0;
+                       }
 
         }
     }

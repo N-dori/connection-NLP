@@ -352,7 +352,7 @@ function _creatCourses() {
             title: "  קורס  למתקדמים ומטפלים Advence",
             subTitle: "טיפול עומק בחמישה שלבים",
             createdBy: "בהנחיית שלמה שושן ז'ל",
-            courseCoverImg: "https://avatars.mds.yandex.net/i?id=9e64dca9169ac79f7e861e117e656d86efc44ff2-4568991-images-thumbs&n=13",
+            courseCoverImg: "https://res.cloudinary.com/dii16awkb/image/upload/v1687866273/imgCoverAdvanceCourse_s6sxkv.png",
             trailerVideoUrl: "https://www.youtube.com/watch?v=MQiMFs2SIFk",
             totalHours: 255,
             totalVideos: 47,

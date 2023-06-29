@@ -94,6 +94,7 @@ export function App() {
               <Route path='/who-are-we' element={<WhoAreWe />} />
              <Route path='/benefits' element={<NlpBenefits />} />
              <Route path='/nlp-tools' element={<WhatToolsYouGet />} />
+             <Route path='/memorial' element={<Memorial />} />
 
           </Route>
       

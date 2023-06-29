@@ -1,5 +1,5 @@
 .app-header {
-    grid-template-columns: minmax(5em,1fr) minmax(auto, 1000px) minmax(5em, 1fr);
+    grid-template-columns: minmax(2em,1fr) minmax(auto, 20fr) minmax(2em, 1fr);
     padding: 18px;
     border-bottom: 1px solid #efe;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
@@ -13,7 +13,7 @@
 
     .logo-container {
      
-        width: 15%;
+        // width: 10%;
 
         .logo-link {
             flex-direction: column;
