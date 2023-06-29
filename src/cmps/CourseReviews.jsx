@@ -24,7 +24,7 @@ useEffect(()=>{
 
   return (courseReviews?
     <section className="course-reviwes-container ">
-      <h1 className='headline'>Course reviews</h1>
+      <h1 className='headline'>ביקורות</h1>
       <section className='reviews-wrapper flex'>
       {
         courseReviews.map(review =>    

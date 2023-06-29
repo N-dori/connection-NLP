@@ -25,6 +25,11 @@ import { setFilterBy } from './store/actions/course.actions';
 import { courseService } from './services/course.service';
 import { loadAnnouncements } from './store/actions/announcement.actions';
 import { loadReviews } from './store/actions/review.actions';
+import {WhatToolsYouGet} from './views/WhatToolsYouGet';
+import { NlpBenefits } from './views/NlpBenefits';
+import { WhoAreWe } from './views/WhoAreWe';
+import { Memorial } from './cmps/Memorial';
+import { CoursesIndex } from './cmps/CoursesIndex';
 
 export function App() {
   // load data from store : loggedin user ,courses ,reviews
@@ -84,13 +89,15 @@ export function App() {
         content: carousel with  hi username? nice pics and quotes , texts, list of courses , list of recomendations 
 
         */}
-          <Route path="/" element={<Home />} />
-          {/*SignupPage :
-            data : ask userService for empty user 
-            lib: react-oauth/google
-            content: form - username email password {}
-            actions : onSignup save new user  and login to backend 
-        */}
+          <Route path="/" element={<Home />} >
+              <Route path='/our-courses' element={<CoursesIndex />} />
+              <Route path='/who-are-we' element={<WhoAreWe />} />
+             <Route path='/benefits' element={<NlpBenefits />} />
+             <Route path='/nlp-tools' element={<WhatToolsYouGet />} />
+             <Route path='/memorial' element={<Memorial />} />
+
+          </Route>
+      
           <Route path="/signup" element={<SignupPage />} />
           {/*  LoginPage : 
           data : get from cookie user name 

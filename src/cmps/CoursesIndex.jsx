@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+
 import { CouresList } from './CouresList'
 import { loadCourses } from '../store/actions/course.actions'
 
 export  function CoursesIndex() {
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+  
     const courses = useSelector((storeState) => storeState.couresModule.courses)
    
     useEffect(() => {
@@ -14,8 +14,11 @@ export  function CoursesIndex() {
         console.log('courses',courses);
     }, [])
     return (
-  
-        <CouresList courses={courses}/>
+        <section>
+            {/* <h2> מה המסלול שהכי מתאים לך?</h2> */}
+            <CouresList courses={courses}/>
+
+        </section>
     
   
   )

@@ -3,7 +3,11 @@
     grid-template-columns: minmax(5em, 1fr) minmax(auto, 55%) minmax(5em, 1fr);
     grid-template-rows: minmax(2em, 15em) 1fr;
     max-width: 100%;
+    @include for-narrow-layout {
+       display: block;
+       padding: 0.8em;
 
+}
     .search-contanet-wrapper {
         // position: relative;
         grid-column: 2;

@@ -3,9 +3,34 @@
     grid-column: 2;
     min-width: 44em;
     margin-left: auto;
-    .contant-wapper {
-        grid-column: 2;
-        flex-direction: column;
+
+    @include for-tablet-breakpoint {
+        
+        margin-inline-start: 14%;
+        margin-inline-end: 14%;
+    }
+    @include for-940px {
+        max-width:100%!important;
+        margin-inline:20px;
+          min-width: 100%!important;
+      }
+      .contant-wapper {
+          grid-column: 2;
+          flex-direction: column;
+          @include for-940px {
+        
+              margin-inline-end:6%;
+           
+            }
+              @include for-530px  {
+                margin-inline-end:10%;
+           
+                    }
+              @include for-370px  {
+                margin-inline-end:12%;
+           
+                    }
+              
 
         .headline {
             font-size: 1.8em;
@@ -15,20 +40,32 @@
         }
 
         .course-curriculum {
+            // direction: rtl;
             align-items: center;
             margin-bottom: 10px;
-
-            .expend-all-btn {
-                border: none;
-                background-color: transparent;
-                color: #401b9c;
-                cursor: pointer;
+            @include for-530px  {
+                flex-direction: column;
+                align-items: start;
+              }
+              .info{
+                // @include for-530px  {
+                //     margin-inline-start: 0;
+                //     }
+              }
+              .expend-all-btn {
+                  border: none;
+                  background-color: transparent;
+                  color: #401b9c;
+                  cursor: pointer;
+                  @include for-530px  {
+                    margin-block-start: 0.5em;
+                    }
                 font-size: 1em;
             }
         }
 
         .pannel-container {
-            padding: 1.4rem 2.2rem;
+            padding: 1.4rem 1em;
             background-color: #f7f9fa;
             flex-direction: row-reverse;
             color: #222;
@@ -36,12 +73,23 @@
             border-right: 1px solid #d1d7dc;
             border-top: 1px solid #d1d7dc;
             cursor: pointer;
-            .pannel-title {
-                font-size: 1.2em;
-                font-weight: bold;
-                color: #222;
+            .pannel-title-container{
+                direction: rtl;
+                gap:10px;
+                .pannel-title {
+                    font-size: 1.2em;
+                    font-weight: bold;
+                    color: #222;
+                }
+
             }
-            
+            .num-of-lectures{
+                direction: rtl;
+                @include for-530px  {
+                    display: none;
+                  
+                       }
+            }
             .expand-svg {
                 transition: transform 0.3s ease-out;
                 margin-inline-start: 1em;
@@ -57,18 +105,25 @@
 
     }
     .pannel-content{
+        direction: rtl;
         display: flex;
         flex-direction: column;
         padding: 20px;
         border-right: 1px solid #d1d7dc;
         border-left: 1px solid #d1d7dc;
         gap:10px;
+        background-color: #fff;
         .tv-svg{
             margin-inline-end: 10px;
         }
         .content-preview{
             color: #818181;;
-            
+           .total-lesson-time{
+            @include for-530px  {
+                display: none;
+              
+                   }
+           } 
         }
         .intro{
             cursor: pointer;

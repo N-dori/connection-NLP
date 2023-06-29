@@ -33,14 +33,16 @@ export function IntroPanel({ intros, title, min, isAllExpaned,changeVideoUrl,set
   return (
     <>
       <div onClick={expand} className='pannel-container flex-sb'>
-        <div className='flex-ac'><span className='pannel-title'>{title}</span>
-          <span ><ExpandSvg isShown={isShown} /></span></div>
-        <div className='flex-ac'>{intros.length} lectures • {min} min</div>
+        <div className='pannel-title-container flex-ac'>
+          <span ><ExpandSvg isShown={isShown} /></span>
+          <span className='pannel-title'>{title}</span>
+          </div>
+        <div className='num-of-lectures flex-ac'>{intros.length} הרצאות • {min} דק'</div>
       </div>
       <section className={isShown ? 'pannel-content flex' : 'hidden'}>
         {intros.map(intro => 
         <div key={intro.id} onClick={()=>{handelVideo(intro.videoUrl)}}  className='content-preview intro flex-sb'><div className='flex-ac'>
-       <TvSvg /> {intro.title} </div> <span>{min} min </span>  </div>
+       <TvSvg /> {intro.title} </div> <span className='total-lesson-time'>{min} דק' </span>  </div>
           
        )}
       </section>

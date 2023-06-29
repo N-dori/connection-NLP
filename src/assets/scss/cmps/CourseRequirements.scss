@@ -5,6 +5,15 @@
     margin-top: 15px;
     max-width: 44em;
     margin-left: auto;
+    @include for-tablet-breakpoint {
+        // max-width: 48em;
+          margin-inline-start: 14%;
+      }
+      @include for-940px {
+
+        max-width: 100%;
+        margin-inline:20px ;
+      }
 .course-requierments-warpper{
     grid-column: 2;
     flex-direction: column;
@@ -17,6 +26,9 @@
     // text-align: end;
     color: #222;
     margin-block: 16px;
+    @include for-940px {
+        margin-inline-end:1% ;
+      }
    }
    .requirements-list{
     font-size: 1.2em;

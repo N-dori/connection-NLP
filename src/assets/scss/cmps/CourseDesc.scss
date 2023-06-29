@@ -3,14 +3,27 @@
     grid-column: 2;
     max-width: 44em;
     margin-inline-end: auto;
-    .headline{
-        font-size: 1.8em;
-        font-weight: bold;
-        color: #222;
-        margin-block: 16px;
+    @include for-tablet-breakpoint {
+        // max-width: 48em;
+          margin-inline-start: 14%;
+      }
+      @include for-940px {
+
+        max-width: 100%;
+        margin-inline:20px ;
+      }
+      .headline{
+          font-size: 1.8em;
+          font-weight: bold;
+          color: #222;
+          margin-block: 16px;
+          @include for-940px {
+            margin-inline-end:1% ;
+          }
     }
     p{
         line-height: 22px;
+
     }
     margin-top: 15px;
 }

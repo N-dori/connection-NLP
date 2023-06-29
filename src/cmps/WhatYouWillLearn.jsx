@@ -3,20 +3,22 @@ import { DoneSvg } from '../svgs/DoneSvg';
 export  function WhatYouWillLearn() {
   return (
     <section className='list-container flex-col'>
-    <h3 className='headline'>What you'll learn</h3>
+    <h3 className='headline'>מה תלמד בקורס?</h3>
       <section className="list-warpper flex">
 <ul className='group1 flex clean'>
- <li className='flex-ac'><DoneSvg/> Lorem ipsum dolor sit, amet baba sss adipisicing elit. </li>
-  <li className='flex-ac'><DoneSvg/>adipisci ratione quia esse ea repellendus eos totam odio</li>
-  <li className='flex-ac'><DoneSvg/>consectetur adipisicing elit. Atque koko popo</li>
-  <li className='flex-ac'><DoneSvg/>Atque asperiores nesciunt quibusdam ipsam explicab!</li>
+ <li className='flex-ac'><DoneSvg/> טיפול עומק בחמישה שלבים </li>
+  <li className='flex-ac'><DoneSvg/>שיחה מקדימה ללקוח ולמטפל (pre-talk)</li>
+  <li className='flex-ac'><DoneSvg/>Directe Suggestion  -הצעות ישירות לתת המודעה</li>
+  <li className='flex-ac'><DoneSvg/>תהליכי סליחה לאחר  </li>
+  <li className='flex-ac'><DoneSvg/>תלמד כיצד להכניס כל אדם לטראנס ולחולל שינויי עומק משעותיים בחייך ובחיי הסובבים אותך</li>
 </ul>
     
 <ul className='group2 flex clean'>
-  <li className='flex-ac'><DoneSvg/>Shimon ipsum dolor sit, amet consectetur adipisicing elit. </li>
-  <li className='flex-ac'><DoneSvg/>adipisci ratione quia esse ea repellendus bobo eos totam odio</li>
-  <li className='flex-ac'><DoneSvg/>consectetur adipisicing elit. Atque</li>
-  <li className='flex-ac'><DoneSvg/>Atque asperiores nesciunt quibusdam  ipsa explicabo</li>
+  <li className='flex-ac'><DoneSvg/>תהליכי סליחה עצמי </li>
+  <li className='flex-ac'><DoneSvg/>דרגות/רמות טראנס</li>
+  <li className='flex-ac'><DoneSvg/>ריגרסיה ועבודה עם ציר הזמן</li>
+  <li className='flex-ac'><DoneSvg/>הדגמות של טראסים בזמן אמת</li>
+  <li className='flex-ac'><DoneSvg/>חומרי עזר להורדה מערכי שיעור סקריפטים</li>
 </ul>
 
       </section>

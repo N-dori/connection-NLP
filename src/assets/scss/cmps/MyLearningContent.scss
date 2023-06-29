@@ -4,25 +4,26 @@
       position: relative;
       grid-column: 2;
       grid-row: 1/-1;
-    // overflow: hidden;
+   margin-top: 1em;
     max-height: 100%;
     overflow-y:scroll ;
     top: 0em;
     .my-learning-header-wapper {
           position: sticky;
           right: 0;
-          // width: 100%;
-
-                // top: 0;
+      background-color: #fff; 
+      direction: rtl;
                 .headline {
-                    margin: 1rem;
-                
+                    margin: 1rem;               
                     font-size: 1.1em;
                     font-weight: bold;
                     text-align: end;
                     color: #222;
                 }
-
+.x-svg-container{
+    margin-inline-start: 1em;
+    cursor: pointer;
+}
             }
             .pannel-container {
                 direction: rtl;
@@ -64,6 +65,7 @@
                 }
     
                 .content-preview {
+                    direction: rtl;
                     color: #222222;
                     cursor: pointer;
                     padding: 0.3em;

@@ -24,14 +24,15 @@ export  function CourseContent({episodes, intros,changeVideoUrl,setIsPlayerVisib
     <section className='course-content-container'>
 
     <section className='contant-wapper flex'>
-        <h1 className='headline'>Course content</h1>
+        <h1 className='headline'>תוכן הקורס</h1>
         <section className='course-curriculum flex-sb'>
-            <div className='info flex-ac'>{episodes.length} sections • {getLecturesSum()} lectures • 9h 30m total length</div>
-            <button onClick={expandAll} className='expend-all-btn flex-ac'>{isAllExpaned?'Collapse All Sections':
-            'Expand All Sections'}</button>
+          {/* if possible add total time */}
+            <div className='info flex-ac'>שיעורים {episodes.length} •  הרצאות {getLecturesSum()} •</div>
+            <button onClick={expandAll} className='expend-all-btn flex-ac'>{isAllExpaned?'לסגירה':
+            'פתח הכל'}</button>
         </section>
 
-        <IntroPanel setIsPlayerVisible={setIsPlayerVisible} changeVideoUrl={changeVideoUrl} title={'intro'} intros={intros} isAllExpaned={isAllExpaned} min={27}/>
+        <IntroPanel setIsPlayerVisible={setIsPlayerVisible} changeVideoUrl={changeVideoUrl} title={'שעורי ניסיון'} intros={intros} isAllExpaned={isAllExpaned} min={45}/>
         {
           episodes.map((episode,i) =>{
             const{id,title,subEpisodes,totalHours} = episode

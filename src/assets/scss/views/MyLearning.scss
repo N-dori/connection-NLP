@@ -1,36 +1,79 @@
 .my-leanring-container{
     grid-column: 1/-1;
     // max-height:63.6em;
-    
+
     .my-learning-warpper{
     position: relative;
     grid-template-columns: minmax(20%, 75%) minmax(8em, 25%);
-    grid-template-rows: minmax(10%, 70vh) minmax(10%, auto);;
+    grid-template-rows: minmax(10%, 70vh) minmax(10%, auto);
+    @include for-narrow-layout {
+        display: block !important;
+   
+   }
+    .open-content{
+        position: absolute;
+        cursor: pointer;
+        right: 0;
+        top:0;
+        width: 10em;
+        height: 5%;
+        background-color: #222;
+        color: #fff;
+            @include for-narrow-layout {
+               width: 5em;
+               margin: 0;
+               height: 25px;
+           
+           }
+        }
+        .display-content{
+        //     @include for-mobile-layout {
+        //         display: none;
+           
+        //    }
+        }
     .video-player-container{
         grid-column: 1;   
         grid-row: 1;
         max-height: 100%;
         width: 100%;
-        
-    .video-player-warpper {
-        position: relative;
-        bottom: 420px;
-
-        .player-wrapper {
-            width: auto; // Reset width
-            height: auto; // Reset height
-        }
-
         .react-player {
-            padding-top: 56.25%; // Percentage ratio for 16:9
-            position: relative; // Set to relative
-        }
-
-        .react-player>div {
-            position: absolute; // Scaling will occur since parent is relative now
-        }
+            height: 100% !important;
+            width: 100% !important;
+            
+            @include for-narrow-layout {
+                height: 360px!important;
+                width: 100% !important;
 
     }
+            @include for-mobile-layout {
+                height: 250px!important;
+                width: 100% !important;
+
+    }
+          
+        }
+        // for youtube settings
+    // .video-player-warpper {
+    //     position: relative;
+    //     bottom: 420px;
+        // .player-wrapper {
+        //     width: auto; // Reset width
+        //     height: auto; // Reset height
+        // }
+
+        // .react-player {
+        //     height: 100% !important;
+        //     width: 100%;
+        //     padding-top: 56.25%; // Percentage ratio for 16:9
+        //     position: relative; // Set to relative
+        // }
+
+        // .react-player>div {
+        //     position: absolute; // Scaling will occur since parent is relative now
+        // }
+
+    // }
     }
   
 }
@@ -50,6 +93,11 @@
         background-color: #fbfbfb;
         border-top:2px solid #444444;
         border-bottom:1px solid #9c9c9c ;
+        @include for-mobile-layout {
+            padding-inline-start:0.5em;
+            gap:1em;
+            font-size: 0.9em;
+         }
         .search-svg{
             width:20px;
             height: 20px;

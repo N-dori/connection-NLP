@@ -4,6 +4,7 @@
 @import '../scss/setup/typography.scss';
 @import '../scss/setup/vars.scss';
 @import '../scss/setup/helpers.scss';
+@import '../scss/setup/mixins';
 
 // ## cmps
 @import '../scss/cmps/AppHeader.scss';
@@ -26,6 +27,7 @@
 @import '../scss/cmps/CourseOverview.scss';
 @import '../scss/cmps/CourseAnnouncements.scss';
 @import '../scss/cmps/RatingModal.scss';
+@import '../scss/cmps/MobileDetailsFooter.scss';
 // ## views 
 @import '../scss/views/SignupPage.scss';
 @import '../scss/views/CourseDetails.scss';

@@ -8,7 +8,7 @@ export  function ThisCourseIncludes() {
   return (
     <>
     <section className='list-whats-includes-container '>
-    <h1 className='headline'>This course includes</h1>
+    <h1 className='headline'>הקורס הזה כולל</h1>
     <section className='list-container flex'>
 
     <ul className='group flex-col clean'>
