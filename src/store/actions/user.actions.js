@@ -52,6 +52,24 @@ export function updateUser(user){
         console.log('can not signup User',err);
     }
 }
+export function updateCurrTimeWacth(userId,courseId, currEpisode, currSubEpisode,currTimeWatch,videoUrl){
+    try{
+        return async(dispatch,getState)=>{
+            console.log('in action episodeId',currEpisode);
+            console.log('in action subEpisodeId',currSubEpisode);
+            const updatedUser = await userService.updateCurrTimeWacth(userId,courseId, currEpisode, currSubEpisode,currTimeWatch,videoUrl)
+            console.log('updatedUser after backend',updatedUser);       
+            const action = {
+                type:UPDATE_USER,
+                updatedUser    
+            }
+           dispatch(action)
+    }
+     
+    }catch(err){
+        console.log('can not signup User',err);
+    }
+}
 export function getUserById(userId){
     try{
         return async(dispatch,getState)=>{

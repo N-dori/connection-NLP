@@ -13,6 +13,7 @@ export const userService = {
     getLoggedinUser,
     getUserById,
     clearUserCart,
+    updateCurrTimeWacth,
 
 }
 const USER_KEY = 'userDB'
@@ -119,6 +120,43 @@ async function updateUser(userToUpdate){
     }
     // const updatedUser= await httpService.put(`user`,user)
 return userToUpdate
+  
+}
+async function updateCurrTimeWacth(userId,courseId, episodeId, subEpisodeId,currTimeWatch,videoUrl){
+    try{
+        console.log('userId',userId);
+        console.log('courseId',courseId);
+        console.log('episodeId',episodeId);
+        console.log('subEpisodeId',subEpisodeId);
+        console.log('currTimeWatch',currTimeWatch);
+        
+        //finding the user
+        const userToUpdate = await getUserById(userId)
+        //getting the relevent course 
+       const course = userToUpdate.courses.find(course=> course._id===courseId)
+      // creating new key lastTimeWatch -with the vlaue we got form the component
+      if(!course){
+        return
+      }
+       course.lastVideoWatched = {
+        episode:episodeId,
+        subEpisode:subEpisodeId,
+        lastTimeWatched:currTimeWatch,
+        videoUrl
+                                  }                                                 
+                                                                                 
+       console.log(' updated course in updateCurrTimeWacth func', course );
+       // updating his courses 
+       const updatedCourses = userToUpdate.courses.map(currCourse => currCourse._id === course._id ? course : currCourse )
+      userToUpdate.courses = updatedCourses
+      // updateing the  user
+       updateUser(userToUpdate)
+       console.log(' userToUpdate in updateCurrTimeWacth func', userToUpdate );
+       return userToUpdate
+    }catch(err) {
+        console.log('could not update Curr TimeWacth of user', err );
+    }
+    // const updatedUser= await httpService.put(`user`,user)
   
 }
 async function clearUserCart(userId){

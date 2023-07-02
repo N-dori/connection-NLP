@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { TvSvg } from '../svgs/TvSvg'
 
-export  function SubLeasson({id,title,videoUrl,i,isClicked ,min,onVideoClick }) {
+export  function SubLeasson({setIsClicked,setCurrSubEpisode,id,title,videoUrl,i,isClicked ,min,onVideoClick }) {
+  useEffect(() => {
+    setCurrSubEpisode(id)
+    setIsClicked(id)
+}, [])
   return (
-    <article key={id} onClick={()=>onVideoClick(i,videoUrl)}
+    <article key={id} onClick={()=>onVideoClick(i,videoUrl,id)}
     className='content-preview flex-col'
     style={{backgroundColor:isClicked===i?'rgb(219, 219, 219)':'#fff'}}
     >

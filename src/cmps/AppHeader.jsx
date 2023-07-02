@@ -4,14 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/actions/user.actions';
 import { ShoppingCartSvg } from '../svgs/ShoppingCartSvg';
 import { userService } from '../services/userService';
+import { MobileMenuSvg } from '../svgs/MobileMenuSvg';
+import MobileMenu from './MobileMenu';
 
 export function AppHeader({ len }) {
     const loaction = useLocation()
     const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
-    const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
     const logoUrl = 'https://res.cloudinary.com/dii16awkb/image/upload/v1685878172/%D7%9C%D7%95%D7%92%D7%95_fpn8ig.jpg'
     const [isShown, setIsShown] = useState(false)
-    const [routeUrl,setRouteUrl] = useState('')
+    const [isMobileMenu, setIsMobileMenu] = useState(false)
     const [user, setUser] = useState(null)
     const dispatch = useDispatch()
     const naviget = useNavigate()
@@ -20,11 +21,10 @@ export function AppHeader({ len }) {
         getParamLoction()
         setIsShown(false)
         loadUser()
-    }, [loggdingUser, user,loaction])
+    }, [loggdingUser, user])
     
     const getParamLoction = () =>{
         console.log('loactionnnnnn',loaction.pathname.slice(1,7))
-        setRouteUrl(loaction.pathname.slice(1,7))
     }
     const loadUser = async () => {
         if (!loggdingUser) {
@@ -35,26 +35,25 @@ export function AppHeader({ len }) {
             }
             const currUser = await userService.getUserById(loggdingUser._id)
             setUser(currUser)
-
         }
-
     }
 
     const onLogout = () => {
         dispatch(logout())
     }
+
     const toggelMenu = () => {
         setIsShown(!isShown)
     }
-    const DetailsStyles = {
-        display:'grid',
-        gridTemplateColumns:"minmax(5em,1fr) minmax(auto,5.5fr) minmax(5em, 1fr)",
-        paddingInlineStart:3+"%"
+    const toggelMobileMenu = () => {
+        setIsMobileMenu(!isMobileMenu)
     }
+
+   
     return (
 
         <>
-            <header /* style={routeUrl==='course'?DetailsStyles:{}} */ className="app-header full grid ">
+            <header  className="app-header full grid ">
                 <section className='action-btns flex'>
                     <ShoppingCartSvg len={len} loggdingUser={loggdingUser} onClick={() => naviget('/shopping-cart')} />
                     {
@@ -91,6 +90,8 @@ export function AppHeader({ len }) {
 
                 </section>
                 <div className='header-content-container flex-ac'>
+                    <MobileMenuSvg onClick={toggelMobileMenu}/>
+                    <MobileMenu/>
                     <div className="logo-container ">
                         <Link className='logo-link flex' to="/"><img className='logo' src={logoUrl} />
                         </Link>

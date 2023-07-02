@@ -35,6 +35,7 @@ export function App() {
   // load data from store : loggedin user ,courses ,reviews
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
   const filterBy = useSelector((storeState) => storeState.couresModule.filterBy)
+  const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
 
   const dispatch = useDispatch()
   const [len, setLen] = useState('')
@@ -149,7 +150,7 @@ export function App() {
            components: CourseContentIndex , CourseOverview, SearchContent, CourseReviews ,CourseAnnouncements
 
         */}
-          <Route path="/my-learning/:id" element={<MyLearning setVideoUrl={setVideoUrl} videoUrl={videoUrl} setCurrCourseId={setCurrCourseId} />} >
+          <Route path="/my-learning/:id" element={<MyLearning  setVideoUrl={setVideoUrl} videoUrl={videoUrl} setCurrCourseId={setCurrCourseId} currCourseId={currCourseId}/>} >
             <Route path='/my-learning/:id/course-overiew' element={<CourseOverview />} />
             <Route path='/my-learning/:id/serach-content' element={<SearchContent setVideoUrl={setVideoUrl} content={content}  onChangeFilter={onChangeFilter} filterBy={filterBy} />} />
             <Route path='/my-learning/:id/reviews' element={<CourseReviews />} />

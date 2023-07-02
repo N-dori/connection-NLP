@@ -3,6 +3,7 @@
     grid-column: 2;
     gap: 35px;
     padding-inline-start: 0;
+    padding-block: 4em;
     @include for-633px {
         flex-direction: column;
                }
@@ -51,6 +52,8 @@
         .sub-title {
             grid-row: 3;
             min-height: 54px;
+            color: #ffff;
+            text-align: center;
             @include for-narrow-layout {
                 // font-size: 1em;
                 white-space: nowrap;

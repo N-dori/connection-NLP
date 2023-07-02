@@ -1,7 +1,10 @@
 import React from 'react'
 
-export default function MobileDetailsFooter({priceBeforeDiscount,formatedPrice,title,subTitle,}) {
-  return (
+export default function MobileDetailsFooter({addToCart , priceBeforeDiscount,formatedPrice,title,subTitle,}) {
+    const handelActionBtn = () => {
+        addToCart()
+      }
+    return (
   <section className='mobile-details-footer-container'>
     <main className='mobile-details-footer-wrapper flex-sb'>
         <div className='course-title-container '>
@@ -14,7 +17,7 @@ export default function MobileDetailsFooter({priceBeforeDiscount,formatedPrice,t
         <span className='course-price'>{formatedPrice}</span>
         </div>
 
-        <button className='action-btn flex-ac-jc' > <span className='txt'>לרכישה</span></button>
+        <button className='action-btn flex-ac-jc' onClick={handelActionBtn} > <span className='txt'>לרכישה</span></button>
 
         </section>
     </main>
