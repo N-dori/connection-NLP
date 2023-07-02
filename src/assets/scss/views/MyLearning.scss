@@ -6,6 +6,10 @@
     position: relative;
     grid-template-columns: minmax(20%, 75%) minmax(8em, 25%);
     grid-template-rows: minmax(10%, 70vh) minmax(10%, auto);
+    @include for-940px {
+        grid-template-rows: minmax(10%, 18%) minmax(10%, auto);
+   
+   }
     @include for-narrow-layout {
         display: block !important;
    
@@ -37,17 +41,39 @@
         grid-row: 1;
         max-height: 100%;
         width: 100%;
+    //     @include for-940px {
+    //         height: 80%;
+       
+    //    }
         .react-player {
             height: 100% !important;
             width: 100% !important;
-            
+            @include for-940px {
+                height: 86%!important;
+                width: 100% !important;           
+           }
             @include for-narrow-layout {
-                height: 360px!important;
+                height: 330px!important;
                 width: 100% !important;
 
     }
             @include for-mobile-layout {
                 height: 250px!important;
+                width: 100% !important;
+
+    }
+            @include for-370px {
+                height: 220px!important;
+                width: 100% !important;
+
+    }
+            @include for-325px {
+                height: 170px!important;
+                width: 100% !important;
+
+    }
+            @include for-270px {
+                height: 150px!important;
                 width: 100% !important;
 
     }

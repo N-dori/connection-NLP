@@ -1,5 +1,8 @@
 
-export  function MobileMenuSvg() {
+export  function MobileMenuSvg({isActive,toggelMobileMenu}) {
   return (
-<svg className="mobile-menu-svg" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg>  )
+<div className={isActive?"mobile-menu-svg active":"mobile-menu-svg " } onClick={toggelMobileMenu}>
+<span></span>
+</div>
+  )
 }

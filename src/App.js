@@ -29,7 +29,7 @@ import {WhatToolsYouGet} from './views/WhatToolsYouGet';
 import { NlpBenefits } from './views/NlpBenefits';
 import { WhoAreWe } from './views/WhoAreWe';
 import { Memorial } from './cmps/Memorial';
-import { CoursesIndex } from './cmps/CoursesIndex';
+import CoursesIndex  from './cmps/CoursesIndex';
 
 export function App() {
   // load data from store : loggedin user ,courses ,reviews
@@ -42,6 +42,8 @@ export function App() {
   const [currCourseId, setCurrCourseId] = useState('')
   const [content, setContent] = useState('')
   const [videoUrl, setVideoUrl] = useState(false)
+  const [isMobileMenu, setIsMobileMenu] = useState(false)
+  const [isActive, setIsActive] = useState(false)
 
   useEffect(() => {
     dispatch(loadCart())
@@ -81,7 +83,8 @@ export function App() {
             if loggedin user is null : show logo , links to componentets: About, ShoppingCart , login , signup, about
             if loggedin user !== null : show logo, links to componentets: About, ,ShoppingCart, user-img 
             if loggedinuser && paid for courses : show logo, links to componentets: ,ShoppingCart, MyCourses, user-img */}
-        <AppHeader len={len} />
+        <AppHeader setIsActive={setIsActive}isActive={isActive}  isMobileMenu={isMobileMenu}
+          setIsMobileMenu={setIsMobileMenu} len={len} />
 
         <Routes>
           {/* Home view : 
@@ -90,7 +93,9 @@ export function App() {
         content: carousel with  hi username? nice pics and quotes , texts, list of courses , list of recomendations 
 
         */}
-          <Route path="/" element={<Home />} >
+          <Route path="/" element={<Home  setIsActive={setIsActive}isActive={isActive}
+          isMobileMenu={isMobileMenu}
+          setIsMobileMenu={setIsMobileMenu}/>} >
               <Route path='/our-courses' element={<CoursesIndex />} />
               <Route path='/who-are-we' element={<WhoAreWe />} />
              <Route path='/benefits' element={<NlpBenefits />} />

@@ -2,6 +2,9 @@
     display: grid;
     grid-template-columns: minmax(50px, 1fr) minmax(auto, 1730px) minmax(50px, 1fr);
     background-color: #faf2e6;
+    @include for-mobile-layout {
+     grid-template-columns: minmax(10px, 1fr) minmax(auto, 1730px) minmax(10px, 1fr)!important ;
+    }
 }
 
 

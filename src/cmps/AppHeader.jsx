@@ -7,12 +7,11 @@ import { userService } from '../services/userService';
 import { MobileMenuSvg } from '../svgs/MobileMenuSvg';
 import MobileMenu from './MobileMenu';
 
-export function AppHeader({ len }) {
+export function AppHeader({ setIsActive,isActive,  isMobileMenu, setIsMobileMenu,  len }) {
     const loaction = useLocation()
     const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
     const logoUrl = 'https://res.cloudinary.com/dii16awkb/image/upload/v1685878172/%D7%9C%D7%95%D7%92%D7%95_fpn8ig.jpg'
     const [isShown, setIsShown] = useState(false)
-    const [isMobileMenu, setIsMobileMenu] = useState(false)
     const [user, setUser] = useState(null)
     const dispatch = useDispatch()
     const naviget = useNavigate()
@@ -46,7 +45,9 @@ export function AppHeader({ len }) {
         setIsShown(!isShown)
     }
     const toggelMobileMenu = () => {
+        console.log('isMobileMenu',isMobileMenu);
         setIsMobileMenu(!isMobileMenu)
+        setIsActive(!isActive)
     }
 
    
@@ -90,22 +91,22 @@ export function AppHeader({ len }) {
 
                 </section>
                 <div className='header-content-container flex-ac'>
-                    <MobileMenuSvg onClick={toggelMobileMenu}/>
-                    <MobileMenu/>
+                    
+                    <MobileMenuSvg isActive={isActive} toggelMobileMenu={toggelMobileMenu}/>
+                    <nav className="main-menu flex clean">
+                        {loggdingUser ?
+                                loggdingUser.courses.length ?
+                                <li className='link-container flex-jc-ac'>
+                                        <NavLink className="heaer-link" to="/my-courses">הקורסים שלי</NavLink>
+                                    </li> : ''
+                                : ""   
+                            }
+                   
+                    </nav>
                     <div className="logo-container ">
                         <Link className='logo-link flex' to="/"><img className='logo' src={logoUrl} />
                         </Link>
                     </div>
-                    <nav className="main-menu flex clean">
-                        {loggdingUser ?
-                                loggdingUser.courses.length ?
-                                    <li className='link-container flex-jc-ac'>
-                                        <NavLink className="heaer-link" to="/my-courses">הקורסים שלי</NavLink>
-                                    </li> : ''
-                                : ""   
-                        }
-                   
-                    </nav>
 
                 </div>
             </header>
@@ -114,4 +115,5 @@ export function AppHeader({ len }) {
 
     )
 }
+
 
