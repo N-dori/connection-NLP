@@ -1,10 +1,10 @@
 // ## setup
+@import '../scss/setup/vars.scss';
+@import '../scss/setup/mixins';
 @import '../scss/setup/basic.scss';
 @import '../scss/setup/layout.scss';
 @import '../scss/setup/typography.scss';
-@import '../scss/setup/vars.scss';
 @import '../scss/setup/helpers.scss';
-@import '../scss/setup/mixins';
 
 // ## cmps
 @import '../scss/cmps/AppHeader.scss';
@@ -28,6 +28,7 @@
 @import '../scss/cmps/CourseAnnouncements.scss';
 @import '../scss/cmps/RatingModal.scss';
 @import '../scss/cmps/MobileDetailsFooter.scss';
+@import '../scss/cmps/MobileMenu.scss';
 // ## views 
 @import '../scss/views/SignupPage.scss';
 @import '../scss/views/CourseDetails.scss';

@@ -7,7 +7,7 @@ export  function WhatToolsYouGet() {
  
     <section className='what-tools-will-you-get-container flex '>
         <section className='tools-wrapper flex-col'>
-    <h2 className='headline'>אז איך <span className='tc-b'>NLP</span> יכול לשדרג לך את החיים?</h2>
+    <h2 className='headline'>אז מה לומדים?</h2>
     <section className="list-warpper grid">
       <ul className='group1 flex-col clean'>
         <li  className='flex-ac'><DoneSvg />  קבלו הבנה עמוקה יותר של המערת המדהימה הזאת שנקראת תת המודע . דבר שיש לכל אחד מאיתנו אך מעטים יודעים כיצד לפנות ולהשתמש בכלי הנפלא הזה! </li>

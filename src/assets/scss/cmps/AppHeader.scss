@@ -16,20 +16,22 @@
         grid-row: 1;
         direction: rtl;
         justify-content: flex-end;
+        gap:1em;
         @include for-narrow-layout {
-            display: flex;
-            justify-content: space-between!important;
-            align-items: center;
+            display: flex
         }
         .mobile-menu-svg {
             display: none;
+            z-index: 9999;
             @include for-narrow-layout {
                 display: block;
                 fill: #222;
+                cursor: pointer;
             }
             @include for-mobile-layout {
                 width: 30px;
                 fill: #222;
+                cursor: pointer;
          
          }
         }
@@ -37,9 +39,6 @@
 
     .logo-container {
         @include for-mobile-layout {
-        // position: absolute;
-        // top: 0.5em;
-        // left: -1em;
         margin-left: -17px;
      }
 

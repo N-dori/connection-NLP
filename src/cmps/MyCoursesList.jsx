@@ -1,5 +1,4 @@
 import React from 'react'
-import { CoursePreview } from './CoursePreview'
 import { MyCoursePreview } from './MyCoursePreview'
 
 export  function MyCoursesList({isShown,setIsSown,courses,setCurrCourse}) {

@@ -52,14 +52,14 @@ const handelSubmitReview =(ev) => {
 <>
     <section className='my-courses-header-container grid'>
         <header className='my-courses-header-wrapper'>
-          <h1 className='headline'>My Courses</h1>
+          <h1 className='headline'>הקורסים שלי</h1>
         </header>
       </section> 
         <section className='my-courses-list grid'>
           <main className="schedule-learning-time-warpper grid">
         <AlarmSvg/>
-        <h3 className='headline'>Schedule learning time</h3>
-        <p className='sub-headline'>Learning a little each day adds up. Research shows that students who make learning a habit are more likely to reach their goals. Set time aside to learn and get reminders using your learning scheduler.</p>
+        <h3 className='headline'>קבעו זמן לימוד</h3>
+        <p className='sub-headline'>כשלומדים כל יום קצת זה מצטבר . מחקרים מראים שסטודנטים שהופכים את הלימוד שלהם להרגל קבוע משיגים את מטרותיהם בסבירות גבוהה הרבה יותר . תאהבו את עצמכם הקצו זמן איכות ללמידה! </p>
           </main>
           <MyCoursesList isShown={isShown} setIsSown={setIsSown} setCurrCourse={setCurrCourse} courses={courses}/>
         { isShown? <RatingModal handelSubmitReview={handelSubmitReview}

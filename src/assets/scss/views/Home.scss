@@ -104,32 +104,32 @@
         }
 
         @include for-narrow-layout {
-            gap: 3.2em
+        display: none;
         }
 
-        @include for-633px {
-            gap: 1.6em
-        }
+        // @include for-633px {
+        //     gap: 1.6em
+        // }
 
-        @include for-530px {
-            gap: 1.1em
-        }
+        // @include for-530px {
+        //     gap: 1.1em
+        // }
 
-        @include for-mobile-layout {
-            gap: 0.5em
-        }
+        // @include for-mobile-layout {
+        //     gap: 0.5em
+        // }
 
-        @include for-370px {
-            gap: 0.8em
-        }
+        // @include for-370px {
+        //     gap: 0.8em
+        // }
 
-        @include for-325px {
-            gap: 0.3em
-        }
+        // @include for-325px {
+        //     gap: 0.3em
+        // }
 
-        @include for-270px {
-            gap: 0.2em
-        }
+        // @include for-270px {
+        //     gap: 0.2em
+        // }
 
         .main-nav-bar-link {
             font-size: 1.3em;
@@ -164,7 +164,9 @@
     }
 
     .home-page-outlets-container {
-
+    @include for-mobile-layout {
+        display: none;
+    }
         padding-block: 2em;
         padding-inline: 1em;
         background-color: #222;
@@ -174,7 +176,9 @@
             grid-column: 1;
             background-color: #222;
             color: #fff;
-
+            @include for-mobile-layout {
+                align-items: center;
+            }
             .memorial-container-wrapper {
                 padding-top: 100px;
                 flex-direction: column-reverse;
@@ -207,9 +211,10 @@
                     object-fit: cover;
                     border-radius: 15px;
 
-                    @include for-325px {
-                        width: 200px;
+                    @include for-mobile-layout {
+                        width: 200px !important;
                     }
+                 
                 }
             }
         }
@@ -622,4 +627,38 @@
     text-align: center;
     cursor: pointer;
     text-decoration: underline;
+}
+.mobile-home-page-outlets-container{
+    display: none;
+
+    @include for-mobile-layout {
+        display: block;
+    }
+    padding-block: 2em;
+        padding-inline: 1em;
+        background-color: #222;
+        color: #fff;
+     .introduction-container{
+        margin-bottom: 3em;
+    }
+    .benefits-container{
+        
+        margin-bottom: 3em;
+     }
+     .memorial-container-wrapper{
+        @include for-mobile-layout {
+align-items: center;        }
+     }
+     .shlomo-img {
+         width: 230px;
+         height: 354px;
+         aspect-ratio: 1/1;
+         object-fit: cover;
+         border-radius: 15px;
+     
+         @include for-mobile-layout {
+             width: 200px !important;
+         }
+      
+     }
 }

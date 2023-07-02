@@ -5,22 +5,47 @@ import { slides } from '../services/swiperService';
 import { AppRecommendations } from '../cmps/AppRecommendations'
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 
-export function Home() {
+import { WhoAreWe } from './WhoAreWe';
+import { NlpBenefits } from './NlpBenefits';
+import { WhatToolsYouGet } from './WhatToolsYouGet';
+import { Memorial } from '../cmps/Memorial';
+import MobileMenu from '../cmps/MobileMenu';
+import CoursesIndex from '../cmps/CoursesIndex';
+
+export function Home({setIsActive,isActive,isMobileMenu,setIsMobileMenu }) {
+  
+ 
   const navigate = useNavigate()
-  const ref = useRef();
+  const coursesRef = useRef();
   useEffect(() => {
     window.scrollTo(0, 0)
     navigate('/our-courses')
   }, [])
+  
+  const toggelMobileMenu = () => {
+    console.log('isMobileMenu',isMobileMenu);
+    setIsMobileMenu(!isMobileMenu)
+}
+  const scrollTo = (refType) => {
+    if(refType === 'coursesRef')scrollToCourses()
 
- const scrollTo = () => window.scrollTo({
-    top: ref.current.offsetTop -100, 
+  } 
+  const scrollToCourses = () =>{
+    setIsActive(!isActive)
+    console.log('coursesRef',coursesRef);
+    window.scrollTo({
+    top: coursesRef.current.offsetTop + 500,
     behavior: "smooth"
-})
+  })}
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
 
   return (
     <section className='home-page-container '>
+      <MobileMenu 
+      toggelMobileMenu={toggelMobileMenu}
+      scrollToCourses={scrollToCourses}
+                    isMobileMenu={isMobileMenu}
+                    setIsMobileMenu={setIsMobileMenu}/>
       <section className='carousel-container'>
         {loggdingUser ?
           <p className='home-greeting'>שלום: {loggdingUser.fullname ? loggdingUser.fullname : loggdingUser.fname}</p>
@@ -41,15 +66,29 @@ export function Home() {
           <Link className='main-nav-bar-link' to="/benefits">יתרונות השיטה</Link>
           <Link className='main-nav-bar-link' to="/nlp-tools">כלים מעשיים</Link>
         </nav>
-         <section className='home-page-outlets-container '>
+        <section className='home-page-outlets-container '>
           <Outlet></Outlet>
 
+
+        </section>
+        <section className='mobile-home-page-outlets-container  '>
+          {
+          <>
+          <CoursesIndex ref={coursesRef}/>
+          <WhoAreWe/>
+          <NlpBenefits/>
+          <WhatToolsYouGet/>
+          <Memorial/>
+          </>
   
-         </section>
+        }
+
+
+        </section>
 
       </section>
 
-      
+
       <AppRecommendations />
     </section>
 
