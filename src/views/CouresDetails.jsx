@@ -40,20 +40,20 @@ export function CouresDetails() {
   }, [])
 
   const addToCart = () => {
-    if (loggdingUser) {
+/*     if (loggdingUser) { */
       dispatch(addToUserCart(course._id))
           setTimeout(() => {
       navigate('/shopping-cart')
 
     }, 1500);
-      goToShoppingCart()
+      /* goToShoppingCart() */
 
-    } else {
+  /*   } else {
       setUserMsg(true)
       setTimeout(() => {
         setUserMsg(null)
       }, 5000);
-    }
+    } */
 
   }
 
@@ -150,11 +150,12 @@ export function CouresDetails() {
 
           <div className={isPlayerVisible ? 'screen-filter' : 'hidden'} ></div>
         </section>
-          <MobileDetailsFooter 
+        {visible?"":  <MobileDetailsFooter 
+        addToCart={addToCart}
           subTitle={course.subTitle}
           title={course.title} 
           priceBeforeDiscount={priceBeforeDiscount}
-           formatedPrice={formatedPrice}/>
+           formatedPrice={formatedPrice}/>}
       </> :
       <div>Loading...</div>
 

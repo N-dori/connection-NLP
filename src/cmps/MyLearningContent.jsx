@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { XSvg } from '../svgs/XSvg'
 import { Leasson } from './Leasson'
 
-export  function MyLearningContent({getLecturesSum,episodes,setVideoUrl,tuggleContent}) {
+export  function MyLearningContent({lastEpisode,currEpisode,setCurrEpisode,setCurrSubEpisode,getLecturesSum,episodes,setVideoUrl,tuggleContent}) {
   const [isShown,setIsShown]=useState(false)
   const [count, setCount] = useState(1)
 
@@ -21,6 +21,7 @@ export  function MyLearningContent({getLecturesSum,episodes,setVideoUrl,tuggleCo
       episodes.map((episode,i) =>{
         const{id,title,subEpisodes,totalHours} = episode
         return <Leasson key={id} i={i} 
+        episodeId={id}
         title={title} 
         subEpisodes={subEpisodes}
         min={totalHours}
@@ -29,6 +30,10 @@ export  function MyLearningContent({getLecturesSum,episodes,setVideoUrl,tuggleCo
         getLecturesSum={getLecturesSum}
         setVideoUrl={setVideoUrl}
         shown={false}
+        setCurrSubEpisode={setCurrSubEpisode}
+        setCurrEpisode={setCurrEpisode}
+        currEpisode={currEpisode}
+        lastEpisode={lastEpisode}
         />
       })}
 </>
