@@ -17,7 +17,7 @@ import { CourseAnnouncements } from './cmps/CourseAnnouncements';
 import { DashBoard } from './views/DashBoard';
 import { About } from './views/About';
 import { AppFooter } from './cmps/AppFooter';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { loadCart } from './store/actions/cart.actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { CourseQ } from './cmps/CourseQ';
@@ -25,11 +25,12 @@ import { setFilterBy } from './store/actions/course.actions';
 import { courseService } from './services/course.service';
 import { loadAnnouncements } from './store/actions/announcement.actions';
 import { loadReviews } from './store/actions/review.actions';
-import {WhatToolsYouGet} from './views/WhatToolsYouGet';
-import { NlpBenefits } from './views/NlpBenefits';
-import { WhoAreWe } from './views/WhoAreWe';
-import { Memorial } from './cmps/Memorial';
+import WhatToolsYouGet from './views/WhatToolsYouGet';
+import  NlpBenefits  from './views/NlpBenefits';
+import  WhoAreWe  from './views/WhoAreWe';
+import  Memorial  from './cmps/Memorial';
 import CoursesIndex  from './cmps/CoursesIndex';
+import MobileMenu from './cmps/MobileMenu';
 
 export function App() {
   // load data from store : loggedin user ,courses ,reviews
@@ -44,6 +45,12 @@ export function App() {
   const [videoUrl, setVideoUrl] = useState(false)
   const [isMobileMenu, setIsMobileMenu] = useState(false)
   const [isActive, setIsActive] = useState(false)
+ 
+  const coursesRef = useRef();
+  const whoAreWe = useRef();
+  const nlpBenefitsRef = useRef();
+  const whatToolsRef = useRef();
+  const memorialRef = useRef();
 
   useEffect(() => {
     dispatch(loadCart())
@@ -69,9 +76,43 @@ export function App() {
 }
  const getContent = async (filterBy) => {
   const content = await courseService.getCourseContent(currCourseId,filterBy)
-  console.log('content',content);
   setContent(content)
   }
+  const toggelMobileMenu = () => {
+    setIsMobileMenu(!isMobileMenu)
+    setIsActive(!isActive)
+  if(!isMobileMenu) { window.scrollTo(0,0)}
+}
+const scrollToCourses = () =>{
+  toggelMobileMenu()
+  window.scrollTo({
+  top: coursesRef.current.offsetTop - 100,
+  behavior: "smooth"
+})}
+const scrollToWhoAreWe = () =>{
+  toggelMobileMenu()
+  window.scrollTo({
+  top: whoAreWe.current.offsetTop - 100,
+  behavior: "smooth"
+})}
+const scrollToNlpBenefits = () =>{
+  toggelMobileMenu()
+  window.scrollTo({
+  top: nlpBenefitsRef.current.offsetTop - 100,
+  behavior: "smooth"
+})}
+const scrollToWhatTools = () =>{
+  toggelMobileMenu()
+  window.scrollTo({
+  top: whatToolsRef.current.offsetTop - 100,
+  behavior: "smooth"
+})}
+const scrollToMemorial = () =>{
+  toggelMobileMenu()
+  window.scrollTo({
+  top: memorialRef.current.offsetTop - 100,
+  behavior: "smooth"
+})}
 
   return (
 
@@ -83,9 +124,16 @@ export function App() {
             if loggedin user is null : show logo , links to componentets: About, ShoppingCart , login , signup, about
             if loggedin user !== null : show logo, links to componentets: About, ,ShoppingCart, user-img 
             if loggedinuser && paid for courses : show logo, links to componentets: ,ShoppingCart, MyCourses, user-img */}
-        <AppHeader setIsActive={setIsActive}isActive={isActive}  isMobileMenu={isMobileMenu}
-          setIsMobileMenu={setIsMobileMenu} len={len} />
-
+        <AppHeader toggelMobileMenu={toggelMobileMenu} isActive={isActive} len={len} />
+        <MobileMenu 
+                    toggelMobileMenu={toggelMobileMenu}
+                    scrollToCourses={scrollToCourses}
+                    scrollToWhoAreWe={scrollToWhoAreWe}
+                    scrollToNlpBenefits={scrollToNlpBenefits}
+                    scrollToWhatTools={scrollToWhatTools}
+                    scrollToMemorial={scrollToMemorial}
+                    isMobileMenu={isMobileMenu}
+                    setIsMobileMenu={setIsMobileMenu}/>
         <Routes>
           {/* Home view : 
         props: loggedinUser , courses 
@@ -93,9 +141,16 @@ export function App() {
         content: carousel with  hi username? nice pics and quotes , texts, list of courses , list of recomendations 
 
         */}
-          <Route path="/" element={<Home  setIsActive={setIsActive}isActive={isActive}
-          isMobileMenu={isMobileMenu}
-          setIsMobileMenu={setIsMobileMenu}/>} >
+          <Route path="/" element={<Home
+                                   nlpBenefitsRef={nlpBenefitsRef}
+                                   whoAreWe={whoAreWe}
+                                   coursesRef={coursesRef}
+                                   whatToolsRef={whatToolsRef}
+                                   memorialRef={memorialRef}
+                                   toggelMobileMenu={toggelMobileMenu}
+                                   isMobileMenu={isMobileMenu}
+                                   setIsMobileMenu={setIsMobileMenu}/>} >
+
               <Route path='/our-courses' element={<CoursesIndex />} />
               <Route path='/who-are-we' element={<WhoAreWe />} />
              <Route path='/benefits' element={<NlpBenefits />} />

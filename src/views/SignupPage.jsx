@@ -49,7 +49,7 @@ export function SignupPage() {
         setUser((prevUser) => ({ ...prevUser, [field]: value }))
     }
     if (!user) return (<div>Loading...</div>)
-    const { fname, email, userName, password } = user
+    const { fname, email, password } = user
     const imgUrl = `https://res.cloudinary.com/dii16awkb/image/upload/v1684522130/signgupSvg_hawhuc.webp`
     
     return (
@@ -57,29 +57,29 @@ export function SignupPage() {
             {/* <div className='signup-img-container'>
                 <img className='signup-img' src={imgService.getImg('signupImg')} />
             </div> */}
-            <form className='signup-form flex'  onSubmit={onSignup}>
-            <h3 className="signin-title">Sign-up and start learning</h3>
+            <form  className='signup-form flex'  onSubmit={onSignup}>
+            <h3 className="signin-title">הרשם והתחל ללמוד</h3>
 
                 <label htmlFor="fname">
-                    <input value={fname} onChange={handleChange} className="sign-in-input" required type="text" name="fname" id="fname" placeholder="Fullname" />
+                    <input value={fname} onChange={handleChange} className="sign-in-input" required type="text" name="fname" id="fname" placeholder="שם מלא" />
                 </label>
                 <label htmlFor="email">
-                    <input value={email} onChange={handleChange} className="sign-in-input" required type="email" name="email" id="email" placeholder="Email" />
+                    <input value={email} onChange={handleChange} className="sign-in-input" required type="email" name="email" id="email" placeholder="אימייל" />
                 </label>
                 <label htmlFor="password">
-                    <input value={password} onChange={handleChange} className="sign-in-input" required type="password" name="password" id="password" placeholder="Password" />
+                    <input value={password} onChange={handleChange} className="sign-in-input" required type="password" name="password" id="password" placeholder="סיסמא" />
                 </label>
-                <button className="sign-in-btn">Sign up</button>
+                <button className="sign-in-btn">הרשם</button>
                 <GoogleLoginBtn 
                 googleUser={googleUser}
                 setGoogleUser={setGoogleUser}
                 axios={axios}
                 dispatch={dispatch}
                 navigate={navigate}
-                type={'Sign up with Google'}
+                type={'הרשם עם גוגל'}
                 />
                 <br/>
-                <p className='flex-jc-ac'>Already have an account?<Link to='/login'>Log in</Link></p>
+                <p className='flex-jc-ac'> משתמש רשום? <Link to='/login'> התחבר</Link></p>
                 
                 </form>
 

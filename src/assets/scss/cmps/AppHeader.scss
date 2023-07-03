@@ -7,6 +7,9 @@
     z-index: 60;
     @include for-mobile-layout {
         display: block;
+        position: fixed;
+        top: 0;
+        width: 100%;
         padding: 5px;
  
  }
@@ -22,7 +25,6 @@
         }
         .mobile-menu-svg {
             display: none;
-            z-index: 9999;
             @include for-narrow-layout {
                 display: block;
                 fill: #222;

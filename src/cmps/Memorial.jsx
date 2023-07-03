@@ -1,8 +1,8 @@
 import React from 'react'
 
-export  function Memorial() {
+const Memorial = React.forwardRef((props,ref)=> {
   return (
-    <section className='memorial-container '>
+    <section ref={ref} className='memorial-container '>
     <main className='memorial-container-wrapper flex-col'>
     <div className='headline-container flex-col'>
       <h2 className='headline '>אתר זה מוקדש לעילוי נשמת יקירינו שלמה שושן ז"ל מנכ'ל ומייסד <span className='tc-b'>NLP</span> חיבורים </h2>
@@ -16,4 +16,5 @@ export  function Memorial() {
     </main>
   </section>
   )
-}
+})
+export default Memorial

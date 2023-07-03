@@ -7,7 +7,7 @@ import { userService } from '../services/userService';
 import { MobileMenuSvg } from '../svgs/MobileMenuSvg';
 import MobileMenu from './MobileMenu';
 
-export function AppHeader({ setIsActive,isActive,  isMobileMenu, setIsMobileMenu,  len }) {
+export function AppHeader({ isActive, toggelMobileMenu,  len }) {
     const loaction = useLocation()
     const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
     const logoUrl = 'https://res.cloudinary.com/dii16awkb/image/upload/v1685878172/%D7%9C%D7%95%D7%92%D7%95_fpn8ig.jpg'
@@ -44,11 +44,7 @@ export function AppHeader({ setIsActive,isActive,  isMobileMenu, setIsMobileMenu
     const toggelMenu = () => {
         setIsShown(!isShown)
     }
-    const toggelMobileMenu = () => {
-        console.log('isMobileMenu',isMobileMenu);
-        setIsMobileMenu(!isMobileMenu)
-        setIsActive(!isActive)
-    }
+  
 
    
     return (

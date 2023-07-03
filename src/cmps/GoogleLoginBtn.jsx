@@ -48,6 +48,11 @@ export  function GoogleLoginBtn({googleUser,setGoogleUser,axios,dispatch,navigat
         }
     }
   return (
-<button className="google-signup-btn" onClick={() => login()}>{type} 🚀 </button>
+<div onClick={() => login()} className="google-signup-btn flex-ac">
+  <div class="google-icon-wrapper">
+    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+  </div>
+  <div class="btn-text"><span>{type} </span></div>
+  </div>
   )
 }
