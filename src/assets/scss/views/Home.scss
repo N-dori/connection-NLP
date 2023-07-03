@@ -29,7 +29,7 @@
 
         // max-width: 1000px;
         @include for-mobile-layout {
-
+             margin-top: 2em;
             .swiper-button-prev {
                 display: none;
             }
@@ -164,7 +164,7 @@
     }
 
     .home-page-outlets-container {
-    @include for-mobile-layout {
+    @include for-narrow-layout {
         display: none;
     }
         padding-block: 2em;
@@ -310,13 +310,15 @@
 
         .introduction-container {
             .introduction-wrapper {
-                border: 1px solid #9e9b9b;
                 display: flex;
                 align-items: center;
                 gap: 10px;
                 margin-bottom: 2em;
                 max-width: 56em;
                 padding: 1em;
+                @include for-mobile-layout {
+                    border: none!important;
+                }
             }
 
             .headline {
@@ -407,8 +409,6 @@
             .benefits-wrapper {
                 margin: 0;
                 max-width: 56em;
-                border: 1px solid #9e9b9b;
-                // justify-content: end;
                 padding: 1em 2em;
 
                 @include for-633px {
@@ -487,7 +487,6 @@
             .tools-wrapper {
                 margin: 0;
                 max-width: 56em;
-                border: 1px solid #9e9b9b;
                 // justify-content: end;
                 padding: 1em 2em;
 
@@ -631,7 +630,7 @@
 .mobile-home-page-outlets-container{
     display: none;
 
-    @include for-mobile-layout {
+    @include for-narrow-layout {
         display: block;
     }
     padding-block: 2em;

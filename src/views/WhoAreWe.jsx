@@ -1,8 +1,8 @@
 import React from 'react'
 
-export  function WhoAreWe() {
-  return (
-    <section className='introduction-container flex-jc-ac'>
+  const WhoAreWe =React.forwardRef((props,ref) => {
+return (
+  <section ref={ref}  className='introduction-container flex-jc-ac'>
       <main className='introduction-wrapper flex-col'>
     <h2 className='headline'>אז מי אנחנו? ואיך לנו הצליחה הגישה?</h2>
     <p className='sub-title'>אתם בטח שואלים את עצמיכם מי אנחנו ? ומה בעצם אנחנו עושים ?
@@ -24,4 +24,5 @@ export  function WhoAreWe() {
       </main>
   </section>
   )
-}
+})
+export default WhoAreWe

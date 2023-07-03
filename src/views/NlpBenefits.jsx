@@ -1,9 +1,9 @@
 import React from 'react'
 import { DoneSvg } from '../svgs/DoneSvg'
 
-export  function NlpBenefits() {
+const  NlpBenefits = React.forwardRef((props,ref) => {
   return (
-    <section className='benefits-container flex '>
+    <section ref={ref} className='benefits-container flex '>
         <section className='benefits-wrapper flex-col'>
     <h2 className='headline'>אז איך <span className='tc-b'>NLP</span> יכול לשדרג לך את החיים?</h2>
     <h3 className='sub-headline'>הנה כמה מהיתרונות </h3>
@@ -27,4 +27,5 @@ export  function NlpBenefits() {
 
   </section>
   )
-}
+})
+export default NlpBenefits

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 import { setLoggedinUser, vrifyPassword } from '../store/actions/user.actions'
 
 export  function LoginPage() {
-  const [user , setUser] = useState([])
+  const [user , setUser] = useState(null)
   const [msg, setMsg] = useState(null) 
   const [password, setPassword] = useState('')
   const [googleUser, setGoogleUser] = useState()
@@ -64,25 +64,30 @@ else{
       
     <form className='signup-form flex' >
       <div className='avatar-container flex-jc-ac'>
-        <Avatar/>
-        {user?<p>Welcome back, {user.fname}</p>:''} 
+      <div className='user-img-container flex-jc-ac'>
+        {user?
+    <span className='user-img'>{user.fname[0]}</span>:
+       ''    
+        }
+     </div>
+        {user?<p className='user-name'>היי  {user.fname} ברוך שובך</p>:''} 
       </div>
-    <h3 className="signin-title">Log in and start learning</h3>
+    <h3 className="signin-title">התחבר והתחל ללמוד!</h3>
 
         <label htmlFor="password">
-            <input value={password} onChange={handleChange} className="sign-in-input" required type="password" name="password" id="password" placeholder="Password" />
+            <input value={password} onChange={handleChange} className="sign-in-input" required type="password" name="password" id="password" placeholder="סיסמא" />
             <p>{msg?msg:''}</p>
         </label>
-        <button className="sign-in-btn" onClick={login}>Log in</button>
+        <button className="sign-in-btn" onClick={login}>התחבר</button>
         <GoogleLoginBtn
-        type={'Log in with Google'}
+        type={'התחבר עם גוגל'}
         googleUser={googleUser}
         setGoogleUser={setGoogleUser}
         axios={axios}
         dispatch={dispatch}
         navigate={navigate}/>
-        <p className='signup-link'>Don't have an account yet?
-<Link to="/signup"> Sign up</Link></p>
+        <p className='signup-link'>משתמש לא רשום ?
+<Link to="/signup"> להרשמה לאתר</Link></p>
         </form>
 </section>
   )

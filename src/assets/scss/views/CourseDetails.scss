@@ -20,15 +20,18 @@
     grid-template-columns: minmax(10px, 1fr) minmax(auto, 44%)minmax(10px, 15%);
     margin-bottom: 35px;
     position: relative;
-
     @include for-normal-layout {
         grid-template-columns: minmax(10px, 1fr) minmax(auto, 80.5%)minmax(10px, 19%);
         height: fit-content;
-
+        
     }
-
+    
     @include for-tablet-breakpoint {
         display: block !important;
+        
+    }
+    @include for-mobile-layout{
+        margin-top: 4em;
 
     }
 
