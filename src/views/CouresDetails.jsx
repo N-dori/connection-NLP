@@ -32,6 +32,7 @@ export function CouresDetails() {
   const [userMsg, setUserMsg] = useState(null)
   const [formatedPrice, setFormatedPrice] = useState(null)
   const [priceBeforeDiscount, setPriceBeforeDiscount] = useState(null)
+  const [totalWatchTime, setTotalWatchTime] = useState({hours:'',min:''})
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -46,28 +47,34 @@ export function CouresDetails() {
       navigate('/shopping-cart')
 
     }, 1500);
-      /* goToShoppingCart() */
 
-  /*   } else {
-      setUserMsg(true)
-      setTimeout(() => {
-        setUserMsg(null)
-      }, 5000);
-    } */
 
   }
 
-  const goToShoppingCart = () => {
-    setTimeout(() => {
-      navigate('/shopping-cart')
+  const getTotalWatchTime = (episodes) => {
+     let sum = 0
+     episodes.forEach(episode => episode.subEpisodes.forEach(subEpisode=>{
+      sum= sum + subEpisode.min
+     } 
+     
+     ))
+     const totalMin =sum/60
+      const hours = totalMin.toString().split(".")[0]
+      const min = totalMin.toString().split(".")[1].slice(0,2)
 
-    }, 1500);
+     setTotalWatchTime(prevState => ({
+      ...prevState,
+      hours,
+      min,
+  }))
   }
+
   const loadCourse = async (CourseId) => {
     const course = await courseService.getCourseById(CourseId)
     setCourse(course)
     if(course){
       getFormatedPrice(course.price)
+      getTotalWatchTime(course.episodes)
     }
   }
   const changeVideoUrl = (url) => {
@@ -122,7 +129,7 @@ export function CouresDetails() {
           {visible ? '' : <SideBarModal userMsg={userMsg} priceBeforeDiscount={priceBeforeDiscount} formatedPrice={formatedPrice} addToCart={addToCart} setIsPlayerVisible={setIsPlayerVisible} />}
           <WhatYouWillLearn />
 
-          <ThisCourseIncludes />
+          <ThisCourseIncludes totalWatchTime={totalWatchTime} />
 
           <CourseContent
             episodes={course.episodes}
@@ -130,11 +137,14 @@ export function CouresDetails() {
             changeVideoUrl={changeVideoUrl}
             setIsPlayerVisible={setIsPlayerVisible} />
 
-          <CouresRequirements />
+          <CouresRequirements requirements={course.requirements} />
 
-          <CourseDesc />
+          <CourseDesc desc={course.desc} />
 
-          <CourseInstructor />
+          <CourseInstructor name={course.insructorName}
+                            title={course.insructorTitle}
+                            img={course.insructorImgUrl}
+                            bio={course.insructorBio}/>
 
           <CourseReviews />
           {isPlayerVisible ?

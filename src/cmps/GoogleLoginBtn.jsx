@@ -2,7 +2,7 @@ import { useGoogleLogin } from '@react-oauth/google';
 import React, { useEffect, useState } from 'react'
 import { signup } from '../store/actions/user.actions';
 
-export  function GoogleLoginBtn({googleUser,setGoogleUser,axios,dispatch,navigate,type}) {
+export  function GoogleLoginBtn({googleUser,setGoogleUser,axios,dispatch,navigate,type,isUserlogged, setIsUserlogged, from,shoppingCart}) {
     
     useEffect(() => {
         googleLogin()
@@ -19,33 +19,38 @@ export  function GoogleLoginBtn({googleUser,setGoogleUser,axios,dispatch,navigat
     
     );
     const googleLogin= async () => {
-        if (googleUser) {
-         await   axios
-                .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${googleUser.access_token}`, {
-                    headers: {
-                        Authorization: `Bearer ${googleUser.access_token}`,
-                        Accept: 'application/json'
-                    }
-                })
-                .then((res) => {
-                    console.log('res.data',res.data)
-                   const {name,email,given_name,picture} =res.data
-                  const formatedUser = {
-                        fname: name,
-                        userName:given_name,
-                        email,
-                        imgUrl:picture,
-                      
-                    
-                  }
-                  dispatch(signup(formatedUser))
-                    console.log('formatedUser',formatedUser);
-                }).then(
-                    navigate('/')
+        try{
 
-                )
-                .catch((err) => console.log(err));
+            if (googleUser) {
+         const res=    await   axios
+                    .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${googleUser.access_token}`, {
+                        headers: {
+                            Authorization: `Bearer ${googleUser.access_token}`,
+                            Accept: 'application/json'
+                        }
+                    })
+                        console.log('res.data',res.data)
+                    const {name,email,given_name,picture} =res.data
+                    const formatedUser = {
+                            fname: name,
+                            userName:given_name,
+                            email,
+                            imgUrl:picture,
+                          
+                                          }
+                      dispatch(signup(formatedUser,from,shoppingCart))
+                        console.log('formatedUser',formatedUser);
+                        if(from==='header'){
+                            navigate('/')
+                        }  if (from === 'shopping-cart'){
+                            setIsUserlogged(!isUserlogged )
+                        }
+                    
         }
+    }catch(err){
+            console.log('could not google login',err);
+        }
+ 
     }
   return (
 <div onClick={() => login()} className="google-signup-btn flex-ac">

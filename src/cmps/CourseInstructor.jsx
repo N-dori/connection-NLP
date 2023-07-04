@@ -1,24 +1,22 @@
 import React from 'react'
 import { Avatar } from '../svgs/Avatar'
 
-export  function CourseInstructor() {
+export  function CourseInstructor({name,title,bio,img}) {
+    // console.log('insturcrt', createdBy);
     return (
         <section className='course-instructor-wapper'>
         <h1 className='headline'>מוביל הקורס</h1>
 
-        <h4 className='instructor-name'>שלמה שושן </h4>
-        <h5 className='instructor-title'> מייסד ומפתח  <span className='tc-b'>NLP CONNECTION</span> </h5>
+        <div className='instructor-info-container flex-col'>
 
-        <div className='instructor-info-container flex'>
+        <h5 className='instructor-title'> {title} <span className='tc-b'>NLP CONNECTION</span> </h5>
+        <h4 className='instructor-name'> {name} </h4>
             <div className='img-contaier'>
-            <Avatar/>    
+               <img src={img} alt="" className="instructor-img" />
             </div>
         </div>
         <p className="instructor-bio">
-        ממציא ומייסד קורס ADVENCE (למתקדמים) <span className='tc-b'>NLP CONNECTION</span> מייסד ומפתח 
-        מייסד NLP CONNECTION  ממציא ומפתח של קורס ADVENCE  למתקדמים הקורס הייחודי מסוגו בארץ ! מנכ'ל NLP חיבורים ומרצה בכיר בחברה . 
-נפטר מהמחלה האיומה בשנת 2019 
-אתר הוקם להנצחתו ולעילוי נשמתו 
+       {bio}
         </p>
          
     </section>

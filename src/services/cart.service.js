@@ -53,10 +53,16 @@ async function addToUserCart(couresId) {
     console.log('couresId',couresId)
     const loggedinUser  = userService.getLoggedinUser()
     const user = await userService.getUserById(loggedinUser._id)
-    user.cart.push(couresId) 
-    const updatedUser =  await userService.updateUser(user)
-   
+    const found =  user.cart.find(currCourseId=>currCourseId === couresId)
+    if(!found){
+        user.cart.push(couresId) 
+        const updatedUser =  await userService.updateUser(user)
         return  updatedUser.cart
+    }else {
+
+        return
+    }
+   
     } 
     catch(err){
         console.log('could not add To User Cart',err);

@@ -3,8 +3,9 @@ import { TvSvg } from '../svgs/TvSvg'
 import { DownloadSvg } from '../svgs/DownloadSvg'
 import { MobileSvg } from '../svgs/MobileSvg'
 import { RocketSvg } from '../svgs/RocketSvg'
+import { InfiniteSvg } from '../svgs/InfiniteSvg'
 
-export  function ThisCourseIncludes() {
+export  function ThisCourseIncludes({totalWatchTime}) {
   return (
     <>
     <section className='list-whats-includes-container '>
@@ -12,12 +13,12 @@ export  function ThisCourseIncludes() {
     <section className='list-container flex'>
 
     <ul className='group flex-col clean'>
-      <li className='flex-ac'>9.5 hours on-demand video<TvSvg/></li>
-      <li className='flex-ac'> 95 downloadable resources<DownloadSvg/></li>
+      <li className='flex-ac'><TvSvg/> {totalWatchTime.hours  } שעות    {totalWatchTime.min} דקות של צפייה ישירה </li>
+      <li className='flex-ac'><DownloadSvg/> 95 downloadable resources</li>
     </ul>    
     <ul className='group flex-col clean'>
-      <li className='flex-ac'>Access on mobile and TV<MobileSvg/></li>
-      <li className='flex-ac'>Certificate of completion<RocketSvg/></li>
+      <li className='flex-ac'> <MobileSvg/> גישה לקורס דרך הנייד  </li>
+      <li className='flex-ac'> <InfiniteSvg/>גישה חופשית לקורס ללא הגבלת זמן</li>
     </ul>    
 
     </section>

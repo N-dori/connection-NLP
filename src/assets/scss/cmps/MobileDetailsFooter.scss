@@ -20,34 +20,52 @@
 
     .mobile-details-footer-wrapper {
         padding: 1em;
-
+        @include for-mobile-layout{
+            padding: .5em;
+        }
         .course-title-container {
             .course-title {
                 margin: 0;
+                @include for-mobile-layout{
+                    font-size: .9em;
+                }
             }
         }
+.prices-and-action-btn{
+@include for-mobile-layout{
+    gap:10px;
+    flex-direction: column;
+    align-items: center;
+}
+    .action-btn {
+        color: #1c1d1f;
+        background-color: #e0e0e0;
+        border: none;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -.02rem;
+        font-size: 1.2em;
+        padding-inline: 0.5em;
+        cursor: pointer;
 
-        .action-btn {
-            color: #1c1d1f;
-            background-color: #e0e0e0;
-            border: none;
-            font-weight: 600;
-            line-height: 1.2;
-            letter-spacing: -.02rem;
-            font-size: 1.2em;
-            padding-inline: 0.5em;
-            cursor: pointer;
+    }
 
+    .course-price {
+        margin: 0;
+        padding: 0;
+        margin-inline-end: 1em;
+        @include for-mobile-layout{
+            font-size: .9em;
         }
+    }
 
-        .course-price {
-            margin: 0;
-            padding: 0;
-            margin-inline-end: 1em;
+    .course-price-before-discount {
+        text-decoration: line-through;
+        font-size: .9em;
+           @include for-mobile-layout{
+            font-size: .8em;
         }
-
-        .course-price-before-discount {
-            text-decoration: line-through;
-        }
+    }
+}
     }
 }

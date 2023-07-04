@@ -1,7 +1,7 @@
 .list-whats-includes-container {
     grid-column: 2;
+    direction: rtl;
     .headline {
-        direction: rtl;
         grid-column: 2;
         margin-inline-end: 0px;
         font-size: 1.5em;
@@ -21,7 +21,8 @@
           }
     }
     .list-container{
-
+        justify-content: start;
+        margin-block: 35px;
         @include for-530px  {
 
             flex-direction: column;
@@ -31,29 +32,29 @@
             
             flex-direction: column;
             gap: 20px;
-            padding-inline-end:0px ;
-            padding-right: 28px;
+            padding-inline-start:20px ;
+            padding-inline-end:20px ;
     
         }
     
         .tv-svg {
             min-width: 2em;
-            margin-inline-start: 10px;
+            margin-inline-end: 10px;
         }
     
         .download-svg {
             min-width: 2em;
-            margin-inline-start: 10px;
+            margin-inline-end: 10px;
         }
     
         .mobile-svg {
             min-width: 2em;
-            margin-inline-start: 10px;
+            margin-inline-end: 10px;
         }
     
-        .rocket-svg {
+        .infinite-svg {
             min-width: 2em;
-            margin-inline-start: 10px;
+            margin-inline-end: 10px;
         }
     }
 

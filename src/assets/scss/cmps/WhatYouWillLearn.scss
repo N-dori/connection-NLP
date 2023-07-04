@@ -2,11 +2,11 @@
     .list-container {
         justify-content: end;
         margin-block: 35px;
-        margin-inline-start: auto;
+
 
         grid-column: 2;
         grid-template-columns: 1fr 1fr;
-      max-width: 44em;
+      // max-width: 44em;
       @include for-tablet-breakpoint {
         // max-width: 48em;
           margin-inline-start: 14%;
@@ -28,6 +28,7 @@
         }
         .list-warpper{
             padding: 20px;
+            justify-content: end;
             @include for-530px  {
 
                 flex-direction: column;

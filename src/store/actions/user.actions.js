@@ -4,11 +4,23 @@ import { SET_USER, LOGOUT_USER, UPDATE_USER} from "../reducers/user.reducer";
 
 
 
-export function signup(userToSignup){
+export function signup(userToSignup,from,shoppingCart){
     try{
 
         return async(dispatch,getState)=>{
             const user= await userService.signup(userToSignup)
+              if (from === 'shopping-cart'){
+                if(!shoppingCart){
+                    return
+                }else{
+                    shoppingCart.forEach(course => {
+                        user.cart.push(course)
+                        console.log('adding to user courses user after backend', user);
+                })
+             const updatedUser= await userService.updateUser(user)
+             console.log('user after backend', updatedUser);
+            }
+            }
             console.log('user after backend', user);
             
             const action = {
