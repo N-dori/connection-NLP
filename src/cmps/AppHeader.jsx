@@ -5,10 +5,12 @@ import { logout } from '../store/actions/user.actions';
 import { ShoppingCartSvg } from '../svgs/ShoppingCartSvg';
 import { userService } from '../services/userService';
 import { MobileMenuSvg } from '../svgs/MobileMenuSvg';
-import MobileMenu from './MobileMenu';
+import { clearCart } from '../store/actions/cart.actions';
 
 export function AppHeader({ isActive, toggelMobileMenu,  len }) {
     const loaction = useLocation()
+    const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
+
     const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
     const logoUrl = 'https://res.cloudinary.com/dii16awkb/image/upload/v1685878172/%D7%9C%D7%95%D7%92%D7%95_fpn8ig.jpg'
     const [isShown, setIsShown] = useState(false)
@@ -20,7 +22,7 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
         getParamLoction()
         setIsShown(false)
         loadUser()
-    }, [loggdingUser, user])
+    }, [loggdingUser, user,JSON.stringify(shoppingCart)])
     
     const getParamLoction = () =>{
         console.log('loactionnnnnn',loaction.pathname.slice(1,7))
@@ -38,7 +40,11 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
     }
 
     const onLogout = () => {
-        dispatch(logout())
+        dispatch(clearCart())
+        setTimeout(() => {
+            dispatch(logout())
+            
+        }, 1500);
     }
 
     const toggelMenu = () => {
@@ -89,6 +95,10 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
                 <div className='header-content-container flex-ac'>
                     
                     <MobileMenuSvg isActive={isActive} toggelMobileMenu={toggelMobileMenu}/>
+                   <section className='mobile-shopping-cart-container'>
+                    <ShoppingCartSvg len={len} loggdingUser={loggdingUser} onClick={() => naviget('/shopping-cart')}/>
+
+                   </section>
                     <nav className="main-menu flex clean">
                         {loggdingUser ?
                                 loggdingUser.courses.length ?

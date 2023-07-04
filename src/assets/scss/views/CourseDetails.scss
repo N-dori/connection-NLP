@@ -70,7 +70,7 @@
         gap: 0px;
         position: relative;
         justify-items: end;
-        padding-block: 0.5em;
+        padding-block: 2em;
 
         @include for-normal-layout {
             grid-template-columns: minmax(10px, 1fr) minmax(auto, 80.5%)minmax(10px, 19%);

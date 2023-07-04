@@ -33,6 +33,7 @@ export function CouresDetails() {
   const [formatedPrice, setFormatedPrice] = useState(null)
   const [priceBeforeDiscount, setPriceBeforeDiscount] = useState(null)
   const [totalWatchTime, setTotalWatchTime] = useState({hours:'',min:''})
+  const [totalAdditioalFiles, setTotalAdditioalFiles] = useState(0)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -62,11 +63,24 @@ export function CouresDetails() {
       const hours = totalMin.toString().split(".")[0]
       const min = totalMin.toString().split(".")[1].slice(0,2)
 
-     setTotalWatchTime(prevState => ({
-      ...prevState,
+     setTotalWatchTime(prevState => (
+      {...prevState,
       hours,
-      min,
-  }))
+      min,}
+  ))
+  }
+  const getTotalFiles = (episodes) => {
+    let sum = 0
+
+    episodes.forEach(episode => episode.subEpisodes.forEach(subEpisode=>{
+      if(!subEpisode.files){
+        return
+      }else{
+        sum= sum + subEpisode.files.length
+      }
+     }   ))
+     console.log('getTotalFiles',sum);
+     setTotalAdditioalFiles(sum)
   }
 
   const loadCourse = async (CourseId) => {
@@ -75,6 +89,11 @@ export function CouresDetails() {
     if(course){
       getFormatedPrice(course.price)
       getTotalWatchTime(course.episodes)
+      getTotalFiles(course.episodes)
+
+      course.totalHours=totalWatchTime
+
+
     }
   }
   const changeVideoUrl = (url) => {
@@ -129,7 +148,9 @@ export function CouresDetails() {
           {visible ? '' : <SideBarModal userMsg={userMsg} priceBeforeDiscount={priceBeforeDiscount} formatedPrice={formatedPrice} addToCart={addToCart} setIsPlayerVisible={setIsPlayerVisible} />}
           <WhatYouWillLearn />
 
-          <ThisCourseIncludes totalWatchTime={totalWatchTime} />
+          <ThisCourseIncludes 
+          totalAdditioalFiles={totalAdditioalFiles}
+          totalWatchTime={totalWatchTime} />
 
           <CourseContent
             episodes={course.episodes}
