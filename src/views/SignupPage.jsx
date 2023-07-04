@@ -9,7 +9,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { GoogleLoginBtn } from '../cmps/GoogleLoginBtn';
 
-export function SignupPage() {
+export function SignupPage({from,isUserlogged,setIsUserlogged,shoppingCart}) {
 
     const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
     const [user, setUser] = useState(userService.getEmptyUser())
@@ -22,13 +22,21 @@ export function SignupPage() {
 
     }
 
+ useEffect(() => {
+   console.log('from',from);
+ 
+ }, [])
  
     console.log('loggdingUser',loggdingUser);
    const onSignup =  (ev) => {
         ev.preventDefault()
         ev.stopPropagation()
         dispatch(signup(user))
-        navigate('/')
+        if(from==='header'){
+            navigate('/')
+        }  if (from === 'shopping-cart'){
+            setIsUserlogged(!isUserlogged )
+        }
     //  const credintials= await userService.signup(user)
     //  setProfile((user))
     }
@@ -71,12 +79,17 @@ export function SignupPage() {
                 </label>
                 <button className="sign-in-btn">הרשם</button>
                 <GoogleLoginBtn 
+
                 googleUser={googleUser}
                 setGoogleUser={setGoogleUser}
                 axios={axios}
                 dispatch={dispatch}
                 navigate={navigate}
                 type={'הרשם עם גוגל'}
+                isUserlogged={isUserlogged} 
+                setIsUserlogged={setIsUserlogged} 
+                from={from}
+                shoppingCart={shoppingCart}
                 />
                 <br/>
                 <p className='flex-jc-ac'> משתמש רשום? <Link to='/login'> התחבר</Link></p>

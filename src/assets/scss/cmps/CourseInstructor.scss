@@ -22,12 +22,29 @@
 margin-inline-end: 1%;
           }
     }
-    .instructor-name{
-        padding: 0;
-        margin: 0;
-        text-decoration: underline;
+    .instructor-info-container{
+flex-direction: column-reverse;
+        .img-contaier{
+            width: 8em;
+            .instructor-img{
+                width: 100%;
+                height: 8em;
+                object-fit: cover;
+                border-radius: 500px;
+                object-position: 20% 20%; 
+            }
+        }
+        .instructor-name{
+            padding: 0;
+            margin: 0;
+            text-decoration: underline;
+        }
+        .instructor-title{
+            margin-block:3px;
+        }
     }
-    .instructor-title{
-        margin-block:3px;
+    .instructor-bio{
+        direction: rtl;
     }
+    
 }

@@ -74,7 +74,7 @@ const handelSubmit = (ev) => {
             <input className='announcement-title'  onChange={handleChange} value={announcement.title}  placeholder='Enter title' name='title' id='title' type='text' />
             <textarea   className="text-area-input" onChange={handleChange} value={announcement.content} id="content" name="content" placeholder='Enter announcement'></textarea>
             <br />
-            <button className="announcement-submit-btn hidden" type="submit" value="send">send</button>
+            <button className="announcement-submit-btn " type="submit" value="send">send</button>
           </form>
         </section> : ''
         }

@@ -11,7 +11,7 @@ export default function MobileDetailsFooter({addToCart , priceBeforeDiscount,for
         <p className='course-title'>{title}</p>
           <p className='course-title'>{subTitle}</p>
         </div>
-        <section className='flex'>
+        <section className='prices-and-action-btn flex'>
         <div className='prices flex-col'>
         <span className='course-price-before-discount'>{priceBeforeDiscount}</span>
         <span className='course-price'>{formatedPrice}</span>

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom'
 import { loadCart, removeProduct } from '../store/actions/cart.actions'
 import { ProductList } from '../cmps/ProductList'
 import { ProductCheckout } from '../cmps/ProductCheckout'
+import { SignupPage } from './SignupPage'
 
 export function ShoppingCart() {
   const dispatch = useDispatch()
+  const [isUserlogged,setIsUserlogged]=useState(false)
+  const navigate = useNavigate()
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
   const [sum, setSum] = useState(0)
@@ -42,12 +45,20 @@ export function ShoppingCart() {
   setSum(total.toFixed(2))
 }
 
+const handelChekOut = () => {
+  if(loggdingUser){
+    navigate(`/payment/${loggdingUser._id}`)
+  }else{
+    setIsUserlogged(true)
+
+  }
+  }
   return (
 
     <section className='product-list-container grid'>
       <header className='headline-wrapper flex-col'>
-      <h1 className='headline'>Shopping Cart</h1>
-      <p className='total-courses'>{shoppingCart?shoppingCart.length+' Courses in cart':''} </p>
+      <h1 className='headline'> עגלת הקניות</h1>
+      <p className='total-courses'>{shoppingCart?shoppingCart.length+' קורסים בעגלת הקניות':''} </p>
       </header>
       <section className='product-list-wrapper'>
       {shoppingCart ?
@@ -55,9 +66,11 @@ export function ShoppingCart() {
         : 'shopping cart is empty'
       }
       </section>
-        <ProductCheckout loggdingUser={loggdingUser} sum={sum}/>
+        <ProductCheckout handelChekOut={handelChekOut} loggdingUser={loggdingUser} sum={sum}/>
 
-
+        { isUserlogged?<section className='shopping-cart-signup-modal-container'>
+        <SignupPage shoppingCart={shoppingCart}isUserlogged={isUserlogged} setIsUserlogged={setIsUserlogged} from={'shopping-cart'} />
+         </section>:''}
     </section>
   )
 }

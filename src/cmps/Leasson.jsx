@@ -4,23 +4,30 @@ import { TvSvg } from '../svgs/TvSvg'
 import { VideoSvg } from '../svgs/VideoSvg'
 import { SubLeasson } from './SubLeasson'
 
-export function Leasson({ lastEpisode, currEpisode, setCurrSubEpisode, setCurrEpisode, episodeId, subEpisodes, title, min, i, setVideoUrl, shown }) {
+export function Leasson({ lastEpisode, setLastSubEpisode, setLastEpisode, episodeId, subEpisodes, title, setVideoUrl, shown }) {
 
     const [isShown, setIsShown] = useState(shown)
     const [isClicked, setIsClicked] = useState(false)
     useEffect(() => {
-        setCurrEpisode(episodeId)
-        if (lastEpisode === episodeId) {
-            expand()
-        }
+        LastEpisode()
     }, [])
+    const LastEpisode = () => {
+        if(!setLastEpisode){return
+        }else {
+            setLastEpisode(episodeId)
+            if (lastEpisode === episodeId) {
+                expand()
+            }
 
+        }
+   }
     const onVideoClick = (idx, videoUrl, subEpisodeId) => {
         console.log('i', idx);
         setIsClicked(idx)
         setVideoUrl(videoUrl)
-        setCurrEpisode(episodeId)
-        setCurrSubEpisode(subEpisodeId)
+        setLastEpisode(episodeId)
+        setLastSubEpisode(subEpisodeId)
+        window.scrollTo(0,0)
     }
 
     const expand = () => {
@@ -42,7 +49,7 @@ export function Leasson({ lastEpisode, currEpisode, setCurrSubEpisode, setCurrEp
 
             <section className={(isShown) ? 'pannel-content-wrapper flex-col ' : 'hidden'}>
                 {subEpisodes.map((subEpisode, i) => {
-                    const { id, title, videoUrl } = subEpisode
+                    const { id, title, videoUrl,min } = subEpisode
                     return <SubLeasson
                         id={id}
                         key={id}
@@ -52,7 +59,7 @@ export function Leasson({ lastEpisode, currEpisode, setCurrSubEpisode, setCurrEp
                         onVideoClick={onVideoClick}
                         min={min}
                         isClicked={isClicked}
-                        setCurrSubEpisode={setCurrSubEpisode}
+                        setLastSubEpisode={setLastSubEpisode}
                         setIsClicked={setIsClicked}
                     />
                 })

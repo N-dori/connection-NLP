@@ -1,10 +1,10 @@
 import React from 'react'
 
-export  function CourseDesc() {
+export  function CourseDesc({desc}) {
   return (
     <div className='desc-wrapper'>
         <h1 className='headline'>תיאור הקורס</h1>
-        <p>קורס אדוונס הינו הקורס המתקדם ביותר ויחיד מסוגו בארץ!<br/> הקורס פותח ע"י שלמה ז'ל ושרון שושן  הקורס נוצר מתוך צורך שעלה מהשטח ומתוך אין סוף מטפלים שסיימו את הכשרתם בבתי ספר שונים ועדיין הרגישו שעדיין שחסר להם כלים וביטחון בעבודה בפועל בקליניקה.   </p>
+        <p>{desc}   </p>
     </div>
   )
 }

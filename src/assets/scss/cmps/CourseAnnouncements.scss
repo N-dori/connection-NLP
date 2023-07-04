@@ -70,8 +70,9 @@
 
                 .text-area-input {
                     border: 1px solid #222222;
-                    // resize: none;
+                    resize: none;
                     width: 100%;
+                    min-height: 10em;
 
                 }
 

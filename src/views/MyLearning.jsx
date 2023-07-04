@@ -1,8 +1,6 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { YouTube } from '../cmps/YouTube'
+import React, {  useEffect, useRef, useState } from 'react'
 import { MyLearningContent } from '../cmps/MyLearningContent'
-import { Link, Outlet, useParams } from 'react-router-dom'
-import { courseService } from '../services/course.service'
+import { Outlet, useParams } from 'react-router-dom'
 import ReactPlayer from 'react-player'
 import { OutletMenu } from '../cmps/OutletMenu'
 import { updateCurrTimeWacth } from '../store/actions/user.actions'
@@ -10,14 +8,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { userService } from '../services/userService'
 
 
-export  function MyLearning({currCourseId,videoUrl,setVideoUrl,setCurrCourseId}) {
+export  function MyLearning({lastSubEpisode,setLastSubEpisode,lastEpisode,setLastEpisode,currCourseId,videoUrl,setVideoUrl,setCurrCourseId}) {
+ 
   const dispatch = useDispatch()
   const playerRef =useRef()
   const  param = useParams()
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const [course, setCourse] = useState()
-  const [currEpisode, setCurrEpisode] = useState(null)
-  const [currSubEpisode, setCurrSubEpisode] = useState(null)
+  
   
   const [isContentShown, setIsContentShown] = useState(true)
   
@@ -37,10 +35,10 @@ export  function MyLearning({currCourseId,videoUrl,setVideoUrl,setCurrCourseId})
       updateCourseCurrTimeWacth()
       
     };
-  },[currEpisode,currSubEpisode,lastWatchTimeRef])
+  },[lastEpisode,lastSubEpisode,lastWatchTimeRef])
   
   const updateCourseCurrTimeWacth = () => {
-    dispatch(updateCurrTimeWacth(loggdingUser?._id,currCourseId,currEpisode,currSubEpisode,lastWatchTimeRef.current,videoUrl))
+    dispatch(updateCurrTimeWacth(loggdingUser?._id,currCourseId,lastEpisode,lastSubEpisode,lastWatchTimeRef.current,videoUrl))
     
 }
  const loadLastVideo = async () => {
@@ -88,7 +86,7 @@ export  function MyLearning({currCourseId,videoUrl,setVideoUrl,setCurrCourseId})
     }
       
 
-    // setCurrEpisode(course.lastVideoWatched.episode)
+    // setLastEpisode(course.lastVideoWatched.episode)
     // console.log('my learning course',course); 
   }
  
@@ -100,12 +98,12 @@ export  function MyLearning({currCourseId,videoUrl,setVideoUrl,setCurrCourseId})
     lastWatchTimeRef.current= +(progress.played * duration).toFixed(0)
     // console.log('onProgress', progress.played)
     // console.log('lastWatchTime', lastWatchTimeRef)
-    // console.log('currEpisode', currEpisode)
-    // console.log('currSubEpisode', currSubEpisode)
+    // console.log('lastEpisode', lastEpisode)
+    // console.log('lastSubEpisode', lastSubEpisode)
   }
  const  handleDuration = (duration) => {
-  setDuration(duration)
-    console.log('onDuration', duration)
+  setDuration( duration/60)
+    console.log('onDuration in min',)
   
   }
   
@@ -147,11 +145,11 @@ export  function MyLearning({currCourseId,videoUrl,setVideoUrl,setCurrCourseId})
   getLecturesSum={getLecturesSum}
   setVideoUrl={setVideoUrl}
   tuggleContent={tuggleContent}
-  setCurrSubEpisode={setCurrSubEpisode}
-  setCurrEpisode={setCurrEpisode}
-  currEpisode={currEpisode}
-  currSubEpisode={currSubEpisode}
+  setLastSubEpisode={setLastSubEpisode}
+  setLastEpisode={setLastEpisode}
+  lastSubEpisode={lastSubEpisode}
    lastEpisode={course.lastVideoWatched?course.lastVideoWatched.episode:''}
+
 />
 
 

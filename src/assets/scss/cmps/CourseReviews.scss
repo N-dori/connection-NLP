@@ -1,40 +1,67 @@
-.course-reviwes-container{
+.course-reviwes-container {
+    direction: rtl;
     grid-column: 2;
     margin-top: 15px;
-    max-width: 44em;
-    margin-inline-start: auto;
-    .headline{
-text-align: end;
+    padding-inline-start: 1em;
+
+    .headline {
         font-size: 1.8em;
         font-weight: bold;
         color: #222;
         margin-block: 16px;
     }
-    .reviews-wrapper{
-        flex-wrap: wrap;
-        gap:40px;
-.review-container{
-    padding: 2.4rem 0 3.2rem;
-width: calc(50% - 1.6rem);
-    border-top: 1px solid #d1d7dc;
-    .reviewer-info{
-justify-content: end;
-gap:10px
-    }
-    .reviewer-img-container{
-        gap:10px;
-        width: 50px;
-        height: 50px;
-        .reviewer-img{
-            width: 100%;
+
+    .reviews-wrapper {
+        // flex-wrap: wrap;
+        max-width: 44em;
+        gap: 20px;
+        justify-content: start;
+
+        @include for-narrow-layout {
+            flex-direction: column;
+            padding-inline-start: 1em;
         }
-    }
-    .review-txt{
-        p{
-            direction: rtl;
-        line-height: 22px;
+
+        .review-container {
+            max-width: 20em;
+            width: 20em;
+            padding: 2.4rem 0 3.2rem;
+            border-top: 1px solid #d1d7dc;
+            @include for-narrow-layout {
+                flex-direction: column;
+                padding-inline-start: 1em;
+                max-width: 13em;
+                
+            }
+            .reviewer-info {
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+                gap: 10px;
+                .name-and-when{
+                    .reviewer-name{}
+                    .reviwed-at{
+                        font-size: 0.9em;
+                    }
+                }
+            }
+
+            .reviewer-img-container {
+                gap: 10px;
+                width: 50px;
+                height: 50px;
+
+                .reviewer-img {
+                    width: 100%;
+                }
+            }
+
+            .review-txt {
+                .content {
+                    direction: rtl;
+                    line-height: 22px;
+                    font-style: oblique;
+                }
+            }
         }
-    }
-}
     }
 }

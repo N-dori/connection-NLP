@@ -40,7 +40,11 @@ export function App() {
 
   const dispatch = useDispatch()
   const [len, setLen] = useState('')
+  
   const [currCourseId, setCurrCourseId] = useState('')
+  const [lastEpisode, setLastEpisode] = useState(null)
+  const [lastSubEpisode, setLastSubEpisode] = useState(null)
+
   const [content, setContent] = useState('')
   const [videoUrl, setVideoUrl] = useState(false)
   const [isMobileMenu, setIsMobileMenu] = useState(false)
@@ -159,7 +163,7 @@ const scrollToMemorial = () =>{
 
           </Route>
       
-          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/signup" element={<SignupPage from={'header'} />} />
           {/*  LoginPage : 
           data : get from cookie user name 
           lib: react-oauth/google
@@ -185,7 +189,11 @@ const scrollToMemorial = () =>{
             content : course img , title, total price, remove , checkout btn- to payment 
            components : ProductList  |  ProductPreview
        */}
-          <Route path="/shopping-cart/" element={<ShoppingCart />} />
+          <Route path="/shopping-cart/" element={<ShoppingCart />} > </Route>   
+  
+          
+            
+    
           {/* 
              PurchaseCourse :
         extrenal code from payment company
@@ -210,9 +218,9 @@ const scrollToMemorial = () =>{
            components: CourseContentIndex , CourseOverview, SearchContent, CourseReviews ,CourseAnnouncements
 
         */}
-          <Route path="/my-learning/:id" element={<MyLearning  setVideoUrl={setVideoUrl} videoUrl={videoUrl} setCurrCourseId={setCurrCourseId} currCourseId={currCourseId}/>} >
+          <Route path="/my-learning/:id" element={<MyLearning setLastSubEpisode={setLastSubEpisode} lastSubEpisode={lastSubEpisode} lastEpisode={lastEpisode} setLastEpisode={setLastEpisode}  setVideoUrl={setVideoUrl} videoUrl={videoUrl} setCurrCourseId={setCurrCourseId} currCourseId={currCourseId}/>} >
             <Route path='/my-learning/:id/course-overiew' element={<CourseOverview />} />
-            <Route path='/my-learning/:id/serach-content' element={<SearchContent setVideoUrl={setVideoUrl} content={content}  onChangeFilter={onChangeFilter} filterBy={filterBy} />} />
+            <Route path='/my-learning/:id/serach-content' element={<SearchContent setLastSubEpisode={setLastSubEpisode} lastSubEpisode={lastSubEpisode} setVideoUrl={setVideoUrl} content={content}  onChangeFilter={onChangeFilter} filterBy={filterBy} />} />
             <Route path='/my-learning/:id/reviews' element={<CourseReviews />} />
             <Route path='/my-learning/:id/announcements' element={<CourseAnnouncements currCourseId={currCourseId}/>} />
             <Route path='/my-learning/:id/Q&A' element={<CourseQ />} />
