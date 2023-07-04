@@ -7,12 +7,14 @@ import { ProductCheckout } from '../cmps/ProductCheckout'
 import { SignupPage } from './SignupPage'
 
 export function ShoppingCart() {
+  
   const dispatch = useDispatch()
   const [isUserlogged,setIsUserlogged]=useState(false)
   const navigate = useNavigate()
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
   const [sum, setSum] = useState(0)
+
   
   // const courses= loggdingUser
   const param = useParams()
@@ -31,6 +33,7 @@ export function ShoppingCart() {
   }
   
   const culcTotalPrice = () => {
+    let formatPrice = new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS' })
     let total= 0
     if(shoppingCart){
       shoppingCart.forEach(product => {
@@ -42,8 +45,9 @@ export function ShoppingCart() {
     else{
       return 
     }
-  setSum(total.toFixed(2))
+  setSum(formatPrice.format(total.toFixed(2)))
 }
+
 
 const handelChekOut = () => {
   if(loggdingUser){

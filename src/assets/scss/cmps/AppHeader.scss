@@ -100,15 +100,16 @@
 
         .shopping-cart-container {
             position: relative;
-
+           
             .ligth-bulb {
                 position: absolute;
                 width: 20px;
                 height: 20px;
-                background-color: aquamarine;
-                top: -15px;
+                background-color: var(--clr1);
+                top: -16px;
                 right: 12px;
                 border-radius: 50px;
+                color: #fff;
             }
 
             .cart-svg {
@@ -194,4 +195,66 @@
             }
         }
     }
-}
+   
+        .mobile-shopping-cart-container{
+            display: none;
+            @include for-narrow-layout {
+                display: block!important;
+            }
+            .shopping-cart-container {
+                position: absolute;
+                top: 35px;
+                right: 11.2%;
+                @include for-mobile-layout {
+                    top: 21.7%;
+                    right:12.2%;
+                }
+                @include for-370px {
+                    top: 21.7%;
+                    right: 13.2%;
+                }
+                @include for-270px {
+                    top: 24.7%;
+                    right: 16.2%;
+                }
+                @include for-245px {
+                    top: 24.7%;
+                    right: 18.2%;
+                }
+                .ligth-bulb {
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    background-color: var(--clr1);
+                    top: -47%;
+              
+                    border-radius: 50px;
+                    color: #fff;
+                    font-size: .95em;
+                    @include for-mobile-layout {
+                        width: 15px;
+                        height: 15px;
+                        font-size: .8em;
+                        margin-top: .35em;
+                    }
+                }
+        
+                .cart-svg {
+                    margin-inline-start: auto;
+                    cursor: pointer;
+                    @include for-mobile-layout {
+                        width: 28px;
+                        height: 28px;
+                     
+                    }
+                    @include for-270px {
+                        width: 25px;
+                        height: 25px;
+                     
+                    }
+                }
+            }
+    
+        }
+        
+        }

@@ -10,7 +10,7 @@ export  function CouresRequirements({requirements}) {
 
         <ul className="requirements-list flex-col">
           {
-           requirements.map(requirement =><li>{requirement}</li> ) 
+           requirements.map((requirement,i) =><li key={i}>{requirement}</li> ) 
           }
 
         </ul>

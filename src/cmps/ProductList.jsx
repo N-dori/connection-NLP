@@ -3,7 +3,9 @@ import { ProductPreview } from './ProductPreview'
 export function ProductList({ onRemove,shoppingCart }) {
 
   useEffect(() => {
-    
+    if(shoppingCart){
+      console.log('shoppingCart',shoppingCart)
+    }
   }, [JSON.stringify(shoppingCart)])
   
 

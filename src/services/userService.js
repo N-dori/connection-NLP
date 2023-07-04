@@ -166,7 +166,7 @@ async function clearUserCart(userId){
         user.cart = [] 
       const updatedUser =   await updateUser(user)
         console.log('clearUserCart servise  ', updatedUser );
-
+      return updatedUser.cart
     }catch(err) {
         console.log('could not clear User cart ', err );
     }

@@ -17,15 +17,18 @@ function _setCourses() {
     utilService.saveToStorage(course_DB, _creatCourses())
 
 }
+
 function _creatCourses() {
     const courses = [
         {
             _id: utilService.makeId(9),
-            title: "NLP Practitioner/Master",
-            subTitle: " קורס למתחילים המשלב מאסטר ופראקטישנר  ",
+            title: "NLP Practitioner",
+            subTitle: " קורס למתחילים המשלב את יסודות השיטה     ",
             createdBy: " בהנחיית שלומי חלאווי מנחה ומרצה מוביל, ושלמה שושן ז'ל מייסד נלפי חיבורים",
-            courseCoverImg: "https://top10a.ru/wp-content/uploads/2018/11/2-ispolzujte-nejrolingvisticheskoe-programmirovanie.jpg",
+            courseCoverImg: "https://res.cloudinary.com/dii16awkb/image/upload/v1688494058/Screenshot_2023-07-04_210637_kbncgf.png",
             trailerVideoUrl: "https://www.youtube.com/watch?v=-fgnz2vetPU",
+            requirements:['הקורס מיועד למי שסיים דרגת פקטישינר ומאסטר ומעלה','מיועד בעיקר למטפלים מנהלי בתי ספר ולאנשים העוסקים תהליכי שינוי ועומק בקליניקה','ראש פתוח תרשו לעצמכם להיות נוכחים , להנות מהחוויה אין צורך לסכם. הכל נמצא וזמין עבורכם , תפקידכם הוא רק לצפות ולחוות.','מומלץ לסגל שיגרת לימודים קבועה כדי שתוכלו להטמיע את הכלים ביום יום','לידיעתך! ברגע שרכשת את הקורס הוא שלך ותוכל לצפות בו בכל זמן שתרצה'],
+
             totalHours: 255,
             totalVideos: 47,
             level: 'Practitioner',
@@ -40,310 +43,196 @@ function _creatCourses() {
             intros: [
                 {
                     id: utilService.makeId(8),
-                    title: "Getting started with NLP",
+                    title: "  מפגש ראשון חלק א",
                     videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                    videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש ראשון/שיעור 1 חלק א.mp4",
+                    min:47,
                 },
-                {
-                    id: utilService.makeId(8),
-                    title: "the basis of NLP",
-                    videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                    videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                },
-                {
-                    id: utilService.makeId(8),
-                    title: "the benefits of NLP",
-                    videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                    videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                },
+             
             ],
             episodes: [
                 {
                     id: utilService.makeId(8),
-                    title: "fundamentals",
+                    title: "מפגש ראשון",
                     subTitle: "",
                     totalHours: 20,
                     subEpisodes: [
                         {
                             id: 1,
-                            title: "the basis of NLP",
+                            title: "  מפגש ראשון חלק א",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש ראשון/שיעור 1 חלק א.mp4",
+                            min:47,
+                            files:[
+                                {id:utilService.makeId(),
+                                    name:'מודל התקשורת המלא והמפורט',
+                                     url:'https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש ראשון/דפים/מודל התקשורת המלא והמפורט.pdf' 
+                                    },
+                                {id:utilService.makeId(),
+                                    name:'מודל תקשורת- חווית המציאות',
+                                     url:'https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש ראשון/דפים/מודל תקשורת- חווית המציאות.pptx' 
+                                    },
+                                {id:utilService.makeId(),
+                                    name:'מערך שיעורים סופי לפרקטישינר',
+                                     url:'https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש ראשון/דפים/מערך שיעורים סופי לפרקטישינר.pdf' 
+                                    },
+                                {id:utilService.makeId(),
+                                    name:'שיעור ראשון',
+                                     url:'https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש ראשון/דפים/שיעור ראשון.pdf' 
+                                    },
+                            ]
                         },
                         {
                             id: 2,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                            title: " מפגש ראשון חלק ב",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/practitioner/מפגש ראשון/שיעור 1 חלק ב.mp4",
+                            min:47,
+                           
                         },
+                        {
+                            id: 3,
+                            title: " מפגש ראשון חלק ג",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש ראשון/שיעור 1 חלק ג.mp4",
+                            min:47,
+                           
+                        },
+                        
                     ],
                 },
                 {
                     id: utilService.makeId(7),
-                    title: "The Art of listining",
+                    title: "מפגש שני",
                     subTitle: "",
                     totalHours: 45,
                     subEpisodes: [
                         {
-                            id: 3,
-                            title: "The Art of listining",
-                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=_YEKacO3M-M&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=7"
-                        },
-                        {
                             id: 4,
-                            title: "NLP throgth games",
+                            title: "מפגש שני חלק א",
                             videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=cayBOMFrR9A&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=10"
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שני/שיעור 2 חלק א.mp4",
+                            min:47,
                         },
                         {
                             id: 5,
-                            title: "easy start with NLP",
+                            title: "מפגש שני חלק ב",
                             videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=h9wiLS1o1Rw&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=9"
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שני/שיעור 2 חלק ב.mp4",
+                            min:47,
                         },
-                    ],
-                },
-                {
-                    id: utilService.makeId(7),
-                    title: "NLP if life",
-                    subTitle: "",
-                    totalHours: 55,
-                    subEpisodes: [
                         {
                             id: 6,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                            title: "מפגש שני חלק ג",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שני/שיעור 2 חלק ג.mp4",
+                            min:47,
                         },
                         {
                             id: 7,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                            title: "מפגש שני חלק ד",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שני/שיעור 2 חלק ד.mp4",
+                            min:47,
                         },
                     ],
                 },
                 {
                     id: utilService.makeId(7),
-                    title: "iHow to start with NLP",
+                    title: "מפגש שלישי",
                     subTitle: "",
-                    totalHours: 70,
+                    totalHours: 55,
+                    
                     subEpisodes: [
                         {
                             id: 8,
-                            title: "the basis of NLP",
+                            title: "מפגש שלישי חלק א ",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שלישי/מפגש 3 חלק 1.mp4",
+                            min:47,
+                            files:[
+                                {id:utilService.makeId(),
+                                    name:'מערכות ייצוג',
+                                     url:'https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שלישי/מערכות ייצוג סופי.pdf' 
+                                    },
+                                {id:utilService.makeId(),
+                                    name:'קליברציה ',
+                                     url:'https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שלישי/קליברציה סופי.pdf' 
+                                    },
+                                {id:utilService.makeId(),
+                                    name:'תנועות עיניים סופי',
+                                     url:'https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שלישי/תנועות עיניים סופי.pdf' 
+                                    },
+                               
+                            ],
                         },
                         {
                             id: 9,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                            title: "מפגש שלישי חלק ב",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שלישי/מפגש 3 חלק 2.mp4",
+                              min:47,
                         },
-                    ],
-                },
-                {
-                    id: utilService.makeId(7),
-                    title: "NLP Be present",
-                    subTitle: "",
-                    totalHours: 28,
-                    subEpisodes: [
                         {
                             id: 10,
-                            title: "the basis of NLP",
+                            title: "מפגש שלישי חלק ג",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שלישי/מפגש 3 חלק 3.mp4",
+                              min:47,
                         },
-                        {
-                            id: 11,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                        },
-                    ]
+                        
+                    ],
+
                 },
                 {
                     id: utilService.makeId(7),
-                    title: "easy start with NLP",
+                    title: "מפגש רביעי",
                     subTitle: "",
-                    totalHours: 20,
+                    totalHours: 70,
+                    
                     subEpisodes: [
                         {
-                            id: 12,
-                            title: "the basis of NLP",
+                            id: 11,
+                            title: " מפגש רביעי חלק א",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש רביעי/חלק 1.mp4",
+                              min:47,
+                        },
+                        {
+                            id: 12,
+                            title: " מפגש רביעי חלק ב",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש רביעי/חלק 2.mp4",
+                              min:47,
                         },
                         {
                             id: 13,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                            title: " מפגש רביעי חלק ג",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש רביעי/חלק 3.mp4",
+                              min:47,
                         },
-                    ],
-                },
-                {
-                    id: utilService.makeId(7),
-                    title: "NLP Be present",
-                    subTitle: "",
-                    totalHours: 20,
-                    subEpisodes: [
                         {
                             id: 14,
-                            title: "the basis of NLP",
+                            title: " מפגש רביעי חלק ד",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש רביעי/חלק 4.mp4",
+                              min:47,
                         },
-                        {
-                            id: 15,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                        },
+                     
                     ],
                 },
-                {
-                    id: utilService.makeId(7),
-                    title: "NLP throgth games",
-                    subTitle: "",
-                    totalHours: 20,
-                    subEpisodes: [
-                        {
-                            id: 16,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                        },
-                        {
-                            id: 17,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                        },
-                    ],
-                },
-                {
-                    id: utilService.makeId(7),
-                    title: "Course summery NLP-master",
-                    subTitle: "",
-                    totalHours: 20,
-                    subEpisodes: [
-                        {
-                            id: 18,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                        },
-                        {
-                            id: 19,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                        },
-                    ],
-                },
-                {
-                    id: utilService.makeId(7),
-                    title: " NLP and Ajax",
-                    subTitle: "",
-                    totalHours: 20,
-                    subEpisodes: [
-                        {
-                            id: 20,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                        },
-                        {
-                            id: 21,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                        },
-                    ],
-                },
-                {
-                    id: utilService.makeId(7),
-                    title: "The Art of listining",
-                    subTitle: "",
-                    totalHours: 20,
-                    subEpisodes: [
-                        {
-                            id: 22,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                        },
-                        {
-                            id: 23,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                        },
-                    ],
-                },
-                {
-                    id: utilService.makeId(7),
-                    title: "Course summery NLP-master",
-                    subTitle: "",
-                    totalHours: 20,
-                    subEpisodes: [
-                        {
-                            id: 24,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                        },
-                        {
-                            id: 25,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                        },
-                    ],
-                },
-                {
-                    id: utilService.makeId(7),
-                    title: "How to start with NLP",
-                    subTitle: "",
-                    totalHours: 20,
-                    subEpisodes: [
-                        {
-                            id: 26,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                        },
-                        {
-                            id: 27,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                        },
-                    ],
-                }
+                
             ],
             freeSamples: [
                 {
                     id: utilService.makeId(8),
-                    title: "the basis of NLP",
-                    videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                    videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    title: "  מפגש ראשון חלק א",
+                    videoImg: "https://res.cloudinary.com/dii16awkb/image/upload/v1688497398/%D7%A7%D7%95%D7%A8%D7%A1_%D7%A4%D7%A8%D7%90%D7%A7%D7%98%D7%99%D7%A9%D7%99%D7%A0%D7%A8_canf4b.png",
+                    videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש ראשון/שיעור 1 חלק א.mp4",
+                    min:47,
                 },
-                {
-                    id: utilService.makeId(8),
-                    title: "the benefits of NLP",
-                    videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                    videoUrl: "https://www.youtube.com/watch?v=f2VLQF-GP5A"
-                },
-                {
-                    id: utilService.makeId(8),
-                    title: "easy start with NLP",
-                    videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
-                    videoUrl: "https://www.youtube.com/watch?v=j6ciMNAgq7A"
-                },
+               
 
             ]
         },
@@ -406,8 +295,11 @@ function _creatCourses() {
                             title: "מחזור 1 מפגש ראשון חלק א",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Advance מחזור 1/מפגש 1/Export/מחזור 1 חלק 1.mp4",
-                            min:47
-                            
+                            min:47,
+                            files:[{id:utilService.makeId(),
+                                    name:'שיעור ראשון אדוונסד',
+                                     url:'https://d2cjnclsxi3iih.cloudfront.net/Advance מחזור 1/סקריפטים המשך/שלמה- סקריפטים/שיעור ראשון אדוונסד סופי.pdf' }
+                            ]
                         },
                         {
                             id: 2,
@@ -471,7 +363,10 @@ function _creatCourses() {
                             title: "מחזור 1 מפגש שני חלק א",
                             videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Advance מחזור 1/מפגש 2/Export/מחזור 1 מפגש 2 - חלק א.mp4",
-                            min:41
+                            min:41,
+                            files:[{id:utilService.makeId(),
+                                name:'  שיעור שני ',
+                                 url:'https://d2cjnclsxi3iih.cloudfront.net/Advance מחזור 1/סקריפטים המשך/שלמה- סקריפטים/קובץ שני אדוונסד סופי.pdf' }]
                         },
                         {
                             id: 10,
@@ -536,7 +431,10 @@ function _creatCourses() {
                             title: "מחזור 1 מפגש שלישי חלק א",
                             videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Advance מחזור 1/מפגש 3/מחזור 1 מפגש 3 - חלק א.mp4",
-                            min:45
+                            min:45,
+                            files:[{id:utilService.makeId(),
+                                name:'  אדוונס סליחה ',
+                                 url:'https://d2cjnclsxi3iih.cloudfront.net/Advance מחזור 1/סקריפטים המשך/שלמה- סקריפטים/קובץ 3 אדוונסד - סליחה.pdf' }]
                         },
                         {
                             id: 18,
@@ -601,7 +499,11 @@ function _creatCourses() {
                             title: "מחזור 1 מפגש רביעי חלק א",
                             videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Advance מחזור 1/מפגש 4/מחזור 1 מפגש 4 - חלק א.mp4",
-                            min:28
+                            min:28,
+                            files:[{id:utilService.makeId(),
+                                name:'  אדוונס שיעור רביעי ',
+                                 url:'https://d2cjnclsxi3iih.cloudfront.net/Advance מחזור 1/סקריפטים המשך/שלמה- סקריפטים/קובץ רביעי אדוונסד סופי.pdf' }
+                                ]
                         },
                         {
                             id: 26,
@@ -796,7 +698,11 @@ function _creatCourses() {
                             title: "מחזור 1 מפגש שביעי חלק א",
                             videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Advance מחזור 1/מפגש 7/Export/מחזור 1 מפגש 7 - חלק א.mp4",
-                            min:31
+                            min:31,
+                            files:[
+                                     ,{id:utilService.makeId(),
+                                        name:'secound file',
+                                        url:'https://d2cjnclsxi3iih.cloudfront.net/files for advence course/Tax_Invoice_Receipt_8261567.pdf' }]
                         },
                         {
                             id: 50,

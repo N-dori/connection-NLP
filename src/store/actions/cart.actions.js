@@ -40,10 +40,10 @@ export  function clearCart(userId){
     try{
         
         return async(dispatch,getState)=>{
-            await userService.clearUserCart(userId)
+         const cart = await userService.clearUserCart(userId)
             const action = {
                 type: SET_CART,
-                cart:[]
+                cart
             }
             dispatch(action) 
     }    

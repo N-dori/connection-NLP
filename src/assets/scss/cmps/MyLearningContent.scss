@@ -1,102 +1,163 @@
-
-
-        .my-learning-content-container {
-      position: relative;
-      grid-column: 2;
-      grid-row: 1/-1;
-//    margin-top: 1em;
+.my-learning-content-container {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1/-1;
+    //    margin-top: 1em;
     max-height: 100%;
-    overflow-y:scroll ;
+    overflow-y: scroll;
     top: 0em;
+
     .my-learning-header-wapper {
         direction: rtl;
-          position: sticky;
-          right: 0;
-          background-color: #fff; 
-          padding-block-end: 0.9em;
-                .headline {
-                    margin: 1rem;               
-                    font-size: 1.1em;
-                    font-weight: bold;
-                    text-align: end;
-                    color: #222;
-                }
-.x-svg-container{
-    margin-inline-start: 1em;
-    cursor: pointer;
-}
+        position: sticky;
+        right: 0;
+        background-color: #fff;
+        padding-block-end: 0.9em;
+
+        .headline {
+            margin: 1rem;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: end;
+            color: #222;
+        }
+
+        .x-svg-container {
+            margin-inline-start: 1em;
+            cursor: pointer;
+        }
+    }
+
+    .pannel-container {
+        direction: rtl;
+        background-color: #f7f9fa;
+        border-block: 1px solid #d1d7dc;
+        padding: 0.8em;
+
+        .pannel-wrapper {
+            .video-svg {
+                margin-inline-end: .6em;
             }
-            .pannel-container {
-                direction: rtl;
-                background-color: #f7f9fa;
-                border-block:1px solid #d1d7dc;
-                padding: 0.8em;
-                .pannel-wrapper {
-                    .video-svg{
-                        margin-inline-end: .6em;
-                     }
-                    .pannel-title{
-                        font-size: 1.1em;
-                        font-weight: 600;
-                    }
+
+            .pannel-title {
+                font-size: 1.1em;
+                font-weight: 600;
+            }
+
+            .expand-svg {
+                transition: transform 0.3s ease-out;
+                margin-inline-start: 1em;
+            }
+
+            .rotated {
+                transform: rotate(180deg);
+                transition: transform 0.3s ease-out;
+            }
+
+            .parts {
+                font-size: .8em;
+            }
+        }
+
+    }
+
+    .pannel-content-wrapper {
+
+        padding: 1px;
+        border: 1px solid #d1d7dc;
+        // gap: 5px;
+
+        .tv-svg {
+            margin-top: 5px;
+            height: 14px;
+            width: 20px;
+        }
+
+        .content-preview {
+            direction: rtl;
+            color: #222222;
+            // cursor: pointer;
+            padding: 0.3em;
+            padding-left: 0.8em;
+            gap: 0.3em;
+
+            .resources-container {
+                position: relative;
+
+                .resources-btn {
+                    position: relative;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 5px;
+                    background-color: transparent;
+                    border: 1px solid #1c1d1f;
+                    min-width: 8em;
+                    padding: 0 .8em;
+                    height: 2.8em;
+                    z-index: 999;
                     .expand-svg {
                         transition: transform 0.3s ease-out;
-                        margin-inline-start: 1em;
+                        cursor: pointer;
                     }
                     .rotated{
                         transform: rotate(180deg);
                         transition: transform 0.3s ease-out;
+                        cursor: pointer;
                     }
-                    .parts{
-                    font-size: .8em;
-                    }
+                     
                 }
-    
-            }
-            .pannel-content-wrapper {
-                
-                padding: 1px;
-                border: 1px solid #d1d7dc;
-                // gap: 5px;
-    
-                .tv-svg {
-                    margin-top: 5px;
-                    height:14px;
-                    width:20px;
-                }
-    
-                .content-preview {
-                    direction: rtl;
-                    color: #222222;
-                    cursor: pointer;
-                    padding: 0.3em;
-                    padding-left: 0.8em;
-                    gap: 0.3em;
-                    .content-title{
-                        font-weight: 600;
-                        font-size: 0.9em;
-                        margin-inline-start: 3px;
-                    }
-                    .video-min{
-                        font-size: 0.8em;
-                        gap:0.1em;
-                        .num{
-                            font-size: 0.9em;
-                            margin-top: 2px;
+
+                .files-container {
+                    position: absolute;
+                    top: 3em;
+                    left: 0em;
+                    width: 220%;
+                    border: 1px solid #d1d7dc;
+                    box-shadow: 0 2px 4px rgba(0,0,0,.08),0 4px 12px rgba(0,0,0,.08);
+                    max-height: 28rem;
+                    overflow: auto;
+                    
+                    
+                    .file-wrapper {
+                        padding: 1em 1em;
+                        background-color: #fff;
+                        flex-direction: row-reverse;
+                        .file-name{
+                            cursor: pointer;
+                            text-decoration: underline;
+                            font-size: 1.1em;
                         }
                     }
-    
                 }
-              
-    
-                .intro {
-                    cursor: pointer;
-                    color: #401b9c;
-                    text-decoration: underline;
-    
-                }
-    
             }
+
+            .content-title {
+                font-weight: 600;
+                font-size: 0.9em;
+                margin-inline-start: 3px;
+                cursor: pointer;
+            }
+
+            .video-min {
+                font-size: 0.8em;
+                gap: 0.1em;
+                align-items: flex-start;
+                justify-content: space-between;
+                .num {
+                    font-size: 0.9em;
+                    margin-top: 2px;
+                }
+            }
+
         }
 
 
+        .intro {
+            cursor: pointer;
+            color: #401b9c;
+            text-decoration: underline;
+
+        }
+
+    }
+}

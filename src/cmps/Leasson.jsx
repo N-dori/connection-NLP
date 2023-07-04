@@ -49,7 +49,7 @@ export function Leasson({ lastEpisode, setLastSubEpisode, setLastEpisode, episod
 
             <section className={(isShown) ? 'pannel-content-wrapper flex-col ' : 'hidden'}>
                 {subEpisodes.map((subEpisode, i) => {
-                    const { id, title, videoUrl,min } = subEpisode
+                    const { id, title, videoUrl,min,files } = subEpisode
                     return <SubLeasson
                         id={id}
                         key={id}
@@ -61,6 +61,7 @@ export function Leasson({ lastEpisode, setLastSubEpisode, setLastEpisode, episod
                         isClicked={isClicked}
                         setLastSubEpisode={setLastSubEpisode}
                         setIsClicked={setIsClicked}
+                        files={files}
                     />
                 })
                 }

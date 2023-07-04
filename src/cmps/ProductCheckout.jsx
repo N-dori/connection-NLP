@@ -10,9 +10,9 @@ export  function ProductCheckout({handelChekOut,sum,loggdingUser}) {
     <section className='product-Checkout-container'>
   
            <div className='product-Checkout-warpper'>
-        <h3 className='headline'>Total:</h3>
-        <p className='product-price'>${sum}</p>
-        <button className='checkout-btn flex-jc-ac' onClick={handelChekOut}>Checkout</button>
+        <h3 className='headline'>סך הכל:</h3>
+        <p className='product-price'>{sum}</p>
+        <button className='checkout-btn flex-jc-ac' onClick={handelChekOut}>לתשלום מאובטח</button>
            </div>
          
     </section>

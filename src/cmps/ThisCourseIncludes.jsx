@@ -5,7 +5,7 @@ import { MobileSvg } from '../svgs/MobileSvg'
 import { RocketSvg } from '../svgs/RocketSvg'
 import { InfiniteSvg } from '../svgs/InfiniteSvg'
 
-export  function ThisCourseIncludes({totalWatchTime}) {
+export  function ThisCourseIncludes({totalWatchTime,totalAdditioalFiles}) {
   return (
     <>
     <section className='list-whats-includes-container '>
@@ -14,7 +14,7 @@ export  function ThisCourseIncludes({totalWatchTime}) {
 
     <ul className='group flex-col clean'>
       <li className='flex-ac'><TvSvg/> {totalWatchTime.hours  } שעות    {totalWatchTime.min} דקות של צפייה ישירה </li>
-      <li className='flex-ac'><DownloadSvg/> 95 downloadable resources</li>
+      <li className='flex-ac'><DownloadSvg/> {totalAdditioalFiles }  קבצי עזר להורדה </li>
     </ul>    
     <ul className='group flex-col clean'>
       <li className='flex-ac'> <MobileSvg/> גישה לקורס דרך הנייד  </li>

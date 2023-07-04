@@ -3,9 +3,18 @@ import { imgService } from '../services/imgService'
 import { Link } from 'react-router-dom'
 import { PriceSvg } from '../svgs/PriceSvg'
 export  function ProductPreview({onRemove,product}) {
-  // const {title,courseCoverImg,totalVideos,price} = product
+
  
+  const getLecturesSum = () =>{
+    console.log('product product',product);
+    let sum =0 
+    product.episodes.forEach(episode => {
+   sum+= episode.subEpisodes.length
+    });
+    return sum
   
+     
+   }
   return (
     product?
     <>
@@ -16,13 +25,13 @@ export  function ProductPreview({onRemove,product}) {
     <div className='product-general-info grid-item2 flex-clo '>
     <div className='headlines-container flex-col'>
     <span className='product-name' >{product.title}</span>
-    <span className='product-created-by'>By {product.createdBy} </span>
+    <span className='product-created-by'>{product.insructorName} </span>
     </div>
    
     <div className=' product-in-numbers flex'>
-    <span className='total-videos'>{product.totalVideos} total hours</span>
-    <span className='total-videos'>{product.totalHours} lectures</span>
-    <span className='total-videos'>{product.level} level</span>
+    <span className='total-videos'>סך הכל שעות {getLecturesSum()} </span>
+    <span className='total-videos'>הרצאות  {product.totalHours} </span>
+    <span className='total-videos'> דרגה {product.level}</span>
     </div>
     </div>
     <div className=' remove-btn-container flex-col'>
@@ -32,8 +41,7 @@ export  function ProductPreview({onRemove,product}) {
     <span className='product-price'>{product.price}</span>
     <PriceSvg/>
     </div>
-    {/* <Link className='grid-item5' to={`/course-watch/${123}`}>watch</Link> */}
     
-    </>:<div>Loading....</div>
+    </>:<span>Loading...</span>
   )
 }
