@@ -7,6 +7,8 @@ export  function loadCart(){
         
         return async(dispatch,getState)=>{
             const cart= await cartService.loadShoppingCart()
+            //cart is an array with courses 
+            //TODO: save to cart mini course
             console.log('cart in service',cart);
             const action = {
                 type: SET_CART,
@@ -24,9 +26,11 @@ export  function removeProduct(productId){
         
         return async(dispatch,getState)=>{
             const cart= await cartService.removeFromUserCart(productId)
+            console.log('cart after removeing', cart);
+            
             const action = {
-                type: SET_CART,
-                cart
+                type: REMOVE_FORM_CART,
+                productId
             }
             dispatch(action)
   
@@ -40,7 +44,7 @@ export  function clearCart(userId){
     try{
         
         return async(dispatch,getState)=>{
-         const cart = await userService.clearUserCart(userId)
+        let cart = await userService.clearUserCart(userId)
             const action = {
                 type: SET_CART,
                 cart
@@ -64,7 +68,7 @@ export function addToUserCart(courseId){
     }
      
     }catch(err){
-        console.log('can not load cart',err);
+        console.log('can not addToUserCart cart',err);
     }
 }
 

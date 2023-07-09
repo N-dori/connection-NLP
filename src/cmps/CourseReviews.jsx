@@ -6,7 +6,7 @@ import { ReviewsList } from './ReviewsList'
 
 export function CourseReviews() {
 
-  const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
+const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
 const param = useParams()
 const [courseReviews, setCourseReviews] = useState(null)
 

@@ -5,16 +5,19 @@ import { loadCart, removeProduct } from '../store/actions/cart.actions'
 import { ProductList } from '../cmps/ProductList'
 import { ProductCheckout } from '../cmps/ProductCheckout'
 import { SignupPage } from './SignupPage'
+import { userService } from '../services/userService'
 
 export function ShoppingCart() {
   
   const dispatch = useDispatch()
-  const [isUserlogged,setIsUserlogged]=useState(false)
   const navigate = useNavigate()
-  const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
+  const [isUserlogged,setIsUserlogged]=useState(false)
+  const [loggdingUser,setLoggdingUser]=useState(false)
+  const [isSignupModalOpen,setIsSignupModalOpen]=useState(false)
+  // const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
   const [sum, setSum] = useState(0)
-
+  
   
   // const courses= loggdingUser
   const param = useParams()
@@ -22,14 +25,22 @@ export function ShoppingCart() {
   useEffect(() => {
       loadCourses()
       culcTotalPrice()
-  }, [JSON.stringify(shoppingCart)])
+      loadLoggedinUser()
+  }, [shoppingCart.length])
      
     const loadCourses = () => {
+
       dispatch(loadCart())  
+      
+    }
+    const loadLoggedinUser = async () => {
+      const loggdingUser = await userService.getLoggedinUser()
+      setLoggdingUser(loggdingUser)
     }
 
   const onRemove = (productId) => {
-    dispatch(removeProduct(productId))    
+    dispatch(removeProduct(productId))
+  
   }
   
   const culcTotalPrice = () => {
@@ -53,9 +64,13 @@ const handelChekOut = () => {
   if(loggdingUser){
     navigate(`/payment/${loggdingUser._id}`)
   }else{
+    setIsSignupModalOpen(true)
     setIsUserlogged(true)
 
   }
+  }
+  const closeModal = () => {
+    setIsSignupModalOpen(false)
   }
   return (
 
@@ -65,16 +80,19 @@ const handelChekOut = () => {
       <p className='total-courses'>{shoppingCart?shoppingCart.length+' קורסים בעגלת הקניות':''} </p>
       </header>
       <section className='product-list-wrapper'>
-      {shoppingCart ?
+      {(shoppingCart ||(shoppingCart.length===0))?
         <ProductList onRemove={onRemove} shoppingCart={shoppingCart} />
         : 'shopping cart is empty'
       }
       </section>
         <ProductCheckout handelChekOut={handelChekOut} loggdingUser={loggdingUser} sum={sum}/>
 
-        { isUserlogged?<section className='shopping-cart-signup-modal-container'>
-        <SignupPage shoppingCart={shoppingCart}isUserlogged={isUserlogged} setIsUserlogged={setIsUserlogged} from={'shopping-cart'} />
-         </section>:''}
+        { isUserlogged?
+        isSignupModalOpen?<section className='shopping-cart-signup-modal-container'>
+        <SignupPage closeModal={closeModal} shoppingCart={shoppingCart}isUserlogged={isUserlogged} setIsUserlogged={setIsUserlogged} from={'shopping-cart'} />
+         </section>:''
+         :  ''
+         }
     </section>
   )
 }

@@ -6,6 +6,7 @@ import { OutletMenu } from '../cmps/OutletMenu'
 import { updateCurrTimeWacth } from '../store/actions/user.actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { userService } from '../services/userService'
+import { courseService } from '../services/course.service'
 
 
 export  function MyLearning({lastSubEpisode,setLastSubEpisode,lastEpisode,setLastEpisode,currCourseId,videoUrl,setVideoUrl,setCurrCourseId}) {
@@ -13,16 +14,18 @@ export  function MyLearning({lastSubEpisode,setLastSubEpisode,lastEpisode,setLas
   const dispatch = useDispatch()
   const playerRef =useRef()
   const  param = useParams()
-  const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const [course, setCourse] = useState()
+
   
   
   const [isContentShown, setIsContentShown] = useState(true)
   
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isPlayingFirstTime, setIsPlayingFirstTime] = useState(0);
   const [lastWatchTime, setLastWatchTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const lastWatchTimeRef =useRef(lastWatchTime)
+  const loggdingUserRef =useRef({})
   
   useEffect(()=>{
     loadCourse()
@@ -31,28 +34,34 @@ export  function MyLearning({lastSubEpisode,setLastSubEpisode,lastEpisode,setLas
     getLecturesSum()
 
     return () => {
-      // when copmponent unmount we save last watch time and updateing the user.
+      // when copmponent unmount we save last video and last watch time and updating the user.
+      console.log('lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef',lastWatchTimeRef);
       updateCourseCurrTimeWacth()
-      
     };
-  },[lastEpisode,lastSubEpisode,lastWatchTimeRef])
+  },[lastEpisode,lastSubEpisode,lastWatchTimeRef,loggdingUserRef])
   
   const updateCourseCurrTimeWacth = () => {
-    dispatch(updateCurrTimeWacth(loggdingUser?._id,currCourseId,lastEpisode,lastSubEpisode,lastWatchTimeRef.current,videoUrl))
+    dispatch(updateCurrTimeWacth(loggdingUserRef.current._id,currCourseId,lastEpisode,lastSubEpisode,lastWatchTimeRef.current,videoUrl))
     
 }
  const loadLastVideo = async () => {
-  if(loggdingUser){
+   const loggdingUser = await userService.getLoggedinUser()
+   if(loggdingUser){
     const user = await userService.getUserById(loggdingUser._id)
     const course = user.courses.find(course=>course._id === param.id )
     if(!course.lastVideoWatched){
+      setIsPlaying(true)
       return
-    }
-    const {lastVideoWatched} = course
-  
-    if(isPlayingFirstTime === 0){
+    }else{
+      const {lastVideoWatched} = course
+      // after getting the user and course setting lastwatch time and last url
+      if(isPlayingFirstTime === 0){
+        console.log('setting last time watch and url********************');
         setLastWatchTime(lastVideoWatched.lastTimeWatched)
         setVideoUrl(lastVideoWatched.videoUrl)  
+        // setIsPlaying(true)
+
+    }
     }
 
   }
@@ -74,10 +83,10 @@ export  function MyLearning({lastSubEpisode,setLastSubEpisode,lastEpisode,setLas
    }
 
   const loadCourse = async () => {
-    if(loggdingUser){
-      const user = await userService.getUserById(loggdingUser._id) 
-  
-        const course = user.courses.find(course=>course._id === param.id )
+    const loggdingUser = await userService.getLoggedinUser()
+    loggdingUserRef.current =loggdingUser
+    if(loggdingUser){    
+        const course = await courseService.getCourseById(param.id)
         setCourse(course)
         if(!course.lastVideoWatched){
           return 
@@ -94,24 +103,26 @@ export  function MyLearning({lastSubEpisode,setLastSubEpisode,lastEpisode,setLas
     setIsContentShown(!isContentShown)
   }
   const handleProgress = (progress) => {
+    const elaps= progress.played * (duration)
     setLastWatchTime((progress.played * duration).toFixed(0))
     lastWatchTimeRef.current= +(progress.played * duration).toFixed(0)
-    // console.log('onProgress', progress.played)
+    console.log('elaps', elaps)
     // console.log('lastWatchTime', lastWatchTimeRef)
     // console.log('lastEpisode', lastEpisode)
     // console.log('lastSubEpisode', lastSubEpisode)
   }
  const  handleDuration = (duration) => {
-  setDuration( duration/60)
-    console.log('onDuration in min',)
+  setDuration( duration)
+    console.log('onDuration in min === duration/60',duration/60)
   
   }
   
  const handelSeekTime = () => {
+   setIsPlaying(true)
    if(isPlayingFirstTime === 0){
      setIsPlayingFirstTime(isPlayingFirstTime+1)
       const timeToStart = +lastWatchTime
-      // console.log('timeToStarttttttttttttttt',+lastWatchTime);
+      console.log('timeToStarttttttttttttttt',+lastWatchTime);
       playerRef.current.seekTo(timeToStart, 'seconds');
    }
  }
@@ -129,8 +140,8 @@ export  function MyLearning({lastSubEpisode,setLastSubEpisode,lastEpisode,setLas
   ref={playerRef}
       className="react-player"
       playing={true}
-      onProgress={ handleProgress }
       onDuration={ handleDuration }
+      onProgress={ handleProgress }
       onPlay={ handelSeekTime }
         
       controls={true}

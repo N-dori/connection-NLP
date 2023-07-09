@@ -35,8 +35,7 @@ export  function GoogleLoginBtn({googleUser,setGoogleUser,axios,dispatch,navigat
                             fname: name,
                             userName:given_name,
                             email,
-                            imgUrl:picture,
-                          
+                            imgUrl:picture,                          
                                           }
                       dispatch(signup(formatedUser,from,shoppingCart))
                         console.log('formatedUser',formatedUser);
@@ -54,10 +53,10 @@ export  function GoogleLoginBtn({googleUser,setGoogleUser,axios,dispatch,navigat
     }
   return (
 <div onClick={() => login()} className="google-signup-btn flex-ac">
-  <div class="google-icon-wrapper">
-    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+  <div className="google-icon-wrapper">
+    <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
   </div>
-  <div class="btn-text"><span>{type} </span></div>
+  <div className="btn-text"><span>{type} </span></div>
   </div>
   )
 }

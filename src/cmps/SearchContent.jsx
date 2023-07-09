@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { SearchSvg } from '../svgs/SearchSvg'
-import { courseService } from '../services/course.service'
-import { Panel } from './Panel'
 import { Leasson } from './Leasson'
-import { utilService } from '../services/util.service'
 import { useDebounce } from '../customHooks/usedebounce'
 
 export function SearchContent(props) {
@@ -52,7 +49,7 @@ export function SearchContent(props) {
                           subEpisodes={episode.subEpisodes} 
                           lectures={episode.subEpisodes.length}
                           min={27}
-                          shown={true}/>
+                          isSearchPanel={true}/>
         }) }
         </section>:<div className='start-new-search-wrapper flex-col'>
           <span className='start-new-search'>Start new Search</span>

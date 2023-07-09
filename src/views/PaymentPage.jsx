@@ -2,10 +2,9 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { updateUser } from '../store/actions/user.actions'
-import { courseService } from '../services/course.service'
 import { userService } from '../services/userService'
 import { clearCart } from '../store/actions/cart.actions'
-import { updateCourse } from '../store/actions/course.actions'
+import { updateStudentsCourse } from '../store/actions/course.actions'
 
 export  function PaymentPage() {
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
@@ -20,18 +19,22 @@ export  function PaymentPage() {
     const handelPayment= async () =>{
       const user = await userService.getUserById(param.id)
       shoppingCart.forEach(product => {
-        user.courses.push(product.course)
-        loggdingUser.courses.push(product.course._id)
-        
+        const miniCourse = {
+          _id:product.course._id,
+          courseCoverImg:product.course.courseCoverImg,
+          title:product.course.title,
+          subTitle: product.course.subTitle
+        }
+        user.courses.push(miniCourse)        
       });
-      console.log('user after payment in payment',user);
+      // console.log('user after payment in payment',user);
       dispatch(updateUser(user))
       setTimeout(() => {
         dispatch(clearCart(user._id))
+        navigate('/our-courses')
         
       }, 1000);
-      navigate('/')
-      dispatch(updateCourse(user,shoppingCart))
+      dispatch(updateStudentsCourse(user,shoppingCart))
     }
 
   return (

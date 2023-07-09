@@ -13,6 +13,7 @@ export  function SubLeasson({files,setIsClicked,setLastSubEpisode,id,title,video
 }
   useEffect(() => {
     settingLastSubEpisode()
+ 
   }, [])
   const settingLastSubEpisode = () => {
     if(!setLastSubEpisode){return 

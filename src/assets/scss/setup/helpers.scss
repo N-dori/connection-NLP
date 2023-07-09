@@ -57,3 +57,13 @@ textarea:focus, input:focus{
 .tc-b{
     color:rgb(46, 46, 250)
 }
+.loder-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    .spinner{
+        position: absolute;
+        top:50%;
+        left:50%
+    }
+}

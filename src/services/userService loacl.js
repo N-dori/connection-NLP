@@ -52,7 +52,7 @@ async function getUserById(userId) {
     const user = await httpService.get(`user/${userId}`)
     // const users = await storageService.query(USER_KEY)
     // const user = users.find(user => user._id === userId)
-    // console.log('your user by id in service ',user);
+    console.log('your user by id in service ',user);
 return user
     } 
     catch(err){
@@ -63,7 +63,7 @@ return user
 
 async function  getLoggedinUser() {
 const loggedinUser =  await  httpService.get('auth/loggedinUser')
-// console.log('loggedinUser',loggedinUser);
+console.log('loggedinUser',loggedinUser);
 return loggedinUser
      
 }
@@ -123,19 +123,19 @@ function getEmptyUser() {
 }
 async function updateUser(userToUpdate){
     try{
-        const user = await httpService.put('user',userToUpdate)
+        const users = await storageService.query(USER_KEY)
 
-    //     const updatedUsers = users.map(currUser => currUser._id === userToUpdate._id ? userToUpdate : currUser )
-    //     localStorageService.store(USER_KEY,updatedUsers)
-    //   const loggedinUser =  localStorageService.load(STORAGE_KEY_LOGGEDIN_USER)
-    //    userToUpdate.courses.forEach(course => {
-    //     if(!loggedinUser.courses){
-    //         loggedinUser.courses =[]
-    //     }
-    //     loggedinUser.courses.push(course._id)
-    //    });
-    //   localStorageService.store(STORAGE_KEY_LOGGEDIN_USER,loggedinUser)
-      console.log(' update user in user service', user );
+        const updatedUsers = users.map(currUser => currUser._id === userToUpdate._id ? userToUpdate : currUser )
+        localStorageService.store(USER_KEY,updatedUsers)
+      const loggedinUser =  localStorageService.load(STORAGE_KEY_LOGGEDIN_USER)
+       userToUpdate.courses.forEach(course => {
+        if(!loggedinUser.courses){
+            loggedinUser.courses =[]
+        }
+        loggedinUser.courses.push(course._id)
+       });
+      localStorageService.store(STORAGE_KEY_LOGGEDIN_USER,loggedinUser)
+      console.log(' update loggedinUser', loggedinUser );
     }catch(err) {
         console.log('could not update user', err );
     }
@@ -171,7 +171,7 @@ async function updateCurrTimeWacth(userId,courseId, episodeId, subEpisodeId,curr
        const updatedCourses = userToUpdate.courses.map(currCourse => currCourse._id === course._id ? course : currCourse )
       userToUpdate.courses = updatedCourses
       // updateing the  user
-      await updateUser(userToUpdate)
+       updateUser(userToUpdate)
        console.log(' userToUpdate in updateCurrTimeWacth func', userToUpdate );
        return userToUpdate
     }catch(err) {

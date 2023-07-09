@@ -213,6 +213,88 @@ padding-block-start:5em ;
     height: 70%;
     top:13em;
     right: 35%;
+padding: 2em;
+background-color: #fff;
+box-shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .08);
+    @include for-940px{
+        height:52%   ;
+        padding: 1em;
+    
+    }
+    .close-btn{
+        cursor: pointer;
+        position: absolute;
+        top:10px;
+        right: 10px;
+    }
+    .signup-container{
+    padding: 2em;
+    margin-top: 0;
+    @include for-940px{
+  padding: 1em;  
+  top: 129px; 
+    }
+}
+.google-signup-btn{
+    direction: ltr;
+}
+.sign-in-btn{
+    font-size: 0.9em!important; 
+    margin-top: 20px!important;
+}
+.btn-text{
 
-    background-color: #fff;
+    margin-right: 1em;
+    margin-left: 0px!important;
+    font-size: 0.9em!important;
+}
+.sign-in-input{
+    height: 2.5em!important;
+font-size: 0.9em!important;
+}
+@include for-narrow-layout{
+    padding: .5em;
+    width: 287px;
+    height:436px;
+    right: 30% !important;
+}
+@include for-mobile-layout{
+    padding: .5em;
+    top: 10em!important;
+    right: 20% !important;
+    translate: 10%;
+    .is-register{
+        margin: 0;
+    }
+    .btn-text{
+    
+        margin-right: 1em;
+        margin-left: auto !important;
+        font-size: 0.9em!important;
+    }
+}
+@include for-370px{
+    top:4em !important;
+    width: 250px;
+    height:430px;
+    right: 15% !important;
+    translate: -5%;
+    .google-signup-btn{
+        height: 3em !important;;
+    }
+    .sign-in-btn{
+        height:3em !important;
+        
+    }
+
+}
+@include for-325px{
+    padding: 0;
+    width:  220px;
+    right: 0px !important;
+.signin-title{
+    font-size: 0.9em;
+}
+
+}
 }

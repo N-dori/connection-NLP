@@ -27,12 +27,12 @@ function _creatAnnouncements() {
 }
 async function addAnnouncements(announcement) {
 //    const announcements= utilService.loadFromStorage(Announcement_DB )||[]
-  const data = await httpService.post('announcement',announcement)
+  const data = await storageService.post(Announcement_DB,announcement)
        return data
 }
 function getEmptyAnnouncement() {
     return {
-        // _id:utilService.makeId(8),
+        _id:utilService.makeId(8),
         courseId:"",
         givenBy: {id:"",name:'',imgUrl:''},
         title:"",
@@ -55,10 +55,9 @@ function getEmptyComment() {
 
 async function getAnnouncements() {
     try {
-        const announcements = await httpService.get('announcement')
-        console.log('all Announcements in service', announcements);
-        
-        return announcements
+        // const Announcements = await httpService.get('coures')
+        const Announcements = await storageService.query(Announcement_DB)
+        return Announcements
     }
     catch (err) {
         console.log('could not load Announcements', err);
@@ -66,10 +65,11 @@ async function getAnnouncements() {
     }
 }
 
-async function getAnnouncementById(announcId) {
+async function getAnnouncementById(couresId) {
     try {
-        // const announcements = await httpService.get(`coures/${couresId}`)
-        const announcement = await httpService.get(`announcement/${announcId}`)
+        // const coures = await httpService.get(`coures/${couresId}`)
+        const announcements = await storageService.query(Announcement_DB)
+        const announcement = announcements.find(announcement => announcement._id === couresId)
         console.log('your Announcement by id in service ', announcement);
         return announcement
     }
@@ -94,7 +94,7 @@ async function addComment(announcId,commentToAdd){
 }
 async function  updateAnnouncement(announcementToUpdate) {
     try {
-      const announcement = httpService.put(`announcement`,announcementToUpdate)
+      const announcement = storageService.put(Announcement_DB,announcementToUpdate)
         return announcement
     }
     catch (err) {

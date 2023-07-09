@@ -1,4 +1,5 @@
 .course-overview-container{
+    direction: rtl;
     padding-inline: 5em;
     overflow-x: scroll;
     @include for-narrow-layout {

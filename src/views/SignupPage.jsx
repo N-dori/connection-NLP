@@ -6,13 +6,16 @@ import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import {  useDispatch, useSelector } from 'react-redux'
 import {  signup } from '../store/actions/user.actions';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GoogleLoginBtn } from '../cmps/GoogleLoginBtn';
+import { XSvg } from '../svgs/XSvg';
 
-export function SignupPage({from,isUserlogged,setIsUserlogged,shoppingCart}) {
+export function SignupPage({from,closeModal,isUserlogged,setIsUserlogged,shoppingCart}) {
 
     const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
+    const loaction = useLocation()
     const [user, setUser] = useState(userService.getEmptyUser())
+
     const [googleUser, setGoogleUser] = useState()
         const dispatch=useDispatch()
     const navigate = useNavigate()
@@ -23,11 +26,11 @@ export function SignupPage({from,isUserlogged,setIsUserlogged,shoppingCart}) {
     }
 
  useEffect(() => {
-   console.log('from',from);
+   console.log('from',from)
  
  }, [])
  
-    console.log('loggdingUser',loggdingUser);
+    
    const onSignup =  (ev) => {
         ev.preventDefault()
         ev.stopPropagation()
@@ -37,8 +40,6 @@ export function SignupPage({from,isUserlogged,setIsUserlogged,shoppingCart}) {
         }  if (from === 'shopping-cart'){
             setIsUserlogged(!isUserlogged )
         }
-    //  const credintials= await userService.signup(user)
-    //  setProfile((user))
     }
 
     const handleChange = ({ target }) => {
@@ -62,11 +63,9 @@ export function SignupPage({from,isUserlogged,setIsUserlogged,shoppingCart}) {
     
     return (
         <section className='signup-container flex-jc'>
-            {/* <div className='signup-img-container'>
-                <img className='signup-img' src={imgService.getImg('signupImg')} />
-            </div> */}
+            {closeModal? <div onClick={closeModal} className='close-btn'><XSvg/></div>:''}
             <form  className='signup-form flex'  onSubmit={onSignup}>
-            <h3 className="signin-title">הרשם והתחל ללמוד</h3>
+            <h3 className="signin-title">{from === 'shopping-cart'?'רישום קצר וממשיכים':"הרשם והתחל ללמוד"}</h3>
 
                 <label htmlFor="fname">
                     <input value={fname} onChange={handleChange} className="sign-in-input" required type="text" name="fname" id="fname" placeholder="שם מלא" />
@@ -75,7 +74,7 @@ export function SignupPage({from,isUserlogged,setIsUserlogged,shoppingCart}) {
                     <input value={email} onChange={handleChange} className="sign-in-input" required type="email" name="email" id="email" placeholder="אימייל" />
                 </label>
                 <label htmlFor="password">
-                    <input value={password} onChange={handleChange} className="sign-in-input" required type="password" name="password" id="password" placeholder="סיסמא" />
+                    <input value={password} onChange={handleChange} className="sign-in-input" required type="password" name="password" id="password" placeholder="בחר סיסמא" />
                 </label>
                 <button className="sign-in-btn">הרשם</button>
                 <GoogleLoginBtn 
@@ -92,7 +91,7 @@ export function SignupPage({from,isUserlogged,setIsUserlogged,shoppingCart}) {
                 shoppingCart={shoppingCart}
                 />
                 <br/>
-                <p className='flex-jc-ac'> משתמש רשום? <Link to='/login'> התחבר</Link></p>
+                <p className=' is-register flex-jc-ac'> משתמש רשום? <Link to='/login'> התחבר</Link></p>
                 
                 </form>
 

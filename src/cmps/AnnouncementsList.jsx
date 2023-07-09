@@ -7,9 +7,9 @@ export function AnnouncementsList({loggedinUser,courseAnnouncements }) {
     return (
 
         <section className='profile-announcement-container'>
-            {/* <h1 className='headline'>Announcements:</h1> */}
+            <h1 className='headline'>הודעות  מערכת:</h1>
             {courseAnnouncements.map(announcement => {
-           return <AnnouncementsPreview loggedinUser={loggedinUser} announcement={announcement}/>
+           return <AnnouncementsPreview key={announcement._id} loggedinUser={loggedinUser} announcement={announcement}/>
 
                 
             })}

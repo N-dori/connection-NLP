@@ -4,12 +4,16 @@ import { TvSvg } from '../svgs/TvSvg'
 import { VideoSvg } from '../svgs/VideoSvg'
 import { SubLeasson } from './SubLeasson'
 
-export function Leasson({ lastEpisode, setLastSubEpisode, setLastEpisode, episodeId, subEpisodes, title, setVideoUrl, shown }) {
+export function Leasson({isSearchPanel, lastEpisode, setLastSubEpisode, setLastEpisode, episodeId, subEpisodes, title, setVideoUrl,i }) {
 
-    const [isShown, setIsShown] = useState(shown)
+    const [isShown, setIsShown] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
     useEffect(() => {
         LastEpisode()
+        if(isSearchPanel){
+            expand()
+          }
+  
     }, [])
     const LastEpisode = () => {
         if(!setLastEpisode){return

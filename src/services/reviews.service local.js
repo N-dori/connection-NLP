@@ -12,7 +12,7 @@ export const reviewService = {
     saveReview,
 
 }
-// _setReviews()
+_setReviews()
 
 function _setReviews() {
     utilService.saveToStorage(REVIEW_KEY, _creatReviews())
@@ -25,9 +25,8 @@ function _creatReviews() {
 }
 async function getReviews() {
   try{  
-    const reviews = await httpService.get('review')
-    console.log('getReviews in service reviews :',reviews);
-    // const reviews = await storageService.query(REVIEW_KEY)
+    // const reviews = await httpService.get('review')
+    const reviews = await storageService.query(REVIEW_KEY)
 
     return reviews
 }
@@ -72,11 +71,11 @@ async function deleteReview(reviewId) {
 async function saveReview(newreview) {
     try{
         if(!newreview._id){
-            // newreview._id =utilService.makeId(8) 
-           httpService.post('review',newreview)
+            newreview._id =utilService.makeId(8) 
+           storageService.post(REVIEW_KEY,newreview)
            return newreview
         }else{
-            httpService.put('review',newreview)
+            storageService.put(REVIEW_KEY,newreview)
             return newreview
         }
 
