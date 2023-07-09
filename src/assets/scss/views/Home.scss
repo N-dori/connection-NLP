@@ -635,15 +635,17 @@
 
 .mobile-home-page-outlets-container {
     display: none;
-
-    @include for-narrow-layout {
-        display: block;
-    }
-
     padding-block: 2em;
     padding-inline: 1em;
     background-color: #222;
     color: #fff;
+    @include for-narrow-layout {
+        display: block;
+    }
+    @include for-mobile-layout {
+        padding-inline: 0em;
+    }
+
 
     .introduction-container {
         margin-bottom: 3em;
