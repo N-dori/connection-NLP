@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { userService } from '../services/userService'
 import { MyCoursesList } from '../cmps/MyCoursesList'
-import  RatingModal  from '../cmps/RatingModal'
+import RatingModal from '../cmps/RatingModal'
 import { reviewService } from '../services/reviews.service'
 import { saveReview } from '../store/actions/review.actions'
 import { ScheduleTimeForLearning } from '../cmps/ScheduleTimeForLearning'
-import { InfinitySpin   } from  'react-loader-spinner'
+import { InfinitySpin } from 'react-loader-spinner'
 
 export function MyCoursesIndex() {
-  
+
   const dispatch = useDispatch()
   const [courses, setCourses] = useState(null)
   const [currCourse, setCurrCourse] = useState("")
@@ -19,75 +19,75 @@ export function MyCoursesIndex() {
   const [isShown, setIsSown] = useState(false)
   const [rating, setRating] = useState(0)
   const param = useParams()
-  const ratingModalRef=useRef()
+  const ratingModalRef = useRef()
   useEffect(() => {
     loadUserCourses()
     console.log(param);
   }, [])
-  const loadUserCourses = async  () => {
+  const loadUserCourses = async () => {
     const loggdingUser = await userService.getLoggedinUser()
     const user = await userService.getUserById(loggdingUser._id)
     setLoggdingUser(user)
 
     console.log('my user course index', user);
     setCourses(user.courses)
-  } 
+  }
   const handleChange = ({ target }) => {
     const field = target.name
     let value = target.value
     setReview((preComment) => ({ ...preComment, [field]: value }))
-  console.log('review',review);
-}
-const handelSubmitReview =(ev) => {
-       ev.preventDefault()
-       review.courseId= currCourse
-       review.reviewedBy = {
-                         _id:loggdingUser._id,
-                        name:loggdingUser.fname,
-                      imgUrl:loggdingUser.imgUrl,
-                       email:loggdingUser.email
-       }
-       review.reviewedAt = Date.now()
-       review.rate = rating
-       //TODO: dipatch to store 
-       dispatch(saveReview(review))
-       console.log('review after all ',review );
-       setReview(reviewService.getEmptyReview())
-       setIsSown(false)
-}
-  
+    console.log('review', review);
+  }
+  const handelSubmitReview = (ev) => {
+    ev.preventDefault()
+    review.courseId = currCourse
+    review.reviewedBy = {
+      _id: loggdingUser._id,
+      name: loggdingUser.fname,
+      imgUrl: loggdingUser.imgUrl,
+      email: loggdingUser.email
+    }
+    review.reviewedAt = Date.now()
+    review.rate = rating
+    //TODO: dipatch to store 
+    dispatch(saveReview(review))
+    console.log('review after all ', review);
+    setReview(reviewService.getEmptyReview())
+    setIsSown(false)
+  }
+
   return (
-    courses?
-<>
-    <section className='my-courses-header-container grid'>
-        <header className='my-courses-header-wrapper'>
-          <h1 className='headline'>הקורסים שלי</h1>
-        </header>
-      </section> 
+    courses ?
+      <>
+        <section className='my-courses-header-container grid'>
+          <header className='my-courses-header-wrapper'>
+            <h1 className='headline'>הקורסים שלי</h1>
+          </header>
+        </section>
         <section className='my-courses-list grid'>
-          <ScheduleTimeForLearning/>
-         
-          <MyCoursesList isShown={isShown} setIsSown={setIsSown} setCurrCourse={setCurrCourse} courses={courses}/>
-        { isShown? <RatingModal handelSubmitReview={handelSubmitReview}
-                    ref={ratingModalRef}
-                    review={review}
-                    handleChange={handleChange}
-                    isShown={isShown}
-                    setIsSown={setIsSown} 
-                    rating={rating} 
-                    setRating={setRating}/>:''}
-          <div className={isShown?'screen-filter':'hidden'} ></div>
+          <ScheduleTimeForLearning />
+
+          <MyCoursesList isShown={isShown} setIsSown={setIsSown} setCurrCourse={setCurrCourse} courses={courses} />
+          {isShown ? <RatingModal handelSubmitReview={handelSubmitReview}
+            ref={ratingModalRef}
+            review={review}
+            handleChange={handleChange}
+            isShown={isShown}
+            setIsSown={setIsSown}
+            rating={rating}
+            setRating={setRating} /> : ''}
+          <div className={isShown ? 'screen-filter' : 'hidden'} ></div>
         </section>
 
-</>:<section className='loder-container flex-jc-ac'>
-<div className='flex-jc-ac'>
-<InfinitySpin 
-className='spinner'
-         width='200'
-         color="#448cfb"
-       />
+      </> : <section className='loder-container flex-jc-ac'>
+        <div className='flex-jc-ac'>
+          <InfinitySpin
+            className='spinner'
+            width='200'
+            color="#448cfb"
+          />
 
-</div>
-</section>
+        </div>
+      </section>
   )
 }

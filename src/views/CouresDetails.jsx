@@ -15,8 +15,8 @@ import { SideBarModal } from '../cmps/SideBarModal';
 import { CoursePlayer } from '../cmps/CoursePlayer';
 import { addToUserCart } from '../store/actions/cart.actions'
 import { PlaySvg } from '../svgs/PlaySvg';
-import { imgService } from '../services/imgService';
 import MobileDetailsFooter from '../cmps/MobileDetailsFooter';
+import { InfinitySpin   } from  'react-loader-spinner'
 
 export function CouresDetails() {
   const [setRef, visible] = useOnScreen({ threshold: 0.2 })
@@ -188,7 +188,16 @@ export function CouresDetails() {
           priceBeforeDiscount={priceBeforeDiscount}
            formatedPrice={formatedPrice}/>}
       </> :
-      <div>Loading...</div>
+     <section className='loder-container flex-jc-ac'>
+     <div className='flex-jc-ac'>
+     <InfinitySpin 
+     className='spinner'
+              width='200'
+              color="#448cfb"
+            />
+     
+     </div>
+     </section>
 
   )
 }

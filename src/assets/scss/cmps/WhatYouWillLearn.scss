@@ -30,7 +30,7 @@
             padding: 20px;
             justify-content: end;
             @include for-530px  {
-
+                 padding-inline: 0;
                 flex-direction: column;
               }
             .done-svg{
