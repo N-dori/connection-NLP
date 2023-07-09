@@ -12,6 +12,10 @@ const INITIAL_STATE = {
 export function userReducers(state=INITIAL_STATE, action = {} ){
   switch (action.type) {
     case SET_USER:
+        if(!action.user){
+            console.log('in reducer action.user if undefined');
+            return state
+        }
         return {
             ...state,
             loggdingUser: {...action.user}
@@ -20,7 +24,7 @@ export function userReducers(state=INITIAL_STATE, action = {} ){
     case LOGOUT_USER:
         return {
             ...state,
-            loggdingUser:  null
+            loggdingUser:null
         }
     case UPDATE_USER:
         return {

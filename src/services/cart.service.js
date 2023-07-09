@@ -26,13 +26,15 @@ async function loadShoppingCart () {
 async function  _getCartCourses() {
   try{  
     // const carts = await httpService.get('coures')
-    const loggedinUser  =  userService.getLoggedinUser()
+    const loggedinUser  = await userService.getLoggedinUser()
     if(loggedinUser){
         const user = await userService.getUserById(loggedinUser._id)
+        if(!user.cart)return
         const { cart } = user 
-        const courses = cart.map(async couresId => {
+        const courses = cart.map(async courseId => {
             return {
-                course: await courseService.getCourseById(couresId)
+                //returning an obj "course" with
+                course: await courseService.getCourseById(courseId)
             }
         });
         return Promise.all(courses);
@@ -51,12 +53,16 @@ async function addToUserCart(couresId) {
     // const coures = await httpService.get(`coures/${couresId}`)
 
     console.log('couresId',couresId)
-    const loggedinUser  = userService.getLoggedinUser()
+    const loggedinUser  = await userService.getLoggedinUser()
+
     const user = await userService.getUserById(loggedinUser._id)
+    console.log('user by id after backend in cart service',user);
+    // chacking that user dont have the same course more than one time
     const found =  user.cart.find(currCourseId=>currCourseId === couresId)
     if(!found){
         user.cart.push(couresId) 
         const updatedUser =  await userService.updateUser(user)
+        console.log('updatedUser after backend  in cart service',user);
         return  updatedUser.cart
     }else {
 
@@ -73,7 +79,7 @@ async function removeFromUserCart(courseId) {
     try{
     // const coures = await httpService.get(`coures/${couresId}`)
     console.log('couresId',courseId)
-    const loggedinUser  = userService.getLoggedinUser()
+    const loggedinUser  = await userService.getLoggedinUser()
     const user = await userService.getUserById(loggedinUser._id)
     console.log('user removeFromUserCart',user);
     

@@ -16,7 +16,7 @@ export  function ReviewsPreview({review}) {
     <article className='review-container flex-col'>
     <div className="reviewer-info flex-ac">
       <header className='name-and-when flex-col'>
-    <p className='reviewer-name'>{review.reviewedBy.fname}</p>
+    <p className='reviewer-name'>{review.reviewedBy.name}</p>
     <span className='reviwed-at flex'>
                 תגובה פורסמה  · {getRelativeTime()} ·<FlagSvg/>
     </span>

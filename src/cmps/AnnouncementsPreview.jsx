@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { imgService } from '../services/imgService'
 import { announcementService } from '../services/announcement.service'
 import { useDispatch } from 'react-redux'
 import { addComment } from '../store/actions/announcement.actions'
 import { CommentsList } from './CommentsList'
 import { FlagSvg } from '../svgs/FlagSvg'
-
+import { InfinitySpin   } from  'react-loader-spinner'
 export  function AnnouncementsPreview({loggedinUser,announcement}) {
     const dispatch =useDispatch()
     const [comment, setComment] = useState(announcementService.getEmptyComment())
@@ -14,9 +13,13 @@ export  function AnnouncementsPreview({loggedinUser,announcement}) {
     useEffect(() => {
         console.log('courseAnnouncements prop', announcement);
     }, [])
+
     const handelCommentSubmit = (announcId) => (ev)=>{
         ev.preventDefault()
-        comment.commentBy= loggedinUser
+        comment.commentBy=  { _id:loggedinUser._id,
+                             name:loggedinUser.fname,
+                           imgUrl:loggedinUser.imgUrl,
+                            email:loggedinUser.email}
         comment.commentAt= Date.now()
       
         console.log('announcement before dispatch',comment);
@@ -37,19 +40,19 @@ export  function AnnouncementsPreview({loggedinUser,announcement}) {
     const getRelativeTime = () => {
         const DAY = 1000 * 60 * 60 * 24
         const HOUR = 1000 * 60 * 60
-        const pastTime =(announcement.givenAt- Date.now() )/HOUR
+        const pastTime =(announcement?.givenAt- Date.now() )/HOUR
         const rtf1 = new Intl.RelativeTimeFormat('he', { style: 'short' });
         // console.log('pastTime',pastTime.toFixed(0));
         return rtf1.format(pastTime.toFixed(0), 'hour')
     }
   return (
-    <section key={announcement._id} className='profile-announcement-wrapper'>
+    announcement? <section key={announcement._id} className='profile-announcement-wrapper'>
     <header className='profile-container flex'>
         <div className='img-container'>
             <img className='profile-img' src={announcement.givenBy.imgUrl} />
         </div>
         <div className='profile-name-container flex-col'>
-            <span className='profile-name'>{announcement.givenBy.fname}</span>
+            <span className='profile-name'>{announcement.givenBy.name}</span>
             <span className='profile-title flex'>
                 הודעה פורסמה  · {getRelativeTime()} ·<FlagSvg/>
             </span>
@@ -67,8 +70,11 @@ export  function AnnouncementsPreview({loggedinUser,announcement}) {
     </form>
    {isShown? <CommentsList comments={announcement.comments}/>:''}
    {(announcement.comments.length>0)? <h2 className='show-comments-btn' onClick={getComments}>
-    {isShown?'collapse ':`Show Comments (${announcement.comments.length})`}</h2>:<h3>Be first to comment on this</h3>}
+    {isShown?'הסתר תגובות ':`הצג תגובות (${announcement.comments.length})`}</h2>:<h3>תיהיה הראשון להגיב על זה</h3>}
 
-</section>
+</section>:<InfinitySpin 
+         width='200'
+         color="#448cfb"
+       />
   )
 }

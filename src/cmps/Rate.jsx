@@ -29,7 +29,7 @@ const [hoverValue,setHoverValue] =useState(null)
     <div className="stars">
        {stars.map((_,idx) => {
            return <FaStar key={idx}
-                          size={50}
+                          size={25}
                           style={{marginRight:8 ,cursor:'pointer'}}
                           color={(hoverValue || currValue) > idx ? colors.orange:colors.gray }
                           onClick={() => { handelClick(idx +1)}}

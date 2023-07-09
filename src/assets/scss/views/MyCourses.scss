@@ -11,6 +11,10 @@
     }
     .my-courses-header-wrapper{
         grid-column:2;
+        @include for-mobile-layout {
+            
+            margin-block-start:5em;
+        }
         .headline{
             direction: rtl;
             font-size: 2em;
@@ -19,7 +23,8 @@
             color:#fff;
             @include for-mobile-layout {
                 font-size: 1.2em;
-                margin-block:1em
+                margin-block:1em;
+                text-align: center;                
             }
         }
     }

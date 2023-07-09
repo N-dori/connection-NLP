@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
-import { imgService } from '../services/imgService'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import { PriceSvg } from '../svgs/PriceSvg'
+import { InfinitySpin   } from  'react-loader-spinner'
+
+
 export  function ProductPreview({onRemove,product}) {
 
  
@@ -42,6 +43,9 @@ export  function ProductPreview({onRemove,product}) {
     <PriceSvg/>
     </div>
     
-    </>:<span>Loading...</span>
+    </>:       <InfinitySpin 
+              width='200'
+              color="#448cfb"
+            />
   )
 }

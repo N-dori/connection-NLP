@@ -1,32 +1,42 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { XSvg } from '../svgs/XSvg'
 import { Rate } from './Rate'
 
 
 
 
-export  function RatingModal({handelSubmitReview,handleChange,review,isShown,setIsSown,setRating}) {
+const   RatingModal = React.forwardRef ((props,ref)=> {
+  useEffect(() => {
+    scrollTo()
+  }, [])
+  
+  const scrollTo = () =>{
 
+    window.scrollTo({
+    top: ref.current.offsetTop -200,
+    behavior: "smooth"
+  })}
    const onCloseModal = () => {
-    console.log('is sown',isShown);
-    setIsSown(!isShown)
+    console.log('is sown',props.isShown);
+    props.setIsSown(!props.isShown)
    }
     return (
-        <section className='rating-modal-container'>
+        <section ref={ref} className='rating-modal-container'>
         <div className='close-moadl-container' onClick={onCloseModal}>
       <XSvg />
         </div>
    
-        <h2 className='headline'>rate this course</h2>
+        <h2 className='headline'>דרג את הקורס</h2>
      
-        <Rate setRating={setRating}  />
-        <form onSubmit={handelSubmitReview} className='rating-compose-container flex-col'>
+        <Rate setRating={props.setRating}  />
+        <form onSubmit={props.handelSubmitReview} className='rating-compose-container flex-col'>
             <textarea className='text-editor'
-             placeholder='we would love to get your feedback'
-             onChange={handleChange} value={review.content} name='content' id='content'></textarea>
-            <button className='send-rate-btn' type='submit'> Send and Continue </button>
+             placeholder='נשמח לקבל את חוות דעתך תודה'
+             onChange={props.handleChange} value={props.review.content} name='content' id='content'></textarea>
+            <button className='send-rate-btn' type='submit'> שמור והמשך </button>
         </form>
         </section>
     
   )
-}
+})
+export default RatingModal

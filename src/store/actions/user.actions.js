@@ -8,7 +8,9 @@ export function signup(userToSignup,from,shoppingCart){
     try{
 
         return async(dispatch,getState)=>{
-            const user= await userService.signup(userToSignup)
+            const user= await userService.signup(userToSignup,)
+            // if user signing up from the shoppin cart cmp, make sure to add the producat he wanted to his cart
+            console.log('sign up user after backend in user action ', user);
               if (from === 'shopping-cart'){
                 if(!shoppingCart){
                     return
@@ -17,23 +19,43 @@ export function signup(userToSignup,from,shoppingCart){
                         user.cart.push(course)
                         console.log('adding to user courses user after backend', user);
                 })
-             const updatedUser= await userService.updateUser(user)
-             console.log('user after backend', updatedUser);
+                // after adding the productes to his cart need to update data base    
+                const updatedUser= await userService.updateUser(user)
+                console.log('user after backend', updatedUser);
             }
-            }
-            console.log('user after backend', user);
-            
+        }
+       
+        const action = {
+            type: SET_USER,
+            user
+        }
+        dispatch(action)
+    }
+    
+}catch(err){
+    console.log('can not signup User',err);
+}
+}
+export function login(credentials){
+    try{
+
+        return async(dispatch,getState)=>{
+            const user= await userService.login(credentials)
+            console.log('user in user action  in login func',user);   
             const action = {
                 type: SET_USER,
                 user
             }
-           dispatch(action)
+            dispatch(action)
+            return user
     }
-     
-    }catch(err){
-        console.log('can not signup User',err);
-    }
+    
+}catch(err){
+    console.log('can not login User',err);
 }
+}
+
+
 export function logout(){
     try{
         return async(dispatch,getState)=>{

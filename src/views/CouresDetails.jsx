@@ -47,7 +47,7 @@ export function CouresDetails() {
           setTimeout(() => {
       navigate('/shopping-cart')
 
-    }, 1500);
+    }, 700);
 
 
   }
@@ -130,7 +130,7 @@ export function CouresDetails() {
 
             <div className='mobile-preview-course-container ' onClick={onOpenPlayer}>
               <div className='mobile-preview-course-img-wrapper flex-jc-ac '>
-                <img className='mobile-preview-course-img' src="https://res.cloudinary.com/dii16awkb/image/upload/v1687866273/imgCoverAdvanceCourse_s6sxkv.png" alt="" />
+                <img className='mobile-preview-course-img' src={course.courseCoverImg} alt="" />
                 <PlaySvg />
               </div>
             <p className='click-for-preview'>לצפייה בתצוגה מקדימה</p>

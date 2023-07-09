@@ -1,7 +1,19 @@
 .app-footer-container{
-
-    bottom: 0;
+position: sticky;
+    bottom: 0px;
     grid-column: 1/-1;
-    background-color: #dedede;
-    height:4em
+    background-color: var(--clr2);
+
+
+
+    .logo-footer-container{
+    
+        .img-wrapper{
+            width: 25% ;
+            .logo-footer{
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
 }

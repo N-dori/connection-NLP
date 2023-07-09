@@ -38,6 +38,8 @@ export function addComment(announcId,commentToAdd){
 
         return async(dispatch,getState)=>{
             const announcement= await announcementService.addComment(announcId,commentToAdd)
+            console.log('announcement in announcement add comment action',announcement);
+            
             const action = {
                 type: UPDATE_ANNOUNCEMENT,
                 announcement

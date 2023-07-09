@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { imgService } from '../services/imgService'
 import { announcementService } from '../services/announcement.service'
 import { userService } from '../services/userService'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addAnnouncements } from '../store/actions/announcement.actions'
 import { AnnouncementsList } from './AnnouncementsList'
-
+import { InfinitySpin   } from  'react-loader-spinner'
 export function CourseAnnouncements() {
   
   const  param = useParams()
@@ -31,8 +30,11 @@ export function CourseAnnouncements() {
   }
  }
 
-  const loadLoggedinUser = ()=> {
-    setLoggedinUser(userService.getLoggedinUser())
+  const loadLoggedinUser = async  () => {
+    const loggedinUser = await userService.getLoggedinUser()
+    const user = await userService.getUserById(loggedinUser._id)
+    console.log('loadLoggedinUser cmp : user',user);
+    setLoggedinUser(user)
   }
 
   const handleChange = ({ target }) => {
@@ -44,7 +46,12 @@ export function CourseAnnouncements() {
 const handelSubmit = (ev) => {
   ev.preventDefault()
   announcement.courseId= param.id
-  announcement.givenBy= loggedinUser
+  announcement.givenBy= {
+                         _id:loggedinUser._id,
+                         name:loggedinUser.fname,
+                         imgUrl:loggedinUser.imgUrl,
+                         email:loggedinUser.email
+                        }
   announcement.givenAt= Date.now()
   console.log('announcement',announcement);
    dispatch(addAnnouncements(announcement))
@@ -70,7 +77,7 @@ const handelSubmit = (ev) => {
         </header>
      
           <form className='form-container flex-col' onSubmit={handelSubmit}>
-            <p><label htmlFor="content">Your announcement:</label></p>
+            <p><label htmlFor="content">הודעה של יוצר הקורס:</label></p>
             <input className='announcement-title'  onChange={handleChange} value={announcement.title}  placeholder='Enter title' name='title' id='title' type='text' />
             <textarea   className="text-area-input" onChange={handleChange} value={announcement.content} id="content" name="content" placeholder='Enter announcement'></textarea>
             <br />
@@ -86,6 +93,9 @@ const handelSubmit = (ev) => {
         
       </section>
 
-    </section>:<div>Loading...</div>
+    </section>:<InfinitySpin 
+         width='200'
+         color="#448cfb"
+       />
   )
 }

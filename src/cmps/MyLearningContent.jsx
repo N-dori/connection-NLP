@@ -4,6 +4,10 @@ import { Leasson } from './Leasson'
 
 export  function MyLearningContent({lastEpisode,setLastEpisode,currEpisode,setLastSubEpisode,getLecturesSum,episodes,setVideoUrl,tuggleContent}) {
   const [count, setCount] = useState(1)
+  
+ 
+
+
 
   return (
   
@@ -19,7 +23,8 @@ export  function MyLearningContent({lastEpisode,setLastEpisode,currEpisode,setLa
     {
       episodes.map((episode,i) =>{
         const{id,title,subEpisodes,totalHours} = episode
-        return <Leasson key={id} i={i} 
+        return <Leasson key={id}
+         i={i} 
         episodeId={id}
         title={title} 
         subEpisodes={subEpisodes}
@@ -27,7 +32,7 @@ export  function MyLearningContent({lastEpisode,setLastEpisode,currEpisode,setLa
         count={count}
         getLecturesSum={getLecturesSum}
         setVideoUrl={setVideoUrl}
-        shown={false}
+
         setLastSubEpisode={setLastSubEpisode}
         setLastEpisode={setLastEpisode}
         currEpisode={currEpisode}

@@ -1,30 +1,34 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
-import { AlarmSvg } from '../svgs/AlarmSvg'
-import { CoursesIndex } from '../cmps/CoursesIndex'
+import { useParams } from 'react-router-dom'
 import { userService } from '../services/userService'
 import { MyCoursesList } from '../cmps/MyCoursesList'
-import { RatingModal } from '../cmps/RatingModal'
+import  RatingModal  from '../cmps/RatingModal'
 import { reviewService } from '../services/reviews.service'
 import { saveReview } from '../store/actions/review.actions'
+import { ScheduleTimeForLearning } from '../cmps/ScheduleTimeForLearning'
+import { InfinitySpin   } from  'react-loader-spinner'
 
 export function MyCoursesIndex() {
-
-  const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
+  
   const dispatch = useDispatch()
   const [courses, setCourses] = useState(null)
   const [currCourse, setCurrCourse] = useState("")
+  const [loggdingUser, setLoggdingUser] = useState(null)
   const [review, setReview] = useState(reviewService.getEmptyReview())
   const [isShown, setIsSown] = useState(false)
   const [rating, setRating] = useState(0)
   const param = useParams()
+  const ratingModalRef=useRef()
   useEffect(() => {
     loadUserCourses()
     console.log(param);
   }, [])
   const loadUserCourses = async  () => {
+    const loggdingUser = await userService.getLoggedinUser()
     const user = await userService.getUserById(loggdingUser._id)
+    setLoggdingUser(user)
+
     console.log('my user course index', user);
     setCourses(user.courses)
   } 
@@ -37,7 +41,12 @@ export function MyCoursesIndex() {
 const handelSubmitReview =(ev) => {
        ev.preventDefault()
        review.courseId= currCourse
-       review.reviewedBy = loggdingUser
+       review.reviewedBy = {
+                         _id:loggdingUser._id,
+                        name:loggdingUser.fname,
+                      imgUrl:loggdingUser.imgUrl,
+                       email:loggdingUser.email
+       }
        review.reviewedAt = Date.now()
        review.rate = rating
        //TODO: dipatch to store 
@@ -56,13 +65,11 @@ const handelSubmitReview =(ev) => {
         </header>
       </section> 
         <section className='my-courses-list grid'>
-          <main className="schedule-learning-time-warpper grid">
-        <AlarmSvg/>
-        <h3 className='headline'>קבעו זמן לימוד</h3>
-        <p className='sub-headline'>כשלומדים כל יום קצת זה מצטבר . מחקרים מראים שסטודנטים שהופכים את הלימוד שלהם להרגל קבוע משיגים את מטרותיהם בסבירות גבוהה הרבה יותר . תאהבו את עצמכם הקצו זמן איכות ללמידה! </p>
-          </main>
+          <ScheduleTimeForLearning/>
+         
           <MyCoursesList isShown={isShown} setIsSown={setIsSown} setCurrCourse={setCurrCourse} courses={courses}/>
         { isShown? <RatingModal handelSubmitReview={handelSubmitReview}
+                    ref={ratingModalRef}
                     review={review}
                     handleChange={handleChange}
                     isShown={isShown}
@@ -72,6 +79,15 @@ const handelSubmitReview =(ev) => {
           <div className={isShown?'screen-filter':'hidden'} ></div>
         </section>
 
-</>:<div>Loading...</div>
+</>:<section className='loder-container flex-jc-ac'>
+<div className='flex-jc-ac'>
+<InfinitySpin 
+className='spinner'
+         width='200'
+         color="#448cfb"
+       />
+
+</div>
+</section>
   )
 }

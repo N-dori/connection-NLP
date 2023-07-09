@@ -38,7 +38,9 @@
                 justify-content: flex-end;
                 gap: 10px;
                 .name-and-when{
-                    .reviewer-name{}
+                    .reviewer-name{
+                        margin-block:0.2em ;
+                    }
                     .reviwed-at{
                         font-size: 0.9em;
                     }

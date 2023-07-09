@@ -22,7 +22,7 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
         getParamLoction()
         setIsShown(false)
         loadUser()
-    }, [loggdingUser, user,JSON.stringify(shoppingCart)])
+    }, [loggdingUser, user])
     
     const getParamLoction = () =>{
         console.log('loactionnnnnn',loaction.pathname.slice(1,7))
@@ -43,8 +43,10 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
         dispatch(clearCart())
         setTimeout(() => {
             dispatch(logout())
+            // userService.logout()
+            naviget('/our-courses')
             
-        }, 1500);
+        }, 500);
     }
 
     const toggelMenu = () => {
@@ -63,7 +65,7 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
                         loggdingUser ?
                             <section className='user-space'>
                                 <div className='user-img-container flex-jc-ac' onClick={toggelMenu} >
-                                    <span className='user-img'>{loggdingUser.fname[0]}</span>
+                                    <span className='user-img'>{loggdingUser.fname[0].toUpperCase()}</span>
 
                                 </div>
                                 <div className={isShown ? 'user-menu  block' : 'hidden'}>

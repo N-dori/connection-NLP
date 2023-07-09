@@ -9,13 +9,17 @@ _setCourses()
 export const courseService = {
     getCourses,
     getCourseById,
-    updateCoursesStudents,
+    updateCourseStudents,
     getCourseContent,
+    addCourse,
 }
 
 function _setCourses() {
     utilService.saveToStorage(course_DB, _creatCourses())
 
+}
+async function addCourse (course){
+const addedCourse = httpService.post('course',course)
 }
 
 function _creatCourses() {
@@ -24,9 +28,17 @@ function _creatCourses() {
             _id: utilService.makeId(9),
             title: "NLP Practitioner",
             subTitle: " קורס למתחילים המשלב את יסודות השיטה     ",
-            createdBy: " בהנחיית שלומי חלאווי מנחה ומרצה מוביל, ושלמה שושן ז'ל מייסד נלפי חיבורים",
             courseCoverImg: "https://res.cloudinary.com/dii16awkb/image/upload/v1688494058/Screenshot_2023-07-04_210637_kbncgf.png",
             trailerVideoUrl: "https://www.youtube.com/watch?v=-fgnz2vetPU",
+            insructorName:"בהנחיית שלמה שושן ז'ל",
+            insructorImgUrl:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447873/%D7%A9%D7%9C%D7%9E%D7%94_%D7%A9%D7%95%D7%A9%D7%9F_%D7%96%D7%9C_gwbovp.jpg',
+            insructorTitle:"מייסד ומפתח ",
+            insructorBio:`    מפתח ממציא ומייסד קורס ADVENCE (למתקדמים) 
+                       מייסד NLP CONNECTION   למתקדמים הקורס הייחודי מסוגו בארץ ! מנכ'ל NLP חיבורים ומרצה בכיר בחברה . 
+               נפטר מהמחלה האיומה בשנת 2019 
+               אתר הוקם להנצחתו ולעילוי נשמתו `,
+            desc:`קורס אדוונס הינו הקורס המתקדם ביותר ויחיד מסוגו בארץ!
+            הקורס פותח ע"י שלמה ז'ל ושרון שושן הקורס נוצר מתוך צורך שעלה מהשטח ומתוך אין סוף מטפלים שסיימו את הכשרתם בבתי ספר שונים ועדיין הרגישו שעדיין שחסר להם כלים וביטחון בעבודה בפועל בקליניקה. `,
             requirements:['הקורס מיועד למי שסיים דרגת פקטישינר ומאסטר ומעלה','מיועד בעיקר למטפלים מנהלי בתי ספר ולאנשים העוסקים תהליכי שינוי ועומק בקליניקה','ראש פתוח תרשו לעצמכם להיות נוכחים , להנות מהחוויה אין צורך לסכם. הכל נמצא וזמין עבורכם , תפקידכם הוא רק לצפות ולחוות.','מומלץ לסגל שיגרת לימודים קבועה כדי שתוכלו להטמיע את הכלים ביום יום','לידיעתך! ברגע שרכשת את הקורס הוא שלך ותוכל לצפות בו בכל זמן שתרצה'],
 
             totalHours: 255,
@@ -62,7 +74,7 @@ function _creatCourses() {
                             title: "  מפגש ראשון חלק א",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש ראשון/שיעור 1 חלק א.mp4",
-                            min:47,
+                            min:44,
                             files:[
                                 {id:utilService.makeId(),
                                     name:'מודל התקשורת המלא והמפורט',
@@ -86,8 +98,8 @@ function _creatCourses() {
                             id: 2,
                             title: " מפגש ראשון חלק ב",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/practitioner/מפגש ראשון/שיעור 1 חלק ב.mp4",
-                            min:47,
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש ראשון/שיעור 1 חלק ב.mp4",
+                            min:44,
                            
                         },
                         {
@@ -95,7 +107,7 @@ function _creatCourses() {
                             title: " מפגש ראשון חלק ג",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש ראשון/שיעור 1 חלק ג.mp4",
-                            min:47,
+                            min:45,
                            
                         },
                         
@@ -112,28 +124,28 @@ function _creatCourses() {
                             title: "מפגש שני חלק א",
                             videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שני/שיעור 2 חלק א.mp4",
-                            min:47,
+                            min:44,
                         },
                         {
                             id: 5,
                             title: "מפגש שני חלק ב",
                             videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שני/שיעור 2 חלק ב.mp4",
-                            min:47,
+                            min:42,
                         },
                         {
                             id: 6,
                             title: "מפגש שני חלק ג",
                             videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שני/שיעור 2 חלק ג.mp4",
-                            min:47,
+                            min:38,
                         },
                         {
                             id: 7,
                             title: "מפגש שני חלק ד",
                             videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שני/שיעור 2 חלק ד.mp4",
-                            min:47,
+                            min:21,
                         },
                     ],
                 },
@@ -149,7 +161,7 @@ function _creatCourses() {
                             title: "מפגש שלישי חלק א ",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שלישי/מפגש 3 חלק 1.mp4",
-                            min:47,
+                            min:44,
                             files:[
                                 {id:utilService.makeId(),
                                     name:'מערכות ייצוג',
@@ -171,14 +183,14 @@ function _creatCourses() {
                             title: "מפגש שלישי חלק ב",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שלישי/מפגש 3 חלק 2.mp4",
-                              min:47,
+                              min:44,
                         },
                         {
                             id: 10,
                             title: "מפגש שלישי חלק ג",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שלישי/מפגש 3 חלק 3.mp4",
-                              min:47,
+                              min:18,
                         },
                         
                     ],
@@ -196,29 +208,263 @@ function _creatCourses() {
                             title: " מפגש רביעי חלק א",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש רביעי/חלק 1.mp4",
-                              min:47,
+                              min:41,
                         },
                         {
                             id: 12,
                             title: " מפגש רביעי חלק ב",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש רביעי/חלק 2.mp4",
-                              min:47,
+                              min:40,
                         },
                         {
                             id: 13,
                             title: " מפגש רביעי חלק ג",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש רביעי/חלק 3.mp4",
-                              min:47,
+                              min:32,
                         },
                         {
                             id: 14,
                             title: " מפגש רביעי חלק ד",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
                             videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש רביעי/חלק 4.mp4",
+                              min:33,
+                        },
+                     
+                    ],
+                },
+                {
+                    id: utilService.makeId(7),
+                    title: "מפגש חמישי",
+                    subTitle: "",
+                    totalHours: 70,
+                    
+                    subEpisodes: [
+                        {
+                            id: 15,
+                            title: " מפגש חמישי חלק א",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש חמישי/ZOOM0001.MOV",
+                              min:44,
+                        },
+                        {
+                            id: 16,
+                            title: " מפגש חמישי חלק ב",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש חמישי/ZO010001.MOV",
+                              min:44,
+                        },
+                        {
+                            id: 17,
+                            title: " מפגש חמישי חלק ג",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש חמישי/ZO020001.MOV",
+                              min:44,
+                        },
+                        {
+                            id: 18,
+                            title: " מפגש חמישי חלק ד",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש חמישי/ZO030001.MOV",
+                              min:34,
+                        },
+                       
+                     
+                    ],
+                },
+                {
+                    id: utilService.makeId(7),
+                    title: "מפגש שישי",
+                    subTitle: "",
+                    totalHours: 70,
+                    
+                    subEpisodes: [
+                        {
+                            id: 19,
+                            title: " מפגש שישי חלק א",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שישי/מפגש 7 - חלק א.mp4",
                               min:47,
                         },
+                        {
+                            id: 20,
+                            title: " מפגש שישי חלק ב",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שישי/מפגש 7 - חלק ב.mp4",
+                              min:38,
+                        },
+                        {
+                            id: 21,
+                            title: " מפגש שישי חלק ג",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שישי/מפגש 7 - חלק ג.mp4",
+                              min:43,
+                        },
+                        {
+                            id: 22,
+                            title: " מפגש שישי חלק ד",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שישי/מפגש 7 - חלק ד.mp4",
+                              min:38,
+                        },
+                       
+                     
+                    ],
+                },
+                {
+                    id: utilService.makeId(7),
+                    title: "מפגש שביעי",
+                    subTitle: "",
+                    totalHours: 70,
+                    
+                    subEpisodes: [
+                        {
+                            id: 19,
+                            title: " מפגש שביעי חלק א",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שביעי/שיעור 9 - חלק 1.mp4",
+                              min:40,
+                        },
+                        {
+                            id: 20,
+                            title: " מפגש שביעי חלק ב",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שביעי/חלק 2.mp4",
+                              min:44,
+                        },
+                        {
+                            id: 21,
+                            title: " מפגש שביעי חלק ג",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שביעי/חלק 3.mp4",
+                              min:52,
+                        },
+                        {
+                            id: 22,
+                            title: " מפגש שביעי חלק ד",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שביעי/חלק 4.mp4",
+                              min:19,
+                        },
+                       
+                     
+                    ],
+                },
+                {
+                    id: utilService.makeId(7),
+                    title: "מפגש שמיני",
+                    subTitle: "",
+                    totalHours: 70,
+                    
+                    subEpisodes: [
+                        {
+                            id: 19,
+                            title: " מפגש שמיני חלק א",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שמיני/מפגש 10 - חלק א.mp4",
+                              min:23,
+                        },
+                        {
+                            id: 20,
+                            title: " מפגש שמיני חלק ב",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שמיני/מפגש 10 - חלק ב.mp4",
+                             min:36,
+                        },
+                        {
+                            id: 21,
+                            title: " מפגש שמיני חלק ג",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שמיני/מפגש 10 - חלק ג.mp4",
+                             min:37,
+                        },
+                        {
+                            id: 22,
+                            title: " מפגש שמיני חלק ד",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש שמיני/מפגש 10 - חלק ד.mp4",
+                             min:19,
+                        },
+                       
+                     
+                    ],
+                },
+                {
+                    id: utilService.makeId(7),
+                    title: "מפגש תשיעי",
+                    subTitle: "",
+                    totalHours: 70,
+                    
+                    subEpisodes: [
+                        {
+                            id: 23,
+                            title: " מפגש תשיעי חלק א",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש תשיעי/מפגש 11 - חלק א.mp4",
+                              min:41,
+                        },
+                        {
+                            id: 20,
+                            title: " מפגש תשיעי חלק ב",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש תשיעי/מפגש 11 - חלק ב.mp4",
+                             min:35,
+                        },
+                        {
+                            id: 21,
+                            title: " מפגש תשיעי חלק ג",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש תשיעי/מפגש 11 - חלק ג.mp4",
+                             min:37,
+                        },
+                        {
+                            id: 22,
+                            title: " מפגש תשיעי חלק ד",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש תשיעי/מפגש 11 - חלק ד.mp4",
+                             min:33,
+                        },
+                       
+                     
+                    ],
+                },
+                {
+                    id: utilService.makeId(7),
+                    title: "מפגש עשירי",
+                    subTitle: "",
+                    totalHours: 70,
+                    
+                    subEpisodes: [
+                        {
+                            id: 19,
+                            title: " מפגש עשירי חלק א",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש עשירי/חלק 1.mp4",
+                              min:41,
+                        },
+                        {
+                            id: 20,
+                            title: " מפגש עשירי חלק ב",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש עשירי/חלק 2.mp4",
+                             min:43,
+                        },
+                        {
+                            id: 21,
+                            title: " מפגש עשירי חלק ג",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש עשירי/חלק 3.mp4",
+                             min:31,
+                        },
+                        {
+                            id: 22,
+                            title: " מפגש עשירי חלק ד",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/ practitioner/מפגש עשירי/חלק 4.mp4",
+                             min:33,
+                        },
+                       
                      
                     ],
                 },
@@ -856,14 +1102,23 @@ function _creatCourses() {
         },
         {
             _id: utilService.makeId(7),
-            title: "סקריפטים למטפלים לעבודה בקליניקה לרכישה והורדה ",
+            title: "NLP Master ",
             subTitle: "כלים ושיטות עבודה לקליניקה כגון גולדן בוקס עבודה עם ציר הזמן ועוד",
-            createdBy: {name:"shlomo shushan", imgUrl:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447873/%D7%A9%D7%9C%D7%9E%D7%94_%D7%A9%D7%95%D7%A9%D7%9F_%D7%96%D7%9C_gwbovp.jpg'},
-            courseCoverImg: "https://stoletnik.ru/upload/medialibrary/dfb/dfbf873df0c55598ba080ca12d525ce3.jpg",
+            insructorName:"בהנחיית שלמה שושן ז'ל",
+            insructorImgUrl:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447873/%D7%A9%D7%9C%D7%9E%D7%94_%D7%A9%D7%95%D7%A9%D7%9F_%D7%96%D7%9C_gwbovp.jpg',
+            insructorTitle:"מייסד ומפתח ",
+            insructorBio:`    מפתח ממציא ומייסד קורס ADVENCE (למתקדמים) 
+                       מייסד NLP CONNECTION   למתקדמים הקורס הייחודי מסוגו בארץ ! מנכ'ל NLP חיבורים ומרצה בכיר בחברה . 
+               נפטר מהמחלה האיומה בשנת 2019 
+               אתר הוקם להנצחתו ולעילוי נשמתו `,
+            desc:`קורס אדוונס הינו הקורס המתקדם ביותר ויחיד מסוגו בארץ!
+            הקורס פותח ע"י שלמה ז'ל ושרון שושן הקורס נוצר מתוך צורך שעלה מהשטח ומתוך אין סוף מטפלים שסיימו את הכשרתם בבתי ספר שונים ועדיין הרגישו שעדיין שחסר להם כלים וביטחון בעבודה בפועל בקליניקה. `,
+            requirements:['הקורס מיועד למי שסיים דרגת פקטישינר ומאסטר ומעלה','מיועד בעיקר למטפלים מנהלי בתי ספר ולאנשים העוסקים תהליכי שינוי ועומק בקליניקה','ראש פתוח תרשו לעצמכם להיות נוכחים , להנות מהחוויה אין צורך לסכם. הכל נמצא וזמין עבורכם , תפקידכם הוא רק לצפות ולחוות.','מומלץ לסגל שיגרת לימודים קבועה כדי שתוכלו להטמיע את הכלים ביום יום','לידיעתך! ברגע שרכשת את הקורס הוא שלך ותוכל לצפות בו בכל זמן שתרצה'],
+            courseCoverImg: "https://res.cloudinary.com/dii16awkb/image/upload/v1688706220/%D7%A7%D7%95%D7%A8%D7%A1%20%D7%9E%D7%90%D7%A1%D7%98%D7%A8.png",
             trailerVideoUrl: "https://www.youtube.com/watch?v=MIl3WGKVBn4",
             totalHours: 255,
             totalVideos: 47,
-            level: 'Super',
+            level: 'Master',
             price: '290.90',
             createdAt: "",
             students: [
@@ -875,311 +1130,307 @@ function _creatCourses() {
             intros: [
                 {
                     id: utilService.makeId(8),
-                    title: "Getting started with NLP",
-                    videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                    videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                    title: " מפגש ראשון חלק 1",
+                    videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                    videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש ראשון/MVI_0676.MOV",
+                    min:37
                 },
-                {
-                    id: utilService.makeId(8),
-                    title: "the basis of NLP",
-                    videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                    videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                },
-                {
-                    id: utilService.makeId(8),
-                    title: "the benefits of NLP",
-                    videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                    videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                },
+              
             ],
             episodes: [
                 {
                     id: utilService.makeId(8),
-                    title: "fundamentals",
+                    title: "מפגש ראשון",
                     subTitle: "",
                     totalHours: 20,
                     subEpisodes: [
                         {
-                            id: 1,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                            id:1,
+                            title: " מפגש ראשון חלק 1",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש ראשון/MVI_0676.MOV",
+                              min:37
                         },
                         {
-                            id: 2,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                            id:2,
+                            title: " מפגש ראשון חלק 2",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש ראשון/MVI_0677.MOV",
+                              min:37
                         },
+                        {
+                            id:3,
+                            title: " מפגש ראשון חלק 3",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש ראשון/MVI_0678.MOV",
+                              min:37
+                        },
+                        {
+                            id:4,
+                            title: " מפגש ראשון חלק 4",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש ראשון/MVI_0678.MOV",
+                              min:37
+                        },
+                        {
+                            id:5,
+                            title: " מפגש ראשון חלק 5",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש ראשון/MVI_0679.MOV",
+                              min:37
+                        },
+                        {
+                            id:6,
+                            title: " מפגש ראשון חלק 6",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש ראשון/MVI_0680.MOV",
+                              min:37
+                        },
+                        {
+                            id:7,
+                            title: " מפגש ראשון חלק 7",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש ראשון/MVI_0687.MOV",
+                              min:37
+                        },
+                        {
+                            id:8,
+                            title: " מפגש ראשון חלק 8",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש ראשון/MVI_0688.MOV",
+                              min:37
+                        },
+                        {
+                            id:9,
+                            title: " מפגש ראשון חלק 9",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש ראשון/MVI_0690.MOV",
+                              min:37
+                        },
+                        {
+                            id:10,
+                            title: " מפגש ראשון חלק 10",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש ראשון/MVI_0691.MOV",
+                              min:37
+                        },
+                       
                     ],
                 },
                 {
                     id: utilService.makeId(7),
-                    title: "The Art of listining",
+                    title: "מפגש שני",
                     subTitle: "",
                     totalHours: 45,
                     subEpisodes: [
                         {
-                            id: 3,
-                            title: "The Art of listining",
+                            id: 11,
+                            title: " מפגש שני חלק א",
                             videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=_YEKacO3M-M&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=7"
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש שני/חלק 1.mp4",
+                             min:37,
                         },
                         {
-                            id: 4,
-                            title: "NLP throgth games",
+                            id: 12,
+                            title: " מפגש שני חלק ב",
                             videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=cayBOMFrR9A&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=10"
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש שני/חלק 1.mp4",
+                             min:37,
                         },
                         {
-                            id: 5,
-                            title: "easy start with NLP",
+                            id: 13,
+                            title: " מפגש שני חלק ג",
                             videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=h9wiLS1o1Rw&list=PLaPc6gByEEX1kunqmvYTcSYq1SmWa9-ej&index=9"
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש שני/חלק 3.mp4",
+                             min:37,
                         },
+                        {
+                            id: 14,
+                            title: " מפגש שני חלק ד",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש שני/חלק 4.mp4",
+                             min:37,
+                        },
+                    
                     ],
                 },
                 {
                     id: utilService.makeId(7),
-                    title: "NLP if life",
+                    title: "מפגש שלישי",
                     subTitle: "",
                     totalHours: 55,
                     subEpisodes: [
                         {
-                            id: 6,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                            id: 15,
+                            title: " מפגש שלישי חלק א",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש שלישי/חלק 1.mp4",
+                             min:37,
                         },
                         {
-                            id: 7,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                            id: 16,
+                            title: " מפגש שלישי חלק ב",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש שלישי/חלק 2.mp4",
+                             min:37,
                         },
+                        {
+                            id: 17,
+                            title: " מפגש שלישי חלק ג",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש שלישי/חלק 3.mp4",
+                             min:37,
+                        },
+                        
                     ],
                 },
                 {
                     id: utilService.makeId(7),
-                    title: "iHow to start with NLP",
+                    title: "מפגש רביעי",
                     subTitle: "",
                     totalHours: 70,
                     subEpisodes: [
                         {
-                            id: 8,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                            id: 18,
+                            title: " מפגש רביעי חלק א",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש רביעי/חלק 1.mp4",
+                             min:37,
                         },
                         {
-                            id: 9,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                            id: 19,
+                            title: " מפגש רביעי חלק ב",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש רביעי/חלק 2.mp4",
+                             min:37,
                         },
+                        
                     ],
                 },
                 {
                     id: utilService.makeId(7),
-                    title: "NLP Be present",
+                    title: "מפגש חמישי",
                     subTitle: "",
                     totalHours: 28,
                     subEpisodes: [
                         {
-                            id: 10,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                            id: 20,
+                            title: " מפגש חמישי חלק א",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש חמישי/מפגש 5 חלק א.mp4",
+                             min:37,
                         },
                         {
-                            id: 11,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                            id: 21,
+                            title: " מפגש חמישי חלק ב",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש חמישי/מפגש 5 חלק ב.mp4",
+                             min:37,
                         },
+                       
                     ]
                 },
                 {
                     id: utilService.makeId(7),
-                    title: "easy start with NLP",
-                    subTitle: "",
-                    totalHours: 20,
-                    subEpisodes: [
-                        {
-                            id: 12,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                        },
-                        {
-                            id: 13,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                        },
-                    ],
-                },
-                {
-                    id: utilService.makeId(7),
-                    title: "NLP Be present",
-                    subTitle: "",
-                    totalHours: 20,
-                    subEpisodes: [
-                        {
-                            id: 14,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                        },
-                        {
-                            id: 15,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                        },
-                    ],
-                },
-                {
-                    id: utilService.makeId(7),
-                    title: "NLP throgth games",
-                    subTitle: "",
-                    totalHours: 20,
-                    subEpisodes: [
-                        {
-                            id: 16,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                        },
-                        {
-                            id: 17,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                        },
-                    ],
-                },
-                {
-                    id: utilService.makeId(7),
-                    title: "Course summery NLP-master",
-                    subTitle: "",
-                    totalHours: 20,
-                    subEpisodes: [
-                        {
-                            id: 18,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                        },
-                        {
-                            id: 19,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                        },
-                    ],
-                },
-                {
-                    id: utilService.makeId(7),
-                    title: " NLP and Ajax",
-                    subTitle: "",
-                    totalHours: 20,
-                    subEpisodes: [
-                        {
-                            id: 20,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                        },
-                        {
-                            id: 21,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
-                        },
-                    ],
-                },
-                {
-                    id: utilService.makeId(7),
-                    title: "The Art of listining",
+                    title: "מפגש שישי",
                     subTitle: "",
                     totalHours: 20,
                     subEpisodes: [
                         {
                             id: 22,
-                            title: "the basis of NLP",
-                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                            title: " מפגש שישי חלק א",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש שישי/מפגש 6 חלק א.mp4",
+                             min:37,
                         },
                         {
                             id: 23,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                            title: " מפגש שישי חלק א",
+                            videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש שישי/חלק 2.mp4",
+                             min:37,
                         },
+                    
                     ],
                 },
                 {
                     id: utilService.makeId(7),
-                    title: "Course summery NLP-master",
+                    title: "מפגש שביעי",
                     subTitle: "",
                     totalHours: 20,
                     subEpisodes: [
                         {
                             id: 24,
-                            title: "the basis of NLP",
+                            title: "מפגש שביעי חלק א",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש שביעי/חלק 1.mp4",
+                             min:37,
                         },
                         {
                             id: 25,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                            title: "מפגש שביעי חלק ב",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש שביעי/חלק 2.mp4",
+                             min:37,
                         },
+                        
                     ],
                 },
                 {
                     id: utilService.makeId(7),
-                    title: "How to start with NLP",
+                    title: "מפגש שמיני",
                     subTitle: "",
                     totalHours: 20,
                     subEpisodes: [
                         {
                             id: 26,
-                            title: "the basis of NLP",
+                            title: "מפגש שמיני חלק א",
                             videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש שמיני/חלק 1_1.mp4",
+                             min:37,
                         },
                         {
                             id: 27,
-                            title: "the benefits of NLP",
-                            videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                            videoUrl: "https://www.youtube.com/watch?v=twIWSU-xf_o"
+                            title: "מפגש שמיני חלק ב",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש שמיני/חלק 2.mp4",
+                             min:37,
+                        },
+                       
+                    ],
+                },
+                {
+                    id: utilService.makeId(7),
+                    title: "מפגש תשיעי",
+                    subTitle: "",
+                    totalHours: 20,
+                    subEpisodes: [
+                        {
+                            id: 28,
+                            title: "מפגש תשיעי חלק א",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש תשיעי/חלק 1.mp4",
+                             min:37,
+                        },
+                        {
+                            id: 29,
+                            title: "מפגש תשיעי חלק ב",
+                            videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
+                            videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש תשיעי/חלק 2.mp4",
+                             min:37,
                         },
                     ],
-                }
+                },
+               
             ],
             freeSamples: [
                 {
                     id: utilService.makeId(8),
-                    title: "the basis of NLP",
-                    videoImg: "https://gagaru.club/uploads/posts/2023-02/1676354761_gagaru-club-p-trening-krasivaya-rech-vkontakte-3.jpg",
-                    videoUrl: "https://www.youtube.com/watch?v=CMrHM8a3hqw"
-                },
-                {
-                    id: utilService.makeId(8),
-                    title: "the benefits of NLP",
-                    videoImg: "https://витилемна.рф/wp-content/uploads/2018/03/conference-2705706_1920.jpg",
-                    videoUrl: "https://www.youtube.com/watch?v=f2VLQF-GP5A"
-                },
-                {
-                    id: utilService.makeId(8),
-                    title: "easy start with NLP",
-                    videoImg: "https://alev.biz/wp-content/uploads/2021/01/public-speaking.jpg",
-                    videoUrl: "https://www.youtube.com/watch?v=j6ciMNAgq7A"
-                },
-
+                    title: " מפגש ראשון חלק 1",
+                    videoImg: "https://res.cloudinary.com/dii16awkb/image/upload/v1688706220/%D7%A7%D7%95%D7%A8%D7%A1%20%D7%9E%D7%90%D7%A1%D7%98%D7%A8.png",
+                    videoUrl: "https://d2cjnclsxi3iih.cloudfront.net/Master/מפגש ראשון/MVI_0676.MOV",
+                    min:37
+                },           
             ]
         }
 
@@ -1190,8 +1441,8 @@ function _creatCourses() {
 
 async function getCourses(filterBy) {
     try {
-        // const courses = await httpService.get('coures')
-        const courses = await storageService.query(course_DB)
+        const courses = await httpService.get('course')
+        // const courses = await storageService.query(course_DB)
         return courses
     }
     catch (err) {
@@ -1232,13 +1483,22 @@ async function getCourseContent(currCourseId, filterBy) {
         console.log('could not search content', err);
     }
 }
-async function getCourseById(couresId) {
+async function getCourseById(courseId) {
     try {
-        // const coures = await httpService.get(`coures/${couresId}`)
-        const courses = await storageService.query(course_DB)
-        const course = courses.find(course => course._id === couresId)
-        console.log('your course by id in service ', course);
-        return course
+        console.log('courseId of load coures by id  in service', courseId);
+        if(typeof courseId === 'object' ){
+            //if getting course id inside an obj need to extract the id first
+            let id =courseId.course._id
+            const course = await httpService.get(`course/${id}`)
+            return course
+        }else{
+            const course = await httpService.get(`course/${courseId}`)
+            return course
+        }
+        // const courses = await storageService.query(course_DB)
+        // const course = courses.find(course => course._id === couresId)
+        // console.log('your course by id in course service ', course);
+        // return course
     }
     catch (err) {
         console.log('could not load coures by id ', err);
@@ -1261,35 +1521,62 @@ function _updateCourse(loggdingUser, courseToUpdate) {
 
     }
 }
-async function updateCoursesStudents(loggdingUser, shoppingCart) {
+async function updateCourse (course) {
+return  await httpService.put(`course/${course._id}`,course)
+}
+async function updateCourseStudents(loggdingUser, shoppingCart) {
+
     try {
-        // const coures = await httpService.get(`coures/${couresId}`)
 
-        //first getting all relevent courses that needs to be updeted
-        // from data base into array coursesToUpdate
-        const courses = await storageService.query(course_DB)
-        console.log('coursesToUpdate in course service', courses);
-        let coursesToUpdate = [];
-        shoppingCart.forEach(product => {
-            let courseToUpdate = courses.find(course => course._id === product.course._id)
-            coursesToUpdate.push(courseToUpdate)
-        });
+        console.log('courupdateCoursese',shoppingCart);
+        shoppingCart.map( async (product) => {
+              const course = await getCourseById(product.course._id)
+              const student= {
+                id: loggdingUser._id,
+                fname: loggdingUser.fname,
+                ImgUrl: loggdingUser.imgUrl
+              }
+             const found = course.students.find(currStudent => currStudent.id ===student.id )
+             if(found){
+                return 
+             }
+              course.students.push(student)
+              const updatedCourse = await updateCourse(course)
+              console.log('updatedCourses in payment component',updatedCourse);
+     
 
-        // each get send to local func to be updated with their students
-        // and get pushed to local array = updatdtedCourses
-        let updatdtedCourse
-        let updatdtedCourses = []
-        coursesToUpdate.forEach(course => {
-            updatdtedCourse = _updateCourse(loggdingUser, course)
-            updatdtedCourses.push(updatdtedCourse)
-        },
-            // at this point updating the origenal array with the updated courses and saving to storage 
-            updatdtedCourses.forEach(updatdtedCourse => {
-                courses.map(currCourse => currCourse._id === updatdtedCourse._id ? updatdtedCourse : currCourse)
-            }))
-        localStorageService.store(course_DB, courses)
-        console.log('coursesToUpdate in course service', courses);
-        return courses
+        })
+        //     course.students.push(loggdingUser)
+        //    const updatedCourse =  await updateCourse(course)
+        //          return updatedCourse
+               
+
+            
+        // // const courses = await storageService.query(course_DB)
+        // const courses = await httpService.get(`course/`)
+        // console.log('coursesToUpdate in updateCoursesStudents course service', courses);
+        // //first getting all relevent courses that needs to be updeted
+        // let coursesToUpdate = [];
+        // shoppingCart.forEach(product => {
+        //     let courseToUpdate = courses.find(course => course._id === product.course._id)
+        //     coursesToUpdate.push(courseToUpdate)
+        // });
+
+        // // each get sent to local func to be updated with their new student
+        // // and get pushed to local array = updatdtedCourses
+        // let updatdtedCourse
+        // let updatdtedCourses = []
+        // coursesToUpdate.forEach(course => {
+        //     updatdtedCourse = _updateCourse(loggdingUser, course)
+        //     updatdtedCourses.push(updatdtedCourse)
+        // },
+        //     // at this point updating the intialcourses array we got at the beigging of the func with the updated courses and saving to storage 
+        //     updatdtedCourses.forEach(updatdtedCourse => {
+        //         courses.map(currCourse => currCourse._id === updatdtedCourse._id ? updatdtedCourse : currCourse)
+        //     }))
+        // localStorageService.store(course_DB, courses)
+        // console.log('coursesToUpdate in course service', courses);
+        // return courses
     }
     catch (err) {
         console.log('could not Update coures by id ', err);
