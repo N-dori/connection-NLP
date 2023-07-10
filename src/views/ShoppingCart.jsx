@@ -49,8 +49,8 @@ export function ShoppingCart() {
     let total= 0
     if(shoppingCart){
       shoppingCart.forEach(product => {
-        if(!product.course){return }
-        total= total+ (+product.course.price)
+        if(!product){return }
+        total= total+ (+product.price)
         console.log('total',total);
       });
     } 

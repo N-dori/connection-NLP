@@ -14,7 +14,7 @@ export function ProductList({ onRemove,shoppingCart }) {
     <section className='product-preview grid'>
       {
         shoppingCart.map((product,i) =>
-          <ProductPreview key={i} onRemove={onRemove} product={product.course} />
+          <ProductPreview key={i} onRemove={onRemove} product={product} />
       
       )}
 

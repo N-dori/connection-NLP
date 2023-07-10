@@ -18,7 +18,7 @@ import { PlaySvg } from '../svgs/PlaySvg';
 import MobileDetailsFooter from '../cmps/MobileDetailsFooter';
 import { InfinitySpin   } from  'react-loader-spinner'
 
-export function CouresDetails() {
+export function CouresDetails({courses}) {
   const [setRef, visible] = useOnScreen({ threshold: 0.2 })
 
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
@@ -84,7 +84,7 @@ export function CouresDetails() {
   }
 
   const loadCourse = async (CourseId) => {
-    const course = await courseService.getCourseById(CourseId)
+    const course = courses.find(course => course._id === CourseId)
     setCourse(course)
     if(course){
       getFormatedPrice(course.price)

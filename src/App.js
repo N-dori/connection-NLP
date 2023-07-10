@@ -21,7 +21,7 @@ import { useEffect, useRef, useState } from 'react';
 import { loadCart } from './store/actions/cart.actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { CourseQ } from './cmps/CourseQ';
-import { setFilterBy } from './store/actions/course.actions';
+import { loadCourses, setFilterBy } from './store/actions/course.actions';
 import { courseService } from './services/course.service';
 import { loadAnnouncements } from './store/actions/announcement.actions';
 import { loadReviews } from './store/actions/review.actions';
@@ -37,7 +37,7 @@ export function App() {
   // load data from store : loggedin user ,courses ,reviews
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
   const filterBy = useSelector((storeState) => storeState.couresModule.filterBy)
-  const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
+  const courses = useSelector((storeState) => storeState.couresModule.courses)
 
   const dispatch = useDispatch()
   const [len, setLen] = useState('')
@@ -58,12 +58,18 @@ export function App() {
   const memorialRef = useRef();
 
   useEffect(() => {
+
+    dispatch(loadCourses())
     //signing up with default guest -this way gust can add products to shopping cart
     //guest would need to sign up to move on shooping cart to purchuse!
     dispatch(loadGuestUser())
     dispatch(loadCart())
     dispatch(loadAnnouncements())
     dispatch(loadReviews())
+    setTimeout(() => {
+      dispatch(loadCart())
+      
+    }, 500);
   }, [])
 
   //getting length of shopping cart
@@ -185,7 +191,7 @@ const scrollToMemorial = () =>{
            content : show modal with course trailer , list of course content (disabled) , description title , sub title , show reviews
            components: WhatYouWillLearn ,CourseContentIndex , CourseReviews , BuyCourseModal
       */}
-          <Route path="/course/:id"  element={<CouresDetails />} />
+          <Route path="/course/:id"  element={<CouresDetails courses={courses} />} />
           {/* 
             ShoppingCart:
             ask local function for course according to IdCourses in user cart  
