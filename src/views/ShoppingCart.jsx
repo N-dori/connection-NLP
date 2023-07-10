@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, Outlet, useNavigate, useParams } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import { loadCart, removeProduct } from '../store/actions/cart.actions'
 import { ProductList } from '../cmps/ProductList'
 import { ProductCheckout } from '../cmps/ProductCheckout'
@@ -12,21 +12,21 @@ export function ShoppingCart() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [isUserlogged,setIsUserlogged]=useState(false)
-  const [loggdingUser,setLoggdingUser]=useState(false)
+  const [user,setUser]=useState(false)
   const [isSignupModalOpen,setIsSignupModalOpen]=useState(false)
-  // const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
+  const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const [sum, setSum] = useState(0)
   
   
   // const courses= loggdingUser
-  const param = useParams()
 
   useEffect(() => {
       loadCourses()
       culcTotalPrice()
       loadLoggedinUser()
-  }, [shoppingCart.length])
+      //in loggdingUer dependencies is from store 
+  }, [JSON.stringify(shoppingCart),loggdingUser])
      
     const loadCourses = () => {
 
@@ -34,8 +34,9 @@ export function ShoppingCart() {
       
     }
     const loadLoggedinUser = async () => {
+         //this loggdingUer dependencies is from session 
       const loggdingUser = await userService.getLoggedinUser()
-      setLoggdingUser(loggdingUser)
+      setUser(loggdingUser)
     }
 
   const onRemove = (productId) => {
@@ -61,8 +62,9 @@ export function ShoppingCart() {
 
 
 const handelChekOut = () => {
-  if(loggdingUser){
-    navigate(`/payment/${loggdingUser._id}`)
+ // here we check if logged in user is not default guest user that was signed-up as the app loads
+  if(loggdingUser && loggdingUser._id !== '64abe02a8723e73efc4d4be8'){
+    navigate(`/payment/${user._id}`)
   }else{
     setIsSignupModalOpen(true)
     setIsUserlogged(true)
@@ -80,16 +82,16 @@ const handelChekOut = () => {
       <p className='total-courses'>{shoppingCart?shoppingCart.length+' קורסים בעגלת הקניות':''} </p>
       </header>
       <section className='product-list-wrapper'>
-      {(shoppingCart ||(shoppingCart.length===0))?
+      {(shoppingCart /* ||(shoppingCart.length===0) */)?
         <ProductList onRemove={onRemove} shoppingCart={shoppingCart} />
         : 'shopping cart is empty'
       }
       </section>
-        <ProductCheckout handelChekOut={handelChekOut} loggdingUser={loggdingUser} sum={sum}/>
+        <ProductCheckout handelChekOut={handelChekOut} loggdingUser={user} sum={sum}/>
 
         { isUserlogged?
         isSignupModalOpen?<section className='shopping-cart-signup-modal-container'>
-        <SignupPage closeModal={closeModal} shoppingCart={shoppingCart}isUserlogged={isUserlogged} setIsUserlogged={setIsUserlogged} from={'shopping-cart'} />
+        <SignupPage closeModal={closeModal} shoppingCart={shoppingCart} isUserlogged={isUserlogged} setIsUserlogged={setIsUserlogged} from={'shopping-cart'} />
          </section>:''
          :  ''
          }

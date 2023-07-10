@@ -4,10 +4,10 @@ import { Outlet, useParams } from 'react-router-dom'
 import ReactPlayer from 'react-player'
 import { OutletMenu } from '../cmps/OutletMenu'
 import { updateCurrTimeWacth } from '../store/actions/user.actions'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { userService } from '../services/userService'
 import { courseService } from '../services/course.service'
-
+import { InfinitySpin } from 'react-loader-spinner'
 
 export  function MyLearning({lastSubEpisode,setLastSubEpisode,lastEpisode,setLastEpisode,currCourseId,videoUrl,setVideoUrl,setCurrCourseId}) {
  
@@ -172,6 +172,14 @@ export  function MyLearning({lastSubEpisode,setLastSubEpisode,lastEpisode,setLas
   </section>
   </section>
   </section>
-</section>:<div>Loding...</div>
+</section>:
+<section className='loder-container flex-jc-ac'>
+        <div className='flex-jc-ac'>
+          <InfinitySpin
+            className='spinner'
+            width='200'
+            color="#448cfb"/>
+        </div>
+      </section>
   )
 }

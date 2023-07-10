@@ -31,6 +31,7 @@ import  WhoAreWe  from './views/WhoAreWe';
 import  Memorial  from './cmps/Memorial';
 import CoursesIndex  from './cmps/CoursesIndex';
 import MobileMenu from './cmps/MobileMenu';
+import { loadGuestUser } from './store/actions/user.actions';
 
 export function App() {
   // load data from store : loggedin user ,courses ,reviews
@@ -57,7 +58,12 @@ export function App() {
   const memorialRef = useRef();
 
   useEffect(() => {
+
     dispatch(loadCourses())
+    //signing up with default guest -this way gust can add products to shopping cart
+    //guest would need to sign up to move on shooping cart to purchuse!
+    dispatch(loadGuestUser())
+    dispatch(loadCart())
     dispatch(loadAnnouncements())
     dispatch(loadReviews())
     setTimeout(() => {
@@ -66,10 +72,11 @@ export function App() {
     }, 500);
   }, [])
 
-  //gtting length of shopping cart
+  //getting length of shopping cart
   useEffect(() => {
     getCartLen()
   }, [shoppingCart])
+
   const getCartLen = () => {
     if (shoppingCart) {
       const len = shoppingCart.length

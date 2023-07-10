@@ -1,6 +1,5 @@
-import React, { Component, useEffect, useState } from 'react'
-import { GoogleLogin } from '@react-oauth/google';
-import { imgService } from '../services/imgService'
+import React, {  useState } from 'react'
+
 import { userService } from '../services/userService'
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import {  useDispatch, useSelector } from 'react-redux'
@@ -25,16 +24,11 @@ export function SignupPage({from,closeModal,isUserlogged,setIsUserlogged,shoppin
 
     }
 
- useEffect(() => {
-   console.log('from',from)
- 
- }, [])
- 
-    
+
    const onSignup =  (ev) => {
         ev.preventDefault()
         ev.stopPropagation()
-        dispatch(signup(user))
+        dispatch(signup(user,from,shoppingCart))
         if(from==='header'){
             navigate('/')
         }  if (from === 'shopping-cart'){
