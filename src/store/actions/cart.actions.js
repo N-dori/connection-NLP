@@ -6,7 +6,12 @@ export  function loadCart(){
     try{
         
         return async(dispatch,getState)=>{
-            const cart= await cartService.loadShoppingCart()
+            const user = await userService.getLoggedinUser()
+            const courses = getState().couresModule.courses
+            if(!courses){
+                return
+            }
+            const cart= await cartService.loadShoppingCart(courses,user._id)
             //cart is an array with courses 
             //TODO: save to cart mini course
             console.log('cart in service',cart);
@@ -59,7 +64,13 @@ export function addToUserCart(courseId){
     try{
     
         return async(dispatch,getState)=>{
-            await cartService.addToUserCart(courseId)
+            const userId =  getState().userModule.loggdingUser._id
+            if(userId){
+                await cartService.addToUserCart(courseId,userId)
+            }else{
+                const userId= userService.getLoggedinUser()
+                await cartService.addToUserCart(courseId,userId)
+            }
         //     const action = {
         //         type: ADD_TO_CART,
         //         courseId

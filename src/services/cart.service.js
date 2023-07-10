@@ -14,8 +14,21 @@ export const cartService = {
     
 }
 
-async function loadShoppingCart () {
-    const userCourses = await _getCartCourses()
+async function loadShoppingCart (courses,userId) {
+    console.log('loadShoppingCart courses',courses);
+    console.log('loadShoppingCart userId',userId);
+    // const userCourses = await _getCartCourses()
+    const user = await userService.getUserById(userId)
+    if(!user.cart)return
+    const { cart } = user 
+    const userCourses = []
+    cart.forEach( courseInUserCart => {
+       const course=  courses.find(course=>course._id === courseInUserCart)
+       if(course){
+        userCourses.push(course)
+       }
+    })
+
     console.log('userCourses',userCourses);
     return userCourses
     // utilService.saveToStorage(cart_DB,courses )
@@ -48,14 +61,14 @@ async function  _getCartCourses() {
         
     }
 }
-async function addToUserCart(couresId) {
+async function addToUserCart(couresId, userId) {
     try{
     // const coures = await httpService.get(`coures/${couresId}`)
 
     console.log('couresId',couresId)
-    const loggedinUser  = await userService.getLoggedinUser()
+    // const user  = await userService.getLoggedinUser()
 
-    const user = await userService.getUserById(loggedinUser._id)
+    const user = await userService.getUserById(userId)
     console.log('user by id after backend in cart service',user);
     // chacking that user dont have the same course more than one time
     const found =  user.cart.find(currCourseId=>currCourseId === couresId)
