@@ -6,7 +6,7 @@ export const SET_CART = 'SET_CART '
 
 
 const INITIAL_STATE = {
-  shoppingCart:null
+  shoppingCart:[]
 
 }
 export function cartReducers(state=INITIAL_STATE, action = {} ){

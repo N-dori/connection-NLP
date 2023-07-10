@@ -1,10 +1,17 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 export default function MobileMenu({scrollToMemorial,scrollToWhatTools,scrollToNlpBenefits,toggelMobileMenu,scrollToCourses,scrollToWhoAreWe,isMobileMenu}) {
 
-  const navigate = useNavigate()
+const navigate = useNavigate()
 const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
+
+useEffect(() => {
+
+}, [loggdingUser])
+
+
  const handelClick = (ev,type) => {
   navigate('/')
   setTimeout(() => {
@@ -24,6 +31,7 @@ const handelNavigation = (ev,type) => {
   if(type === 'my-courses')navigate(`${type}`)
   toggelMobileMenu()
  }
+
   return (
     <section className={isMobileMenu?"mobile-menu-container open":"mobile-menu-container "}>
         <main className="mobile-menu-wrapper  ">
@@ -33,7 +41,7 @@ const handelNavigation = (ev,type) => {
        
           
           <div className='user-img-container flex-jc-ac'  >
-                   <span className='user-img'>{loggdingUser.fname[0]}</span>
+                   <span className='user-img'>{loggdingUser.fname[0].toUpperCase()}</span>
 
           </div>:
               <div className="login-signup-group">

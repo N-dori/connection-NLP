@@ -8,8 +8,6 @@ import { MobileMenuSvg } from '../svgs/MobileMenuSvg';
 import { clearCart } from '../store/actions/cart.actions';
 
 export function AppHeader({ isActive, toggelMobileMenu,  len }) {
-    const loaction = useLocation()
-    const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
 
     const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
     const logoUrl = 'https://res.cloudinary.com/dii16awkb/image/upload/v1685878172/%D7%9C%D7%95%D7%92%D7%95_fpn8ig.jpg'
@@ -19,14 +17,11 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
     const naviget = useNavigate()
 
     useEffect(() => {
-        getParamLoction()
         setIsShown(false)
         loadUser()
     }, [loggdingUser, user])
     
-    const getParamLoction = () =>{
-        console.log('loactionnnnnn',loaction.pathname.slice(1,7))
-    }
+ 
     const loadUser = async () => {
         if (!loggdingUser) {
             return
@@ -34,16 +29,23 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
             if (user) {
                 return
             }
+           //as the app load guest is beening signup, here we getting the logged in user 
+           //if it is the id of guest we keep the local state (user) as null
             const currUser = await userService.getUserById(loggdingUser._id)
-            setUser(currUser)
+            if(currUser._id === '64abe02a8723e73efc4d4be8'){
+                console.log('Header loadUser currUser in side',currUser)
+                     return
+            }else{
+                setUser(currUser)
+            }
         }
     }
 
     const onLogout = () => {
-        dispatch(clearCart())
+        // dispatch(clearCart())
         setTimeout(() => {
             dispatch(logout())
-            // userService.logout()
+            setUser(null)
             naviget('/our-courses')
             
         }, 500);
@@ -51,6 +53,7 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
 
     const toggelMenu = () => {
         setIsShown(!isShown)
+
     }
   
 
@@ -62,10 +65,10 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
                 <section className='action-btns flex'>
                     <ShoppingCartSvg len={len} loggdingUser={loggdingUser} onClick={() => naviget('/shopping-cart')} />
                     {
-                        loggdingUser ?
+                        user ?
                             <section className='user-space'>
                                 <div className='user-img-container flex-jc-ac' onClick={toggelMenu} >
-                                    <span className='user-img'>{loggdingUser.fname[0].toUpperCase()}</span>
+                                    <span className='user-img'>{user.fname[0].toUpperCase()}</span>
 
                                 </div>
                                 <div className={isShown ? 'user-menu  block' : 'hidden'}>

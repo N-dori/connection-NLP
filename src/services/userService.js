@@ -82,32 +82,17 @@ async function login (credentials) {
 
 async function signup(credentials) {
     console.log('sign up before back end credentials',credentials);
-    if(credentials.fname==='Nadav Dori'){
-        credentials.isAdmin=true 
-    }
+ 
         const userAfterBackend= await httpService.post('auth/signup',credentials)
        console.log('sign up user  in service AfterBackend',userAfterBackend);
     
-//     if(!credentials.imgUrl){
-//         credentials.imgUrl=imgService.getImg('user')
-// }
-// if(!credentials._id){
-//     credentials._id=utilService.makeId(3)
-// }
-// if(!credentials.cart){
-//     credentials.cart=[]
-// }
-// if(!credentials.courses){
-//     credentials.courses=[]
-// }
-// console.log('credentials',credentials);
-// await  storageService.post(USER_KEY,credentials)
-localStorageService.store(STORAGE_KEY_LOGGEDIN_USER, {_id:userAfterBackend._id,
-                                                       fname:userAfterBackend.fname,
-                                                      isAdmin:userAfterBackend.isAdmin,
-                                                        imgUrl:userAfterBackend.imgUrl,
-                                                        cart:[],
-                                                        courses:[]})
+
+// localStorageService.store(STORAGE_KEY_LOGGEDIN_USER, {_id:userAfterBackend._id,
+//                                                        fname:userAfterBackend.fname,
+//                                                       isAdmin:userAfterBackend.isAdmin,
+//                                                         imgUrl:userAfterBackend.imgUrl,
+//                                                         cart:[],
+//                                                         courses:[]})
    return userAfterBackend
 }
 function getEmptyUser() {
