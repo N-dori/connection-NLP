@@ -66,7 +66,7 @@ export  function AnnouncementsPreview({loggedinUser,announcement}) {
         </section>
      
         <input onChange={handleChange} value={comment.content} className='comment-input' placeholder='Enter your comment ' name='content' id='content' type='text' />
-        <button className='announcement-content-btn' type='submit'>send</button>
+        <button className='announcement-content-btn' type='submit'>שלח</button>
     </form>
    {isShown? <CommentsList comments={announcement.comments}/>:''}
    {(announcement.comments.length>0)? <h2 className='show-comments-btn' onClick={getComments}>

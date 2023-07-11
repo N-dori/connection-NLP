@@ -15,6 +15,10 @@
             padding: 2em;
     
     }
+    @include for-mobile-layout{
+        margin-block-start: .3em;
+        padding: 0.5em;
+    }
         .profile-container {
             gap: 1em;
 
@@ -45,6 +49,9 @@
             font-weight: 600;
             margin-bottom: 0;
             margin-block-start: 1em;
+            @include for-mobile-layout{
+                font-size: 1.2em;
+            }
         }
 
         .announcement-input-container {
@@ -97,6 +104,10 @@
             .headline {
                 font-size: 1.8em;
                 margin-top: 1em;
+                @include for-mobile-layout{
+                    margin-top: 0em;
+                    font-size: 1.3em;
+                }
             }
 
             .profile-announcement-wrapper {

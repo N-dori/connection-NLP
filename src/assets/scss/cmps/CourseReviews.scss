@@ -3,12 +3,19 @@
     grid-column: 2;
     margin-top: 15px;
     padding-inline-start: 1em;
+    @include for-mobile-layout {
 
+        padding-inline-start: 0em;
+    }
     .headline {
         font-size: 1.8em;
         font-weight: bold;
         color: #222;
         margin-block: 16px;
+        @include for-mobile-layout {
+
+            margin-inline-start: .5em;
+        }
     }
 
     .reviews-wrapper {
@@ -21,7 +28,10 @@
             flex-direction: column;
             padding-inline-start: 1em;
         }
+        @include for-mobile-layout {
 
+            padding-inline-start: 0em;
+        }
         .review-container {
             max-width: 20em;
             width: 20em;

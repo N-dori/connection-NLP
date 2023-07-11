@@ -34,7 +34,9 @@
             gap: 20px;
             padding-inline-start:20px ;
             padding-inline-end:20px ;
-    
+            @include for-mobile-layout {
+                padding-inline-start:0px ;
+            }
         }
     
         .tv-svg {

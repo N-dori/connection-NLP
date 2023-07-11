@@ -37,18 +37,19 @@
    display: flex;
    flex-direction: column-reverse;
    align-items: center;
+   padding-block: 1em;
     }
     .schedule-learning-time-warpper{
         direction: rtl;
         grid-column: 2;
         margin-top: 3em;
-        padding: 1em;
+        padding-block: 1em;
         border: 1px solid #9e9b9b;
         grid-template-columns:1fr 15fr;
         width: 100%;
         @include for-mobile-layout {
             margin-top: 1em;
-            width: 85% !important;
+            width: 100% !important;
         }
         .alarm-svg{
     grid-column: 1;
@@ -96,11 +97,9 @@
                width: 85%!important;
                        }
             @include for-633px {
-               width: 85%;
+               width: 100%!important;;
                        }
-            @include for-mobile-layout {
-               width: 100%;
-                       }
+           
             
             .course-image-container {
                 grid-row: 2;

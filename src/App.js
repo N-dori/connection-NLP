@@ -9,7 +9,7 @@ import { PaymentPage } from './views/PaymentPage';
 import { MyCoursesIndex } from './views/MyCoursesIndex';
 import { ShoppingCart } from './views/ShoppingCart';
 import { LoginPage } from './views/LoginPage';
-import { MyLearning } from './views/MyLearning';
+import {MyLearning}  from './views/MyLearning';
 import { CourseOverview } from './cmps/CourseOverview';
 import { SearchContent } from './cmps/SearchContent';
 import { CourseReviews } from './cmps/CourseReviews';
@@ -58,7 +58,8 @@ export function App() {
   const nlpBenefitsRef = useRef();
   const whatToolsRef = useRef();
   const memorialRef = useRef();
-
+ 
+  
   useEffect(() => {
     //signing up with default guest -this way gust can add products to shopping cart
     //guest would need to sign up to move on shooping cart to purchuse!
@@ -128,6 +129,7 @@ const scrollToMemorial = () =>{
   top: memorialRef.current.offsetTop - 100,
   behavior: "smooth"
 })}
+
 
   return (
 
@@ -229,8 +231,8 @@ const scrollToMemorial = () =>{
            components: CourseContentIndex , CourseOverview, SearchContent, CourseReviews ,CourseAnnouncements
 
         */}
-          <Route path="/my-learning/:id" element={<MyLearning setLastSubEpisode={setLastSubEpisode} lastSubEpisode={lastSubEpisode} lastEpisode={lastEpisode} setLastEpisode={setLastEpisode}  setVideoUrl={setVideoUrl} videoUrl={videoUrl} setCurrCourseId={setCurrCourseId} currCourseId={currCourseId}/>} >
-            <Route path='/my-learning/:id/course-overiew' element={<CourseOverview />} />
+          <Route path="/my-learning/:id" element={<MyLearning  setLastSubEpisode={setLastSubEpisode} lastSubEpisode={lastSubEpisode} lastEpisode={lastEpisode} setLastEpisode={setLastEpisode}  setVideoUrl={setVideoUrl} videoUrl={videoUrl} setCurrCourseId={setCurrCourseId} currCourseId={currCourseId}/>} >
+            <Route path='/my-learning/:id/course-overiew' element={<CourseOverview currCourseId={currCourseId} courses={courses} />} />
             <Route path='/my-learning/:id/serach-content' element={<SearchContent setLastSubEpisode={setLastSubEpisode} lastSubEpisode={lastSubEpisode} setVideoUrl={setVideoUrl} content={content}  onChangeFilter={onChangeFilter} filterBy={filterBy} />} />
             <Route path='/my-learning/:id/reviews' element={<CourseReviews />} />
             <Route path='/my-learning/:id/announcements' element={<CourseAnnouncements currCourseId={currCourseId}/>} />

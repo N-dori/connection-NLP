@@ -190,7 +190,7 @@
                 align-items: center;
                 border: 1px solid var(--clr3);
                 padding: 1.1em;
-
+              
                 .headline-container {
                     align-items: center;
                     justify-content: center;
@@ -207,7 +207,11 @@
             .shlomo-img-container {
                 border-radius: 15px;
                 box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
+                @include for-narrow-layout {
+                    display: flex;
+                    justify-content: center;
+                }
+             
                 .shlomo-img {
                     width: 230px;
                     height: 354px;

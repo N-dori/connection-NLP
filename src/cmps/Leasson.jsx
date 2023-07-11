@@ -30,7 +30,7 @@ export function Leasson({lastSubEpisode,isSearchPanel, lastEpisode, setLastSubEp
 
         }
    }
-    const onVideoClick = (idx, videoUrl) => {
+    const onVideoClick = (idx, videoUrl,id) => {
         console.log('i', idx);
         setIsClicked(idx)
         setVideoUrl(videoUrl)

@@ -113,7 +113,9 @@
     
     grid-column: 1;   
     grid-row: 2;
-
+.outlets-warpper{
+    min-height: 44em;
+}
     // min-height:27.5em;
     // background-color: orange;
     .course-menu{
@@ -125,9 +127,13 @@
         border-top:2px solid #444444;
         border-bottom:1px solid #9c9c9c ;
         @include for-mobile-layout {
-            padding-inline-start:0.5em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding-inline-start:0.3em;
             gap:1em;
             font-size: 0.9em;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
          }
         .search-svg{
             width:20px;

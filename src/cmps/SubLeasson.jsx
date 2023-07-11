@@ -10,25 +10,12 @@ export  function SubLeasson({lastSubEpisode,files,setIsClicked,setLastSubEpisode
  useEffect(() => {
    setIsClicked(lastSubEpisode)
    
- }, [lastSubEpisode])
+ }, [])
  
   const expand = () => {
     setIsShown(!isShown)
 }
-  useEffect(() => {
-    settingLastSubEpisode()
- 
-  }, [])
-  const settingLastSubEpisode = () => {
-    if(lastSubEpisode){
-      console.log('lastSubEpisode************ in subleasson',lastSubEpisode);
-    }
-    if(!setLastSubEpisode){return 
-    }else {
-    setLastSubEpisode(id)
-    setIsClicked(id)
-  }
-}
+
   return (
     <article key={id} 
     className='content-preview flex-col'

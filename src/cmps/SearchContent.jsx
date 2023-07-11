@@ -30,7 +30,7 @@ export function SearchContent(props) {
       <main className='search-contanet-wrapper flex-col'>
         <div className='input-container flex'>
           <input className='search-input'
-            onChange={handleChange} value={filterBy.title} type="text" name="title" id="title" placeholder='Search' />
+            onChange={handleChange} value={filterBy.title} type="text" name="title" id="title" placeholder='חפש' />
           <div className='search-svg-container flex-jc-ac'>
             <SearchSvg />
 
@@ -40,7 +40,7 @@ export function SearchContent(props) {
       </main>
       {
         props.content?
-        (props.content.length===0)?<span className='not-found'>NO CONTENT FOUND</span>:
+        (props.content.length===0)?<span className='not-found'>תוכן לא נמצא </span>:
         <section className='content-container flex-col'>
         { props.content.map((episode,i) => {
          return  <Leasson key={episode.id}
@@ -52,8 +52,8 @@ export function SearchContent(props) {
                           isSearchPanel={true}/>
         }) }
         </section>:<div className='start-new-search-wrapper flex-col'>
-          <span className='start-new-search'>Start new Search</span>
-          <span className='sub-text'>To find caption, lectures or resources </span>
+          <span className='start-new-search'>התחל חיפוש חדש</span>
+          <span className='sub-text'> חפש כתוביות, הרצאות מקורות</span>
         </div>
       }
     </section>:<div>Loading...</div>

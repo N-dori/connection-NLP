@@ -23,24 +23,26 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
   const [duration, setDuration] = useState(0);
   const lastWatchTimeRef = useRef(lastWatchTime)
   const loggdingUserRef = useRef({})
+  const MyLearningOutletRef = useRef()
 
   useEffect(() => {
     loadCourse()
     loadLastVideo()
     setCurrCourseId(param.id)
     getLecturesSum()
-  setTimeout(() => {
-  }, 1000);
-  return () => {
-    // when copmponent unmount we save last video and last watch time and updating the user.
-    // console.log('lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef',lastWatchTimeRef);
-    updateCourseCurrTimeWacth()
-  };
+    setTimeout(() => {
+    }, 1000);
+    return () => {
+      // when copmponent unmount we save last video and last watch time and updating the user.
+      // console.log('lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef',lastWatchTimeRef);
+      updateCourseCurrTimeWacth()
+    };
   }, [lastEpisode, lastSubEpisode, lastWatchTimeRef, loggdingUserRef])
-  
+
+
   const updateCourseCurrTimeWacth = () => {
     dispatch(updateCurrTimeWacth(loggdingUserRef.current._id, currCourseId, lastEpisode, lastSubEpisode, lastWatchTimeRef.current, videoUrl))
-    
+
   }
   const loadLastVideo = async () => {
     const loggdingUser = await userService.getLoggedinUser()
@@ -53,7 +55,7 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
         const { lastVideoWatched } = course
         // after getting the user and course setting lastwatch time and last url
         if (isPlayingFirstTime === 0) {
-          console.log('setting last time watch and url********************',lastVideoWatched);
+          console.log('setting last time watch and url********************', lastVideoWatched);
           setLastWatchTime(lastVideoWatched.lastTimeWatched)
           setVideoUrl(lastVideoWatched.videoUrl)
           setLastEpisode(lastVideoWatched.episode)
@@ -114,6 +116,12 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
     }
   }
 
+  const scrollToMyLearningOutlet = () => {
+    window.scrollTo({
+      top: MyLearningOutletRef.current.offsetTop - 100,
+      behavior: "smooth"
+    })
+  }
   return (
     course ?
 
@@ -146,14 +154,14 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
               setLastSubEpisode={setLastSubEpisode}
               setLastEpisode={setLastEpisode}
               lastSubEpisode={lastSubEpisode}
-              lastEpisode={ lastEpisode }
+              lastEpisode={lastEpisode}
             />
-            
+
 
 
           </section>
-          <section style={isContentShown ? {} : { gridColumn: "1/-1" }} className='course-menu-contianer'>
-            <OutletMenu />
+          <section ref={MyLearningOutletRef} style={isContentShown ? {} : { gridColumn: "1/-1" }} className='course-menu-contianer'>
+            <OutletMenu scrollToMyLearningOutlet={scrollToMyLearningOutlet} />
             <section className='outlets-warpper'>
               <Outlet></Outlet>
             </section>

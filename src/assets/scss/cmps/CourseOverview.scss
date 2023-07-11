@@ -1,9 +1,9 @@
 .course-overview-container{
     direction: rtl;
     padding-inline: 5em;
-    overflow-x: scroll;
+
     @include for-narrow-layout {
-        padding-inline: 0em;
+        padding-inline: 1em;
 
 }
     .schedule-learning-time-warpper{
@@ -16,17 +16,32 @@
         // height: 12em;
         .alarm-svg{
     grid-column: 1;
+    @include for-narrow-layout {
+      width: 2em;
+
+}
+    @include for-mobile-layout {
+      font-size: .8em;
+
+}
     
 }
 .headline{
     margin-top: .5em;
     margin-bottom: .5em;
         grid-column: 2;
-        
+        margin-block-start: .5em;
+        @include for-mobile-layout {
+            font-size: 1em;
+      
+      }
     }
     .sub-headline{
         grid-column: 2;
-
+        @include for-mobile-layout {
+            font-size: .8em;
+      
+      }
     }
     }
     .about-this-course{
