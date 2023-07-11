@@ -17,14 +17,21 @@ export function ShoppingCart() {
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const [sum, setSum] = useState(0)
+  const [isfisrtLoad, setIsfisrtLoad] = useState(0)
   
   
   // const courses= loggdingUser
 
   useEffect(() => {
-      loadCourses()
-      culcTotalPrice()
+//we want to load user courses only one time (to sync between redux shopping cart with user cart)
+//because it is create conflict between user cart to redux shopping cart
+// and we dont want to make unnecessary http requests    
+    if(isfisrtLoad === 0){
+      setIsfisrtLoad(1)
       loadLoggedinUser()
+      loadCourses()
+    }
+      culcTotalPrice()
       //in loggdingUer dependencies is from store 
   }, [JSON.stringify(shoppingCart),loggdingUser])
      
@@ -39,8 +46,9 @@ export function ShoppingCart() {
       setUser(loggdingUser)
     }
 
-  const onRemove = (productId) => {
-    dispatch(removeProduct(productId))
+  const onRemove = (productId,userId) => {
+
+    dispatch(removeProduct(productId,userId))
   
   }
   
@@ -49,8 +57,8 @@ export function ShoppingCart() {
     let total= 0
     if(shoppingCart){
       shoppingCart.forEach(product => {
-        if(!product.course){return }
-        total= total+ (+product.course.price)
+        if(!product){return }
+        total= total+ (+product.price)
         console.log('total',total);
       });
     } 
@@ -64,7 +72,7 @@ export function ShoppingCart() {
 const handelChekOut = () => {
  // here we check if logged in user is not default guest user that was signed-up as the app loads
   if(loggdingUser && loggdingUser._id !== '64abe02a8723e73efc4d4be8'){
-    navigate(`/payment/${user._id}`)
+    navigate(`/payment/${loggdingUser._id}`)
   }else{
     setIsSignupModalOpen(true)
     setIsUserlogged(true)
@@ -83,7 +91,7 @@ const handelChekOut = () => {
       </header>
       <section className='product-list-wrapper'>
       {(shoppingCart /* ||(shoppingCart.length===0) */)?
-        <ProductList onRemove={onRemove} shoppingCart={shoppingCart} />
+        <ProductList onRemove={onRemove} shoppingCart={shoppingCart} loggdingUser={user}/>
         : 'shopping cart is empty'
       }
       </section>
@@ -91,7 +99,7 @@ const handelChekOut = () => {
 
         { isUserlogged?
         isSignupModalOpen?<section className='shopping-cart-signup-modal-container'>
-        <SignupPage closeModal={closeModal} shoppingCart={shoppingCart} isUserlogged={isUserlogged} setIsUserlogged={setIsUserlogged} from={'shopping-cart'} />
+        <SignupPage closeModal={closeModal} shoppingCart={shoppingCart} isUserlogged={isUserlogged} setIsUserlogged={setIsUserlogged} from={'shopping-cart'}  />
          </section>:''
          :  ''
          }

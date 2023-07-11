@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/actions/user.actions';
 import { ShoppingCartSvg } from '../svgs/ShoppingCartSvg';
 import { userService } from '../services/userService';
 import { MobileMenuSvg } from '../svgs/MobileMenuSvg';
-import { clearCart } from '../store/actions/cart.actions';
 
 export function AppHeader({ isActive, toggelMobileMenu,  len }) {
 
@@ -42,7 +41,6 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
     }
 
     const onLogout = () => {
-        // dispatch(clearCart())
         setTimeout(() => {
             dispatch(logout())
             setUser(null)
@@ -115,7 +113,7 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
                    
                     </nav>
                     <div className="logo-container ">
-                        <Link className='logo-link flex' to="/"><img className='logo' src={logoUrl} />
+                        <Link className='logo-link flex' to="/our-courses"><img className='logo' src={logoUrl} />
                         </Link>
                     </div>
 

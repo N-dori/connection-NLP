@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import { userService } from "../../services/userService";
 import { SET_USER, LOGOUT_USER, UPDATE_USER } from "../reducers/user.reducer";
+import { cartService } from "../../services/cart.service";
 
 
 
@@ -11,19 +11,25 @@ export function signup(userToSignup, from, shoppingCart) {
             let user = await userService.signup(userToSignup)
             // if user signing up from the shopping cart cmp, 
             //we make sure to add the producat he wanted to his cart
-            console.log('sign up user after backend in user action ', user);
-            console.log('sign up user after backend shoppingCart ', shoppingCart);
+
             if (from === 'shopping-cart') {
                 if (!shoppingCart) {
                     return
                 } else {
-                    shoppingCart.forEach(course => {
-                        user.cart.push(course)
+                    shoppingCart.forEach(courseId => {
+                        const courseInUserCart = user.cart.find(userCourse => userCourse._id === courseId)
+                        if(!courseInUserCart){
+                            //if course does not already exsist in user's cart we push it in to his cart 
+                            user.cart.push(courseId)
+                        }
                         console.log('adding to user courses user after backend', user);
                     })
+                
                     // after adding the productes to his cart need to update data base    
                     const updatedUser = await userService.updateUser(user)
                     user=updatedUser
+                    //at the end we need to clear guest's cart
+                    cartService.clearGuestCart()
                     console.log('user after backend', updatedUser);
                 }
             }
@@ -68,15 +74,7 @@ export function loadGuestUser() {
             if (loggdingUser) {
                 return
             } else {
-                const guest = {
-                    fname: "אורח",
-                    password: "a",
-                    email: "a",
-                    imgUrl: 'a',
-                    isAdmin: false,
-                    courses: [],
-                    cart: [],
-                }
+                const guest = userService.getUserGuest()
              const user = await userService.signup(guest)
              console.log('user in user action  in login func', user);
              const action = {

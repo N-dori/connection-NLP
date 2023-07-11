@@ -1,52 +1,30 @@
 
-import { storageService } from "./async-storage.service"
 import { httpService } from "./http.service"
-import { imgService } from "./imgService"
 import { localStorageService } from "./localStorage.service"
-import { utilService } from "./util.service"
+
 
 export const userService = {
     getEmptyUser,
     signup,
     login,
-    logout,
+    // logout,
     updateUser,
-    vrifyPassword,
     getLoggedinUser,
     getUserById,
     clearUserCart,
     updateCurrTimeWacth,
+    getUserGuest,
+    clearGuestCart,
 
 }
-const USER_KEY = 'userDB'
-const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
-const users=localStorageService.load(USER_KEY) || _setUsers()
 
-const user = null
-async function _setUsers () {
-    localStorageService.store(USER_KEY,_createUsers())
-}
 
-function logout(){
-    localStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-}
 
- function vrifyPassword(id,password) {
-        return new Promise((resolve,reject) => {
-            const users = localStorageService.load(USER_KEY)
-            console.log('users',users);
-            const user = users.find( user => user._id === id )
-            console.log('user',user);
-            if(user.password === password){
-                resolve(user) 
-            }else{
-                resolve(false)
-            }
-                
-              
-                    })
-    
-}
+// function logout(){
+//     localStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+// }
+
+
 async function getUserById(userId) {
     try{
     const user = await httpService.get(`user/${userId}`)
@@ -86,13 +64,6 @@ async function signup(credentials) {
         const userAfterBackend= await httpService.post('auth/signup',credentials)
        console.log('sign up user  in service AfterBackend',userAfterBackend);
     
-
-// localStorageService.store(STORAGE_KEY_LOGGEDIN_USER, {_id:userAfterBackend._id,
-//                                                        fname:userAfterBackend.fname,
-//                                                       isAdmin:userAfterBackend.isAdmin,
-//                                                         imgUrl:userAfterBackend.imgUrl,
-//                                                         cart:[],
-//                                                         courses:[]})
    return userAfterBackend
 }
 function getEmptyUser() {
@@ -103,6 +74,17 @@ function getEmptyUser() {
         imgUrl:'',
         isAdmin:false,
         courses:[],
+        cart: [],
+    }
+}
+function getUserGuest () {
+    return {
+        fname: "אורח",
+        password: "a",
+        email: "a",
+        imgUrl: 'a',
+        isAdmin: false,
+        courses: [],
         cart: [],
     }
 }
@@ -180,35 +162,14 @@ async function clearUserCart(userId){
 
   
 }
-function _createUsers(){
-const users =[
-    {
-        _id:utilService.makeId(3),
-        fullname:'ella',
-        username:'',
-        password:'123',
-        email:'ella@gmail.com',
-        imgUrl:'',
-        courses:[{
-        courseId:"",
-        courseImgUrl:"",
-        courseTitle:'',
-        }] ,
-        cart:[]   
-    },
-    {
-        _id:utilService.makeId(3),
-        fullname:'nadav',
-        username:'',
-        password:'111',
-        email:'nadav@gmail.com',
-        imgUrl:'',
-        courses:[{
-        courseId:"",
-        courseImgUrl:"",
-        courseTitle:'',
-        }]    
-    },
-]
-return users
+async function clearGuestCart(){
+    try{
+          await httpService.delete('user')
+    }catch(err) {
+        console.log('could clearUserCart ', err );
+    }
+    // const updatedUser= await httpService.put(`user`,user)
+
+  
 }
+

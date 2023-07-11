@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { updateUser } from '../store/actions/user.actions'
@@ -7,23 +7,28 @@ import { clearCart } from '../store/actions/cart.actions'
 import { updateStudentsCourse } from '../store/actions/course.actions'
 
 export  function PaymentPage() {
-  const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
-
+  // const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
+  const [user,setUser]=useState(false)
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
-  const loggedinUser = useSelector((storeState) => storeState.cartModule.shoppingCart)
+  // const loggedinUser = useSelector((storeState) => storeState.cartModule.shoppingCart)
   const param = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
-  
+ useEffect(() => {
+  loadUser()
+ }, [])
+ 
+  const loadUser = async () => {
+    const user = await userService.getUserById(param.id)
+    setUser(user)
+  }
     const handelPayment= async () =>{
-      const user = await userService.getUserById(param.id)
       shoppingCart.forEach(product => {
         const miniCourse = {
-          _id:product.course._id,
-          courseCoverImg:product.course.courseCoverImg,
-          title:product.course.title,
-          subTitle: product.course.subTitle
+          _id:product._id,
+          courseCoverImg:product.courseCoverImg,
+          title:product.title,
+          subTitle: product.subTitle
         }
         user.courses.push(miniCourse)        
       });

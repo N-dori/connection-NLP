@@ -18,14 +18,13 @@ import { PlaySvg } from '../svgs/PlaySvg';
 import MobileDetailsFooter from '../cmps/MobileDetailsFooter';
 import { InfinitySpin   } from  'react-loader-spinner'
 
-export function CouresDetails() {
-  const [setRef, visible] = useOnScreen({ threshold: 0.2 })
-
-  const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
+export function CouresDetails({courses}) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const param = useParams()
-  console.log('param', param);
+  const [setRef, visible] = useOnScreen({ threshold: 0.2 })
+
+  const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const [course, setCourse] = useState()
   const [isPlayerVisible, setIsPlayerVisible] = useState(false)
   const [videoUrl, setVideoUrl] = useState(false)
@@ -83,8 +82,8 @@ export function CouresDetails() {
      setTotalAdditioalFiles(sum)
   }
 
-  const loadCourse = async (CourseId) => {
-    const course = await courseService.getCourseById(CourseId)
+  const loadCourse = async (courseId) => {
+    const course = courses.find(course=> course._id === courseId )
     setCourse(course)
     if(course){
       getFormatedPrice(course.price)

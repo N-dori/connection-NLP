@@ -6,6 +6,8 @@ export function loadCourses(){
 
         return async(dispatch,getState)=>{
             const courses= await courseService.getCourses(getState().couresModule.filterBy)
+            console.log('courses',courses);
+            
             const action = {
                 type: SET_COURSES,
                 courses

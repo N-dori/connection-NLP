@@ -3,7 +3,7 @@ import { PriceSvg } from '../svgs/PriceSvg'
 import { InfinitySpin   } from  'react-loader-spinner'
 
 
-export  function ProductPreview({onRemove,product}) {
+export  function ProductPreview({onRemove,product,loggdingUser}) {
 
  
   const getLecturesSum = () =>{
@@ -20,7 +20,7 @@ export  function ProductPreview({onRemove,product}) {
     product?
     <>
     <div  className='img-container grid-item1'>
-  <img src={product.courseCoverImg} alt="image-coures" className="coures-img" />
+  <img src={product.courseCoverImg} alt="cover-coures" className="coures-img" />
    
     </div>
     <div className='product-general-info grid-item2 flex-clo '>
@@ -30,13 +30,13 @@ export  function ProductPreview({onRemove,product}) {
     </div>
    
     <div className=' product-in-numbers flex'>
-    <span className='total-videos'>סך הכל שעות {getLecturesSum()} </span>
-    <span className='total-videos'>הרצאות  {product.totalHours} </span>
+    <span className='total-videos'> הרצאות {getLecturesSum()} </span>
+    <span className='total-videos'> סך הכל שעות{product.totalHours?.hours} </span>
     <span className='total-videos'> דרגה {product.level}</span>
     </div>
     </div>
     <div className=' remove-btn-container flex-col'>
-    <span className='remove-btn' onClick={()=>{onRemove(product._id)}}>Remove</span>
+    <span className='remove-btn' onClick={()=>{onRemove(product._id,loggdingUser._id)}}>Remove</span>
     </div>
     <div className='grid-item5 product-price-container flex'>
     <span className='product-price'>{product.price}</span>

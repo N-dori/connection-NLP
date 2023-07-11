@@ -1,15 +1,30 @@
 import { cartService } from "../../services/cart.service"
+import { courseService } from "../../services/course.service";
 import { userService } from "../../services/userService";
-import { ADD_TO_CART,SET_CART, REMOVE_FORM_CART } from "../reducers/cartReducer"
+import { SET_CART, REMOVE_FORM_CART } from "../reducers/cartReducer"
 
 export  function loadCart(){
     try{
         
         return async(dispatch,getState)=>{
-            const cart= await cartService.loadShoppingCart()
+            const userId = getState()?.userModule.loggdingUser?._id
+            const courses = getState()?.couresModule.courses
+            let cart 
+            if(userId && courses){
+                console.log('loadCart : inside userId && courses ',userId);
+                
+                const userCart= await cartService.loadShoppingCart(courses,userId)
+                cart=userCart
+            }else
+            {
+                const courses =await courseService.getCourses(getState().couresModule.filterBy)
+                const user = await userService.getLoggedinUser()
+                const userCart= await cartService.loadShoppingCart(courses,user._id)
+                cart=userCart
+            }
             //cart is an array with courses 
             //TODO: save to cart mini course
-            console.log('cart in service',cart);
+            // console.log('cart in service',cart);
             const action = {
                 type: SET_CART,
                 cart
@@ -21,11 +36,12 @@ export  function loadCart(){
         console.log('can not load cart',err);
     }
 }
-export  function removeProduct(productId){
+export  function removeProduct(productId,userId){
     try{
         
         return async(dispatch,getState)=>{
-            const cart= await cartService.removeFromUserCart(productId)
+            console.log('removeProduct ',userId);
+            const cart= await cartService.removeFromUserCart(productId,userId)
             console.log('cart after removeing', cart);
             
             const action = {
@@ -59,7 +75,13 @@ export function addToUserCart(courseId){
     try{
     
         return async(dispatch,getState)=>{
-            await cartService.addToUserCart(courseId)
+            const userId = getState()?.userModule.loggdingUser?._id
+            if(userId){
+                await cartService.addToUserCart(courseId,userId)
+            }else{
+                const user = await userService.getLoggedinUser()
+                await cartService.addToUserCart(courseId,user._id)
+            }
         //     const action = {
         //         type: ADD_TO_CART,
         //         courseId

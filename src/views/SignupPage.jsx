@@ -1,7 +1,7 @@
 import React, {  useState } from 'react'
 
 import { userService } from '../services/userService'
-import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import { googleLogout } from '@react-oauth/google';
 import {  useDispatch, useSelector } from 'react-redux'
 import {  signup } from '../store/actions/user.actions';
 import axios from 'axios';
@@ -11,18 +11,13 @@ import { XSvg } from '../svgs/XSvg';
 
 export function SignupPage({from,closeModal,isUserlogged,setIsUserlogged,shoppingCart}) {
 
-    const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
-    const loaction = useLocation()
     const [user, setUser] = useState(userService.getEmptyUser())
 
     const [googleUser, setGoogleUser] = useState()
         const dispatch=useDispatch()
     const navigate = useNavigate()
  
-    const logOut = () => {
-        googleLogout();
-
-    }
+ 
 
 
    const onSignup =  (ev) => {
@@ -41,7 +36,6 @@ export function SignupPage({from,closeModal,isUserlogged,setIsUserlogged,shoppin
         let value = target.value
 
         switch (target.type) {
-            case 'number':
             case 'range':
                 value = +value
                 break;

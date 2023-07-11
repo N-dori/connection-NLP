@@ -1530,7 +1530,7 @@ async function updateCourseStudents(loggdingUser, shoppingCart) {
 
         console.log('courupdateCoursese',shoppingCart);
         shoppingCart.map( async (product) => {
-              const course = await getCourseById(product.course._id)
+              const course = await getCourseById(product._id)
               const student= {
                 id: loggdingUser._id,
                 fname: loggdingUser.fname,
