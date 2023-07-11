@@ -4,7 +4,7 @@ import { TvSvg } from '../svgs/TvSvg'
 import { VideoSvg } from '../svgs/VideoSvg'
 import { SubLeasson } from './SubLeasson'
 
-export function Leasson({isSearchPanel, lastEpisode, setLastSubEpisode, setLastEpisode, episodeId, subEpisodes, title, setVideoUrl,i }) {
+export function Leasson({lastSubEpisode,isSearchPanel, lastEpisode, setLastSubEpisode, setLastEpisode, episodeId, subEpisodes, title, setVideoUrl,i }) {
 
     const [isShown, setIsShown] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
@@ -16,22 +16,30 @@ export function Leasson({isSearchPanel, lastEpisode, setLastSubEpisode, setLastE
   
     }, [])
     const LastEpisode = () => {
-        if(!setLastEpisode){return
-        }else {
+        if(!setLastEpisode){
+            return
+        }else 
+        {
             setLastEpisode(episodeId)
+            console.log('lastEpisode in leasson cmp*************',lastEpisode);
+            console.log('episodeId in leasson cmp**************' ,episodeId);
+            console.log('lastSubEpisode in leasson cmp**************' ,lastSubEpisode);
             if (lastEpisode === episodeId) {
                 expand()
             }
 
         }
    }
-    const onVideoClick = (idx, videoUrl, subEpisodeId) => {
+    const onVideoClick = (idx, videoUrl) => {
         console.log('i', idx);
         setIsClicked(idx)
         setVideoUrl(videoUrl)
         setLastEpisode(episodeId)
-        setLastSubEpisode(subEpisodeId)
+        setLastSubEpisode(idx)
         window.scrollTo(0,0)
+        console.log('setIsClicked',idx);
+        console.log('setIsClicked',idx);
+        console.log('setIsClicked',lastSubEpisode);
     }
 
     const expand = () => {
@@ -66,6 +74,7 @@ export function Leasson({isSearchPanel, lastEpisode, setLastSubEpisode, setLastE
                         setLastSubEpisode={setLastSubEpisode}
                         setIsClicked={setIsClicked}
                         files={files}
+                        lastSubEpisode={lastSubEpisode}
                     />
                 })
                 }

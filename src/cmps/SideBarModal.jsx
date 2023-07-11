@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { imgService } from '../services/imgService'
 import { PlaySvg } from '../svgs/PlaySvg'
 
-export function SideBarModal({formatedPrice,priceBeforeDiscount,userMsg,addToCart,setIsPlayerVisible}) {
+export function SideBarModal({courseCoverImg,formatedPrice,priceBeforeDiscount,userMsg,addToCart,setIsPlayerVisible}) {
   useEffect(()=>{
   },[userMsg])
   
@@ -22,7 +22,7 @@ export function SideBarModal({formatedPrice,priceBeforeDiscount,userMsg,addToCar
 
       <section className="modal-warpper">
       <div  className='preview-img-wrapper flex-jc-ac 'onClick={onOpenPlayer}>
-   <img className='preview-course-img' src="https://res.cloudinary.com/dii16awkb/image/upload/v1687866273/imgCoverAdvanceCourse_s6sxkv.png" alt="" />
+   <img className='preview-course-img' src={courseCoverImg} alt="" />
    <PlaySvg />
 
   </div>

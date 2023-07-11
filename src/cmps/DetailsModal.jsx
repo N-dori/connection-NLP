@@ -3,7 +3,7 @@ import { imgService } from '../services/imgService'
 import { PlaySvg } from '../svgs/PlaySvg'
 import { useDispatch } from 'react-redux'
 
-export function DetailsModal({formatedPrice,priceBeforeDiscount,userMsg,price, addToCart,setIsPlayerVisible}) {
+export function DetailsModal({courseCoverImg,formatedPrice,priceBeforeDiscount,userMsg,price, addToCart,setIsPlayerVisible}) {
 
   // const dispatch = useDispatch()
 useEffect(()=>{
@@ -25,7 +25,7 @@ const handelActionBtn = () => {
 
       <section className="modal-warpper">
         <div  className='preview-img-wrapper flex-jc-ac ' onClick={onOpenPlayer}>
-   <img className='preview-course-img' src="https://res.cloudinary.com/dii16awkb/image/upload/v1687866273/imgCoverAdvanceCourse_s6sxkv.png" alt="" />
+   <img className='preview-course-img' src={courseCoverImg} alt="course-cover" />
    <PlaySvg />
 
   </div>

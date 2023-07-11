@@ -146,7 +146,7 @@
         .course-title-container {
             grid-column: 2;
             grid-row: 1;
-
+            max-width: 44em;
             @include for-normal-layout {
                 grid-row: 2;
             }

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Panel } from './Panel'
 import { IntroPanel } from './IntroPanel'
 
-export  function CourseContent({episodes, intros,changeVideoUrl,setIsPlayerVisible}) {
+export  function CourseContent({totalWatchTime, episodes, intros,changeVideoUrl,setIsPlayerVisible}) {
     const [isAllExpaned,setIsAllExpand]= useState(false)
 
     const getLecturesSum = () =>{
@@ -11,8 +11,6 @@ export  function CourseContent({episodes, intros,changeVideoUrl,setIsPlayerVisib
     sum+= episode.subEpisodes.length
      });
      return sum
-
-      
     }
 
     const expandAll = () => {
@@ -27,7 +25,7 @@ export  function CourseContent({episodes, intros,changeVideoUrl,setIsPlayerVisib
         <h1 className='headline'>תוכן הקורס</h1>
         <section className='course-curriculum flex-sb'>
           {/* if possible add total time */}
-            <div className='info flex-ac'>שיעורים {episodes.length} •  הרצאות {getLecturesSum()} •</div>
+            <div className='info flex-ac'>שיעורים {episodes.length} •  הרצאות {getLecturesSum()} • שעות צפייה {totalWatchTime.hours}</div>
             <button onClick={expandAll} className='expend-all-btn flex-ac'>{isAllExpaned?'לסגירה':
             'פתח הכל'}</button>
         </section>

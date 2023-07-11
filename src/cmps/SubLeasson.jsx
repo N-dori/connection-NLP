@@ -5,8 +5,12 @@ import { ExpandSvg } from '../svgs/ExpandSvg'
 import FolderSvg from '../svgs/FolderSvg'
 import { Resources } from './Resources'
 
-export  function SubLeasson({files,setIsClicked,setLastSubEpisode,id,title,videoUrl,i,isClicked ,min,onVideoClick }) {
+export  function SubLeasson({lastSubEpisode,files,setIsClicked,setLastSubEpisode,id,title,videoUrl,i,isClicked ,min,onVideoClick }) {
   const [isShown,setIsShown] = useState() 
+ useEffect(() => {
+   setIsClicked(lastSubEpisode)
+   
+ }, [lastSubEpisode])
  
   const expand = () => {
     setIsShown(!isShown)
@@ -16,11 +20,13 @@ export  function SubLeasson({files,setIsClicked,setLastSubEpisode,id,title,video
  
   }, [])
   const settingLastSubEpisode = () => {
+    if(lastSubEpisode){
+      console.log('lastSubEpisode************ in subleasson',lastSubEpisode);
+    }
     if(!setLastSubEpisode){return 
     }else {
     setLastSubEpisode(id)
     setIsClicked(id)
-
   }
 }
   return (

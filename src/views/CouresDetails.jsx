@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { courseService } from '../services/course.service';
 import { useDispatch, useSelector } from 'react-redux';
 import { DetailsModal } from '../cmps/DetailsModal';
 import { WhatYouWillLearn } from '../cmps/WhatYouWillLearn';
@@ -24,7 +23,6 @@ export function CouresDetails({courses}) {
   const param = useParams()
   const [setRef, visible] = useOnScreen({ threshold: 0.2 })
 
-  const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const [course, setCourse] = useState()
   const [isPlayerVisible, setIsPlayerVisible] = useState(false)
   const [videoUrl, setVideoUrl] = useState(false)
@@ -110,11 +108,8 @@ export function CouresDetails({courses}) {
        setPriceBeforeDiscount(formatPrice.format(priceBeforeDiscount)) 
        setFormatedPrice(formatPrice.format(price))
 
-     
   }
-  
-  
-  
+
 
   return (
     course ?
@@ -129,7 +124,7 @@ export function CouresDetails({courses}) {
 
             <div className='mobile-preview-course-container ' onClick={onOpenPlayer}>
               <div className='mobile-preview-course-img-wrapper flex-jc-ac '>
-                <img className='mobile-preview-course-img' src={course.courseCoverImg} alt="" />
+                <img className='mobile-preview-course-img' src={course.courseCoverImg} alt="course-cover" />
                 <PlaySvg />
               </div>
             <p className='click-for-preview'>לצפייה בתצוגה מקדימה</p>
@@ -142,9 +137,9 @@ export function CouresDetails({courses}) {
               </h1>
                 <button className='mobile-add-to-cart-btn flex-ac' onClick={addToCart}>הוסף לעגלה</button>
             </section>
-            {visible ? <DetailsModal priceBeforeDiscount={priceBeforeDiscount} formatedPrice={formatedPrice} userMsg={userMsg} price={course.price} addToCart={addToCart} setIsPlayerVisible={setIsPlayerVisible} /> : ""}
+            {visible ? <DetailsModal  courseCoverImg={course.courseCoverImg} priceBeforeDiscount={priceBeforeDiscount} formatedPrice={formatedPrice} userMsg={userMsg} price={course.price} addToCart={addToCart} setIsPlayerVisible={setIsPlayerVisible} /> : ""}
           </section>
-          {visible ? '' : <SideBarModal userMsg={userMsg} priceBeforeDiscount={priceBeforeDiscount} formatedPrice={formatedPrice} addToCart={addToCart} setIsPlayerVisible={setIsPlayerVisible} />}
+          {visible ? '' : <SideBarModal courseCoverImg={course.courseCoverImg}  userMsg={userMsg} priceBeforeDiscount={priceBeforeDiscount} formatedPrice={formatedPrice} addToCart={addToCart} setIsPlayerVisible={setIsPlayerVisible} />}
           <WhatYouWillLearn />
 
           <ThisCourseIncludes 
@@ -152,6 +147,8 @@ export function CouresDetails({courses}) {
           totalWatchTime={totalWatchTime} />
 
           <CourseContent
+            course={course}
+          totalWatchTime={totalWatchTime}
             episodes={course.episodes}
             intros={course.intros}
             changeVideoUrl={changeVideoUrl}

@@ -29,17 +29,18 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
     loadLastVideo()
     setCurrCourseId(param.id)
     getLecturesSum()
-
-    return () => {
-      // when copmponent unmount we save last video and last watch time and updating the user.
-      // console.log('lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef',lastWatchTimeRef);
-      updateCourseCurrTimeWacth()
-    };
+  setTimeout(() => {
+  }, 1000);
+  return () => {
+    // when copmponent unmount we save last video and last watch time and updating the user.
+    // console.log('lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef',lastWatchTimeRef);
+    updateCourseCurrTimeWacth()
+  };
   }, [lastEpisode, lastSubEpisode, lastWatchTimeRef, loggdingUserRef])
-
+  
   const updateCourseCurrTimeWacth = () => {
     dispatch(updateCurrTimeWacth(loggdingUserRef.current._id, currCourseId, lastEpisode, lastSubEpisode, lastWatchTimeRef.current, videoUrl))
-
+    
   }
   const loadLastVideo = async () => {
     const loggdingUser = await userService.getLoggedinUser()
@@ -52,10 +53,11 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
         const { lastVideoWatched } = course
         // after getting the user and course setting lastwatch time and last url
         if (isPlayingFirstTime === 0) {
-          console.log('setting last time watch and url********************');
+          console.log('setting last time watch and url********************',lastVideoWatched);
           setLastWatchTime(lastVideoWatched.lastTimeWatched)
           setVideoUrl(lastVideoWatched.videoUrl)
-
+          setLastEpisode(lastVideoWatched.episode)
+          setLastSubEpisode(lastVideoWatched.subEpisode)
         }
       }
 
@@ -95,7 +97,7 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
     const elaps = progress.played * (duration)
     setLastWatchTime((progress.played * duration).toFixed(0))
     lastWatchTimeRef.current = +(progress.played * duration).toFixed(0)
-    console.log('elaps', elaps)
+    // console.log('elaps', elaps)
   }
   const handleDuration = (duration) => {
     setDuration(duration)
@@ -144,7 +146,7 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
               setLastSubEpisode={setLastSubEpisode}
               setLastEpisode={setLastEpisode}
               lastSubEpisode={lastSubEpisode}
-              lastEpisode={course.lastVideoWatched ? course.lastVideoWatched.episode : ''}
+              lastEpisode={ lastEpisode }
             />
             
 

@@ -2,15 +2,11 @@ import React, { useState } from 'react'
 import { XSvg } from '../svgs/XSvg'
 import { Leasson } from './Leasson'
 
-export  function MyLearningContent({lastEpisode,setLastEpisode,currEpisode,setLastSubEpisode,getLecturesSum,episodes,setVideoUrl,tuggleContent}) {
+export  function MyLearningContent({lastEpisode,lastSubEpisode,setLastEpisode,currEpisode,setLastSubEpisode,getLecturesSum,episodes,setVideoUrl,tuggleContent}) {
   const [count, setCount] = useState(1)
   
- 
-
-
 
   return (
-  
 <>
 <section className='my-learning-header-wapper flex-sb'>
     <h1 className='headline'>תוכן הקורס</h1>
@@ -22,7 +18,7 @@ export  function MyLearningContent({lastEpisode,setLastEpisode,currEpisode,setLa
   
     {
       episodes.map((episode,i) =>{
-        const{id,title,subEpisodes,totalHours} = episode
+        const{id,title,subEpisodes} = episode
         return <Leasson key={id}
          i={i} 
         episodeId={id}
@@ -37,7 +33,7 @@ export  function MyLearningContent({lastEpisode,setLastEpisode,currEpisode,setLa
         setLastEpisode={setLastEpisode}
         currEpisode={currEpisode}
         lastEpisode={lastEpisode}
-    
+        lastSubEpisode={lastSubEpisode}
         />
       })}
 </>

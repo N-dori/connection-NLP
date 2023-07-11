@@ -39,7 +39,6 @@ async function addToUserCart(couresId, userId) {
     try{
 
     const user = await userService.getUserById(userId)
-    // console.log('user by id after backend in cart service',user);
 
     // chacking that user dont have the same course more than one time
     const found =  user.cart.find(currCourseId=>currCourseId === couresId)
