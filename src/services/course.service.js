@@ -1534,7 +1534,8 @@ async function updateCourseStudents(loggdingUser, shoppingCart) {
               const student= {
                 id: loggdingUser._id,
                 fname: loggdingUser.fname,
-                ImgUrl: loggdingUser.imgUrl
+                ImgUrl: loggdingUser.imgUrl,
+                purchased: Date.now(),
               }
              const found = course.students.find(currStudent => currStudent.id ===student.id )
              if(found){
