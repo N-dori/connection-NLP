@@ -19,6 +19,7 @@
     }
 
     .mobile-details-footer-wrapper {
+        direction: rtl;
         padding: 1em;
         @include for-mobile-layout{
             padding: .5em;

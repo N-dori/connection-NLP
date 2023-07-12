@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { AlarmSvg } from '../svgs/AlarmSvg'
 import { ScheduleTimeForLearning } from './ScheduleTimeForLearning'
 
-export  function CourseOverview({courses,currCourseId}) {
+export  function CourseOverview({scrollToMyLearningOutlet,courses,currCourseId}) {
 
   const [course , setCourse] = useState(null)
 

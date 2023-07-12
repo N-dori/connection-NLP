@@ -5,9 +5,11 @@ import { updateUser } from '../store/actions/user.actions'
 import { userService } from '../services/userService'
 import { clearCart } from '../store/actions/cart.actions'
 import { updateStudentsCourse } from '../store/actions/course.actions'
+import { COURSE_WAS_PURCHASED, socketService } from '../services/socket.service'
+import { eventBus } from '../services/event-bus.service'
 
 export  function PaymentPage() {
-  // const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
+
   const [user,setUser]=useState(false)
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
   // const loggedinUser = useSelector((storeState) => storeState.cartModule.shoppingCart)
@@ -16,12 +18,25 @@ export  function PaymentPage() {
   const navigate = useNavigate()
  useEffect(() => {
   loadUser()
+
+  socketService.on(COURSE_WAS_PURCHASED, (data) => {
+    console.log('socket data : ---',data)
+    if(data){
+      setTimeout(() => {
+        
+        eventBus.emit('show-msg', { txt: '"מודים לך על רכישת הקורס , תוכל/י למצוא את הקורס תחת הלשונית "הקורסים שלי ', type: 'success', delay:6666 })
+      }, 3500);
+    
+    }
+      
+    })
  }, [])
  
   const loadUser = async () => {
     const user = await userService.getUserById(param.id)
     setUser(user)
   }
+
     const handelPayment= async () =>{
       shoppingCart.forEach(product => {
         const miniCourse = {
@@ -30,15 +45,16 @@ export  function PaymentPage() {
           title:product.title,
           subTitle: product.subTitle
         }
-        user.courses.push(miniCourse)        
+        user.courses.push(miniCourse) 
+        user.action = 'purchase'       
       });
       // console.log('user after payment in payment',user);
       dispatch(updateUser(user))
+      dispatch(clearCart(user._id))
       setTimeout(() => {
-        dispatch(clearCart(user._id))
         navigate('/our-courses')
         
-      }, 1000);
+      }, 6000);
       dispatch(updateStudentsCourse(user,shoppingCart))
     }
 

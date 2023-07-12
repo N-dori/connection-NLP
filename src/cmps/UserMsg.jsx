@@ -14,7 +14,7 @@ useEffect(() => {
       setAlive(true)
       setTimeout(() => {
           setAlive(false)
-      }, delay)
+      }, 5000)
     })
 }, [])
 

@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function MobileDetailsFooter({addToCart , priceBeforeDiscount,formatedPrice,title,subTitle,}) {
     const handelActionBtn = () => {
+      window.scrollTo(0,0)
         addToCart()
       }
     return (

@@ -11,7 +11,7 @@ const  WhatToolsYouGet = React.forwardRef ((props,ref) =>  {
     <section className="list-warpper grid">
       <ul className='group1 flex-col clean'>
         <li  className='flex-ac'><DoneSvg />  קבלו הבנה עמוקה יותר של המערת המדהימה הזאת שנקראת תת המודע . דבר שיש לכל אחד מאיתנו אך מעטים יודעים כיצד לפנות ולהשתמש בכלי הנפלא הזה! </li>
-        <li className='flex-ac'><DoneSvg />תלמדו מה הוא <span className='tc-b'>NLP</span> על כל הגדרותיו באמת.</li>
+        <li className='flex-ac'><DoneSvg /><span>תלמדו מה הוא <span className='tc-b'>NLP</span> על כל הגדרותיו באמת.</span></li>
       <li className='flex-ac'><DoneSvg />תלמדו את מודל התקשורת, מודל שמתאר את החוויה האישית שאדם חווה, ברמה עמוקה ויסודית מאוד!</li>
       <li className='flex-ac'><DoneSvg />תדע כיצד להגביר את החושים לתפיסת מציאות רחבה הרבה יותר!</li>
       <li className='flex-ac'><DoneSvg />נראה כיצד ליצור כימיה  (ראפור) עוצמתית עם אנשים גם בשיטות המקובלות וגם בשיטה נוספת שאף אחד לא ילמד אותך! </li>
@@ -28,7 +28,7 @@ const  WhatToolsYouGet = React.forwardRef ((props,ref) =>  {
       <li className='flex-ac'><DoneSvg />תדע טכניקות מדהימות להכניס לטראנס כל אדם .</li>
       <li className='flex-ac'><DoneSvg />תדע כיצד להשתמש בשפה סוגסטיבית ליצירת שינוי בתת המודע.</li>
       <li className='flex-ac'><DoneSvg />תקבל מגוון כלים עוצמתיים לעבודה עם ציר זמן ריגרסיה ,מסגור מחדש ועוד!</li>
-      <li className='flex-ac'><DoneSvg /> תלמד מגווןטכניקות לתהליכי ניקוי ריגשי ותהליכי סליחה עוצמתיים מאוד!</li>
+      <li className='flex-ac'><DoneSvg /> תלמד מגוון טכניקות לתהליכי ניקוי ריגשי ותהליכי סליחה עוצמתיים מאוד!</li>
       <li className='flex-ac'><DoneSvg />תוכל לעבוד מצויין עם מטאפורות ודימיון מודרך בדרכים יצירתיות ומגוונות.</li>
       <li className='flex-ac'><DoneSvg />ועוד מגוון כלים וידע על עבודת שינוי עם תת המודע (change work) </li>
       </ul>

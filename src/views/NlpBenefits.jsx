@@ -9,14 +9,14 @@ const  NlpBenefits = React.forwardRef((props,ref) => {
     <h3 className='sub-headline'>הנה כמה מהיתרונות </h3>
     <section className="list-warpper grid">
       <ul className='group1 flex-col clean'>
-        <li  className='flex-ac'><DoneSvg /> הבנה עמוקה יותר של המערת המדהימה הזאת שנקראת תת המודע . דבר שיש לכל אחד מאיתנו אך מעטים יודעים כיצד לפנות ולהשתמש בכלי הנפלא הזה! </li>
+        <li  className='flex-ac'><DoneSvg /> הבנה עמוקה יותר של המערכת המדהימה הזאת שנקראת תת המודע . דבר שיש לכל אחד מאיתנו אך מעטים יודעים כיצד לפנות ולהשתמש בכלי הנפלא הזה! </li>
         <li className='flex-ac'><DoneSvg />שיפור משמעותי בתקשורת הבין אישית והבנת האחר</li>
         <li className='flex-ac'><DoneSvg />מודעות רחבה הרבה יותר למציאות שבה אנחנו חיים</li>
         <li className='flex-ac'><DoneSvg />מאפשר לך לחולל שינויים אמיתיים ומשמעותיים בחייך ובחיי הסובבים אותך בצורה קלה ופשוטה שמביאה לתוצאות מדהימות</li>
       </ul>
 
       <ul className='group2 flex-col clean'>
-        <li className='flex-ac'><DoneSvg />יכולת ביטוי ושיכנוע ע"י תבניות שפה שיאפשרו לך כל מוצר ,כל מוצר, כל רעיון או כל דבר שתבחר. </li>
+        <li className='flex-ac'><DoneSvg />יכולת ביטוי ושיכנוע ע"י תבניות שפה שיאפשרו לך למכור ,כל מוצר, כל רעיון או כל דבר שתבחר. </li>
         <li className='flex-ac'><DoneSvg />ישדרג ויעצים את כל תחומי החיים שלך החל מבטחון עצמי, יכולת ביטוי, יצירת קשרים ,יכולת תפיסה,ושינויי העצמה ועד למצב שבו כל יעד שתבחר בדרך להצלחה שלך יהפוך לחוויה מעשירה ומעצימה</li>
         <li className='flex-ac'><DoneSvg />ועוד הרבה יותר מזה</li>
       </ul>

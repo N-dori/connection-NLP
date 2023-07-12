@@ -35,5 +35,9 @@
     direction: rtl;
     gap:10px;
     color: #222;
+    @include for-mobile-layout{
+      font-size: 1em;
+      padding-inline-start: 1em;
+    }
    }
 }
