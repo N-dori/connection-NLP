@@ -1544,8 +1544,7 @@ async function updateCourseStudents(loggdingUser, shoppingCart) {
               course.students.push(student)
               const updatedCourse = await updateCourse(course)
               console.log('updatedCourses in payment component',updatedCourse);
-     
-
+    
         })
         //     course.students.push(loggdingUser)
         //    const updatedCourse =  await updateCourse(course)
