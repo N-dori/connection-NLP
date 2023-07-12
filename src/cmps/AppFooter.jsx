@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebookF } from '@fortawesome/free-brands-svg-icons'
+import { faSquareFacebook } from '@fortawesome/free-brands-svg-icons'
 import { Link, useLocation } from 'react-router-dom'
 import { FlashSvg } from '../svgs/FlashSvg'
 export function AppFooter() {
@@ -29,24 +29,20 @@ export function AppFooter() {
       </section>
       <section className='social-networks-links flex-jc-ac'>
         <ul>
-          <li className='facebook-wrapper flex-ac  flex-rev'>
-            <Link className="facebook flex" to="/our-courses">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <FontAwesomeIcon style={{ width: '35px', height: '20px' }} className=''
-                icon={faFacebookF} />
-            </Link>
+          <li className='facebook-wrapper clean '>
+            <Link className="facebook flex-sb" to="/our-courses">
             <span className='fb-txt'>חפשו אותנו בפייסבוק</span>
+
+          <FontAwesomeIcon size="2xl" color='#448cfb' icon={faSquareFacebook} className='facebook-svg'/>
+            </Link>
           </li>
 
         </ul>
 
 
       </section>
-      <section className='all-right-reserved flex-ac'>
-        <span>powered by - Nadav Dori</span><FlashSvg />
+      <section className='all-right-reserved flex-jc-ac'>
+        <span className='website-creator'>Powered by - Nadav Dori</span><FlashSvg />
       </section>
     </section>:''
   )
