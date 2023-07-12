@@ -33,7 +33,7 @@ const handelNavigation = (ev,type) => {
  }
 
   return (
-    <section className={isMobileMenu?"mobile-menu-container open":"mobile-menu-container "}>
+    <section className={isMobileMenu?"mobile-menu-container open ":"mobile-menu-container "}>
         <main className="mobile-menu-wrapper  ">
         
           <ul className="list-links flex-col clean">

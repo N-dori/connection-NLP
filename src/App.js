@@ -98,7 +98,13 @@ export function App() {
   const toggelMobileMenu = () => {
     setIsMobileMenu(!isMobileMenu)
     setIsActive(!isActive)
-  if(!isMobileMenu) { window.scrollTo(0,0)}
+  if(!isMobileMenu) {
+     window.scrollTo(0,0)
+     document.body.style.overflowY = "hidden"
+    }else{
+      document.body.style.overflowY = "auto"
+
+    }
 }
 const scrollToCourses = () =>{
   toggelMobileMenu()
@@ -135,7 +141,7 @@ const scrollToMemorial = () =>{
   return (
 
     <Router >
-      <section className="main-layout">
+      <section  className="main-layout">
         <UserMsg/>
         {/* Appheader : 
             porps : loggedin user ,
