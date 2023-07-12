@@ -8,6 +8,8 @@ import { reviewService } from '../services/reviews.service'
 import { saveReview } from '../store/actions/review.actions'
 import { ScheduleTimeForLearning } from '../cmps/ScheduleTimeForLearning'
 import { InfinitySpin } from 'react-loader-spinner'
+import { socketService,SOCKET_EVENT_REVIEW_ADDED } from '../services/socket.service'
+import { eventBus } from '../services/event-bus.service'
 
 export function MyCoursesIndex() {
 
@@ -20,10 +22,18 @@ export function MyCoursesIndex() {
   const [rating, setRating] = useState(0)
   const param = useParams()
   const ratingModalRef = useRef()
+
+
   useEffect(() => {
     loadUserCourses()
     console.log(param);
+    socketService.on(SOCKET_EVENT_REVIEW_ADDED, (data) => {
+    console.log('socket data : ---',data)
+    eventBus.emit('show-msg', { txt: 'תודה! הדירוג שלך נקלט בהצלחה', type: 'success', delay:6666 })
+  
+  })
   }, [])
+
   const loadUserCourses = async () => {
     const loggdingUser = await userService.getLoggedinUser()
     const user = await userService.getUserById(loggdingUser._id)
@@ -54,6 +64,7 @@ export function MyCoursesIndex() {
     console.log('review after all ', review);
     setReview(reviewService.getEmptyReview())
     setIsSown(false)
+    window.scrollTo(0,0)
   }
 
   return (
@@ -77,6 +88,7 @@ export function MyCoursesIndex() {
             rating={rating}
             setRating={setRating} /> : ''}
           <div className={isShown ? 'screen-filter' : 'hidden'} ></div>
+       
         </section>
 
       </> : <section className='loder-container flex-jc-ac'>

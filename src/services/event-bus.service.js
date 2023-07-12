@@ -1,6 +1,6 @@
 // // בס"ד
 
-// export const SHOW_MSG = 'show-msg'
+export const SHOW_MSG = 'show-msg'
 
 // function createEventEmitter() {
 //     const listenersMap = {}
@@ -75,7 +75,7 @@ function emit(eventName, data) {
 // export const eventBus = createEventEmitter()
 // esxport const eventBusService = { on, emit }
 export function showUserMsg(msg) {
-    eventBus.emit('show-msg', msg)
+    eventBus.emit(SHOW_MSG, msg)
 }
 
 export function showSuccessMsg(txt) {

@@ -32,6 +32,7 @@ import  Memorial  from './cmps/Memorial';
 import CoursesIndex  from './cmps/CoursesIndex';
 import MobileMenu from './cmps/MobileMenu';
 import { loadGuestUser } from './store/actions/user.actions';
+import { UserMsg } from './cmps/UserMsg';
 
 export function App() {
   // load data from store : loggedin user ,courses ,reviews
@@ -135,6 +136,7 @@ const scrollToMemorial = () =>{
 
     <Router >
       <section className="main-layout">
+        <UserMsg/>
         {/* Appheader : 
             porps : loggedin user ,
             content: 

@@ -1,5 +1,5 @@
 import { useGoogleLogin } from '@react-oauth/google';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { signup } from '../store/actions/user.actions';
 
 export  function GoogleLoginBtn({googleUser,setGoogleUser,axios,dispatch,navigate,type,isUserlogged, setIsUserlogged, from,shoppingCart}) {
