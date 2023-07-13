@@ -4,7 +4,7 @@ import { TvSvg } from '../svgs/TvSvg'
 import { VideoSvg } from '../svgs/VideoSvg'
 import { SubLeasson } from './SubLeasson'
 
-export function Leasson({lastSubEpisode,isSearchPanel, lastEpisode, setLastSubEpisode, setLastEpisode, episodeId, subEpisodes, title, setVideoUrl,i }) {
+export function Leasson({fullyWatchedEpisode,lastSubEpisode,isSearchPanel, lastEpisode, setLastSubEpisode, setLastEpisode, episodeId, subEpisodes, title, setVideoUrl,i }) {
 
     const [isShown, setIsShown] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
@@ -21,9 +21,9 @@ export function Leasson({lastSubEpisode,isSearchPanel, lastEpisode, setLastSubEp
         }else 
         {
             setLastEpisode(episodeId)
-            console.log('lastEpisode in leasson cmp*************',lastEpisode);
-            console.log('episodeId in leasson cmp**************' ,episodeId);
-            console.log('lastSubEpisode in leasson cmp**************' ,lastSubEpisode);
+            // console.log('lastEpisode in leasson cmp*************',lastEpisode);
+            // console.log('episodeId in leasson cmp**************' ,episodeId);
+            // console.log('lastSubEpisode in leasson cmp**************' ,lastSubEpisode);
             if (lastEpisode === episodeId) {
                 expand()
             }
@@ -61,7 +61,9 @@ export function Leasson({lastSubEpisode,isSearchPanel, lastEpisode, setLastSubEp
 
             <section className={(isShown) ? 'pannel-content-wrapper flex-col ' : 'hidden'}>
                 {subEpisodes.map((subEpisode, i) => {
+                
                     const { id, title, videoUrl,min,files } = subEpisode
+                                                            
                     return <SubLeasson
                         id={id}
                         key={id}
@@ -75,6 +77,7 @@ export function Leasson({lastSubEpisode,isSearchPanel, lastEpisode, setLastSubEp
                         setIsClicked={setIsClicked}
                         files={files}
                         lastSubEpisode={lastSubEpisode}
+                        fullyWatchedSubEpisode={fullyWatchedEpisode?.subEpisodes}
                     />
                 })
                 }

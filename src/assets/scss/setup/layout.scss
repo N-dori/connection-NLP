@@ -3,7 +3,7 @@
     position: relative;
     overflow: hidden;
     grid-template-columns: minmax(50px, 1fr) minmax(auto, 1730px) minmax(50px, 1fr);
-    background-color: #faf2e6;
+    background-color:var(--clr4);
     @include for-normal-layout {
      grid-template-columns: minmax(10px, 1fr) minmax(auto, 900px) minmax(10px, 1fr)!important ;
     }

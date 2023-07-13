@@ -95,16 +95,18 @@
                     padding: 0 .8em;
                     height: 2.8em;
                     z-index: 999;
+
                     .expand-svg {
                         transition: transform 0.3s ease-out;
                         cursor: pointer;
                     }
-                    .rotated{
+
+                    .rotated {
                         transform: rotate(180deg);
                         transition: transform 0.3s ease-out;
                         cursor: pointer;
                     }
-                     
+
                 }
 
                 .files-container {
@@ -113,16 +115,17 @@
                     left: 0em;
                     width: 220%;
                     border: 1px solid #d1d7dc;
-                    box-shadow: 0 2px 4px rgba(0,0,0,.08),0 4px 12px rgba(0,0,0,.08);
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .08);
                     max-height: 28rem;
                     overflow: auto;
-                    
-                    
+
+
                     .file-wrapper {
                         padding: 1em 1em;
                         background-color: #fff;
                         flex-direction: row-reverse;
-                        .file-name{
+
+                        .file-name {
                             cursor: pointer;
                             text-decoration: underline;
                             font-size: 1.1em;
@@ -136,6 +139,36 @@
                 font-size: 0.9em;
                 margin-inline-start: 3px;
                 cursor: pointer;
+
+                .check-input {
+                    -webkit-appearance: none;
+                    margin: 0;
+                    margin-inline-end: 0.5em;
+                    border: 1px solid var(--clr3);
+                    width: 0.5em;
+                    height: 1em;
+                    background-color: #fafafa;
+           
+                    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+                    padding: 9px;
+                    border-radius: 3px;
+                    display: inline-block;
+                    position: relative;
+                }
+                .check-input:checked{
+                    background-color: #fafafa;
+	border: 1px solid #adb8c0;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+	                color: #99a1a7
+                }
+                .check-input:checked:after {
+                    content: '\2714';
+                    font-size: 14px;
+                    position: absolute;
+                    top: 0px;
+                    left: 3px;
+                    color: var(--clr3);
+                }
             }
 
             .video-min {
@@ -143,6 +176,7 @@
                 gap: 0.1em;
                 align-items: flex-start;
                 justify-content: space-between;
+
                 .num {
                     font-size: 0.9em;
                     margin-top: 2px;
