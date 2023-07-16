@@ -1,13 +1,13 @@
 import { utilService } from "./util.service"
 
 export const  slides = [
-    {
-        id:utilService.makeId(8),
-        image:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447667/FB_IMG_1622066578479_bfr7bt.jpg',
-        title:'המפה היא לא השטח, היא יצוג פנימי של השטח.',
-        subTitle:'npl for biggeners',
-        interval:1500
-    },
+    // {
+    //     id:utilService.makeId(8),
+    //     image:'https://res.cloudinary.com/dii16awkb/image/upload/v1689277691/%D7%A9%D7%A8%D7%95%D7%9F_%D7%9C%D7%90%D7%AA%D7%A8_anwmkz.jpg',
+    //     title:'המפה היא לא השטח, היא יצוג פנימי של השטח.',
+    //     subTitle:'npl for biggeners',
+    //     interval:1500
+    // },
     {
         id:utilService.makeId(8),
         image:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447422/IMG_2204_ll3ymv.jpg',
@@ -24,7 +24,7 @@ export const  slides = [
     },
     {
         id:utilService.makeId(8),
-        image:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447687/FB_IMG_1622066589307_rgv95q.jpg',
+        image:'https://res.cloudinary.com/dii16awkb/image/upload/v1689278071/%D7%91%D7%9F_%D7%A9%D7%9C_%D7%A9%D7%A8%D7%95%D7%9F_%D7%9C%D7%90%D7%AA%D7%A8_krkjls.jpg',
         title:'הגורם הגמיש במערכת יהיה בעל השליטה וההשפעה הרבה ביותר.',
         subTitle:'loram ipsom ipgys',
         interval:1500
@@ -45,7 +45,7 @@ export const  slides = [
     },
     {
         id:utilService.makeId(8),
-        image:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447643/FB_IMG_1618815189269_ist1fi.jpg',
+        image:'https://res.cloudinary.com/dii16awkb/image/upload/v1689278379/%D7%A9%D7%A8%D7%95%D7%9F_%D7%95%D7%A9%D7%9C%D7%9E%D7%94_%D7%96%D7%9C_dudyde.jpg',
         title:"משמעות התקשורת נמדדת על פי התגובה החוזרת.",
         subTitle:'loram ipsom ipgys',
         interval:1500

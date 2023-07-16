@@ -122,12 +122,37 @@ export function updateUser(user) {
         console.log('can not signup User', err);
     }
 }
+export function isSubEpisodeFullyWatched(userId,courseId,lastEpisode,lastSubEpisode,duration,playedSecondsRef) {
+    try {
+        return async (dispatch, getState) => {
+
+            console.log('**********userId**********', userId);
+            console.log('**********courseId**********',courseId);
+            console.log('**********lastSubEpisode***********', lastSubEpisode);
+            console.log('*********duration********', duration);
+            console.log('***************lastEpisode***************', lastEpisode);
+            console.log('playedSecondsRef', playedSecondsRef);
+            if((duration-5)<playedSecondsRef){
+                const updatedUser = await userService.isSubEpisodeFullyWatched(userId,courseId,lastEpisode,lastSubEpisode)
+
+            }
+            // const action = {
+            //     type: UPDATE_USER,
+            //     updatedUser
+            // }
+            // dispatch(action)
+        }
+
+    } catch (err) {
+        console.log('can not signup User', err);
+    }
+}
 
 export function updateCurrTimeWacth(userId, courseId, currEpisode, currSubEpisode, currTimeWatch, videoUrl) {
     try {
         return async (dispatch, getState) => {
-            console.log('in action episodeId', currEpisode);
-            console.log('in action subEpisodeId', currSubEpisode);
+            // console.log('in action episodeId', currEpisode);
+            // console.log('in action subEpisodeId', currSubEpisode);
             const updatedUser = await userService.updateCurrTimeWacth(userId, courseId, currEpisode, currSubEpisode, currTimeWatch, videoUrl)
             console.log('updatedUser after backend', updatedUser);
             const action = {

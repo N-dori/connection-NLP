@@ -1,48 +1,61 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { MyLearningContent } from '../cmps/MyLearningContent'
-import { Outlet, useParams } from 'react-router-dom'
+import { Outlet, useLocation, useParams } from 'react-router-dom'
 import ReactPlayer from 'react-player'
 import { OutletMenu } from '../cmps/OutletMenu'
-import { updateCurrTimeWacth } from '../store/actions/user.actions'
+import { isSubEpisodeFullyWatched, updateCurrTimeWacth } from '../store/actions/user.actions'
 import { useDispatch } from 'react-redux'
 import { userService } from '../services/userService'
 import { courseService } from '../services/course.service'
 import { InfinitySpin } from 'react-loader-spinner'
+import { MyLearingHeader } from '../cmps/MyLearingHeader'
 
-export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, setLastEpisode, currCourseId, videoUrl, setVideoUrl, setCurrCourseId }) {
+export function MyLearning({isHeaderShown,setIsHeaderShown, lastSubEpisode, setLastSubEpisode, lastEpisode, setLastEpisode, currCourseId, videoUrl, setVideoUrl, setCurrCourseId }) {
 
   const dispatch = useDispatch()
   const playerRef = useRef()
+  const location = useLocation()
   const param = useParams()
   const [course, setCourse] = useState()
 
   const [isContentShown, setIsContentShown] = useState(true)
 
   const [isPlayingFirstTime, setIsPlayingFirstTime] = useState(0);
+  const [wasVideoEnded, setWasVideoEnded] = useState(false);
   const [lastWatchTime, setLastWatchTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const lastWatchTimeRef = useRef(lastWatchTime)
   const loggdingUserRef = useRef({})
   const MyLearningOutletRef = useRef()
+  const playedSecondsRef = useRef()
 
   useEffect(() => {
+    setIsHeaderShown(!isHeaderShown)
     loadCourse()
     loadLastVideo()
     setCurrCourseId(param.id)
     getLecturesSum()
+    getLocation()
     setTimeout(() => {
     }, 1000);
     return () => {
       // when copmponent unmount we save last video and last watch time and updating the user.
       // console.log('lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef',lastWatchTimeRef);
       updateCourseCurrTimeWacth()
+      setIsHeaderShown(true)
     };
-  }, [lastEpisode, lastSubEpisode, lastWatchTimeRef, loggdingUserRef])
+  }, [wasVideoEnded,lastEpisode, lastSubEpisode, lastWatchTimeRef, loggdingUserRef,playedSecondsRef])
 
-
+  const getLocation  = () => {
+    console.log('location************ ', );
+     if(location.pathname.slice(1,12)==='my-learning'){
+      setIsHeaderShown(false)
+     }
+   } 
+ 
+  
   const updateCourseCurrTimeWacth = () => {
-    dispatch(updateCurrTimeWacth(loggdingUserRef.current._id, currCourseId, lastEpisode, lastSubEpisode, lastWatchTimeRef.current, videoUrl))
-
+    dispatch(updateCurrTimeWacth(loggdingUserRef.current._id, currCourseId, lastEpisode, lastSubEpisode, lastWatchTimeRef.current, videoUrl, ))
   }
   const loadLastVideo = async () => {
     const loggdingUser = await userService.getLoggedinUser()
@@ -62,7 +75,7 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
           setLastSubEpisode(lastVideoWatched.subEpisode)
         }
       }
-
+      
     }
   }
   const getLecturesSum = () => {
@@ -74,16 +87,19 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
       });
       for (let i = 1; i < sum; i++) {
         total.push(i)
-
+        
       }
       return total
     }
   }
-
+  
   const loadCourse = async () => {
+    console.log('*****************loading course****************************************');
     const loggdingUser = await userService.getLoggedinUser()
-    loggdingUserRef.current = loggdingUser
-    if (loggdingUser) {
+    const user = await userService.getUserById(loggdingUser._id)
+    loggdingUserRef.current = user
+    
+    if (user) {
       const course = await courseService.getCourseById(param.id)
       setCourse(course)
       if (!course.lastVideoWatched) {
@@ -91,7 +107,7 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
       }
     }
   }
-
+  
   const tuggleContent = () => {
     setIsContentShown(!isContentShown)
   }
@@ -99,14 +115,16 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
     const elaps = progress.played * (duration)
     setLastWatchTime((progress.played * duration).toFixed(0))
     lastWatchTimeRef.current = +(progress.played * duration).toFixed(0)
-    // console.log('elaps', elaps)
+    playedSecondsRef.current= +(progress.playedSeconds).toFixed(0)
+    // console.log('progress.playedSeconds', playedSecondsRef.current)
+    // console.log('progress.duration',duration.toFixed(0))
   }
   const handleDuration = (duration) => {
     setDuration(duration)
     console.log('onDuration in min === duration/60', duration / 60)
-
+    
   }
-
+  
   const handelSeekTime = () => {
     if (isPlayingFirstTime === 0) {
       setIsPlayingFirstTime(isPlayingFirstTime + 1)
@@ -115,17 +133,26 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
       playerRef.current.seekTo(timeToStart, 'seconds');
     }
   }
-
+  
   const scrollToMyLearningOutlet = () => {
     window.scrollTo({
       top: MyLearningOutletRef.current.offsetTop - 100,
       behavior: "smooth"
     })
   }
+  const handelOnEnded = () => {
+    
+    dispatch(isSubEpisodeFullyWatched(loggdingUserRef.current._id,param.id,lastEpisode,lastSubEpisode,duration,playedSecondsRef.current))
+    loadCourse()
+    setTimeout(() => {
+      setWasVideoEnded(!wasVideoEnded)
+    }, 1700);
+  }
   return (
     course ?
-
-      <section className='my-leanring-container '>
+    
+    <section className='my-leanring-container '>
+        <MyLearingHeader course={course} user={loggdingUserRef.current}/>
         <section className='my-learning-warpper grid '>
           <div className={isContentShown ? '' : 'open-content flex-jc-ac'} onClick={tuggleContent}>
             <span className={isContentShown ? 'hidden' : 'display-content'}>הצג תוכן </span>
@@ -138,7 +165,7 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
               onDuration={handleDuration}
               onProgress={handleProgress}
               onPlay={handelSeekTime}
-
+              onEnded={handelOnEnded}
               controls={true}
               // width="100%"
               // height="100%"
@@ -155,6 +182,8 @@ export function MyLearning({ lastSubEpisode, setLastSubEpisode, lastEpisode, set
               setLastEpisode={setLastEpisode}
               lastSubEpisode={lastSubEpisode}
               lastEpisode={lastEpisode}
+              user={loggdingUserRef.current}
+              crrCourseId={param.id}
             />
 
 

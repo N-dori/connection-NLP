@@ -42,12 +42,13 @@ export function App() {
   const courses = useSelector((storeState) => storeState.couresModule.courses)
 
 
+
   const dispatch = useDispatch()
   const [len, setLen] = useState('')
-  
   const [currCourseId, setCurrCourseId] = useState('')
   const [lastEpisode, setLastEpisode] = useState(null)
   const [lastSubEpisode, setLastSubEpisode] = useState(null)
+  const [isHeaderShown, setIsHeaderShown] = useState(true)
 
   const [content, setContent] = useState('')
   const [videoUrl, setVideoUrl] = useState(false)
@@ -59,24 +60,29 @@ export function App() {
   const nlpBenefitsRef = useRef();
   const whatToolsRef = useRef();
   const memorialRef = useRef();
- 
+
   
   useEffect(() => {
     //signing up with default guest -this way gust can add products to shopping cart
     //guest would need to sign up to move on shooping cart to purchuse!
+    // if(location.pathname === )
+    
     dispatch(loadGuestUser())
     dispatch(loadCourses())
     dispatch(loadAnnouncements())
     dispatch(loadReviews())
+    //header is not shwon in MyLearning cmp
+    
     setTimeout(() => {
       dispatch(loadCart())
       
     }, 1500);
   }, [])
-
+  
   //getting length of shopping cart
   useEffect(() => {
     getCartLen()
+
   }, [shoppingCart])
 
   const getCartLen = () => {
@@ -85,6 +91,7 @@ export function App() {
       setLen(len)
     }
   }
+
 
   const onChangeFilter = (filterBy) => {
     dispatch(setFilterBy(filterBy))
@@ -149,7 +156,8 @@ const scrollToMemorial = () =>{
             if loggedin user is null : show logo , links to componentets: About, ShoppingCart , login , signup, about
             if loggedin user !== null : show logo, links to componentets: About, ,ShoppingCart, user-img 
             if loggedinuser && paid for courses : show logo, links to componentets: ,ShoppingCart, MyCourses, user-img */}
-        <AppHeader toggelMobileMenu={toggelMobileMenu} isActive={isActive} len={len} />
+       { isHeaderShown?<AppHeader toggelMobileMenu={toggelMobileMenu} isActive={isActive} len={len} />:''}
+      
         <MobileMenu 
                     toggelMobileMenu={toggelMobileMenu}
                     scrollToCourses={scrollToCourses}
@@ -239,7 +247,7 @@ const scrollToMemorial = () =>{
            components: CourseContentIndex , CourseOverview, SearchContent, CourseReviews ,CourseAnnouncements
 
         */}
-          <Route path="/my-learning/:id" element={<MyLearning  setLastSubEpisode={setLastSubEpisode} lastSubEpisode={lastSubEpisode} lastEpisode={lastEpisode} setLastEpisode={setLastEpisode}  setVideoUrl={setVideoUrl} videoUrl={videoUrl} setCurrCourseId={setCurrCourseId} currCourseId={currCourseId}/>} >
+          <Route path="/my-learning/:id" element={<MyLearning isHeaderShown={isHeaderShown} setIsHeaderShown={setIsHeaderShown} setLastSubEpisode={setLastSubEpisode} lastSubEpisode={lastSubEpisode} lastEpisode={lastEpisode} setLastEpisode={setLastEpisode}  setVideoUrl={setVideoUrl} videoUrl={videoUrl} setCurrCourseId={setCurrCourseId} currCourseId={currCourseId}/>} >
             <Route path='/my-learning/:id/course-overiew' element={<CourseOverview currCourseId={currCourseId} courses={courses} />} />
             <Route path='/my-learning/:id/serach-content' element={<SearchContent setLastSubEpisode={setLastSubEpisode} lastSubEpisode={lastSubEpisode} setVideoUrl={setVideoUrl} content={content}  onChangeFilter={onChangeFilter} filterBy={filterBy} />} />
             <Route path='/my-learning/:id/reviews' element={<CourseReviews />} />

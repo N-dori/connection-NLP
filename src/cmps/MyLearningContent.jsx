@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { XSvg } from '../svgs/XSvg'
 import { Leasson } from './Leasson'
 
-export  function MyLearningContent({lastEpisode,lastSubEpisode,setLastEpisode,currEpisode,setLastSubEpisode,getLecturesSum,episodes,setVideoUrl,tuggleContent}) {
+export  function MyLearningContent({crrCourseId,user,lastEpisode,lastSubEpisode,setLastEpisode,currEpisode,setLastSubEpisode,getLecturesSum,episodes,setVideoUrl,tuggleContent}) {
   const [count, setCount] = useState(1)
+  const [userCourse, setUserCourse] = useState({})
+  
+  useEffect(() => {
+    if(user){}
+const {courses} = user
+const course = courses.find(course => course._id  === crrCourseId)
+setUserCourse(course)
+  }, [user])
   
 
   return (
@@ -17,8 +25,15 @@ export  function MyLearningContent({lastEpisode,lastSubEpisode,setLastEpisode,cu
     </section>
   
     {
+      userCourse?
       episodes.map((episode,i) =>{
+        let fullyWatchedEpisode
+        if(userCourse.fullyWatched){
+          const {fullyWatched} =  userCourse
+           fullyWatchedEpisode = fullyWatched.find(currEpisode=> currEpisode.episode === episode.id ) 
+        }
         const{id,title,subEpisodes} = episode
+
         return <Leasson key={id}
          i={i} 
         episodeId={id}
@@ -34,8 +49,11 @@ export  function MyLearningContent({lastEpisode,lastSubEpisode,setLastEpisode,cu
         currEpisode={currEpisode}
         lastEpisode={lastEpisode}
         lastSubEpisode={lastSubEpisode}
+
+        fullyWatchedEpisode={fullyWatchedEpisode}
         />
-      })}
+      }):''
+      }
 </>
    
   )
