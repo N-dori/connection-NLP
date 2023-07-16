@@ -35,16 +35,23 @@ export function MyLearning({isHeaderShown,setIsHeaderShown, lastSubEpisode, setL
     loadLastVideo()
     setCurrCourseId(param.id)
     getLecturesSum()
+    getLocation()
     setTimeout(() => {
     }, 1000);
     return () => {
       // when copmponent unmount we save last video and last watch time and updating the user.
       // console.log('lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef lastWatchTimeRef',lastWatchTimeRef);
       updateCourseCurrTimeWacth()
+      setIsHeaderShown(true)
     };
   }, [wasVideoEnded,lastEpisode, lastSubEpisode, lastWatchTimeRef, loggdingUserRef,playedSecondsRef])
 
-
+  const getLocation  = () => {
+    console.log('location************ ', );
+     if(location.pathname.slice(1,12)==='my-learning'){
+      setIsHeaderShown(false)
+     }
+   } 
  
   
   const updateCourseCurrTimeWacth = () => {

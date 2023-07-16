@@ -42,14 +42,17 @@
         max-height: 100%;
         width: 100%;
         background-color: #222222;
-        @include for-mobile-layout{
-            margin-top: 15%;
+        @include for-narrow-layout{
+            margin-top: 0%;
+        }
+    //     @include for-mobile-layout{
+    //         margin-top: 0%;
        
-       }
-        @include for-325px {
-            margin-top: 20%;
+    //    }
+    //     @include for-325px {
+    //         margin-top: 20%;
        
-       }
+    //    }
         .react-player {
             height: 100% !important;
             width: 100% !important;

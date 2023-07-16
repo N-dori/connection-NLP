@@ -3,7 +3,8 @@ import { ExpandSvg } from '../svgs/ExpandSvg'
 import { Link } from 'react-router-dom'
 
 export  function MyLearingHeader({course,user}) {
-  
+
+  const [isYourProgress,setIsYourProgress] = useState(false)
   const [totalvideos,setTotalVideos] = useState(0)
   const [totalFullyWatchedVidoes,setTotalFullyWatchedVidoes] = useState(0)
     const logoUrl = 'https://res.cloudinary.com/dii16awkb/image/upload/v1685878172/%D7%9C%D7%95%D7%92%D7%95_fpn8ig.jpg'
@@ -42,6 +43,12 @@ useEffect(() => {
             return sum
         }
        }
+       const handleMouseMove = (ev) => {
+        setTimeout(() => {
+            setIsYourProgress(false)
+            
+        }, 4000);
+       }
 
 
   return (
@@ -51,10 +58,13 @@ useEffect(() => {
             <span className='pipe'></span>
         <h1 className='my-learning-course-title  '>{course.title}</h1>
         </Link>
-        <div className='progress-container flex-col'>
+        <div className='progress-container flex-col' onClick={()=>setIsYourProgress(true)} onMouseMove={(ev)=> handleMouseMove(ev)}>
             <progress className='progress-input'  max={totalvideos} value={totalFullyWatchedVidoes}></progress>
             <span className='your-progress-txt flex-ac'>ההתקדמות שלך <ExpandSvg/></span>
         </div>
+       {isYourProgress? <div className='details-contianer'>
+            <p className='txt'> השלמת {totalFullyWatchedVidoes} מתוך {totalvideos} </p>
+        </div>:''}
         </section>
   )
 }

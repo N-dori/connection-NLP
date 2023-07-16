@@ -1,4 +1,4 @@
-import { Route, HashRouter as Router, Routes,  } from 'react-router-dom';
+import { Route, HashRouter as Router, Routes, } from 'react-router-dom';
 import { AppHeader } from './cmps/AppHeader';
 import './assets/scss/main.scss';
 
@@ -48,7 +48,7 @@ export function App() {
   const [currCourseId, setCurrCourseId] = useState('')
   const [lastEpisode, setLastEpisode] = useState(null)
   const [lastSubEpisode, setLastSubEpisode] = useState(null)
-  const [isHeaderShown, setIsHeaderShown] = useState(false)
+  const [isHeaderShown, setIsHeaderShown] = useState(true)
 
   const [content, setContent] = useState('')
   const [videoUrl, setVideoUrl] = useState(false)
@@ -60,26 +60,29 @@ export function App() {
   const nlpBenefitsRef = useRef();
   const whatToolsRef = useRef();
   const memorialRef = useRef();
- 
+
   
   useEffect(() => {
     //signing up with default guest -this way gust can add products to shopping cart
     //guest would need to sign up to move on shooping cart to purchuse!
+    // if(location.pathname === )
+    
     dispatch(loadGuestUser())
     dispatch(loadCourses())
     dispatch(loadAnnouncements())
     dispatch(loadReviews())
     //header is not shwon in MyLearning cmp
-    setIsHeaderShown(true)
+    
     setTimeout(() => {
       dispatch(loadCart())
       
     }, 1500);
   }, [])
-
+  
   //getting length of shopping cart
   useEffect(() => {
     getCartLen()
+
   }, [shoppingCart])
 
   const getCartLen = () => {
@@ -88,6 +91,7 @@ export function App() {
       setLen(len)
     }
   }
+
 
   const onChangeFilter = (filterBy) => {
     dispatch(setFilterBy(filterBy))
