@@ -1,5 +1,5 @@
 import { userService } from "../../services/userService";
-import { SET_USER, LOGOUT_USER, UPDATE_USER } from "../reducers/user.reducer";
+import { SET_USER, LOGOUT_USER, UPDATE_USER, SET_USERS } from "../reducers/user.reducer";
 import { cartService } from "../../services/cart.service";
 
 
@@ -106,6 +106,22 @@ export function logout() {
         console.log('can not logout', err);
     }
 }
+export function getUsers() {
+    try {
+        return async (dispatch, getState) => {
+            const users = await userService.getUsers()
+            // console.log('SET_USERS',users);
+            const action = {
+                type: SET_USERS,
+                users:[users]
+            }
+            dispatch(action)
+        }
+
+    } catch (err) {
+        console.log('can not logout', err);
+    }
+}
 export function updateUser(user) {
     try {
         return async (dispatch, getState) => {
@@ -126,12 +142,12 @@ export function isSubEpisodeFullyWatched(userId,courseId,lastEpisode,lastSubEpis
     try {
         return async (dispatch, getState) => {
 
-            console.log('**********userId**********', userId);
-            console.log('**********courseId**********',courseId);
-            console.log('**********lastSubEpisode***********', lastSubEpisode);
-            console.log('*********duration********', duration);
-            console.log('***************lastEpisode***************', lastEpisode);
-            console.log('playedSecondsRef', playedSecondsRef);
+            // console.log('**********userId**********', userId);
+            // console.log('**********courseId**********',courseId);
+            // console.log('**********lastSubEpisode***********', lastSubEpisode);
+            // console.log('*********duration********', duration);
+            // console.log('***************lastEpisode***************', lastEpisode);
+            // console.log('playedSecondsRef', playedSecondsRef);
             if((duration-5)<playedSecondsRef){
                 const updatedUser = await userService.isSubEpisodeFullyWatched(userId,courseId,lastEpisode,lastSubEpisode)
 

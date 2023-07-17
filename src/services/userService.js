@@ -8,6 +8,7 @@ export const userService = {
     signup,
     login,
     // logout,
+    getUsers,
     updateUser,
     getLoggedinUser,
     getUserById,
@@ -23,7 +24,10 @@ export const userService = {
 // function logout(){
 //     localStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
 // }
-
+async function getUsers () {
+    const users = await httpService.get('user')
+    return users
+}  
 
 async function getUserById(userId) {
     try {
