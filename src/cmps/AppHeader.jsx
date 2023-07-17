@@ -108,8 +108,12 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
                                 <li className='link-container flex-jc-ac'>
                                         <NavLink className="heaer-link" to="/my-courses">הקורסים שלי</NavLink>
                                     </li> : ''
-                                : ""   
+                                : ""  
                             }
+                            {loggdingUser?
+                            loggdingUser.isAdmin?<NavLink className="heaer-link" to="/dashboard">ניהול מערכת</NavLink> :''
+                        :""   
+                        }
                    
                     </nav>
                     <div className="logo-container ">
