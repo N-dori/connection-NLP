@@ -21,12 +21,15 @@ useEffect(() => {
               const {courses} =user
               const studentCourse = courses.find(currCourse => currCourse._id === course._id)
               if(studentCourse){
-                  const {fullyWatched} = studentCourse
-                  fullyWatched.forEach(watchedEpisode => {
-                      sum += watchedEpisode.subEpisodes.length
-                    //   console.log('************getfullyWatchedVideosSum',sum);
-                      setTotalFullyWatchedVidoes(sum)
-            });
+                //   const {fullyWatched} = studentCourse
+                  if(studentCourse.fullyWatched){
+                    studentCourse.fullyWatched.forEach(watchedEpisode => {
+                          sum += watchedEpisode.subEpisodes.length
+                        //   console.log('************getfullyWatchedVideosSum',sum);
+                          setTotalFullyWatchedVidoes(sum)
+                });
+
+                  }
         }
        }
  }

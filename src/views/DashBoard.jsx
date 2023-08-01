@@ -1,38 +1,37 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUsers } from '../store/actions/user.actions'
+import { getUsers, removeUser } from '../store/actions/user.actions'
+import { TrashSvg } from '../svgs/TrashSvg'
+import { EditSvg } from '../svgs/EditSvg'
+import { ProgressSvg } from '../svgs/ProgressSvg'
+import { useNavigate } from 'react-router-dom'
+import { AddSvg } from '../svgs/AddSvg'
 
 export  function DashBoard() {
-  const users = useSelector((storeState) => storeState.userModule.users['0'])
+  
+  const navigate = useNavigate()
+  const users = useSelector((storeState) => storeState.userModule.users)
   const dispatch = useDispatch()
-const [user, setUser] = useState()
+
   useEffect(() => {
-    if(!users){
-    loadUsers()
-  }
-  console.log('users*****',users);
-}, [users])
-
-const loadUsers = async () => {
     dispatch(getUsers())
-    // setUsers(users)
-  }
-  const handelChack = (user) => {
-    if(user.isChecked){
-      user.isChecked =  !user.isChecked
-    }
-    else{
-      user.isChecked = true
-      setUser(user)
-    }
+console.log('useEffect users',users);
+}, [users.length])
 
 
-console.log('user',user);
+const onEdit = async (userId) => {
+  console.log('userId',userId);
+  navigate(`/dashboard/edit/${userId}`)
+}
+  const onRemove = async (userId) => {
+  dispatch(removeUser(userId))
   }
+
   return (users?
-   <section className='dashboard-container '>
+   <section className='dashboard-container flex-col'>
             <main className='dashboard-wrapper flex-col'>
               <h1>ניהול מערכת</h1>
+            
               <ul className='contacts-contianer grid clean'>
             
                 <li className='item item1'> שם המשתמש </li>
@@ -41,18 +40,23 @@ console.log('user',user);
                 <li className='item item4'> קורסים</li>
 
              { users.map(user =>
-             <>
+             < >
              <div className='name-wrapper flex item1'>
-             <input  className="input-check" type='checkbox' name='user' id="user" onClick={(ev)=>handelChack(user)} />
                <li  className='item1' >{user.fname}</li>
 
              </div>
-               <li className='item2' >{user.email}</li>
-               <li className='item3' > {user.cart.length} פריטים בעגלה</li>
-               <li  className='item4'>{user.courses.length?<span>{user.courses.length} קורסים שנרכשו </span>:<span>לא נרכשו</span>}</li>
-             </> 
+               <li className='email item2' >{user.email}</li>
+               <li className='cart item3' > {user.cart.length} פריטים בעגלה</li>
+               <li  className='courses item4'>{user.courses.length?<span>{user.courses.length} קורסים שנרכשו </span>:<span>לא נרכשו</span>}</li>
+               <li className='actions item5 flex'> 
+               <span onClick={() => onRemove(user._id)} title='מחיקה'><TrashSvg/></span>
+               <span onClick={() => onEdit(user._id)} title='עריכה'><EditSvg/></span>
+               <span><ProgressSvg/></span>
+                </li>
+             </>
             )}
               </ul>
+              <div className='add-svg-container flex-jc-ac' onClick={()=> {navigate('/dashboard/edit')}}><AddSvg/></div>
             </main>
 
    </section>:''

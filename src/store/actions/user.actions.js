@@ -1,5 +1,5 @@
 import { userService } from "../../services/userService";
-import { SET_USER, LOGOUT_USER, UPDATE_USER, SET_USERS } from "../reducers/user.reducer";
+import { SET_USER, LOGOUT_USER, UPDATE_USER, SET_USERS, REMOVE_USER } from "../reducers/user.reducer";
 import { cartService } from "../../services/cart.service";
 
 
@@ -33,12 +33,13 @@ export function signup(userToSignup, from, shoppingCart) {
                     console.log('user after backend', updatedUser);
                 }
             }
-
-            const action = {
-                type: SET_USER,
-                user
-            }
-            dispatch(action)
+          if(from !== 'dashbaord'){
+              const action = {
+                  type: SET_USER,
+                  user
+              }
+              dispatch(action)
+          }
         }
 
     } catch (err) {
@@ -106,14 +107,30 @@ export function logout() {
         console.log('can not logout', err);
     }
 }
+export function removeUser(userId) {
+    try {
+        return async (dispatch, getState) => {
+            console.log('REMOVE_USER',userId);
+            const action = {
+                type: REMOVE_USER,
+                userId
+            }
+            dispatch(action)
+            await userService.removeUser(userId)
+        }
+
+    } catch (err) {
+        console.log('can not remove User', err);
+    }
+}
 export function getUsers() {
     try {
         return async (dispatch, getState) => {
             const users = await userService.getUsers()
-            // console.log('SET_USERS',users);
+            console.log('SET_USERS',users);
             const action = {
                 type: SET_USERS,
-                users:[users]
+                users
             }
             dispatch(action)
         }
@@ -122,16 +139,21 @@ export function getUsers() {
         console.log('can not logout', err);
     }
 }
-export function updateUser(user) {
+export function updateUser(user,from) {
     try {
         return async (dispatch, getState) => {
+            console.log('updatedUser before backend', user);
             const updatedUser = await userService.updateUser(user)
             console.log('updatedUser after backend', updatedUser);
-            const action = {
-                type: UPDATE_USER,
-                updatedUser
+            if(from !== 'dashbaord'){
+                console.log('inside actionnnnnnnnnn', updatedUser);
+                const action = {
+                    type: UPDATE_USER,
+                    updatedUser
+                }
+                dispatch(action)
+
             }
-            dispatch(action)
         }
 
     } catch (err) {

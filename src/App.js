@@ -31,8 +31,9 @@ import  WhoAreWe  from './views/WhoAreWe';
 import  Memorial  from './cmps/Memorial';
 import CoursesIndex  from './cmps/CoursesIndex';
 import MobileMenu from './cmps/MobileMenu';
-import { loadGuestUser } from './store/actions/user.actions';
+import { getUsers, loadGuestUser } from './store/actions/user.actions';
 import { UserMsg } from './cmps/UserMsg';
+import { EditUser } from './views/EditUser';
 export function App() {
   // load data from store : loggedin user ,courses ,reviews
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
@@ -70,6 +71,7 @@ export function App() {
     dispatch(loadCourses())
     dispatch(loadAnnouncements())
     dispatch(loadReviews())
+    dispatch(getUsers())
     //header is not shwon in MyLearning cmp
     
     setTimeout(() => {
@@ -261,8 +263,10 @@ const scrollToMemorial = () =>{
            
            components: DashboardUserCourses(user.courses)
           */}
-          <Route path="/dashboard" element={<DashBoard />} />
-
+          <Route path="/dashboard" element={<DashBoard />} >
+            
+            </Route>
+          <Route path='/dashboard/edit/:id?' element={<EditUser/>}/>
 
         </Routes>
         <AppFooter />

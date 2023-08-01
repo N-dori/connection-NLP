@@ -1,0 +1,74 @@
+.edit-user-container {
+    direction: rtl;
+    grid-column: 2;
+
+    .headline-container {
+        padding-top: 3em;
+        flex-direction: row-reverse;
+
+        .back-svg {
+            cursor: pointer;
+            color: var(--clr3);
+        }
+    }
+
+    .edit-user-wrapper {
+        padding-block: 5em;
+        flex-direction: column;
+     .is-add-course{
+        text-decoration: underline;
+        color: var(--clr1);
+        cursor: pointer;
+     }
+        .add-course-modal-container {
+            position: absolute;
+            top: 50%;
+            translate: -50%;
+            left: 50%;
+            background-color: #fff;
+            padding: 2em;
+            transform: translateY(-50%);
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+            .add-course-from {
+                gap: 5px;
+
+                .headline {
+                    font-size: 1.2em;
+                    margin-bottom: 2em;
+
+                }
+
+                .select-courses {
+                    height: 3em;
+                    font-size: 18px;
+                    text-indent: 20px;
+                    background-color: var(--clr4);
+                    border: 1px solid rgba(100, 100, 111, 0.2);
+                    margin-bottom: 2em;
+
+
+                }
+            }
+
+        }
+
+        .edit-user-form {
+            gap: 1em;
+
+            .edit-user-input {
+                height: 3.2em;
+                font-size: 18px;
+                font-weight: bold;
+                text-indent: 20px;
+                border: 1px solid #222;
+            }
+        }
+
+        .edit-user-btn {
+            height: 3em;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+    }
+}

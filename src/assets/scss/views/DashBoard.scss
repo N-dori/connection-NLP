@@ -1,8 +1,19 @@
 .dashboard-container{
     direction: rtl;
     grid-column: 2;
-    .contacts-contianer{
+    margin-bottom: 18%;
+    .dashboard-wrapper {
+        flex-grow: 1;
+    }
+    .actions{
+        gap:15px
 
+    }
+    .actions>*{
+        cursor: pointer;
+    }
+    .contacts-contianer{
+        padding: 0;
         gap:10px
     }
     .input-check{
@@ -11,6 +22,7 @@
     }
 
     .item{
+        border-bottom:1px solid var(--clr3) ;
     }
     .item1{
         grid-column: 2;
@@ -28,5 +40,19 @@
             grid-column: 5;
             
         }
+        .item5{
+            grid-column: 6;
+            
+        }
+   .add-svg-container{
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background-color: var(--clr1);
+    border-radius: 100px;
+    .add-svg{
+        fill:var(--clr3)
+    }
+   }
     
 }
