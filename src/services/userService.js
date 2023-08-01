@@ -17,6 +17,7 @@ export const userService = {
     getUserGuest,
     clearGuestCart,
     isSubEpisodeFullyWatched,
+    removeUser,
 }
 
 
@@ -27,6 +28,14 @@ export const userService = {
 async function getUsers () {
     const users = await httpService.get('user')
     return users
+}  
+async function removeUser (userId) {
+    try{
+        await httpService.delete(`user/${userId}`)
+        // return users  
+    }catch(err){
+        console.log('err',err);
+    }
 }  
 
 async function getUserById(userId) {

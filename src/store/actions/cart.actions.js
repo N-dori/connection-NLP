@@ -19,7 +19,7 @@ export  function loadCart(){
             {
                 const courses =await courseService.getCourses(getState().couresModule.filterBy)
                 const user = await userService.getLoggedinUser()
-                const userCart= await cartService.loadShoppingCart(courses,user._id)
+                const userCart= await cartService.loadShoppingCart(courses,user._id ?user._id :'64abe02a8723e73efc4d4be8')
                 cart=userCart
             }
             //cart is an array with courses 
