@@ -10,7 +10,7 @@
         direction: rtl;
         // padding-block: 1em;
         right: -2em;
-        color:var(--clr3);
+        color: var(--clr3);
         padding-block-end: 2.5em;
         font-size: 1.2rem;
 
@@ -31,11 +31,12 @@
         padding: 2em;
         left: 50%;
         translate: -50%;
-        
+
         @include for-mobile-layout {
             padding: 0em;
             display: block;
         }
+
         // max-width: 1000px;
         @include for-mobile-layout {
             margin-top: 2em;
@@ -48,9 +49,11 @@
                 display: none;
             }
         }
-.swiper-initialized{
-    max-height: 700px;
-}
+
+        .swiper-initialized {
+            max-height: 700px;
+        }
+
         .caption-container {
             position: absolute;
             width: 100%;
@@ -248,7 +251,7 @@
                 z-index: 9;
                 top: -2em;
                 width: 100%;
-                 background-image: linear-gradient(rgb(63, 63, 63,1),rgba(41, 40, 45, 0.9), rgba(38, 38, 38, 0.9));
+                background-image: linear-gradient(rgb(63, 63, 63, 1), rgba(41, 40, 45, 0.9), rgba(38, 38, 38, 0.9));
                 padding: 0.3em;
 
                 @include for-normal-layout {
@@ -625,6 +628,14 @@
             width: 100%;
             font-style: oblique;
         }
+
+        .react-player__play-icon {
+            border-style: solid;
+            border-width: 11px 0px 11px 17px !important;
+            border-color: transparent transparent transparent white;
+            // margin-left: -60px !important;
+            width: 10px;
+        }
     }
 
 }
@@ -642,11 +653,13 @@
     padding-inline: 1em;
     background-color: #222;
     color: #fff;
+
     .headline {
         text-align: center;
         font-size: 1.7em !important;
 
     }
+
     @include for-narrow-layout {
         display: block;
     }
@@ -664,7 +677,7 @@
 
         margin-bottom: 3em;
 
-       
+
 
         .group1 {
             letter-spacing: 2.3px !important;
@@ -675,9 +688,7 @@
         }
     }
 
-    .tools-wrapper {
-    
-    }
+    .tools-wrapper {}
 
     .memorial-container-wrapper {
         .headline {
