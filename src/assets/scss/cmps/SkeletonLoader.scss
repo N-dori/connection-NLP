@@ -1,0 +1,122 @@
+.skelaton-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(263px, 1fr));
+    column-gap: 23px;
+    row-gap: 45px;
+    margin-top: 2em;
+}
+
+.placeholder {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &.pulse div {
+        animation: pulse 1s infinite ease-in-out;
+        animation: pulse 1s infinite ease-in-out;
+    }
+
+    &.wave div {
+        animation: wave 1s infinite linear forwards;
+        animation: wave 1s infinite linear forwards;
+        background: #f6f7f8;
+        background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+        background-size: 800px 104px;
+    }
+
+    div {
+        background: #E8E8E8;
+    }
+
+    .square {
+        border-radius: 9px;
+        width: 280px;
+        height: 328px;
+
+        margin: 10px;
+
+    }
+
+    .rectangle {
+        float: left;
+        width: 40px;
+        height: 30px;
+        margin: 0 0 10px;
+    }
+
+    .line1 {
+        height: 20px;
+        margin: 10px;
+        width: 50%;
+    }
+
+    .line2 {
+        height: 12px;
+        margin: 10px;
+        width: 70%;
+    }
+
+    .line3 {
+        height: 12px;
+        margin: 0 0 10px 0px;
+        width: 30%;
+    }
+
+    .circle {
+        float: left;
+        width: 40px;
+        height: 40px;
+        margin: 0 15px 10px 0;
+        border-radius: 40px;
+    }
+}
+
+
+@keyframes pulse {
+    0% {
+        background-color: rgba(165, 165, 165, .1);
+    }
+
+    50% {
+        background-color: rgba(165, 165, 165, .3);
+    }
+
+    100% {
+        background-color: rgba(165, 165, 165, .1);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        background-color: rgba(165, 165, 165, .1);
+    }
+
+    50% {
+        background-color: rgba(165, 165, 165, .3);
+    }
+
+    100% {
+        background-color: rgba(165, 165, 165, .1);
+    }
+}
+
+@keyframes wave {
+    0% {
+        background-position: -468px 0
+    }
+
+    100% {
+        background-position: 468px 0
+    }
+}
+
+@keyframes wave {
+    0% {
+        background-position: -468px 0
+    }
+
+    100% {
+        background-position: 468px 0
+    }
+}

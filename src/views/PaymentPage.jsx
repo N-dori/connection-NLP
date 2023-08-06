@@ -43,14 +43,16 @@ export  function PaymentPage() {
           _id:product._id,
           courseCoverImg:product.courseCoverImg,
           title:product.title,
-          subTitle: product.subTitle
+          subTitle: product.subTitle,
+          purchasedAt:Date.now()
         }
         user.courses.push(miniCourse) 
         user.action = 'purchase'       
       });
-      // console.log('user after payment in payment',user);
+      console.log('user after payment in payment',user);
+      user.cart = []
       dispatch(updateUser(user))
-      dispatch(clearCart(user._id))
+      dispatch(clearCart())
       setTimeout(() => {
         navigate('/our-courses')
         

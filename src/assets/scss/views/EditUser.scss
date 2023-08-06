@@ -5,10 +5,15 @@
     .headline-container {
         padding-top: 3em;
         flex-direction: row-reverse;
-
+        @include for-mobile-layout{
+            margin-top: 3em;
+           }
         .back-svg {
             cursor: pointer;
             color: var(--clr3);
+            @include for-mobile-layout{
+                width: 25px;
+               }
         }
     }
 
@@ -19,6 +24,7 @@
         text-decoration: underline;
         color: var(--clr1);
         cursor: pointer;
+        text-align: center;
      }
         .add-course-modal-container {
             position: absolute;
@@ -29,7 +35,9 @@
             padding: 2em;
             transform: translateY(-50%);
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
+            @include for-mobile-layout{
+                 padding: .5em;
+            }
             .add-course-from {
                 gap: 5px;
 
@@ -46,6 +54,9 @@
                     background-color: var(--clr4);
                     border: 1px solid rgba(100, 100, 111, 0.2);
                     margin-bottom: 2em;
+                    @include for-mobile-layout{
+                        font-size: 14px;
+                       }
 
 
                 }

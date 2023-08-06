@@ -34,6 +34,7 @@ import MobileMenu from './cmps/MobileMenu';
 import { getUsers, loadGuestUser } from './store/actions/user.actions';
 import { UserMsg } from './cmps/UserMsg';
 import { EditUser } from './views/EditUser';
+import { UserCoursesInfo } from './views/UserCoursesInfo';
 export function App() {
   // load data from store : loggedin user ,courses ,reviews
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
@@ -263,10 +264,11 @@ const scrollToMemorial = () =>{
            
            components: DashboardUserCourses(user.courses)
           */}
-          <Route path="/dashboard" element={<DashBoard />} >
+          <Route path="/dashboard" element={<DashBoard />} />
             
-            </Route>
+      
           <Route path='/dashboard/edit/:id?' element={<EditUser/>}/>
+          <Route path='/dashboard/courses-info/:id?' element={<UserCoursesInfo/>}/>
 
         </Routes>
         <AppFooter />

@@ -1,6 +1,6 @@
 import React from 'react'
 import { CoursePreview } from './CoursePreview'
-
+import { SkeletonLoader } from './SkeletonLoader'
 export  function CouresList({courses}) {
 
   return (
@@ -9,6 +9,6 @@ courses?
 {courses.map( course => 
  <CoursePreview key={course._id} course={course} /> )}
                
-</ul>:<div>Loaing.....</div>
+</ul>:<SkeletonLoader/>
   )
 }

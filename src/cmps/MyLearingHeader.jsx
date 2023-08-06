@@ -15,8 +15,6 @@ useEffect(() => {
 
  const getfullyWatchedVideosSum = (user) => {
           let sum=0
-
-          
           if(user){
               const {courses} =user
               const studentCourse = courses.find(currCourse => currCourse._id === course._id)

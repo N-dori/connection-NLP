@@ -17,7 +17,10 @@ export function AppRecommendations() {
 
               <ReactPlayer
                 className="react-player"
-
+                // url = "https://res.cloudinary.com/dii16awkb/image/upload/v1688901067/logo-footer_hcvgn9.jpg"
+                light = {
+                  <img src={recommendation.img}width="100%" height="100%" />
+              }
                 width="100%"
                 height="100%"
                 url={recommendation.videoUrl} controls />

@@ -57,7 +57,7 @@ export const  recommendations = [
         name:'אמיר דובדבני',
         title:'הגעתי במיוחד מרמת הגולן לשלמה, שלמה בנאדם מדוייק, ממליץ לכל מי שמתעסק עם אנשים עם טראומות כמוני ,זה הקורס הכי איכותי !',
         videoUrl:'https://www.youtube.com/watch?v=j4Ntm08sdhg',
-        subTitle:'npl for biggeners',
+        img:'https://res.cloudinary.com/dii16awkb/image/upload/v1691323566/%D7%94%D7%9E%D7%9C%D7%A6%D7%942_t3ddqs.png',
         interval:1500
     },
     {
@@ -65,7 +65,7 @@ export const  recommendations = [
         name:'שלומי חלאוי',
         title:'הגעתי לכאן אחרי כמה קורסי   "והרגשתי שחסרים לי כלים שעושים שינויים מהירים ועוצמתיים בחיים של אנשים ותוך זמן קצר קיבלתי כלים אדרים, וביטחון לצאת לטפל במקרים שקודם לכן הגדרתי כקשים כבלתי ניתנים לטיפול ',
         videoUrl:'https://www.youtube.com/watch?v=QyD9HwLXNbQ',
-        subTitle:'nlp nlp nlp course',
+        img:'https://res.cloudinary.com/dii16awkb/image/upload/v1691323133/%D7%94%D7%9E%D7%9C%D7%A6%D7%94_1_vh0ffz.png',
         interval:1500
     },
     {
@@ -73,7 +73,7 @@ export const  recommendations = [
         name:'יצחק נאה',
         title:'שלמה העביר לנו את הקורס בצורה בלתי רגילה עם המחשות והדגמות בצורה הכי מקצועית אני מודה לו בשמי ובשם כל התלמידים ',
         videoUrl:'https://www.youtube.com/watch?v=_X_hXkc8foQ',
-        subTitle:'loram ipsom ipgys',
+        img:'https://res.cloudinary.com/dii16awkb/image/upload/v1691323690/%D7%94%D7%9E%D7%9C%D7%A6%D7%94_3_x7osba.png',
         interval:1500
     },
     {
@@ -81,7 +81,7 @@ export const  recommendations = [
         name:'דפני חן',
         title:'החוויה בקורס הייתה ממש משמעותיתת אני מרגישה שלמדתי כלים שיש בהם משמעות אדירה גם ללמוד איך התת מודע שלנו עובד מה מנהל אותנו מבפנים? מה מנהל אנשים אחרים מבפנים ? שלמה מעביר את הקורס בצורה נקייה חשוב לו להעביר את הידע לכל מי שצריך אותו! הכלים שלומדים בקורס הם פרקטים ויעילים, לכל מי שחשוב לו לטפל ולעבור תהליך עומק בעצמו . מוממלץ מאוד!!!   ',
         videoUrl:'https://www.youtube.com/watch?v=PO8_Hb2vqHA',
-        subTitle:'loram ipsom ipgys',
+        img:'https://res.cloudinary.com/dii16awkb/image/upload/v1691323777/%D7%94%D7%9E%D7%9C%D7%A6%D7%94_4_e5wihl.png',
         interval:1500
     },
     {
@@ -89,7 +89,7 @@ export const  recommendations = [
         name:'באדר עתמאנה ',
         title:"זה קורס שחיכיתי לו המון המון זמן , למדתי שיטות טיפול שלא חלמתי עליהם, שיטות שיישמתי על עצמי וראיתי תוצאות מרהיבות . אני ממליץ לכל אחד להגיע לקורס הזה!",
         videoUrl:'https://www.youtube.com/watch?v=8NjjLjjJucY',
-        subTitle:'loram ipsom ipgys',
+        img:'https://res.cloudinary.com/dii16awkb/image/upload/v1691323879/%D7%94%D7%9E%D7%9C%D7%A6%D7%94_5_aotjbc.png',
         interval:1500
     },
 ]
