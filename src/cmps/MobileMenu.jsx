@@ -8,7 +8,6 @@ const navigate = useNavigate()
 const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
 
 useEffect(() => {
-
 }, [loggdingUser])
 
 
@@ -29,11 +28,12 @@ const handelNavigation = (ev,type) => {
   if(type === 'login')navigate(`${type}`)
   if(type === 'signup')navigate(`${type}`)
   if(type === 'my-courses')navigate(`${type}`)
+  if(type === 'dashboard')navigate(`${type}`)
   toggelMobileMenu()
  }
 
   return (
-    <section className={isMobileMenu?"mobile-menu-container open ":"mobile-menu-container "}>
+    <section className={isMobileMenu? "mobile-menu-container open ":"mobile-menu-container "}>
         <main className="mobile-menu-wrapper  ">
         
           <ul className="list-links flex-col clean">
@@ -65,6 +65,8 @@ const handelNavigation = (ev,type) => {
                            :''
                       }
              </div>
+           {loggdingUser.isAdmin?
+           <li className="link-container flex-jc-ac"><span onClick={(event)=>handelNavigation(event,'dashboard') }className="link">ניהול מערכת</span></li>:''}           
         
        
           </ul>
