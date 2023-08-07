@@ -1,14 +1,16 @@
-.dashboard-container{
+.dashboard-container {
     direction: rtl;
     grid-column: 2;
     margin-bottom: 18%;
+
     .dashboard-wrapper {
-        .headline-dashbaord{
-            @include for-mobile-layout{
+        .headline-dashbaord {
+            @include for-mobile-layout {
                 margin-top: 5em;
-               }
-           }
-           .progress-modal-container{
+            }
+        }
+
+        .progress-modal-container {
             position: absolute;
             top: 50%;
             translate: -50%;
@@ -17,98 +19,153 @@
             padding: 2em;
             transform: translateY(-50%);
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-            @include for-mobile-layout{
-                 padding: .5em;
+
+            @include for-mobile-layout {
+                padding: .5em;
             }
-           }
+        }
     }
-    .actions{
-        gap:15px;
-        @include for-narrow-layout{
-            gap:7px
+
+    .actions {
+        gap: 15px;
+
+        @include for-narrow-layout {
+            gap: 7px
         }
 
     }
-    .actions>*{
+
+    .actions>* {
         cursor: pointer;
     }
-    .contacts-contianer{
+
+    .contacts-contianer {
         padding: 0;
-        gap:10px;
+        gap: 10px;
         margin-bottom: 2em;
-        @include for-mobile-layout{
+
+        @include for-mobile-layout {
             font-size: 0.8em;
-           }
-       
-        .trash-svg{
-            @include for-mobile-layout{
-                width: 15px;
-               }
         }
-        .edit-svg{
-            @include for-mobile-layout{
+
+        .trash-svg {
+            @include for-mobile-layout {
                 width: 15px;
-               }
+            }
         }
-        .progress-svg{
-            @include for-mobile-layout{
-             width: 15px;
+
+        .edit-svg {
+            @include for-mobile-layout {
+                width: 15px;
+            }
+        }
+
+        .progress-svg {
+            @include for-mobile-layout {
+                width: 15px;
             }
         }
     }
-    .input-check{
+
+    .input-check {
 
         grid-column: 1;
     }
 
-    .item{
+    .item {
         font-weight: 600;
-        border-bottom:1px solid var(--clr3) ;
+        border-bottom: 1px solid var(--clr3);
     }
-    .item1{
+
+    .item1 {
         grid-column: 2;
-        
+
     }
-    .item2{
+
+    .item2 {
         grid-column: 3;
-        @include for-narrow-layout{
+
+        @include for-narrow-layout {
             display: none;
         }
-            
+
+    }
+
+    .item3 {
+        grid-column: 4;
+
+        @include for-narrow-layout {
+            display: none;
         }
-        .item3{     
+    }
+
+    .item4 {
+        cursor: pointer;
+        grid-column: 5;
+
+        @include for-narrow-layout {
+            grid-column: 3;
+        }
+    }
+
+    .item5 {
+        grid-column: 6;
+
+        @include for-narrow-layout {
             grid-column: 4;
-            @include for-narrow-layout{
-                display: none;
-            }
         }
-        .item4{
+
+    }
+
+    .add-svg-container {
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        background-color: var(--clr1);
+        border-radius: 100px;
+
+        @include for-mobile-layout {
+            width: 40px;
+            height: 40px;
+        }
+
+        .add-svg {
+            fill: var(--clr3)
+        }
+    }
+
+    .deletion-modal {
+        position: absolute;
+        border: 3px solid red;
+        padding: 3em;
+        gap: 1em;
+        font-weight: bold;
+        top: 50%;
+        left: 50%;
+        translate: -50%;
+        transform: translateY(-50%);
+        background-color: var(--clr4);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .08);
+
+        @include for-mobile-layout{
+            padding-inline: 1em;
+            width: 80%;
+            padding-block-start: 2em;
+            text-align: center;
+        }
+        .remove-btn {
+            height: 2em;
+            background-color: transparent;
+            border: 1px solid var(--clr3);
             cursor: pointer;
-            grid-column: 5;
-            @include for-narrow-layout{
-                grid-column: 3;
-            }
+            font-weight: 600;
         }
-        .item5{
-            grid-column: 6;
-            @include for-narrow-layout{
-                grid-column: 4;
-            }
-            
+
+        .close-deletion-modal {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
         }
-   .add-svg-container{
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    background-color: var(--clr1);
-    border-radius: 100px;
-    @include for-mobile-layout{
-        width: 40px;
-        height: 40px;
     }
-    .add-svg{
-        fill:var(--clr3)
-    }
-   }
-    
 }

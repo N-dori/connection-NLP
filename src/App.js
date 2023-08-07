@@ -35,6 +35,7 @@ import { getUsers, loadGuestUser } from './store/actions/user.actions';
 import { UserMsg } from './cmps/UserMsg';
 import { EditUser } from './views/EditUser';
 import { UserCoursesInfo } from './views/UserCoursesInfo';
+
 export function App() {
   // load data from store : loggedin user ,courses ,reviews
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)

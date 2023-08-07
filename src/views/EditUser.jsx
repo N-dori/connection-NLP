@@ -92,7 +92,8 @@ eventBus.emit('show-msg', { txt: 'קורס הוסף בהצלחה!', type: 'succe
                 </div>
                 <main className='edit-user-wrapper flex-jc-ac'>
                 {isAddCourse?
-                <AddCourseModal addCourse={addCourse}/>:
+               <AddCourseModal addCourse={addCourse} setIsAddCourse={setIsAddCourse} isAddCourse={isAddCourse}/>
+                :
                     <p onClick={()=>setIsAddCourse(!isAddCourse)} className='is-add-course'>אם ברצונך להוסף קורס למשתמש לחצי כאן</p>
                 }
 
