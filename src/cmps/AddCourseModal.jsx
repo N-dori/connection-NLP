@@ -1,8 +1,11 @@
 import React from 'react'
+import { XSvg } from '../svgs/XSvg'
 
-export  function AddCourseModal({addCourse}) {
+export  function AddCourseModal({addCourse ,setIsAddCourse,isAddCourse}) {
   return (
     <section className='add-course-modal-container flex-jc-ac'>
+         <span className='close-add-course-modal' onClick={()=> setIsAddCourse(!isAddCourse)}><XSvg/></span>
+
     <form  className="add-course-from flex-col" onSubmit={addCourse}>
                         <label className='headline' htmlFor="course-select">קורס להוספה</label>
 

@@ -54,7 +54,7 @@ async function getUserById(userId) {
 
 async function getLoggedinUser() {
     const loggedinUser = await httpService.get('auth/loggedinUser')
-    // console.log('loggedinUser',loggedinUser);
+    console.log('loggedinUser',loggedinUser);
     return loggedinUser
 
 }

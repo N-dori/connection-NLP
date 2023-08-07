@@ -14,14 +14,19 @@ async function loadShoppingCart (courses,userId) {
     let userCourses = []
     if(userId){
         const user = await userService.getUserById(userId)
-        if(!user.cart)return
-        const { cart } = user 
-        cart.forEach( courseId =>{
-        const course = courses.find(course => course._id === courseId)
-        if(course){
-            userCourses.push(course)
+        if(user){
+            if(!user.cart)return
+            const { cart } = user 
+            cart.forEach( courseId =>{
+            const course = courses.find(course => course._id === courseId)
+            if(course){
+                userCourses.push(course)
+            }
+            }  )
+
+        }else{
+            return userCourses
         }
-        }  )
 
     }
     // const userCourses = await _getCartCourses()
