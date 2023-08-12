@@ -16,7 +16,8 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
     const naviget = useNavigate()
 
     useEffect(() => {
-        setIsShown(false)
+        console.log('loggdingUser app header useeffect',loggdingUser );
+        // setIsShown(false)
         loadUser()
     }, [loggdingUser, user])
     
@@ -24,46 +25,47 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
     const loadUser = async () => {
         if (!loggdingUser) {
             return
-        } else {
+        } 
+        if(user?._id === loggdingUser?._id ){
+            return
+        }/* else {
             if (user) {
                 return
-            }
+            } */
            //as the app load guest is beening signup, here we getting the logged in user 
            //if it is the id of guest we keep the local state (user) as null
             const currUser = await userService.getUserById(loggdingUser._id)
-            if(currUser._id === '64abe02a8723e73efc4d4be8'){
-                console.log('Header loadUser currUser in side',currUser)
+            if(!currUser){
+                console.log('Header loadUser currUser in side',loggdingUser)
+                setUser(loggdingUser)
                      return
             }else{
                 setUser(currUser)
             }
         }
-    }
+    // }
 
     const onLogout = () => {
         setTimeout(() => {
             dispatch(logout())
             setUser(null)
             naviget('/our-courses')
-            
+            toggelMenu()
         }, 500);
     }
 
     const toggelMenu = () => {
         setIsShown(!isShown)
-
     }
   
-
-   
     return (
-
         <>
             <header  className="app-header full grid ">
                 <section className='action-btns flex'>
                     <ShoppingCartSvg len={len} loggdingUser={loggdingUser} onClick={() => naviget('/shopping-cart')} />
                     {
                         user ?
+                        user._id !== '64abe02a8723e73efc4d4be8'?
                             <section className='user-space'>
                                 <div className='user-img-container flex-jc-ac' onClick={toggelMenu} >
                                     <span className='user-img'>{user.fname[0].toUpperCase()}</span>
@@ -91,6 +93,25 @@ export function AppHeader({ isActive, toggelMobileMenu,  len }) {
 
                                 </section>
 
+                            </>:
+                            <>
+                                <section className="btn-signin-container flex">
+                                    <Link to="/login" className='no-under-line'>
+                                        <button className="signup-btn login-btn flex-jc-ac">
+                                            <span >התחברות</span>
+                                        </button>
+                                    </Link>
+
+                                </section>
+                                <section className="btn-signin-container flex">
+                                    <Link to="/signup" className='no-under-line'>
+                                        <button className="signup-btn flex-jc-ac">
+                                            <span className='txt' >הרשמה</span>
+                                        </button>
+                                    </Link>
+
+                                </section>
+                            
                             </>
                     }
 

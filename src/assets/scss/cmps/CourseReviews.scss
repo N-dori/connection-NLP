@@ -3,15 +3,18 @@
     grid-column: 2;
     margin-top: 15px;
     padding-inline-start: 1em;
+
     @include for-mobile-layout {
 
         padding-inline-start: 0em;
     }
+
     .headline {
         font-size: 1.8em;
         font-weight: bold;
         color: #222;
         margin-block: 16px;
+
         @include for-mobile-layout {
 
             margin-inline-start: .5em;
@@ -28,30 +31,45 @@
             flex-direction: column;
             padding-inline-start: 1em;
         }
+
         @include for-mobile-layout {
 
             padding-inline-start: 0em;
         }
+
+        .get-more-reviews {
+            font-weight: 600;
+            padding-bottom: 9em;
+            font-size: 1.1em;
+            text-decoration: underline;
+            color: var(--clr3);
+            cursor: pointer;
+        }
+
         .review-container {
             max-width: 20em;
             width: 20em;
             padding: 2.4rem 0 3.2rem;
             border-top: 1px solid #d1d7dc;
+
             @include for-narrow-layout {
                 flex-direction: column;
                 padding-inline-start: 1em;
                 max-width: 13em;
-                
+
             }
+
             .reviewer-info {
                 flex-direction: row-reverse;
                 justify-content: flex-end;
                 gap: 10px;
-                .name-and-when{
-                    .reviewer-name{
-                        margin-block:0.2em ;
+
+                .name-and-when {
+                    .reviewer-name {
+                        margin-block: 0.2em;
                     }
-                    .reviwed-at{
+
+                    .reviwed-at {
                         font-size: 0.9em;
                     }
                 }

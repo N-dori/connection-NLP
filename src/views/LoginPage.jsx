@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { userService } from '../services/userService'
 import { GoogleLoginBtn } from '../cmps/GoogleLoginBtn'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
@@ -9,6 +9,7 @@ import {  setLoggedinUser } from '../store/actions/user.actions'
 import { InfinitySpin   } from  'react-loader-spinner'
 
 export function LoginPage() {
+  const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const [user, setUser] = useState(null)
   const [msg, setMsg] = useState(null)
   // const [userToken, setUserToken] =(browser.cookies.get) 
@@ -20,7 +21,7 @@ export function LoginPage() {
   useEffect(() => {
     loadLoggedinUser()
 
-  }, [])
+  }, [loggdingUser])
 
   const loadLoggedinUser = async () => {
     const loggdingUser = await userService.getLoggedinUser()
@@ -76,17 +77,19 @@ console.log('password do not match' ,err);
 
       <form className='signup-form flex' >
         <div className='avatar-container flex-jc-ac'>
-          <div className='user-img-container flex-jc-ac'>
             {user?
-              <span className='user-img'>{user.fname[0].toUpperCase()}</span> :
-              <InfinitySpin 
-              width='200'
-              color="#4fa94d"
-            />
-            }
+          <div className='user-img-container flex-jc-ac'>
+              <span className='user-img'>{user.fname[0].toUpperCase()}</span> 
+          
+          </div>: <div className='user-img-container flex-jc-ac'>
+              <span className='user-img'>{loggdingUser?.fname[0].toUpperCase()}</span> 
+          
           </div>
-          {user ? <p className='user-name'>היי  {user.fname} ברוך שובך</p> : ''}
-        </div>
+          }
+            {user ? <p className='user-name'>היי  {user.fname} ברוך שובך</p> : 
+            <p className='user-name'>היי  {loggdingUser?.fname} ברוך שובך</p>
+            }
+            </div>
         <h3 className="signin-title">התחבר והתחל ללמוד!</h3>
 
         <label htmlFor="password">

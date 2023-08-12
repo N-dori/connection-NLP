@@ -9,7 +9,6 @@ import  WhoAreWe  from './WhoAreWe';
 import  NlpBenefits from './NlpBenefits';
 import WhatToolsYouGet from './WhatToolsYouGet';
 import Memorial  from '../cmps/Memorial';
-import MobileMenu from '../cmps/MobileMenu';
 import CoursesIndex from '../cmps/CoursesIndex';
 
 export function Home({memorialRef,whatToolsRef,coursesRef,whoAreWe,nlpBenefitsRef }) {
@@ -31,10 +30,9 @@ export function Home({memorialRef,whatToolsRef,coursesRef,whoAreWe,nlpBenefitsRe
     <section className='home-page-container '>
       
       <section className='carousel-container'>
-        {loggdingUser ?
+        {/* {loggdingUser ?
           <p className='home-greeting'>שלום: {loggdingUser.fullname ? loggdingUser.fullname : loggdingUser.fname}</p>
-          : <div className='home-greeting'>שלום אורח</div>}
-        {/* שילוב תמונות וציטוטים מספרים: 1-2 4-8 12 14 15 20 */}
+          : <div className='home-greeting'>שלום אורח</div>} */}
         <SwiperCarousel slides={slides} />
       </section>
       <section className='content-container'>

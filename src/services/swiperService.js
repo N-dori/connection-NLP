@@ -31,13 +31,6 @@ export const  slides = [
     },
     {
         id:utilService.makeId(8),
-        image:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447667/FB_IMG_1622066578479_bfr7bt.jpg',
-        title:'זיכרון ודימיון משתמשים באותם מעגלים עצביים בהם משתמשים במודעות חושית ולכן הם בעלי השפעה רבה על תהליכי ההתפתחות האישית',
-        subTitle:'loram ipsom ipgys',
-        interval:1500
-    },
-    {
-        id:utilService.makeId(8),
         image:'https://res.cloudinary.com/dii16awkb/image/upload/v1687447906/FB_IMG_1628962130360_sxmod9.jpg',
         title:"לבני אדם יש את כל המשאבים להצלחה!",
         subTitle:'loram ipsom ipgys',

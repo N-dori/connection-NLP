@@ -42,9 +42,14 @@ export function ShoppingCart() {
     }
     const loadLoggedinUser = async () => {
          //this loggdingUer dependencies is from session 
-      const loggdingUser = await userService.getLoggedinUser()
-      setUser(loggdingUser)
-    }
+         if(loggdingUser._id === '64abe02a8723e73efc4d4be8'){
+           setUser(loggdingUser)
+         }else{
+           const user = await userService.getLoggedinUser()
+           setUser(user)
+         }
+      }
+    
 
   const onRemove = (productId,userId) => {
 

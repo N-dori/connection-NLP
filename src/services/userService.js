@@ -92,6 +92,7 @@ function getEmptyUser() {
 }
 function getUserGuest() {
     return {
+        _id:'64abe02a8723e73efc4d4be8',
         fname: "אורח",
         password: "a",
         email: "a",

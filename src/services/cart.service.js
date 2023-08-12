@@ -44,8 +44,7 @@ async function addToUserCart(couresId, userId) {
     try{
 
     const user = await userService.getUserById(userId)
-
-    // chacking that user dont have the same course more than one time
+    // chacking that user dont have the same course more than once 
     const found =  user.cart.find(currCourseId=>currCourseId === couresId)
     if(!found){
         user.cart.push(couresId) 
@@ -64,6 +63,9 @@ async function addToUserCart(couresId, userId) {
 }
 async function removeFromUserCart(courseId,userId) {
     try{
+        if(userId === '64abe02a8723e73efc4d4be8'){
+            return 'course was remove from guest shopping cart'
+        }
     console.log('couresId',courseId)
 
     const user = await userService.getUserById(userId)

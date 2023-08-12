@@ -5,6 +5,7 @@ export const ADD_USER = 'ADD_USER '
 export const UPDATE_USER = 'UPDATE_USER '
 export const LOGOUT_USER = 'LOGOUT_USER'
 export const REMOVE_USER = 'REMOVE_USER'
+// export const ADD_TO_USER_CART = 'ADD_TO_USER_CART'
 
 
 const INITIAL_STATE = {
@@ -45,7 +46,7 @@ export function userReducers(state=INITIAL_STATE, action = {} ){
                 ...state,
                 users: state.users.filter(user => user._id !== action.userId)
             }
- 
+            
 
     default:
          return state

@@ -75,10 +75,9 @@ export function loadGuestUser() {
             if (loggdingUser) {
                 return
             } else {
-                const guest = userService.getUserGuest()
-             const user = await userService.signup(guest)
-             console.log('user in user action  in login func', user);
-             const action = {
+                const user = userService.getUserGuest()
+            //  const user = await userService.signup(guest)
+                       const action = {
                  type: SET_USER,
                  user
              }
@@ -96,9 +95,11 @@ export function loadGuestUser() {
 export function logout() {
     try {
         return async (dispatch, getState) => {
+            // const guest = userService.getUserGuest()
             console.log('LOGOUT_USER');
             const action = {
-                type: LOGOUT_USER
+                type: LOGOUT_USER,
+               
             }
             dispatch(action)
         }
@@ -110,7 +111,6 @@ export function logout() {
 export function removeUser(userId) {
     try {
         return async (dispatch, getState) => {
-            console.log('REMOVE_USER',userId);
             const action = {
                 type: REMOVE_USER,
                 userId
@@ -127,7 +127,6 @@ export function getUsers() {
     try {
         return async (dispatch, getState) => {
             const users = await userService.getUsers()
-            console.log('SET_USERS',users);
             const action = {
                 type: SET_USERS,
                 users
@@ -142,9 +141,7 @@ export function getUsers() {
 export function updateUser(user,from) {
     try {
         return async (dispatch, getState) => {
-            console.log('updatedUser before backend', user);
             const updatedUser = await userService.updateUser(user)
-            console.log('updatedUser after backend', updatedUser);
             if(from !== 'dashbaord'){
                 console.log('inside actionnnnnnnnnn', updatedUser);
                 const action = {
@@ -164,12 +161,6 @@ export function isSubEpisodeFullyWatched(userId,courseId,lastEpisode,lastSubEpis
     try {
         return async (dispatch, getState) => {
 
-            // console.log('**********userId**********', userId);
-            // console.log('**********courseId**********',courseId);
-            // console.log('**********lastSubEpisode***********', lastSubEpisode);
-            // console.log('*********duration********', duration);
-            // console.log('***************lastEpisode***************', lastEpisode);
-            // console.log('playedSecondsRef', playedSecondsRef);
             if((duration-5)<playedSecondsRef){
                 const updatedUser = await userService.isSubEpisodeFullyWatched(userId,courseId,lastEpisode,lastSubEpisode)
 
@@ -189,10 +180,7 @@ export function isSubEpisodeFullyWatched(userId,courseId,lastEpisode,lastSubEpis
 export function updateCurrTimeWacth(userId, courseId, currEpisode, currSubEpisode, currTimeWatch, videoUrl) {
     try {
         return async (dispatch, getState) => {
-            // console.log('in action episodeId', currEpisode);
-            // console.log('in action subEpisodeId', currSubEpisode);
             const updatedUser = await userService.updateCurrTimeWacth(userId, courseId, currEpisode, currSubEpisode, currTimeWatch, videoUrl)
-            console.log('updatedUser after backend', updatedUser);
             const action = {
                 type: UPDATE_USER,
                 updatedUser
@@ -224,7 +212,6 @@ export function getUserById(userId) {
 export function setLoggedinUser(user) {
     try {
         return async (dispatch, getState) => {
-            console.log('SET_USER');
             const action = {
                 type: SET_USER,
                 user
