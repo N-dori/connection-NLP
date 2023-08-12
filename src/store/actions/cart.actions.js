@@ -1,7 +1,8 @@
 import { cartService } from "../../services/cart.service"
 import { courseService } from "../../services/course.service";
 import { userService } from "../../services/userService";
-import { SET_CART, REMOVE_FORM_CART } from "../reducers/cartReducer"
+import { SET_CART, REMOVE_FORM_CART, ADD_TO_CART } from "../reducers/cartReducer"
+import { SET_USER } from "../reducers/user.reducer";
 
 export  function loadCart(){
     try{
@@ -12,17 +13,35 @@ export  function loadCart(){
             let cart 
             if(userId && courses){
                 console.log('loadCart : inside userId && courses ',userId);
-                
-                const userCart= await cartService.loadShoppingCart(courses,userId)
-                cart=userCart
-            }else
+                if(userId === '64abe02a8723e73efc4d4be8'){
+                    let guestCourses = []
+                  const  gustCart = getState().userModule.loggdingUser.cart
+                    gustCart.forEach( courseId =>{
+                        const course = courses.find(course => course._id === courseId)
+                        if(course){
+                            guestCourses.push(course)
+                        }})
+                        cart =guestCourses
+                }else{
+                    const userCart= await cartService.loadShoppingCart(courses,userId)
+                    cart=userCart             
+                }
+
+            }
+            else
             {
                 const courses =await courseService.getCourses(getState().couresModule.filterBy)
-                const user = await userService.getLoggedinUser()
+                let user = await userService.getLoggedinUser()
                 console.log('user in load cart - action',user);
+                if(!user){
+                user= userService.getUserGuest()
+                cart = user.cart
+                }else{
+                    const userCart= await cartService.loadShoppingCart(courses,user._id )
+                    cart=userCart
+
+                }
                 
-                const userCart= await cartService.loadShoppingCart(courses,user._id ?user._id :'64abe02a8723e73efc4d4be8')
-                cart=userCart
             }
             //cart is an array with courses 
             //TODO: save to cart mini course
@@ -78,17 +97,23 @@ export function addToUserCart(courseId){
     
         return async(dispatch,getState)=>{
             const userId = getState()?.userModule.loggdingUser?._id
-            if(userId){
-                await cartService.addToUserCart(courseId,userId)
-            }else{
-                const user = await userService.getLoggedinUser()
-                await cartService.addToUserCart(courseId,user._id)
+            if(userId === '64abe02a8723e73efc4d4be8'){
+                const user = getState().userModule.loggdingUser
+                user.cart.push(courseId)
+                    const action = {
+                        type: SET_USER,
+                        user
+                    }
+                   dispatch(action)
+
+            }else {
+                if(userId){
+                    await cartService.addToUserCart(courseId,userId)
+                }else{
+                    const user = await userService.getLoggedinUser()
+                    await cartService.addToUserCart(courseId,user._id)
+                }
             }
-        //     const action = {
-        //         type: ADD_TO_CART,
-        //         courseId
-        //     }
-        //    dispatch(action)
     }
      
     }catch(err){

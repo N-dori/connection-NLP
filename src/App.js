@@ -67,14 +67,13 @@ export function App() {
   useEffect(() => {
     //signing up with default guest -this way gust can add products to shopping cart
     //guest would need to sign up to move on shooping cart to purchuse!
-    // if(location.pathname === )
-    
+    // if(location.pathname === ()
+    console.log('App js is been rerendering');
     dispatch(loadGuestUser())
     dispatch(loadCourses())
     dispatch(loadAnnouncements())
     dispatch(loadReviews())
     dispatch(getUsers())
-    //header is not shwon in MyLearning cmp
     
     setTimeout(() => {
       dispatch(loadCart())

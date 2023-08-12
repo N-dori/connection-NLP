@@ -27,7 +27,6 @@ export  function ReviewsPreview({review}) {
 </div>
 <div className='review-txt'>
   <p className='content'>"{review.content}"</p>
-
 </div> 
 </article>
  )

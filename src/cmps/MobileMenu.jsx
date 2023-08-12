@@ -38,12 +38,16 @@ export default function MobileMenu({ scrollToMemorial, scrollToWhatTools, scroll
 
         <ul className="list-links flex-col clean">
           {loggdingUser ?
-
+            loggdingUser._id !== '64abe02a8723e73efc4d4be8'?
 
             <div className='user-img-container flex-jc-ac'  >
               <span className='user-img'>{loggdingUser.fname[0].toUpperCase()}</span>
 
             </div> :
+            <div className="login-signup-group">
+              <li className="link-container flex-jc-ac"><span onClick={(event) => handelNavigation(event, 'login')} className="link">התחברות</span></li>
+              <li className="link-container flex-jc-ac"><span onClick={(event) => handelNavigation(event, 'signup')} className="link">הרשמה</span></li>
+            </div>:
             <div className="login-signup-group">
               <li className="link-container flex-jc-ac"><span onClick={(event) => handelNavigation(event, 'login')} className="link">התחברות</span></li>
               <li className="link-container flex-jc-ac"><span onClick={(event) => handelNavigation(event, 'signup')} className="link">הרשמה</span></li>

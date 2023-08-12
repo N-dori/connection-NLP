@@ -210,11 +210,7 @@
                 right: 11.2%;
                 @include for-mobile-layout {
                     top: 21.7%;
-                    right:12.2%;
-                }
-                @include for-370px {
-                    top: 21.7%;
-                    right: 13.2%;
+                    right:15.2%;
                 }
                 @include for-270px {
                     top: 24.7%;
@@ -246,8 +242,8 @@
                     margin-inline-start: auto;
                     cursor: pointer;
                     @include for-mobile-layout {
-                        width: 28px;
-                        height: 28px;
+                        width: 26px;
+                        height: 26px;
                      
                     }
                     @include for-270px {
