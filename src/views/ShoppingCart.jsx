@@ -17,6 +17,7 @@ export function ShoppingCart() {
   const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
   const loggdingUser = useSelector((storeState) => storeState.userModule.loggdingUser)
   const [sum, setSum] = useState(0)
+  const [beforeDiscount, setPriceBeforeDiscount] = useState(0)
   const [isfisrtLoad, setIsfisrtLoad] = useState(0)
   
   
@@ -26,6 +27,7 @@ export function ShoppingCart() {
 //we want to load user courses only one time (to sync between redux shopping cart with user cart)
 //because it is create conflict between user cart to redux shopping cart
 // and we dont want to make unnecessary http requests    
+window.scrollTo(0,0)
     if(isfisrtLoad === 0){
       setIsfisrtLoad(1)
       loadLoggedinUser()
@@ -42,7 +44,7 @@ export function ShoppingCart() {
     }
     const loadLoggedinUser = async () => {
          //this loggdingUer dependencies is from session 
-         if(loggdingUser._id === '64abe02a8723e73efc4d4be8'){
+         if(loggdingUser?._id === '64abe02a8723e73efc4d4be8'){
            setUser(loggdingUser)
          }else{
            const user = await userService.getLoggedinUser()
@@ -62,10 +64,23 @@ export function ShoppingCart() {
     let total= 0
     if(shoppingCart){
       shoppingCart.forEach(product => {
-        if(!product){return }
+        if(!product)return
+       
         total= total+ (+product.price)
         console.log('total',total);
       });
+      if(total === 2500){
+        setPriceBeforeDiscount(0)
+      
+      }
+      if(total === 5000){
+        setPriceBeforeDiscount(5000)
+        total =  4500
+      }
+      if(total === 9200 ){
+        setPriceBeforeDiscount(9200)
+        total = 7400
+      }
     } 
     else{
       return 
@@ -100,7 +115,7 @@ const handelChekOut = () => {
         : 'shopping cart is empty'
       }
       </section>
-        <ProductCheckout handelChekOut={handelChekOut} loggdingUser={user} sum={sum}/>
+        <ProductCheckout handelChekOut={handelChekOut} loggdingUser={user} sum={sum} beforeDiscount={beforeDiscount}/>
 
         { isUserlogged?
         isSignupModalOpen?<section className='shopping-cart-signup-modal-container'>

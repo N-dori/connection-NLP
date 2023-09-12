@@ -93,12 +93,18 @@
                 @include for-tablet-breakpoint {
                     font-size: 1.5em;
                 }
+                @include for-633px {
+                    margin-top: 2em;
+                    font-size: 1.2em;
+                }
 
                 @include for-mobile-layout {
+                    margin-top: 1.5em;
                     font-size: 1.2em;
                 }
 
                 @include for-370px {
+                    margin-top: 0.5em;
                     font-size: 1em;
                 }
 
@@ -259,11 +265,11 @@
                 }
 
                 @include for-1030px {
-                    font-size: 2em;
+                    font-size: 1.7em;
                 }
 
                 @include for-narrow-layout {
-                    font-size: 1.8em;
+                    font-size: 1.7em;
                     top: -4em
                 }
 

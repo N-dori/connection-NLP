@@ -36,7 +36,7 @@ export  function ProductPreview({onRemove,product,loggdingUser}) {
     </div>
     </div>
     <div className=' remove-btn-container flex-col'>
-    <span className='remove-btn' onClick={()=>{onRemove(product._id,loggdingUser._id)}}>Remove</span>
+    <span className='remove-btn' onClick={()=>{onRemove(product._id,loggdingUser._id)}}>הסר</span>
     </div>
     <div className='grid-item5 product-price-container flex'>
     <span className='product-price'>{product.price}</span>
