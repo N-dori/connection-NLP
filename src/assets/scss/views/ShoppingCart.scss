@@ -3,16 +3,18 @@
     grid-column: 1/-1;
     grid-template-columns: minmax(10px, 17.5%) minmax(auto, 55em) minmax(10px, 1fr);
     gap: 0em;
-    min-height: calc(100vh - 10.5em); 
-    margin: 0; 
+    min-height: calc(100vh - 10.5em);
+    margin: 0;
     grid-template-rows: auto 1fr auto;
-    @include for-940px{
-    grid-template-columns: minmax(10px, 1.5%) minmax(auto, 55em) minmax(10px, 1fr);
-        
-}
-    @include for-mobile-layout{
-padding-block-start:5em ;        
-}
+
+    @include for-940px {
+        grid-template-columns: minmax(10px, 1.5%) minmax(auto, 55em) minmax(10px, 1fr);
+
+    }
+
+    @include for-mobile-layout {
+        padding-block-start: 5em;
+    }
 
 
     .headline-wrapper {
@@ -22,9 +24,10 @@ padding-block-start:5em ;
             font-size: 2.5em;
             margin-block-start: 0.5em;
             margin-block-end: 0.6em;
-            @include for-mobile-layout{
-                font-size: 1.5em;       
-                }
+
+            @include for-mobile-layout {
+                font-size: 1.5em;
+            }
         }
 
         .total-courses {
@@ -37,22 +40,25 @@ padding-block-start:5em ;
 
     .product-list-wrapper {
         grid-column: 2;
+
         // min-height: 55vh;
-        @include for-normal-layout{
+        @include for-normal-layout {
             margin-bottom: 5em;
         }
-      
+
         .product-preview {
             grid-template-columns: 1.5fr 8fr 1fr 1fr;
             border-top: 1px solid #d3d9de;
             padding-top: 0.8em;
-            row-gap:1em;
-            @include for-633px{
-                display: flex!important;
+            row-gap: 1em;
+
+            @include for-633px {
+                display: flex !important;
                 flex-direction: column;
-            margin-inline-start: 1em;
-    
+                margin-inline-start: 1em;
+
             }
+
             .product-general-info {
                 display: flex;
                 flex-direction: column;
@@ -64,39 +70,43 @@ padding-block-start:5em ;
                     .product-name {
                         line-height: 1em;
                         margin-inline-start: 1em;
-                        @include for-633px{
+
+                        @include for-633px {
                             margin-inline-start: 0em;
-                
+
                         }
                     }
 
                     .product-created-by {
                         margin-inline-start: 1em;
-                        @include for-633px{
-                            padding-block:0.5em ;
+
+                        @include for-633px {
+                            padding-block: 0.5em;
                             margin-inline-start: 0em;
-                
+
                         }
 
                     }
                 }
 
                 .product-in-numbers {
-                    @include for-633px{
+                    @include for-633px {
                         gap: 1em;
-            
+
                     }
+
                     .total-videos {
                         margin-inline-start: 1.5em;
                         font-size: .8em;
-                        @include for-633px{
+
+                        @include for-633px {
                             margin-inline-start: 0em;
-                
+
                         }
 
                     }
                 }
-              
+
             }
 
             .img-container {
@@ -116,13 +126,13 @@ padding-block-start:5em ;
 
                 .remove-btn {
                     text-align: end;
-                    color:orangered;
-                    cursor:pointer
+                    color: orangered;
+                    cursor: pointer
                 }
             }
 
             .product-price-container {
-           
+
                 .product-price {
                     justify-items: end;
                 }
@@ -165,37 +175,53 @@ padding-block-start:5em ;
         grid-row: 2;
         grid-column: 3;
         margin-inline-start: 3em;
-        @include for-normal-layout{
+
+        @include for-normal-layout {
             grid-row: 3;
-            grid-column: 2; 
+            grid-column: 2;
             margin-block-end: 21.5em;
             margin-inline-start: 0em;
         }
-        .product-Checkout-warpper{
+
+        .before-discount-price {
+            text-decoration: line-through;
+            font-size: 1.3em;
+        }
+
+        .discount-txt {
+            text-decoration: none;
+            margin-bottom: 0px;
+            margin-top: 10px;
+        }
+
+        .product-Checkout-warpper {
             position: relative;
-            border-bottom:1px solid #d3d9de;
+            border-bottom: 1px solid #d3d9de;
             width: 48%;
             top: -2.2em;
-            @include for-633px{
-             width: 100%;
-    
+
+            @include for-633px {
+                width: 100%;
+
             }
+
             .headline {
                 margin: 0;
             }
-            
+
             .product-price {
                 margin: 0;
                 font-size: 2em;
                 margin-block-end: 0.2em;
             }
-    
+
             .checkout-btn {
                 position: relative;
                 min-width: 100%;
-                padding: 1em 1.2rem;;
+                padding: 1em 1.2rem;
+                ;
                 margin-bottom: 1em;
-                
+
                 border: none;
                 font-size: 1em;
                 font-weight: bold;
@@ -207,94 +233,113 @@ padding-block-start:5em ;
         }
     }
 }
-.shopping-cart-signup-modal-container{
+
+.shopping-cart-signup-modal-container {
     position: absolute;
     width: 35%;
     height: 70%;
-    top:13em;
+    top: 13em;
     right: 35%;
-padding: 2em;
-background-color: #fff;
-box-shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .08);
-    @include for-940px{
-        height:52%   ;
+    padding: 2em;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .08);
+
+    @include for-940px {
+        height: 52%;
         padding: 1em;
-    
+
     }
-    .close-btn{
+
+    .close-btn {
         cursor: pointer;
         position: absolute;
-        top:10px;
+        top: 10px;
         right: 10px;
     }
-    .signup-container{
-    padding: 2em;
-    margin-top: 0;
-    @include for-940px{
-  padding: 1em;  
-  top: 129px; 
-    }
-}
-.google-signup-btn{
-    direction: ltr;
-}
-.sign-in-btn{
-    font-size: 0.9em!important; 
-    margin-top: 20px!important;
-}
-.btn-text{
 
-    margin-right: 1em;
-    margin-left: 0px!important;
-    font-size: 0.9em!important;
-}
-.sign-in-input{
-    height: 2.5em!important;
-font-size: 0.9em!important;
-}
-@include for-narrow-layout{
-    padding: .5em;
-    width: 287px;
-    height:436px;
-    right: 30% !important;
-}
-@include for-mobile-layout{
-    padding: .5em;
-    top: 10em!important;
-    right: 20% !important;
-    translate: 10%;
-    .is-register{
-        margin: 0;
+    .signup-container {
+        padding: 2em;
+        margin-top: 0;
+
+        @include for-940px {
+            padding: 1em;
+            top: 129px;
+        }
     }
-    .btn-text{
-    
+
+    .google-signup-btn {
+        direction: ltr;
+    }
+
+    .sign-in-btn {
+        font-size: 0.9em !important;
+        margin-top: 20px !important;
+    }
+
+    .btn-text {
+
         margin-right: 1em;
-        margin-left: auto !important;
-        font-size: 0.9em!important;
-    }
-}
-@include for-370px{
-    top:4em !important;
-    width: 250px;
-    height:430px;
-    right: 15% !important;
-    translate: -5%;
-    .google-signup-btn{
-        height: 3em !important;;
-    }
-    .sign-in-btn{
-        height:3em !important;
-        
+        margin-left: 0px !important;
+        font-size: 0.9em !important;
     }
 
-}
-@include for-325px{
-    padding: 0;
-    width:  220px;
-    right: 0px !important;
-.signin-title{
-    font-size: 0.9em;
-}
+    .sign-in-input {
+        height: 2.5em !important;
+        font-size: 0.9em !important;
+    }
 
-}
+    @include for-narrow-layout {
+        padding: .5em;
+        width: 287px;
+        height: 436px;
+        right: 30% !important;
+    }
+
+    @include for-mobile-layout {
+        padding: .5em;
+        top: 10em !important;
+        right: 20% !important;
+        translate: 10%;
+
+        .is-register {
+            margin: 0;
+        }
+
+        .btn-text {
+
+            margin-right: 1em;
+            margin-left: auto !important;
+            font-size: 0.9em !important;
+        }
+    }
+
+    @include for-370px {
+        top: 4em !important;
+        width: 250px;
+        height: 430px;
+        right: 15% !important;
+        translate: -5%;
+
+        .google-signup-btn {
+            height: 3em !important;
+            ;
+        }
+
+        .sign-in-btn {
+            height: 3em !important;
+
+        }
+
+    }
+
+    @include for-325px {
+        padding: 0;
+        width: 220px;
+        right: 0px !important;
+
+        .signin-title {
+            font-size: 0.9em;
+        }
+
+    }
 }

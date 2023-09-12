@@ -23,6 +23,9 @@ export function CouresDetails({courses}) {
   const param = useParams()
   const [setRef, visible] = useOnScreen({ threshold: 0.2 })
 
+  const shoppingCart = useSelector((storeState) => storeState.cartModule.shoppingCart)
+
+
   const [course, setCourse] = useState()
   const [isPlayerVisible, setIsPlayerVisible] = useState(false)
   const [videoUrl, setVideoUrl] = useState(false)
@@ -35,11 +38,13 @@ export function CouresDetails({courses}) {
   useEffect(() => {
     window.scrollTo(0, 0)
     loadCourse(param.id)
+    console.log('shopping cart has length', shoppingCart.length);
 
   }, [])
 
   const addToCart = () => {
 /*     if (loggdingUser) { */
+
       dispatch(addToUserCart(course._id))
           setTimeout(() => {
       navigate('/shopping-cart')
@@ -104,7 +109,7 @@ export function CouresDetails({courses}) {
   const  getFormatedPrice = async(price) => {
     let formatPrice = new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS' })
 
-       let priceBeforeDiscount = (+price+(+price*0.1)).toFixed(0)
+       let priceBeforeDiscount = (+price+(+price*0.25)).toFixed(0)
        setPriceBeforeDiscount(formatPrice.format(priceBeforeDiscount)) 
        setFormatedPrice(formatPrice.format(price))
 

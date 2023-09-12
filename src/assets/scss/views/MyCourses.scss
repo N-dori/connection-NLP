@@ -89,7 +89,7 @@
             margin-bottom: 0.5em;
             padding: 5px;
             background-color: #111111;
-            width: 25%;
+            width: 30%;
             @include for-1030px {
                width: 53%!important;
                        }
@@ -116,7 +116,7 @@
             .course-title {
                 grid-row: 1;
                 color: var(--clr1);
-                font-size: 1.2em;
+                font-size: 1em;
                 margin-top: 0;
                 margin: 0;
                 justify-self: center;

@@ -64,7 +64,7 @@ async function addToUserCart(couresId, userId) {
 async function removeFromUserCart(courseId,userId) {
     try{
         if(userId === '64abe02a8723e73efc4d4be8'){
-            return 'course was remove from guest shopping cart'
+            return 
         }
     console.log('couresId',courseId)
 
