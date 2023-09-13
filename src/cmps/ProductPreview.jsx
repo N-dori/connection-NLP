@@ -31,7 +31,7 @@ export  function ProductPreview({onRemove,product,loggdingUser}) {
    
     <div className=' product-in-numbers flex'>
     <span className='total-videos'> הרצאות {getLecturesSum()} </span>
-    <span className='total-videos'> סך הכל שעות{product.totalHours?.hours} </span>
+    <span className='total-videos'> סך הכל שעות {product.totalHour} </span>
     <span className='total-videos'> דרגה {product.level}</span>
     </div>
     </div>

@@ -40,6 +40,9 @@ window.scrollTo(0,0)
     const loadCourses = () => {
 
       dispatch(loadCart())  
+      setTimeout(() => {
+        console.log('shopping cart',shoppingCart);
+      }, 2500);
       
     }
     const loadLoggedinUser = async () => {
