@@ -40,6 +40,9 @@ window.scrollTo(0,0)
     const loadCourses = () => {
 
       dispatch(loadCart())  
+      setTimeout(() => {
+        console.log('shopping cart',shoppingCart);
+      }, 2500);
       
     }
     const loadLoggedinUser = async () => {
@@ -72,6 +75,10 @@ window.scrollTo(0,0)
       if(total === 2500){
         setPriceBeforeDiscount(0)
       
+      }
+      if(total === 5250){
+        setPriceBeforeDiscount(5250)
+        total =  4200
       }
       if(total === 5000){
         setPriceBeforeDiscount(5000)

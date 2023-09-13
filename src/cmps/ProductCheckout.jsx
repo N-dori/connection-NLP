@@ -30,6 +30,15 @@ export  function ProductCheckout({handelChekOut,sum,beforeDiscount}) {
         
         :''
         }
+        {beforeDiscount?
+        beforeDiscount === 5250?
+       <div>
+        <p className='before-discount-price'>{beforeDiscount} </p>
+        <span className='discount-txt'> מבצע מיוחד בעבור קורס Advence</span>
+       </div> :''
+        
+        :''
+        }
         <p className='product-price'>{sum}</p>
         <button className='checkout-btn flex-jc-ac' onClick={handelChekOut}>לתשלום מאובטח</button>
            </div>
