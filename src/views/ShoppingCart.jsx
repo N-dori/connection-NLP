@@ -73,6 +73,10 @@ window.scrollTo(0,0)
         setPriceBeforeDiscount(0)
       
       }
+      if(total === 5250){
+        setPriceBeforeDiscount(5250)
+        total =  4200
+      }
       if(total === 5000){
         setPriceBeforeDiscount(5000)
         total =  4500
